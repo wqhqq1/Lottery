@@ -1,4 +1,4 @@
-/Release
-/dist
-/build
-/venv
+/Release/
+/dist/
+/build/
+/venv/
