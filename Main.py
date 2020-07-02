@@ -67,7 +67,12 @@ def inputer(Excel_Path, AllNumber, FirstPriceNumber, SecondPriceNumber, ThirdPri
     SecondPriceNumber = int(SecondPriceNumber)
     ThirdPriceNumber = int(ThirdPriceNumber)
     OtherPriceNumber = int(OtherPriceNumber)
-    rand_chooser(Excel_Path, AllNumber, FirstPriceNumber, SecondPriceNumber, ThirdPriceNumber, OtherPriceNumber)
+    try:
+        rand_chooser(Excel_Path, AllNumber, FirstPriceNumber, SecondPriceNumber, ThirdPriceNumber, OtherPriceNumber)
+    except:
+        global showchooser
+        showchooser = False
+        messagebox.showerror('错误', '获奖人数大于总人数！请检查输入的数据。')
 
 def getallnumber(Excel_Path):
     names = excel_reader.open_workbook(r'%s' % Excel_Path)
@@ -75,7 +80,7 @@ def getallnumber(Excel_Path):
     n = 0
     while True:
         try:
-            names.cell(n+1, 0).value
+            n = names.cell(n+1, 0).value
             n += 1
         except:
             return n
@@ -104,12 +109,12 @@ def graphics():
             else:
                 return
         else:
+            showchooser = True
             inputer(ExcelPathEntry.get(), AllNumberEntry.get(), FirstPriceNumberEntry.get(),SecondPriceNumberEntry.get(), ThirdPriceNumberEntry.get(), OtherPriceNumberEntry.get())
             ShowPriceText.config(state = 'normal')
             ShowPriceText.delete(0.0, END)
             ShowPriceText.insert(END, out)
             ShowPriceText.config(state = 'disabled')
-            showchooser = True
 
     root = Tk()
     root.geometry('600x500')
