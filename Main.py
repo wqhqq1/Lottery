@@ -18,46 +18,65 @@ def textrander(ExcelPath, rands, FirstPriceNumber, SecondPriceNumber, ThirdPrice
     names = names.sheet_by_name('Sheet1')
     priceopener = excel_writer.Workbook(encoding='gbk')
     pricewriter = priceopener.add_sheet('Sheet1', cell_overwrite_ok=True)
-    pricewriter.write(0, 0, '一等奖')
+    excel_border =excel_writer.Borders()
+    excel_border.left = 0x01
+    excel_border.right = 0x01
+    excel_border.top = 0x01
+    excel_border.bottom = 0x01
+    excel_alignment = excel_writer.Alignment()
+    excel_alignment.horz = 0x02
+    excel_alignment.vert = 0x01
+    title_border = excel_writer.Borders()
+    title_border.left = 0x01
+    title_border.top = 0x01
+    title_border.bottom = 0x01
+
+    style = excel_writer.XFStyle()
+    style.borders = excel_border
+    style.alignment = excel_alignment
+    style_title = excel_writer.XFStyle()
+    style_title.borders = title_border
+    pricewriter.write(0, 0, ExcelPath + '的抽奖结果', style_title)
+    pricewriter.write(1, 0, '一等奖', style)
     while n < FirstPriceNumber:
         if FirstPriceNumber - n == 1:
             FirstPrice += names.cell(rands[n], 0).value
         else:
             FirstPrice += names.cell(rands[n],0).value + '、'
-        pricewriter.write(FirstPriceNumber - n, 0, names.cell(rands[n], 0).value)
+        pricewriter.write(1, FirstPriceNumber - n, names.cell(rands[n], 0).value, style)
         n+=1
         # print(n)
     e = n+SecondPriceNumber
     SecondPrice = '二等奖：'
-    pricewriter.write(0, 1, '二等奖')
+    pricewriter.write(2, 0, '二等奖', style)
     while n < e:
         if e - n == 1:
             SecondPrice += names.cell(rands[n],0).value
         else:
             SecondPrice += names.cell(rands[n], 0).value + '、'
-        pricewriter.write(e - n, 1, names.cell(rands[n], 0).value)
+        pricewriter.write(2, e - n, names.cell(rands[n], 0).value, style)
         n+=1
         # print(n)
     e = n+ThirdPriceNumber
-    pricewriter.write(0, 2, '三等奖')
+    pricewriter.write(3, 0, '三等奖', style)
     ThirdPrice = '三等奖：'
     while n < e:
         if e - n == 1:
             ThirdPrice += names.cell(rands[n],0).value
         else:
             ThirdPrice += names.cell(rands[n], 0).value + '、'
-        pricewriter.write(e - n, 2, names.cell(rands[n], 0).value)
+        pricewriter.write(3, e - n, names.cell(rands[n], 0).value, style)
         n+=1
         # print(n)
     e = n+OtherPriceNumber
-    pricewriter.write(0, 3, '鼓励奖')
+    pricewriter.write(4, 0, '鼓励奖', style)
     OtherPrice = '鼓励奖：'
     while n < e:
         if e - n == 1:
             OtherPrice += names.cell(rands[n],0).value
         else:
             OtherPrice += names.cell(rands[n], 0).value + '、'
-        pricewriter.write(e - n, 3, names.cell(rands[n], 0).value)
+        pricewriter.write(4, e - n, names.cell(rands[n], 0).value, style)
         n+=1
         # print(n)
     try:
@@ -66,7 +85,7 @@ def textrander(ExcelPath, rands, FirstPriceNumber, SecondPriceNumber, ThirdPrice
         pass
     priceopener.save(ExcelPath + '抽奖结果' + ' .xls')
     global out
-    out = '抽奖结果是:' + '\n' + FirstPrice + '\n' + SecondPrice + '\n' + ThirdPrice + '\n' + OtherPrice
+    out = ExcelPath + '的抽奖结果是:' + '\n' + FirstPrice + '\n' + SecondPrice + '\n' + ThirdPrice + '\n' + OtherPrice
     ClipBoardWrite(out)
 
 def rand_chooser(ExcelPath, AllNumber, FirstPriceNumber, SecondPriceNumber, ThirdPriceNumber, OtherPriceNumber):
