@@ -96,18 +96,19 @@ def rand_chooser(ExcelPath, AllNumber, FirstPriceNumber, SecondPriceNumber, Thir
     textrander(ExcelPath, rands, FirstPriceNumber, SecondPriceNumber, ThirdPriceNumber, OtherPriceNumber)
 
 def inputer(Excel_Path, AllNumber, FirstPriceNumber, SecondPriceNumber, ThirdPriceNumber, OtherPriceNumber):
-    Excel_Path = Excel_Path
-    AllNumber = int(AllNumber)
-    FirstPriceNumber = int(FirstPriceNumber)
-    SecondPriceNumber = int(SecondPriceNumber)
-    ThirdPriceNumber = int(ThirdPriceNumber)
-    OtherPriceNumber = int(OtherPriceNumber)
     try:
+        Excel_Path = Excel_Path
+        AllNumber = int(AllNumber)
+        FirstPriceNumber = int(FirstPriceNumber)
+        SecondPriceNumber = int(SecondPriceNumber)
+        ThirdPriceNumber = int(ThirdPriceNumber)
+        OtherPriceNumber = int(OtherPriceNumber)
+        # print(FirstPriceNumber + ' ' + SecondPriceNumber + ' ' + ThirdPriceNumber + ' ' + OtherPriceNumber)
         rand_chooser(Excel_Path, AllNumber, FirstPriceNumber, SecondPriceNumber, ThirdPriceNumber, OtherPriceNumber)
     except:
         global showchooser
         showchooser = False
-        messagebox.showerror('错误', '获奖人数大于总人数！请检查输入的数据。')
+        messagebox.showerror('错误', '请检查输入的数据。')
 
 def getallnumber(Excel_Path):
     names = excel_reader.open_workbook(r'%s' % Excel_Path)

@@ -4,15 +4,6 @@
     <list default="true" id="ac6f00a1-0230-4e93-b249-a72cde0e653f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/Main/Analysis-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/Main/Analysis-00.toc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/Main/EXE-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/Main/EXE-00.toc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/Main/PKG-00.pkg" beforeDir="false" afterPath="$PROJECT_DIR$/build/Main/PKG-00.pkg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/Main/PKG-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/Main/PKG-00.toc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/Main/PYZ-00.pyz" beforeDir="false" afterPath="$PROJECT_DIR$/build/Main/PYZ-00.pyz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/Main/PYZ-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/Main/PYZ-00.toc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/Main/base_library.zip" beforeDir="false" afterPath="$PROJECT_DIR$/build/Main/base_library.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/Main/warn-Main.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/Main/warn-Main.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/Main/xref-Main.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/Main/xref-Main.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,22 +82,22 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1899" height="287" key="GridCell.Tab.0.bottom" timestamp="1593859034359">
+    <state width="1899" height="287" key="GridCell.Tab.0.bottom" timestamp="1593861471801">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1899" height="287" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1593859034359" />
-    <state width="1899" height="287" key="GridCell.Tab.0.center" timestamp="1593859034358">
+    <state width="1899" height="287" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1593861471801" />
+    <state width="1899" height="287" key="GridCell.Tab.0.center" timestamp="1593861471801">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1899" height="287" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1593859034358" />
-    <state width="1899" height="287" key="GridCell.Tab.0.left" timestamp="1593859034358">
+    <state width="1899" height="287" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1593861471801" />
+    <state width="1899" height="287" key="GridCell.Tab.0.left" timestamp="1593861471801">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1899" height="287" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1593859034358" />
-    <state width="1899" height="287" key="GridCell.Tab.0.right" timestamp="1593859034358">
+    <state width="1899" height="287" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1593861471801" />
+    <state width="1899" height="287" key="GridCell.Tab.0.right" timestamp="1593861471801">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1899" height="287" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1593859034358" />
+    <state width="1899" height="287" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1593861471801" />
     <state width="1899" height="352" key="GridCell.Tab.1.bottom" timestamp="1593732782842">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -127,10 +118,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="461" y="167" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1593843993742" />
-    <state x="1120" y="349" key="com.intellij.ide.util.TipDialog" timestamp="1593854829461">
+    <state x="1120" y="349" key="com.intellij.ide.util.TipDialog" timestamp="1593860012137">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="1120" y="349" key="com.intellij.ide.util.TipDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1593854829461" />
+    <state x="1120" y="349" key="com.intellij.ide.util.TipDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1593860012137" />
     <state x="623" y="227" key="search.everywhere.popup" timestamp="1593650177695">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
