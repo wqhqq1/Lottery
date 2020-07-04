@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac6f00a1-0230-4e93-b249-a72cde0e653f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Release/抽奖器1.51.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main.spec" beforeDir="false" afterPath="$PROJECT_DIR$/Main.spec" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/Main/Analysis-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/Main/Analysis-00.toc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/Main/EXE-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/Main/EXE-00.toc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/Main/PKG-00.pkg" beforeDir="false" afterPath="$PROJECT_DIR$/build/Main/PKG-00.pkg" afterDir="false" />
@@ -13,7 +12,15 @@
       <change beforePath="$PROJECT_DIR$/build/Main/PYZ-00.pyz" beforeDir="false" afterPath="$PROJECT_DIR$/build/Main/PYZ-00.pyz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/Main/PYZ-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/Main/PYZ-00.toc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/Main/base_library.zip" beforeDir="false" afterPath="$PROJECT_DIR$/build/Main/base_library.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/Main/runw.exe.4jobwbcu" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/Main/runw.exe.c0yut0tq" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/Main/runw.exe.fgdgf9ou" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/Main/runw.exe.qiomsccc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/Main/runw.exe.w2u6tx93" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/Main/runw.exe.ws3zwx0x" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/Main/runw.exe.zlvw9otv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/Main/warn-Main.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/Main/warn-Main.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/Main/xref-Main.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/Main/xref-Main.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,30 +99,46 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1899" height="285" key="GridCell.Tab.0.bottom" timestamp="1593730995432">
+    <state width="1899" height="287" key="GridCell.Tab.0.bottom" timestamp="1593851152248">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1899" height="285" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1593730995432" />
-    <state width="1899" height="285" key="GridCell.Tab.0.center" timestamp="1593730995432">
+    <state width="1899" height="287" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1593851152248" />
+    <state width="1899" height="287" key="GridCell.Tab.0.center" timestamp="1593851152247">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1899" height="285" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1593730995432" />
-    <state width="1899" height="285" key="GridCell.Tab.0.left" timestamp="1593730995432">
+    <state width="1899" height="287" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1593851152247" />
+    <state width="1899" height="287" key="GridCell.Tab.0.left" timestamp="1593851152247">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1899" height="285" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1593730995432" />
-    <state width="1899" height="285" key="GridCell.Tab.0.right" timestamp="1593730995432">
+    <state width="1899" height="287" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1593851152247" />
+    <state width="1899" height="287" key="GridCell.Tab.0.right" timestamp="1593851152247">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1899" height="285" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1593730995432" />
-    <state x="461" y="167" key="SettingsEditor" timestamp="1593679587882">
+    <state width="1899" height="287" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1593851152247" />
+    <state width="1899" height="352" key="GridCell.Tab.1.bottom" timestamp="1593732782842">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="461" y="167" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1593679587882" />
-    <state x="1120" y="349" key="com.intellij.ide.util.TipDialog" timestamp="1593729859092">
+    <state width="1899" height="352" key="GridCell.Tab.1.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1593732782842" />
+    <state width="1899" height="352" key="GridCell.Tab.1.center" timestamp="1593732782842">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="1120" y="349" key="com.intellij.ide.util.TipDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1593729859092" />
+    <state width="1899" height="352" key="GridCell.Tab.1.center/0.0.1920.1050@0.0.1920.1050" timestamp="1593732782842" />
+    <state width="1899" height="352" key="GridCell.Tab.1.left" timestamp="1593732782842">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1899" height="352" key="GridCell.Tab.1.left/0.0.1920.1050@0.0.1920.1050" timestamp="1593732782842" />
+    <state width="1899" height="352" key="GridCell.Tab.1.right" timestamp="1593732782842">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1899" height="352" key="GridCell.Tab.1.right/0.0.1920.1050@0.0.1920.1050" timestamp="1593732782842" />
+    <state x="461" y="167" key="SettingsEditor" timestamp="1593843993742">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="461" y="167" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1593843993742" />
+    <state x="1120" y="349" key="com.intellij.ide.util.TipDialog" timestamp="1593848350573">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="1120" y="349" key="com.intellij.ide.util.TipDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1593848350573" />
     <state x="623" y="227" key="search.everywhere.popup" timestamp="1593650177695">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>

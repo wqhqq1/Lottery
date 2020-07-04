@@ -1,4 +1,6 @@
 import xlrd as excel_reader
+import xlwt as excel_writer
+from os import remove as delete
 from random import sample as rand
 from tkinter import *
 from tkinter import filedialog
@@ -14,44 +16,58 @@ def textrander(ExcelPath, rands, FirstPriceNumber, SecondPriceNumber, ThirdPrice
     FirstPrice = '一等奖：'
     names = excel_reader.open_workbook(r'%s' % ExcelPath)
     names = names.sheet_by_name('Sheet1')
+    priceopener = excel_writer.Workbook(encoding='gbk')
+    pricewriter = priceopener.add_sheet('Sheet1', cell_overwrite_ok=True)
+    pricewriter.write(0, 0, '一等奖')
     while n < FirstPriceNumber:
         if FirstPriceNumber - n == 1:
             FirstPrice += names.cell(rands[n], 0).value
         else:
             FirstPrice += names.cell(rands[n],0).value + '、'
+        pricewriter.write(FirstPriceNumber - n, 0, names.cell(rands[n], 0).value)
         n+=1
         # print(n)
     e = n+SecondPriceNumber
     SecondPrice = '二等奖：'
+    pricewriter.write(0, 1, '二等奖')
     while n < e:
         if e - n == 1:
             SecondPrice += names.cell(rands[n],0).value
         else:
             SecondPrice += names.cell(rands[n], 0).value + '、'
+        pricewriter.write(e - n, 1, names.cell(rands[n], 0).value)
         n+=1
         # print(n)
     e = n+ThirdPriceNumber
+    pricewriter.write(0, 2, '三等奖')
     ThirdPrice = '三等奖：'
     while n < e:
         if e - n == 1:
             ThirdPrice += names.cell(rands[n],0).value
         else:
             ThirdPrice += names.cell(rands[n], 0).value + '、'
+        pricewriter.write(e - n, 2, names.cell(rands[n], 0).value)
         n+=1
         # print(n)
     e = n+OtherPriceNumber
+    pricewriter.write(0, 3, '鼓励奖')
     OtherPrice = '鼓励奖：'
     while n < e:
         if e - n == 1:
             OtherPrice += names.cell(rands[n],0).value
         else:
             OtherPrice += names.cell(rands[n], 0).value + '、'
+        pricewriter.write(e - n, 3, names.cell(rands[n], 0).value)
         n+=1
         # print(n)
+    try:
+        delete(ExcelPath + '抽奖结果' + ' .xls')
+    except:
+        pass
+    priceopener.save(ExcelPath + '抽奖结果' + ' .xls')
     global out
     out = '抽奖结果是:' + '\n' + FirstPrice + '\n' + SecondPrice + '\n' + ThirdPrice + '\n' + OtherPrice
     ClipBoardWrite(out)
-    out += '\n抽奖结果已经拷贝到剪贴板了，可以在其他软件内粘贴！'
 
 def rand_chooser(ExcelPath, AllNumber, FirstPriceNumber, SecondPriceNumber, ThirdPriceNumber, OtherPriceNumber):
     n = 0
@@ -80,7 +96,7 @@ def getallnumber(Excel_Path):
     n = 0
     while True:
         try:
-            n = names.cell(n+1, 0).value
+            names.cell(n+1, 0).value
             n += 1
         except:
             return n
@@ -103,7 +119,7 @@ def graphics():
         global out
         global showchooser
         if showchooser:
-            if messagebox.askokcancel('警告', '你已经抽过一次奖，确定要再抽一次吗？'):
+            if messagebox.askokcancel('警告', '你已经抽过一次奖，再次抽奖会覆盖上一次的结果，你确定要再抽一次吗？'):
                 showchooser = False
                 start()
             else:
@@ -150,5 +166,5 @@ def graphics():
     StartButton = Button(text = '开始抽奖', font = ('', 15),command = start)
     StartButton.grid(row = 7, column = 1, padx=5, pady=5)
     root.mainloop()
-
-graphics()
+if __name__ == '__main__':
+    graphics()
