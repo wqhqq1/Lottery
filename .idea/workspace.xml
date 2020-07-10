@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ac6f00a1-0230-4e93-b249-a72cde0e653f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
-    </list>
+    <list default="true" id="ac6f00a1-0230-4e93-b249-a72cde0e653f" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FavoritesManager">
-    <favorites_list name="抽奖器" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -20,12 +14,13 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunManager">
@@ -56,18 +51,6 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -82,22 +65,26 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1899" height="287" key="GridCell.Tab.0.bottom" timestamp="1593861471801">
+    <state x="660" y="118" key="#Main" timestamp="1594368122995">
+      <screen x="0" y="25" width="1920" height="963" />
+    </state>
+    <state x="660" y="118" key="#Main/0.25.1920.963@0.25.1920.963" timestamp="1594368122995" />
+    <state width="1899" height="287" key="GridCell.Tab.0.bottom" timestamp="1593861691483">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1899" height="287" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1593861471801" />
-    <state width="1899" height="287" key="GridCell.Tab.0.center" timestamp="1593861471801">
+    <state width="1899" height="287" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1593861691483" />
+    <state width="1899" height="287" key="GridCell.Tab.0.center" timestamp="1593861691483">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1899" height="287" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1593861471801" />
-    <state width="1899" height="287" key="GridCell.Tab.0.left" timestamp="1593861471801">
+    <state width="1899" height="287" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1593861691483" />
+    <state width="1899" height="287" key="GridCell.Tab.0.left" timestamp="1593861691482">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1899" height="287" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1593861471801" />
-    <state width="1899" height="287" key="GridCell.Tab.0.right" timestamp="1593861471801">
+    <state width="1899" height="287" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1593861691482" />
+    <state width="1899" height="287" key="GridCell.Tab.0.right" timestamp="1593861691483">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1899" height="287" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1593861471801" />
+    <state width="1899" height="287" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1593861691483" />
     <state width="1899" height="352" key="GridCell.Tab.1.bottom" timestamp="1593732782842">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -114,10 +101,11 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1899" height="352" key="GridCell.Tab.1.right/0.0.1920.1050@0.0.1920.1050" timestamp="1593732782842" />
-    <state x="461" y="167" key="SettingsEditor" timestamp="1593843993742">
-      <screen x="0" y="0" width="1920" height="1050" />
+    <state x="461" y="178" key="SettingsEditor" timestamp="1594368155506">
+      <screen x="0" y="25" width="1920" height="963" />
     </state>
     <state x="461" y="167" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1593843993742" />
+    <state x="461" y="178" key="SettingsEditor/0.25.1920.963@0.25.1920.963" timestamp="1594368155506" />
     <state x="1120" y="349" key="com.intellij.ide.util.TipDialog" timestamp="1593860012137">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
