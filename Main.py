@@ -11,9 +11,9 @@ chosefilename = ''
 out = ''
 showchooser = False
 
-def textrander(ExcelPath, rands, FirstPriceNumber, SecondPriceNumber, ThirdPriceNumber, OtherPriceNumber):
+def textrander(ExcelPath, rands, FirstPriceNumber, SecondPriceNumber, ThirdPriceNumber, OtherPriceNumber, FirstPriceName, SecondPriceName, ThirdPriceName, OtherPriceName):
     n = 0
-    FirstPrice = '一等奖：'
+    FirstPrice = FirstPriceName
     names = excel_reader.open_workbook(r'%s' % ExcelPath)
     names = names.sheet_by_name('Sheet1')
     priceopener = excel_writer.Workbook(encoding='gbk')
@@ -36,8 +36,11 @@ def textrander(ExcelPath, rands, FirstPriceNumber, SecondPriceNumber, ThirdPrice
     style.alignment = excel_alignment
     style_title = excel_writer.XFStyle()
     style_title.borders = title_border
-    pricewriter.write(0, 0, ExcelPath + '的抽奖结果', style_title)
-    pricewriter.write(1, 0, '一等奖', style)
+    ExcelName = ExcelPath.strip('.xlsx')
+    ExcelName = ExcelName.strip('.xls')
+    ExcelTitle = re.sub(r'.*/', '', ExcelName)
+    pricewriter.write(0, 0, ExcelTitle + '的抽奖结果', style_title)
+    pricewriter.write(1, 0, FirstPrice, style)
     while n < FirstPriceNumber:
         if FirstPriceNumber - n == 1:
             FirstPrice += names.cell(rands[n], 0).value
@@ -47,8 +50,8 @@ def textrander(ExcelPath, rands, FirstPriceNumber, SecondPriceNumber, ThirdPrice
         n+=1
         # print(n)
     e = n+SecondPriceNumber
-    SecondPrice = '二等奖：'
-    pricewriter.write(2, 0, '二等奖', style)
+    SecondPrice = SecondPriceName
+    pricewriter.write(2, 0, SecondPrice, style)
     while n < e:
         if e - n == 1:
             SecondPrice += names.cell(rands[n],0).value
@@ -58,8 +61,8 @@ def textrander(ExcelPath, rands, FirstPriceNumber, SecondPriceNumber, ThirdPrice
         n+=1
         # print(n)
     e = n+ThirdPriceNumber
-    pricewriter.write(3, 0, '三等奖', style)
-    ThirdPrice = '三等奖：'
+    ThirdPrice = ThirdPriceName
+    pricewriter.write(3, 0, ThirdPrice, style)
     while n < e:
         if e - n == 1:
             ThirdPrice += names.cell(rands[n],0).value
@@ -69,8 +72,8 @@ def textrander(ExcelPath, rands, FirstPriceNumber, SecondPriceNumber, ThirdPrice
         n+=1
         # print(n)
     e = n+OtherPriceNumber
-    pricewriter.write(4, 0, '鼓励奖', style)
-    OtherPrice = '鼓励奖：'
+    OtherPrice = OtherPriceName
+    pricewriter.write(4, 0, OtherPrice, style)
     while n < e:
         if e - n == 1:
             OtherPrice += names.cell(rands[n],0).value
@@ -80,22 +83,22 @@ def textrander(ExcelPath, rands, FirstPriceNumber, SecondPriceNumber, ThirdPrice
         n+=1
         # print(n)
     try:
-        delete(ExcelPath + '抽奖结果' + ' .xls')
+        delete(ExcelName + '抽奖结果' + ' .xls')
     except:
         pass
-    priceopener.save(ExcelPath + '抽奖结果' + ' .xls')
+    priceopener.save(ExcelName + '抽奖结果' + ' .xls')
     global out
-    out = ExcelPath + '的抽奖结果是:' + '\n' + FirstPrice + '\n' + SecondPrice + '\n' + ThirdPrice + '\n' + OtherPrice
+    out = ExcelTitle + '的抽奖结果是:' + '\n' + FirstPrice + '\n' + SecondPrice + '\n' + ThirdPrice + '\n' + OtherPrice
     ClipBoardWrite(out)
 
-def rand_chooser(ExcelPath, AllNumber, FirstPriceNumber, SecondPriceNumber, ThirdPriceNumber, OtherPriceNumber):
+def rand_chooser(ExcelPath, AllNumber, FirstPriceNumber, SecondPriceNumber, ThirdPriceNumber, OtherPriceNumber, FirstPriceName, SecondPriceName, ThirdPriceName, OtherPriceName):
     n = 0
     rands_temp = [i for i in range(1,AllNumber+1)]
     rands = rand(rands_temp, FirstPriceNumber+SecondPriceNumber+ThirdPriceNumber+OtherPriceNumber)
     # print(rands_temp)
-    textrander(ExcelPath, rands, FirstPriceNumber, SecondPriceNumber, ThirdPriceNumber, OtherPriceNumber)
+    textrander(ExcelPath, rands, FirstPriceNumber, SecondPriceNumber, ThirdPriceNumber, OtherPriceNumber, FirstPriceName, SecondPriceName, ThirdPriceName, OtherPriceName)
 
-def inputer(Excel_Path, AllNumber, FirstPriceNumber, SecondPriceNumber, ThirdPriceNumber, OtherPriceNumber):
+def inputer(Excel_Path, AllNumber, FirstPriceNumber, SecondPriceNumber, ThirdPriceNumber, OtherPriceNumber, FirstPriceName, SecondPriceName, ThirdPriceName, OtherPriceName):
     try:
         Excel_Path = Excel_Path
         AllNumber = int(AllNumber)
@@ -104,19 +107,23 @@ def inputer(Excel_Path, AllNumber, FirstPriceNumber, SecondPriceNumber, ThirdPri
         ThirdPriceNumber = int(ThirdPriceNumber)
         OtherPriceNumber = int(OtherPriceNumber)
         # print(FirstPriceNumber + ' ' + SecondPriceNumber + ' ' + ThirdPriceNumber + ' ' + OtherPriceNumber)
-        rand_chooser(Excel_Path, AllNumber, FirstPriceNumber, SecondPriceNumber, ThirdPriceNumber, OtherPriceNumber)
+        rand_chooser(Excel_Path, AllNumber, FirstPriceNumber, SecondPriceNumber, ThirdPriceNumber, OtherPriceNumber, FirstPriceName, SecondPriceName, ThirdPriceName, OtherPriceName)
     except:
         global showchooser
         showchooser = False
         messagebox.showerror('错误', '请检查输入的数据。')
 
 def getallnumber(Excel_Path):
-    names = excel_reader.open_workbook(r'%s' % Excel_Path)
+    try:
+        names = excel_reader.open_workbook(r'%s' % Excel_Path)
+    except:
+        return
     names = names.sheet_by_name('Sheet1')
     n = 0
     while True:
         try:
             names.cell(n+1, 0).value
+
             n += 1
         except:
             return n
@@ -133,7 +140,10 @@ def graphics():
         ExcelPathEntry.config(state = 'disabled')
         AllNumberEntry.config(state = 'normal')
         AllNumberEntry.delete(0, END)
-        AllNumberEntry.insert(0, getallnumber(chosefilename))
+        try:
+            AllNumberEntry.insert(0, getallnumber(chosefilename))
+        except:
+            return
         AllNumberEntry.config(state = 'disabled')
     def start():
         global out
@@ -146,7 +156,8 @@ def graphics():
                 return
         else:
             showchooser = True
-            inputer(ExcelPathEntry.get(), AllNumberEntry.get(), FirstPriceNumberEntry.get(),SecondPriceNumberEntry.get(), ThirdPriceNumberEntry.get(), OtherPriceNumberEntry.get())
+            inputer(ExcelPathEntry.get(), AllNumberEntry.get(), FirstPriceNumberEntry.get(),SecondPriceNumberEntry.get(), ThirdPriceNumberEntry.get(), OtherPriceNumberEntry.get(),
+                    FirstPriceNameEntry.get(), SecondPriceNameEntry.get(), ThirdPriceNameEntry.get(), OtherPriceNameEntry.get())
             ShowPriceText.config(state = 'normal')
             ShowPriceText.delete(0.0, END)
             ShowPriceText.insert(END, out)
@@ -165,20 +176,24 @@ def graphics():
     AllNumberLabel.grid(row = 1, column = 0)
     AllNumberEntry = Entry(font = ('', 20), state = 'disabled')
     AllNumberEntry.grid(row = 1, column = 1)
-    FirstPriceNumberLabel = Label(text = '一等奖获奖人数：', font = ('', 15))
-    FirstPriceNumberLabel.grid(row = 2, column = 0)
+    FirstPriceNameEntry = Entry(font = ('', 15))
+    FirstPriceNameEntry.grid(row = 2, column = 0)
+    FirstPriceNameEntry.insert(0, "一等奖：")
     FirstPriceNumberEntry = Entry(font = ('', 20))
     FirstPriceNumberEntry.grid(row = 2, column = 1)
-    SecondPriceNumberLabel = Label(text = '二等奖获奖人数：', font = ('', 15))
-    SecondPriceNumberLabel.grid(row = 3, column = 0)
+    SecondPriceNameEntry = Entry(font = ('', 15))
+    SecondPriceNameEntry.grid(row = 3, column = 0)
+    SecondPriceNameEntry.insert(0, "二等奖：")
     SecondPriceNumberEntry = Entry(font = ('', 20))
     SecondPriceNumberEntry.grid(row = 3, column = 1)
-    ThirdPriceNumberLabel = Label(text = '三等奖获奖人数：', font = ('', 15))
-    ThirdPriceNumberLabel.grid(row = 4, column = 0)
+    ThirdPriceNameEntry = Entry(font = ('', 15))
+    ThirdPriceNameEntry.grid(row = 4, column = 0)
+    ThirdPriceNameEntry.insert(0, "三等奖：")
     ThirdPriceNumberEntry = Entry(font = ('', 20))
     ThirdPriceNumberEntry.grid(row = 4, column = 1)
-    OtherPriceNumberLabel = Label(text = '鼓励奖获奖人数：', font = ('', 15))
-    OtherPriceNumberLabel.grid(row = 5, column = 0)
+    OtherPriceNameEntry = Entry(font = ('', 15))
+    OtherPriceNameEntry.grid(row = 5, column = 0)
+    OtherPriceNameEntry.insert(0, "鼓励奖：")
     OtherPriceNumberEntry = Entry(font = ('', 20))
     OtherPriceNumberEntry.grid(row = 5, column = 1)
     ShowPriceText = Text(font = ('', 15), width = 28, height = 13, state = 'disabled')

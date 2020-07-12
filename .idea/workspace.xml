@@ -1,11 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="ac6f00a1-0230-4e93-b249-a72cde0e653f" name="Default Changelist" comment="" />
+    <list default="true" id="ac6f00a1-0230-4e93-b249-a72cde0e653f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/抽奖器.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/抽奖器.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main.spec" beforeDir="false" afterPath="$PROJECT_DIR$/Main.spec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/Main/Analysis-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/Main/Analysis-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/Main/EXE-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/Main/EXE-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/Main/Main.exe.manifest" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/Main/PKG-00.pkg" beforeDir="false" afterPath="$PROJECT_DIR$/build/Main/PKG-00.pkg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/Main/PKG-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/Main/PKG-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/Main/PYZ-00.pyz" beforeDir="false" afterPath="$PROJECT_DIR$/build/Main/PYZ-00.pyz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/Main/PYZ-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/Main/PYZ-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/Main/Tree-00.toc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/Main/Tree-01.toc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/Main/base_library.zip" beforeDir="false" afterPath="$PROJECT_DIR$/build/Main/base_library.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/Main/warn-Main.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/Main/warn-Main.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/Main/xref-Main.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/Main/xref-Main.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -23,7 +67,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.Main">
     <configuration name="Main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="抽奖器" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -45,9 +89,31 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="nameget" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="抽奖器" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/nameget.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.Main" />
+        <item itemvalue="Python.nameget" />
       </list>
     </recent_temporary>
   </component>
@@ -64,27 +130,43 @@
     </task>
     <servers />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="660" y="118" key="#Main" timestamp="1594368122995">
       <screen x="0" y="25" width="1920" height="963" />
     </state>
     <state x="660" y="118" key="#Main/0.25.1920.963@0.25.1920.963" timestamp="1594368122995" />
-    <state width="1899" height="287" key="GridCell.Tab.0.bottom" timestamp="1593861691483">
-      <screen x="0" y="0" width="1920" height="1050" />
+    <state width="1899" height="257" key="GridCell.Tab.0.bottom" timestamp="1594546327792">
+      <screen x="0" y="25" width="1920" height="963" />
     </state>
     <state width="1899" height="287" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1593861691483" />
-    <state width="1899" height="287" key="GridCell.Tab.0.center" timestamp="1593861691483">
-      <screen x="0" y="0" width="1920" height="1050" />
+    <state width="1899" height="257" key="GridCell.Tab.0.bottom/0.25.1920.963@0.25.1920.963" timestamp="1594546327792" />
+    <state width="1899" height="257" key="GridCell.Tab.0.center" timestamp="1594546327790">
+      <screen x="0" y="25" width="1920" height="963" />
     </state>
     <state width="1899" height="287" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1593861691483" />
-    <state width="1899" height="287" key="GridCell.Tab.0.left" timestamp="1593861691482">
-      <screen x="0" y="0" width="1920" height="1050" />
+    <state width="1899" height="257" key="GridCell.Tab.0.center/0.25.1920.963@0.25.1920.963" timestamp="1594546327790" />
+    <state width="1899" height="257" key="GridCell.Tab.0.left" timestamp="1594546327790">
+      <screen x="0" y="25" width="1920" height="963" />
     </state>
     <state width="1899" height="287" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1593861691482" />
-    <state width="1899" height="287" key="GridCell.Tab.0.right" timestamp="1593861691483">
-      <screen x="0" y="0" width="1920" height="1050" />
+    <state width="1899" height="257" key="GridCell.Tab.0.left/0.25.1920.963@0.25.1920.963" timestamp="1594546327790" />
+    <state width="1899" height="257" key="GridCell.Tab.0.right" timestamp="1594546327791">
+      <screen x="0" y="25" width="1920" height="963" />
     </state>
     <state width="1899" height="287" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1593861691483" />
+    <state width="1899" height="257" key="GridCell.Tab.0.right/0.25.1920.963@0.25.1920.963" timestamp="1594546327791" />
     <state width="1899" height="352" key="GridCell.Tab.1.bottom" timestamp="1593732782842">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -101,11 +183,11 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1899" height="352" key="GridCell.Tab.1.right/0.0.1920.1050@0.0.1920.1050" timestamp="1593732782842" />
-    <state x="461" y="178" key="SettingsEditor" timestamp="1594368155506">
+    <state x="461" y="178" key="SettingsEditor" timestamp="1594536852929">
       <screen x="0" y="25" width="1920" height="963" />
     </state>
     <state x="461" y="167" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1593843993742" />
-    <state x="461" y="178" key="SettingsEditor/0.25.1920.963@0.25.1920.963" timestamp="1594368155506" />
+    <state x="461" y="178" key="SettingsEditor/0.25.1920.963@0.25.1920.963" timestamp="1594536852929" />
     <state x="1120" y="349" key="com.intellij.ide.util.TipDialog" timestamp="1593860012137">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>

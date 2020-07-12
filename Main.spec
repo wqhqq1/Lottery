@@ -3,8 +3,8 @@
 block_cipher = None
 
 
-a = Analysis(['Main.py'],
-             pathex=['E:\\抽奖器'],
+a = Analysis(['main.py'],
+             pathex=['/Users/wqhqq/Documents/抽奖器'],
              binaries=[],
              datas=[],
              hiddenimports=[],
@@ -23,11 +23,15 @@ exe = EXE(pyz,
           a.zipfiles,
           a.datas,
           [],
-          name='Main',
+          name='main',
           debug=False,
           bootloader_ignore_signals=False,
           strip=False,
           upx=True,
           upx_exclude=[],
           runtime_tmpdir=None,
-          console=False , icon='E:\\ico.ico')
+          console=False )
+app = BUNDLE(exe,
+             name='main.app',
+             icon=None,
+             bundle_identifier=None)
