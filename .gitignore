@@ -1,4 +1,7 @@
 /Release/
+/venv_macos/
 /dist/
 /build/
 /venv/
+*.xlsx
+*.xls
