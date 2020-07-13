@@ -106,6 +106,18 @@ def inputer(Excel_Path, AllNumber, FirstPriceNumber, SecondPriceNumber, ThirdPri
         SecondPriceNumber = int(SecondPriceNumber)
         ThirdPriceNumber = int(ThirdPriceNumber)
         OtherPriceNumber = int(OtherPriceNumber)
+        FirstPriceName = FirstPriceName.strip('：')
+        FirstPriceName = FirstPriceName.strip(':')
+        FirstPriceName += '：'
+        SecondPriceName = SecondPriceName.strip('：')
+        SecondPriceName = SecondPriceName.strip(':')
+        SecondPriceName += '：'
+        ThirdPriceName = ThirdPriceName.strip('：')
+        ThirdPriceName = ThirdPriceName.strip(':')
+        ThirdPriceName += '：'
+        OtherPriceName = OtherPriceName.strip('：')
+        OtherPriceName = OtherPriceName.strip(':')
+        OtherPriceName += '：'
         # print(FirstPriceNumber + ' ' + SecondPriceNumber + ' ' + ThirdPriceNumber + ' ' + OtherPriceNumber)
         rand_chooser(Excel_Path, AllNumber, FirstPriceNumber, SecondPriceNumber, ThirdPriceNumber, OtherPriceNumber, FirstPriceName, SecondPriceName, ThirdPriceName, OtherPriceName)
     except:
