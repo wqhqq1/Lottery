@@ -1,4 +1,4 @@
-#Lottery
+#Lottery  
 ####3.0 version is almost done now!You downlodad beta version here:[![](https://img.shields.io/github/v/release/wqhqq1/Lottery?color=orange&include_prereleases)](https://github.com/wqhqq1/Lottery)
 ####This program can auto get name from xlsx or xls file and do lottery
 ####You can customise the name of the prices and the number of each prices
