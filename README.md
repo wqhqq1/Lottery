@@ -9,7 +9,7 @@ Download
 -------------  
 #### For windows, you can download binary file here:[![](https://img.shields.io/github/v/release/wqhqq1/Lottery?color=orange)](https://github.com/wqhqq1/Lottery/releases/tag/2.6)
 #### For macOS, you can run the code below:  
-#### make sur you have already installed python 3
+#### make sure you have already installed python 3
 ```
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/wqhqq1/Lottery/master/load_macos)"
 ```  
