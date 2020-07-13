@@ -15,7 +15,7 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/wqhqq1/Lottery/master/lo
 ```  
 Build
 ----------  
-#### If you want to build the code by yourself, you should install the depends in the list:  
+#### If you want to build the code by yourself, you should install the dependencies in the list:  
 1. build environment
    - Python 3.7 or higher
 2. python wheels
