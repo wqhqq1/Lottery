@@ -2,8 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4055c96a-d1e2-4d93-aae9-006a603b8445" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/抽奖器.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/抽奖器.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/Main/Analysis-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/Main/Analysis-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/Main/EXE-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/Main/EXE-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/Main/PKG-00.pkg" beforeDir="false" afterPath="$PROJECT_DIR$/build/Main/PKG-00.pkg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/Main/PKG-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/Main/PKG-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/Main/PYZ-00.pyz" beforeDir="false" afterPath="$PROJECT_DIR$/build/Main/PYZ-00.pyz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/Main/PYZ-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/Main/PYZ-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/Main/base_library.zip" beforeDir="false" afterPath="$PROJECT_DIR$/build/Main/base_library.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/Main/warn-Main.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/Main/warn-Main.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/Main/xref-Main.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/Main/xref-Main.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +31,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunManager">
     <configuration name="Main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -50,6 +61,18 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -64,22 +87,34 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1899" height="257" key="GridCell.Tab.0.bottom" timestamp="1594618498261">
-      <screen x="0" y="25" width="1920" height="963" />
+    <state width="1899" height="285" key="GridCell.Tab.0.bottom" timestamp="1594618838450">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
+    <state width="1899" height="285" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1594618838450" />
     <state width="1899" height="257" key="GridCell.Tab.0.bottom/0.25.1920.963@0.25.1920.963" timestamp="1594618498261" />
-    <state width="1899" height="257" key="GridCell.Tab.0.center" timestamp="1594618498259">
-      <screen x="0" y="25" width="1920" height="963" />
+    <state width="1899" height="285" key="GridCell.Tab.0.center" timestamp="1594618838450">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
+    <state width="1899" height="285" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1594618838450" />
     <state width="1899" height="257" key="GridCell.Tab.0.center/0.25.1920.963@0.25.1920.963" timestamp="1594618498259" />
-    <state width="1899" height="257" key="GridCell.Tab.0.left" timestamp="1594618498257">
-      <screen x="0" y="25" width="1920" height="963" />
+    <state width="1899" height="285" key="GridCell.Tab.0.left" timestamp="1594618838450">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
+    <state width="1899" height="285" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1594618838450" />
     <state width="1899" height="257" key="GridCell.Tab.0.left/0.25.1920.963@0.25.1920.963" timestamp="1594618498257" />
-    <state width="1899" height="257" key="GridCell.Tab.0.right" timestamp="1594618498260">
-      <screen x="0" y="25" width="1920" height="963" />
+    <state width="1899" height="285" key="GridCell.Tab.0.right" timestamp="1594618838450">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
+    <state width="1899" height="285" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1594618838450" />
     <state width="1899" height="257" key="GridCell.Tab.0.right/0.25.1920.963@0.25.1920.963" timestamp="1594618498260" />
+    <state x="461" y="167" key="SettingsEditor" timestamp="1594618664604">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="461" y="167" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1594618664604" />
+    <state x="640" y="349" key="com.intellij.ide.util.TipDialog" timestamp="1594619591238">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="640" y="349" key="com.intellij.ide.util.TipDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1594619591238" />
     <state width="600" height="428" key="javadoc.popup" timestamp="1594614466081">
       <screen x="0" y="25" width="1920" height="963" />
     </state>

@@ -5,3 +5,4 @@
 /venv/
 *.xlsx
 *.xls
+ .idea/workspace.xml
