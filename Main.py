@@ -12,6 +12,7 @@ from pyperclip import copy as ClipBoardWrite
 chosefilename = ''
 out = ''
 showchooser = False
+english = False
 
 def textrander():
     global rands, Excel_Path, PriceNumber
@@ -131,7 +132,7 @@ def graphics_main():
     def back():
         global showchooser
         if showchooser:
-            if messagebox.askokcancel('警告', '你已经抽过一次奖，返回抽奖会清楚上抽奖的结果，你确定要返回吗？'):
+            if messagebox.askokcancel('警告', '你已经抽过一次奖，返回抽奖会清除上抽奖的结果，你确定要返回吗？'):
                 showchooser = False
                 back()
         else:
@@ -243,6 +244,9 @@ def graphics_welcome():
             graphics_main()
         except:
             messagebox.showerror('错误', '请检查输入的数据!')
+    def back():
+        root.destroy()
+        language_chooser()
     root = Tk()
     root.geometry('200x100')
     root.title('抽奖器')
@@ -252,8 +256,29 @@ def graphics_welcome():
     PriceNumberEntry.grid(row = 1, column = 0)
     PriceNumberEntry.insert(0, '4')
     BeginButton = Button(text = '下一步', font = ('', 15), command = NextStep)
-    BeginButton.grid(row = 2, column = 0)
+    BeginButton.grid(row = 2, column = 0, sticky = E)
+    BackButton = Button(text = '返回', font = ('', 15), command = back)
+    BackButton.grid(row = 2, column = 0, sticky = W)
+    root.mainloop()
+
+def language_chooser():
+    def load_welcome():
+        root.destroy()
+        graphics_welcome()
+    def load_english():
+        root.destroy()
+        global english
+        graphics_welcome()
+    root = Tk()
+    root.geometry('500x100')
+    root.title('')
+    TitleLabel = Label(text = 'Choose language/选择语言', font = ('', 20))
+    TitleLabel.grid(row = 0, column = 0)
+    ChineseButton = Button(text = '简体中文', font = ('', 20), command = load_welcome)
+    ChineseButton.grid(row = 1, column = 0)
+    EnglishButton = Button(text = 'English', font = ('', 20), command = load_english)
+    EnglishButton.grid(row = 1, column = 1)
     root.mainloop()
 
 if __name__ == '__main__':
-    graphics_welcome()
+    language_chooser()
