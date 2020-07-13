@@ -5,5 +5,5 @@
 /venv/
 *.xlsx
 *.xls
- ./.idea/
+/.idea/*
  ./Main_special.py
