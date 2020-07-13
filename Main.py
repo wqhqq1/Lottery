@@ -128,6 +128,16 @@ def getallnumber(Excel_Path):
     # print(n)
 
 def graphics_main():
+    def back():
+        global showchooser
+        if showchooser:
+            if messagebox.askokcancel('警告', '你已经抽过一次奖，返回抽奖会清楚上抽奖的结果，你确定要返回吗？'):
+                showchooser = False
+                back()
+        else:
+            root.destroy()
+            graphics_welcome()
+
     def filechoose():
         global chosefilename
         chosefilename = filedialog.askopenfilename(filetypes = [('Excel表格文件', '*.xlsx *.xls')])
@@ -217,6 +227,8 @@ def graphics_main():
         n += 1
     ShowPriceText = ScrolledText(font = ('', 15), width = 28, height = 13, state = 'disabled')
     ShowPriceText.grid(row = PriceNumber + 2, column = 1)
+    BackButton = Button(text = '返回', font = ('', 15),command = back)
+    BackButton.grid(row = PriceNumber + 3, column = 0, padx=5, pady=5)
     StartButton = Button(text = '开始抽奖', font = ('', 15),command = start)
     StartButton.grid(row = PriceNumber + 3, column = 1, padx=5, pady=5)
     root.mainloop()
