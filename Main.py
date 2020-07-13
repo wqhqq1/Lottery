@@ -17,11 +17,11 @@ english = False
 def textrander():
     global english
     if english:
-        global rands, Excel_Path, PriceNumber
+        global rands, Excel_Path, prizeNumber
         names = excel_reader.open_workbook(r'%s' % Excel_Path)
         names = names.sheet_by_name('Sheet1')
-        priceopener = excel_writer.Workbook(encoding='gbk')
-        pricewriter = priceopener.add_sheet('Sheet1', cell_overwrite_ok=True)
+        prizeopener = excel_writer.Workbook(encoding='gbk')
+        prizewriter = prizeopener.add_sheet('Sheet1', cell_overwrite_ok=True)
         excel_border = excel_writer.Borders()
         excel_border.left = 0x01
         excel_border.right = 0x01
@@ -43,30 +43,30 @@ def textrander():
         ExcelName = Excel_Path.strip('.xlsx')
         ExcelName = ExcelName.strip('.xls')
         ExcelTitle = re.sub(r'.*/', '', ExcelName)
-        pricewriter.write(0, 0, ExcelTitle + '\'s lottery result', style_title)
+        prizewriter.write(0, 0, ExcelTitle + '\'s lottery result', style_title)
         global out, n
         out = ExcelTitle + '\'s lottery result' + '\n'
         i = 0;
         n = 0
-        while i < PriceNumber:
+        while i < prizeNumber:
             global e
-            name = 'PriceName' + str(i + 1)
-            number = 'PriceNumber' + str(i + 1)
+            name = 'prizeName' + str(i + 1)
+            number = 'prizeNumber' + str(i + 1)
             exec('global e; e = n + %s' % (number))
-            exec('global Price; Price = %s' % name)
-            exec('pricewriter.write(i + 1, 0, %s, style)' % name)
+            exec('global prize; prize = %s' % name)
+            exec('prizewriter.write(i + 1, 0, %s, style)' % name)
             while n < e:
-                global Price, rands
+                global prize, rands
                 if e - n == 1:
-                    Price += names.cell(rands[n], 0).value
+                    prize += names.cell(rands[n], 0).value
                 else:
-                    Price += names.cell(rands[n], 0).value + '、'
-                pricewriter.write(i + 1, e - n, names.cell(rands[n], 0).value, style)
+                    prize += names.cell(rands[n], 0).value + '、'
+                prizewriter.write(i + 1, e - n, names.cell(rands[n], 0).value, style)
                 n += 1
-            if PriceNumber - n == 0:
-                out += Price
+            if prizeNumber - n == 0:
+                out += prize
             else:
-                out += Price + '\n'
+                out += prize + '\n'
             # print(i,n,e)
             i += 1
         ClipBoardWrite(out)
@@ -74,12 +74,12 @@ def textrander():
             delete(ExcelName + '\'s lottery result' + ' .xls')
         except:
             pass
-        priceopener.save(ExcelName + '\'s lottery result' + ' .xls')
+        prizeopener.save(ExcelName + '\'s lottery result' + ' .xls')
     else:
         names = excel_reader.open_workbook(r'%s' % Excel_Path)
         names = names.sheet_by_name('Sheet1')
-        priceopener = excel_writer.Workbook(encoding='gbk')
-        pricewriter = priceopener.add_sheet('Sheet1', cell_overwrite_ok=True)
+        prizeopener = excel_writer.Workbook(encoding='gbk')
+        prizewriter = prizeopener.add_sheet('Sheet1', cell_overwrite_ok=True)
         excel_border =excel_writer.Borders()
         excel_border.left = 0x01
         excel_border.right = 0x01
@@ -101,26 +101,26 @@ def textrander():
         ExcelName = Excel_Path.strip('.xlsx')
         ExcelName = ExcelName.strip('.xls')
         ExcelTitle = re.sub(r'.*/', '', ExcelName)
-        pricewriter.write(0, 0, ExcelTitle + '的抽奖结果', style_title)
+        prizewriter.write(0, 0, ExcelTitle + '的抽奖结果', style_title)
         out = ExcelTitle + '的抽奖结果是:' + '\n'
         i = 0; n = 0
-        while i < PriceNumber:
-            name = 'PriceName' + str(i + 1)
-            number = 'PriceNumber' + str(i + 1)
+        while i < prizeNumber:
+            name = 'prizeName' + str(i + 1)
+            number = 'prizeNumber' + str(i + 1)
             exec('global e; e = n + %s' % (number))
-            exec('global Price; Price = %s' % name)
-            exec('pricewriter.write(i + 1, 0, %s, style)' % name)
+            exec('global prize; prize = %s' % name)
+            exec('prizewriter.write(i + 1, 0, %s, style)' % name)
             while n < e:
                 if e - n == 1:
-                    Price += names.cell(rands[n], 0).value
+                    prize += names.cell(rands[n], 0).value
                 else:
-                    Price += names.cell(rands[n], 0).value + '、'
-                pricewriter.write(i + 1, e - n, names.cell(rands[n], 0).value, style)
+                    prize += names.cell(rands[n], 0).value + '、'
+                prizewriter.write(i + 1, e - n, names.cell(rands[n], 0).value, style)
                 n += 1
-            if PriceNumber - n == 0:
-                out += Price
+            if prizeNumber - n == 0:
+                out += prize
             else:
-                out += Price + '\n'
+                out += prize + '\n'
             # print(i,n,e)
             i += 1
         ClipBoardWrite(out)
@@ -128,21 +128,21 @@ def textrander():
             delete(ExcelName + '抽奖结果' + ' .xls')
         except:
             pass
-        priceopener.save(ExcelName + '抽奖结果' + ' .xls')
+        prizeopener.save(ExcelName + '抽奖结果' + ' .xls')
 
 def rand_chooser():
-    global rands, AllNumber, PriceNumber,AllPriceNumber
-    AllPriceNumber = 0
+    global rands, AllNumber, prizeNumber,AllprizeNumber
+    AllprizeNumber = 0
     n = 0
-    while n < PriceNumber:
-        # global AllPriceNumber
-        # AllPriceNumber = 0
-        number = 'PriceNumber' + str(n + 1)
-        exec('global AllPriceNumber, %s; AllPriceNumber += %s' % (number, number))
+    while n < prizeNumber:
+        # global AllprizeNumber
+        # AllprizeNumber = 0
+        number = 'prizeNumber' + str(n + 1)
+        exec('global AllprizeNumber, %s; AllprizeNumber += %s' % (number, number))
         n += 1
-    # global AllPriceNumber
+    # global AllprizeNumber
     rands_temp = [i for i in range(1,AllNumber+1)]
-    rands = rand(rands_temp, AllPriceNumber)
+    rands = rand(rands_temp, AllprizeNumber)
     # print(rands_temp)
     # print(rands)
     textrander()
@@ -151,19 +151,19 @@ def inputer():
     global english
     if english:
         try:
-            global Excel_Path, AllNumber, PriceNumber
+            global Excel_Path, AllNumber, prizeNumber
             Excel_Path = Excel_Path
             AllNumber = int(AllNumber)
             n = 0
-            while n < PriceNumber:
-                name = 'PriceName' + str(n + 1)
-                number = 'PriceNumber' + str(n + 1)
+            while n < prizeNumber:
+                name = 'prizeName' + str(n + 1)
+                number = 'prizeNumber' + str(n + 1)
                 exec('global %s; %s = int(%s)' % (number, number, number))
                 exec('global %s; %s = %s.strip(\'：\')' % (name, name, name))
                 exec('global %s; %s = %s.strip(\':\')' % (name, name, name))
                 exec('global %s; %s += \'：\'' % (name, name))
                 n += 1
-            # print(PriceNumber)
+            # print(prizeNumber)
             rand_chooser()
         except:
             global showchooser
@@ -174,15 +174,15 @@ def inputer():
             Excel_Path = Excel_Path
             AllNumber = int(AllNumber)
             n = 0
-            while n < PriceNumber:
-                name = 'PriceName' + str(n + 1)
-                number = 'PriceNumber' + str(n + 1)
+            while n < prizeNumber:
+                name = 'prizeName' + str(n + 1)
+                number = 'prizeNumber' + str(n + 1)
                 exec('global %s; %s = int(%s)' % (number, number, number))
                 exec('global %s; %s = %s.strip(\'：\')' % (name, name, name))
                 exec('global %s; %s = %s.strip(\':\')' % (name, name, name))
                 exec('global %s; %s += \'：\'' % (name, name))
                 n += 1
-            # print(PriceNumber)
+            # print(prizeNumber)
             rand_chooser()
         except:
             showchooser = False
@@ -251,13 +251,13 @@ def graphics_main():
                 showchooser = True
                 global Excel_Path
                 Excel_Path = ExcelPathEntry.get()
-                global PriceNumber
+                global prizeNumber
                 n = 0
-                while n < PriceNumber:
-                    name = 'PriceName' + str(n + 1)
-                    number = 'PriceNumber' + str(n + 1)
-                    name1 = 'PriceNumberEntry' + str(n + 1)
-                    name2 = 'PriceNameEntry' + str(n + 1)
+                while n < prizeNumber:
+                    name = 'prizeName' + str(n + 1)
+                    number = 'prizeNumber' + str(n + 1)
+                    name1 = 'prizeNumberEntry' + str(n + 1)
+                    name2 = 'prizeNameEntry' + str(n + 1)
                     # exec('global %s, %s' % (name2, name1))
                     exec('global %s; nameread = %s.get()' % (name2, name2))
                     exec('global %s; numberread = %s.get()' % (name1, name1))
@@ -267,17 +267,17 @@ def graphics_main():
                     # exec('print(%s)' % name)
                     n += 1
                 inputer()
-                ShowPriceText.config(state='normal')
-                ShowPriceText.delete(0.0, END)
-                ShowPriceText.insert(END, out)
-                ShowPriceText.config(state='disabled')
+                ShowprizeText.config(state='normal')
+                ShowprizeText.delete(0.0, END)
+                ShowprizeText.insert(END, out)
+                ShowprizeText.config(state='disabled')
 
-        global PriceNumber
+        global prizeNumber
         root = Tk()
         if platform.system().lower() == 'Windows':
-            height = 350 + PriceNumber * 26
+            height = 350 + prizeNumber * 26
         else:
-            height = 350 + PriceNumber * 30
+            height = 350 + prizeNumber * 30
         root.geometry('700x%s' % height)
         root.title('Lottery')
         ExcelPathLabel = Label(text='Choose a Excel table file', font=('', 15))
@@ -291,10 +291,10 @@ def graphics_main():
         AllNumberEntry = Entry(font=('', 20), state='disabled')
         AllNumberEntry.grid(row=1, column=1)
         n = 0
-        # print(PriceNumber)
-        while n < PriceNumber:
-            name1 = 'PriceNumberEntry' + str(n + 1)
-            name2 = 'PriceNameEntry' + str(n + 1)
+        # print(prizeNumber)
+        while n < prizeNumber:
+            name1 = 'prizeNumberEntry' + str(n + 1)
+            name2 = 'prizeNameEntry' + str(n + 1)
             location = n + 2
             # exec('global %s, %s' % (name2, name1))
             exec('global %s; %s = Entry(font = (\'\', 15))' % (name2, name2))
@@ -310,12 +310,12 @@ def graphics_main():
             elif n == 3:
                 exec('%s.insert(0, \'Encouragement prize:\')' % name2)
             n += 1
-        ShowPriceText = ScrolledText(font=('', 15), width=28, height=13, state='disabled')
-        ShowPriceText.grid(row=PriceNumber + 2, column=1)
+        ShowprizeText = ScrolledText(font=('', 15), width=28, height=13, state='disabled')
+        ShowprizeText.grid(row=prizeNumber + 2, column=1)
         BackButton = Button(text='Back', font=('', 15), command=back)
-        BackButton.grid(row=PriceNumber + 3, column=0, padx=5, pady=5)
+        BackButton.grid(row=prizeNumber + 3, column=0, padx=5, pady=5)
         StartButton = Button(text='Start Lottery', font=('', 15), command=start)
-        StartButton.grid(row=PriceNumber + 3, column=1, padx=5, pady=5)
+        StartButton.grid(row=prizeNumber + 3, column=1, padx=5, pady=5)
         root.mainloop()
     else:
         def back():
@@ -357,13 +357,13 @@ def graphics_main():
                 showchooser = True
                 global Excel_Path
                 Excel_Path = ExcelPathEntry.get()
-                global PriceNumber
+                global prizeNumber
                 n = 0
-                while n < PriceNumber:
-                    name = 'PriceName' + str(n + 1)
-                    number = 'PriceNumber' + str(n + 1)
-                    name1 = 'PriceNumberEntry' + str(n + 1)
-                    name2 = 'PriceNameEntry' + str(n + 1)
+                while n < prizeNumber:
+                    name = 'prizeName' + str(n + 1)
+                    number = 'prizeNumber' + str(n + 1)
+                    name1 = 'prizeNumberEntry' + str(n + 1)
+                    name2 = 'prizeNameEntry' + str(n + 1)
                     # exec('global %s, %s' % (name2, name1))
                     exec('global %s; nameread = %s.get()' % (name2, name2))
                     exec('global %s; numberread = %s.get()' % (name1, name1))
@@ -373,15 +373,15 @@ def graphics_main():
                     # exec('print(%s)' % name)
                     n += 1
                 inputer()
-                ShowPriceText.config(state = 'normal')
-                ShowPriceText.delete(0.0, END)
-                ShowPriceText.insert(END, out)
-                ShowPriceText.config(state = 'disabled')
+                ShowprizeText.config(state = 'normal')
+                ShowprizeText.delete(0.0, END)
+                ShowprizeText.insert(END, out)
+                ShowprizeText.config(state = 'disabled')
         root = Tk()
         if platform.system().lower() == 'Windows':
-            height = 350 + PriceNumber * 26
+            height = 350 + prizeNumber * 26
         else:
-            height = 350 + PriceNumber * 30
+            height = 350 + prizeNumber * 30
         root.geometry('600x%s' % height)
         root.title('抽奖器')
         ExcelPathLabel = Label(text = '选择Excel表格文件', font = ('', 15))
@@ -395,10 +395,10 @@ def graphics_main():
         AllNumberEntry = Entry(font = ('', 20), state = 'disabled')
         AllNumberEntry.grid(row = 1, column = 1)
         n = 0
-        # print(PriceNumber)
-        while n < PriceNumber:
-            name1 = 'PriceNumberEntry' + str(n + 1)
-            name2 = 'PriceNameEntry' + str(n + 1)
+        # print(prizeNumber)
+        while n < prizeNumber:
+            name1 = 'prizeNumberEntry' + str(n + 1)
+            name2 = 'prizeNameEntry' + str(n + 1)
             location = n + 2
             # exec('global %s, %s' % (name2, name1))
             exec('global %s; %s = Entry(font = (\'\', 15))' % (name2, name2))
@@ -414,23 +414,23 @@ def graphics_main():
             elif n == 3:
                 exec('%s.insert(0, \'鼓励奖：\')' % name2)
             n += 1
-        ShowPriceText = ScrolledText(font = ('', 15), width = 28, height = 13, state = 'disabled')
-        ShowPriceText.grid(row = PriceNumber + 2, column = 1)
+        ShowprizeText = ScrolledText(font = ('', 15), width = 28, height = 13, state = 'disabled')
+        ShowprizeText.grid(row = prizeNumber + 2, column = 1)
         BackButton = Button(text = '返回', font = ('', 15),command = back)
-        BackButton.grid(row = PriceNumber + 3, column = 0, padx=5, pady=5)
+        BackButton.grid(row = prizeNumber + 3, column = 0, padx=5, pady=5)
         StartButton = Button(text = '开始抽奖', font = ('', 15),command = start)
-        StartButton.grid(row = PriceNumber + 3, column = 1, padx=5, pady=5)
+        StartButton.grid(row = prizeNumber + 3, column = 1, padx=5, pady=5)
         root.mainloop()
 
 def graphics_welcome():
     global english
     if english:
         def NextStep():
-            global PriceNumber
+            global prizeNumber
             try:
-                PriceNumber = int(PriceNumberEntry.get())
+                prizeNumber = int(prizeNumberEntry.get())
                 root.destroy()
-                # print(PriceNumber)
+                # print(prizeNumber)
                 graphics_main()
             except:
                 messagebox.showerror('Error', 'Please check the data !')
@@ -442,11 +442,11 @@ def graphics_welcome():
         root = Tk()
         root.geometry('200x100')
         root.title('Lottery')
-        PriceNumberLabel = Label(font=('', 15), text='Number of prices:')
-        PriceNumberLabel.grid(row=0, column=0)
-        PriceNumberEntry = Entry(font=('', 20), width=14)
-        PriceNumberEntry.grid(row=1, column=0)
-        PriceNumberEntry.insert(0, '4')
+        prizeNumberLabel = Label(font=('', 15), text='Number of prizes:')
+        prizeNumberLabel.grid(row=0, column=0)
+        prizeNumberEntry = Entry(font=('', 20), width=14)
+        prizeNumberEntry.grid(row=1, column=0)
+        prizeNumberEntry.insert(0, '4')
         BeginButton = Button(text='Next', font=('', 15), command=NextStep)
         BeginButton.grid(row=2, column=0, sticky=E)
         BackButton = Button(text='Back', font=('', 15), command=back)
@@ -454,11 +454,11 @@ def graphics_welcome():
         root.mainloop()
     else:
         def NextStep():
-            global PriceNumber
+            global prizeNumber
             try:
-                PriceNumber = int(PriceNumberEntry.get())
+                prizeNumber = int(prizeNumberEntry.get())
                 root.destroy()
-                # print(PriceNumber)
+                # print(prizeNumber)
                 graphics_main()
             except:
                 messagebox.showerror('错误', '请检查输入的数据!')
@@ -468,11 +468,11 @@ def graphics_welcome():
         root = Tk()
         root.geometry('200x100')
         root.title('抽奖器')
-        PriceNumberLabel = Label(font = ('', 15), text = '奖项数量:')
-        PriceNumberLabel.grid(row = 0, column = 0)
-        PriceNumberEntry = Entry(font = ('', 20), width = 14)
-        PriceNumberEntry.grid(row = 1, column = 0)
-        PriceNumberEntry.insert(0, '4')
+        prizeNumberLabel = Label(font = ('', 15), text = '奖项数量:')
+        prizeNumberLabel.grid(row = 0, column = 0)
+        prizeNumberEntry = Entry(font = ('', 20), width = 14)
+        prizeNumberEntry.grid(row = 1, column = 0)
+        prizeNumberEntry.insert(0, '4')
         BeginButton = Button(text = '下一步', font = ('', 15), command = NextStep)
         BeginButton.grid(row = 2, column = 0, sticky = E)
         BackButton = Button(text = '返回', font = ('', 15), command = back)
