@@ -11,7 +11,7 @@ Download
 #### For macOS, you can run the code below:  
 #### make sur you have already installed python 3
 ```
-bash -c "$(curl -fsSL )"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/wqhqq1/Lottery/master/load_macos)"
 ```  
 Build
 ----------  
