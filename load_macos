@@ -1,0 +1,4 @@
+#!/bin/bash
+pip3 install pyperclip xlwt xlrt
+git clone https://github.com/wqhqq1/Lottery.git
+python3 ./Lottery/Main.py
