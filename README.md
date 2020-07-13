@@ -27,5 +27,5 @@ Build
 ```
 git clone https://github.com/wqhqq1/Lottery.git
 cd ./Lottery
-python3 ./Main.py
+pyinstaller -F Main.py
 ```
