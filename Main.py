@@ -5,16 +5,18 @@ from random import sample as rand
 from tkinter import *
 from tkinter import filedialog
 from tkinter import messagebox
+from tkinter.scrolledtext import ScrolledText
 from pyperclip import copy as ClipBoardWrite
 
 chosefilename = ''
 out = ''
 showchooser = False
 
-def textrander(ExcelPath, rands, FirstPriceNumber, SecondPriceNumber, ThirdPriceNumber, OtherPriceNumber, FirstPriceName, SecondPriceName, ThirdPriceName, OtherPriceName):
+def textrander():
+    global rands, Excel_Path, FirstPriceNumber, SecondPriceNumber, ThirdPriceNumber, OtherPriceNumber, AllNumber, FirstPriceName, SecondPriceName, ThirdPriceName, OtherPriceName
     n = 0
     FirstPrice = FirstPriceName
-    names = excel_reader.open_workbook(r'%s' % ExcelPath)
+    names = excel_reader.open_workbook(r'%s' % Excel_Path)
     names = names.sheet_by_name('Sheet1')
     priceopener = excel_writer.Workbook(encoding='gbk')
     pricewriter = priceopener.add_sheet('Sheet1', cell_overwrite_ok=True)
@@ -36,7 +38,7 @@ def textrander(ExcelPath, rands, FirstPriceNumber, SecondPriceNumber, ThirdPrice
     style.alignment = excel_alignment
     style_title = excel_writer.XFStyle()
     style_title.borders = title_border
-    ExcelName = ExcelPath.strip('.xlsx')
+    ExcelName = Excel_Path.strip('.xlsx')
     ExcelName = ExcelName.strip('.xls')
     ExcelTitle = re.sub(r'.*/', '', ExcelName)
     pricewriter.write(0, 0, ExcelTitle + '的抽奖结果', style_title)
@@ -91,15 +93,17 @@ def textrander(ExcelPath, rands, FirstPriceNumber, SecondPriceNumber, ThirdPrice
     out = ExcelTitle + '的抽奖结果是:' + '\n' + FirstPrice + '\n' + SecondPrice + '\n' + ThirdPrice + '\n' + OtherPrice
     ClipBoardWrite(out)
 
-def rand_chooser(ExcelPath, AllNumber, FirstPriceNumber, SecondPriceNumber, ThirdPriceNumber, OtherPriceNumber, FirstPriceName, SecondPriceName, ThirdPriceName, OtherPriceName):
+def rand_chooser():
+    global rands, Excel_Path, FirstPriceNumber, SecondPriceNumber, ThirdPriceNumber, OtherPriceNumber, AllNumber, FirstPriceName, SecondPriceName, ThirdPriceName, OtherPriceName
     n = 0
     rands_temp = [i for i in range(1,AllNumber+1)]
     rands = rand(rands_temp, FirstPriceNumber+SecondPriceNumber+ThirdPriceNumber+OtherPriceNumber)
     # print(rands_temp)
-    textrander(ExcelPath, rands, FirstPriceNumber, SecondPriceNumber, ThirdPriceNumber, OtherPriceNumber, FirstPriceName, SecondPriceName, ThirdPriceName, OtherPriceName)
+    textrander()
 
-def inputer(Excel_Path, AllNumber, FirstPriceNumber, SecondPriceNumber, ThirdPriceNumber, OtherPriceNumber, FirstPriceName, SecondPriceName, ThirdPriceName, OtherPriceName):
+def inputer():
     try:
+        global Excel_Path, AllNumber, FirstPriceNumber, SecondPriceNumber, ThirdPriceNumber, OtherPriceNumber, FirstPriceName, SecondPriceName, ThirdPriceName, OtherPriceName
         Excel_Path = Excel_Path
         AllNumber = int(AllNumber)
         FirstPriceNumber = int(FirstPriceNumber)
@@ -119,7 +123,7 @@ def inputer(Excel_Path, AllNumber, FirstPriceNumber, SecondPriceNumber, ThirdPri
         OtherPriceName = OtherPriceName.strip(':')
         OtherPriceName += '：'
         # print(FirstPriceNumber + ' ' + SecondPriceNumber + ' ' + ThirdPriceNumber + ' ' + OtherPriceNumber)
-        rand_chooser(Excel_Path, AllNumber, FirstPriceNumber, SecondPriceNumber, ThirdPriceNumber, OtherPriceNumber, FirstPriceName, SecondPriceName, ThirdPriceName, OtherPriceName)
+        rand_chooser()
     except:
         global showchooser
         showchooser = False
@@ -142,7 +146,7 @@ def getallnumber(Excel_Path):
 
     # print(n)
 
-def graphics():
+def graphics_main():
     def filechoose():
         global chosefilename
         chosefilename = filedialog.askopenfilename(filetypes = [('Excel表格文件', '*.xlsx *.xls')])
@@ -168,8 +172,18 @@ def graphics():
                 return
         else:
             showchooser = True
-            inputer(ExcelPathEntry.get(), AllNumberEntry.get(), FirstPriceNumberEntry.get(),SecondPriceNumberEntry.get(), ThirdPriceNumberEntry.get(), OtherPriceNumberEntry.get(),
-                    FirstPriceNameEntry.get(), SecondPriceNameEntry.get(), ThirdPriceNameEntry.get(), OtherPriceNameEntry.get())
+            global Excel_Path, FirstPriceNumber, SecondPriceNumber, ThirdPriceNumber, OtherPriceNumber, AllNumber, FirstPriceName, SecondPriceName, ThirdPriceName, OtherPriceName
+            Excel_Path = ExcelPathEntry.get()
+            FirstPriceNumber = FirstPriceNumberEntry.get()
+            SecondPriceNumber = SecondPriceNumberEntry.get()
+            ThirdPriceNumber = ThirdPriceNumberEntry.get()
+            OtherPriceNumber = OtherPriceNumberEntry.get()
+            AllNumber = AllNumberEntry.get()
+            FirstPriceName = FirstPriceNameEntry.get()
+            SecondPriceName = SecondPriceNameEntry.get()
+            ThirdPriceName = ThirdPriceNameEntry.get()
+            OtherPriceName = OtherPriceNameEntry.get()
+            inputer()
             ShowPriceText.config(state = 'normal')
             ShowPriceText.delete(0.0, END)
             ShowPriceText.insert(END, out)
@@ -208,10 +222,29 @@ def graphics():
     OtherPriceNameEntry.insert(0, "鼓励奖：")
     OtherPriceNumberEntry = Entry(font = ('', 20))
     OtherPriceNumberEntry.grid(row = 5, column = 1)
-    ShowPriceText = Text(font = ('', 15), width = 28, height = 13, state = 'disabled')
+    ShowPriceText = ScrolledText(font = ('', 15), width = 28, height = 13, state = 'disabled')
     ShowPriceText.grid(row = 6,column = 1)
     StartButton = Button(text = '开始抽奖', font = ('', 15),command = start)
     StartButton.grid(row = 7, column = 1, padx=5, pady=5)
     root.mainloop()
+
+def graphics_welcome():
+    def NextStep():
+        global PriceNumber
+        PriceNumber = PriceNumberEntry.get()
+        root.destroy()
+        print(PriceNumber)
+        graphics_main()
+    root = Tk()
+    root.geometry('200x100')
+    root.title('抽奖器')
+    PriceNumberLabel = Label(font = ('', 15), text = '奖项数量:')
+    PriceNumberLabel.grid(row = 0, column = 0)
+    PriceNumberEntry = Entry(font = ('', 20), width = 14)
+    PriceNumberEntry.grid(row = 1, column = 0)
+    BeginButton = Button(text = '下一步', font = ('', 15), command = NextStep)
+    BeginButton.grid(row = 2, column = 0)
+    root.mainloop()
+
 if __name__ == '__main__':
-    graphics()
+    graphics_welcome()
