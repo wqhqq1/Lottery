@@ -1,5 +1,6 @@
 import xlrd as excel_reader
 import xlwt as excel_writer
+import platform
 from os import remove as delete
 from random import sample as rand
 from tkinter import *
@@ -179,7 +180,7 @@ def graphics_main():
             ThirdPriceNumber = ThirdPriceNumberEntry.get()
             OtherPriceNumber = OtherPriceNumberEntry.get()
             AllNumber = AllNumberEntry.get()
-            FirstPriceName = FirstPriceNameEntry.get()
+            # FirstPriceName = FirstPriceNameEntry.get()
             SecondPriceName = SecondPriceNameEntry.get()
             ThirdPriceName = ThirdPriceNameEntry.get()
             OtherPriceName = OtherPriceNameEntry.get()
@@ -188,9 +189,13 @@ def graphics_main():
             ShowPriceText.delete(0.0, END)
             ShowPriceText.insert(END, out)
             ShowPriceText.config(state = 'disabled')
-
+    global PriceNumber
     root = Tk()
-    root.geometry('600x500')
+    if platform.system().lower() == 'Windows':
+        height = 350 + PriceNumber * 26
+    else:
+        height = 350 + PriceNumber * 30
+    root.geometry('600x%s' % height)
     root.title('抽奖器')
     ExcelPathLabel = Label(text = '选择Excel表格文件', font = ('', 15))
     ExcelPathLabel.grid(row = 0, column = 0)
@@ -202,38 +207,29 @@ def graphics_main():
     AllNumberLabel.grid(row = 1, column = 0)
     AllNumberEntry = Entry(font = ('', 20), state = 'disabled')
     AllNumberEntry.grid(row = 1, column = 1)
-    FirstPriceNameEntry = Entry(font = ('', 15))
-    FirstPriceNameEntry.grid(row = 2, column = 0)
-    FirstPriceNameEntry.insert(0, "一等奖：")
-    FirstPriceNumberEntry = Entry(font = ('', 20))
-    FirstPriceNumberEntry.grid(row = 2, column = 1)
-    SecondPriceNameEntry = Entry(font = ('', 15))
-    SecondPriceNameEntry.grid(row = 3, column = 0)
-    SecondPriceNameEntry.insert(0, "二等奖：")
-    SecondPriceNumberEntry = Entry(font = ('', 20))
-    SecondPriceNumberEntry.grid(row = 3, column = 1)
-    ThirdPriceNameEntry = Entry(font = ('', 15))
-    ThirdPriceNameEntry.grid(row = 4, column = 0)
-    ThirdPriceNameEntry.insert(0, "三等奖：")
-    ThirdPriceNumberEntry = Entry(font = ('', 20))
-    ThirdPriceNumberEntry.grid(row = 4, column = 1)
-    OtherPriceNameEntry = Entry(font = ('', 15))
-    OtherPriceNameEntry.grid(row = 5, column = 0)
-    OtherPriceNameEntry.insert(0, "鼓励奖：")
-    OtherPriceNumberEntry = Entry(font = ('', 20))
-    OtherPriceNumberEntry.grid(row = 5, column = 1)
+    n = 0
+    # print(PriceNumber)
+    while n < PriceNumber:
+        name1 = 'PriceNumberEntry' + str(n + 1)
+        name2 = 'PriceNameEntry' + str(n + 1)
+        location = n + 2
+        exec('%s = Entry(font = (\'\', 15))' % name2)
+        exec('%s.grid(row = %d, column = 0)' % (name2, location))
+        exec('%s = Entry(font = (\'\', 15))' % name1)
+        exec('%s.grid(row = %d, column = 1)' % (name1, location))
+        n += 1
     ShowPriceText = ScrolledText(font = ('', 15), width = 28, height = 13, state = 'disabled')
-    ShowPriceText.grid(row = 6,column = 1)
+    ShowPriceText.grid(row = PriceNumber + 2, column = 1)
     StartButton = Button(text = '开始抽奖', font = ('', 15),command = start)
-    StartButton.grid(row = 7, column = 1, padx=5, pady=5)
+    StartButton.grid(row = PriceNumber + 3, column = 1, padx=5, pady=5)
     root.mainloop()
 
 def graphics_welcome():
     def NextStep():
         global PriceNumber
-        PriceNumber = PriceNumberEntry.get()
+        PriceNumber = int(PriceNumberEntry.get())
         root.destroy()
-        print(PriceNumber)
+        # print(PriceNumber)
         graphics_main()
     root = Tk()
     root.geometry('200x100')
