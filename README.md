@@ -1,11 +1,13 @@
 Lottery  
 =============
-#### 3.0 version is almost done now! It has more universal than before
-#### You downlodad beta version here:[![](https://img.shields.io/github/v/release/wqhqq1/Lottery?color=orange&include_prereleases)](https://github.com/wqhqq1/Lottery/releases/tag/3.0-beta2)  
+Discription
+----------------
 #### This program can auto get name from xlsx or xls file and do lottery  
 #### You can customise the name of the prices and the number of each prices  
 #### This program can not run well in linux now, so don't try that without any changes  
 #### The platform now supported is windows and macos, you should download binary file on Windows or run the code below on macOS  
+#### 3.0 version is almost done now! It has more universal than before
+#### You downlodad beta version here:[![](https://img.shields.io/github/v/release/wqhqq1/Lottery?color=orange&include_prereleases)](https://github.com/wqhqq1/Lottery/releases/tag/3.0-beta2)  
 Download
 -------------  
 #### For windows, you can download binary file here:[![](https://img.shields.io/github/v/release/wqhqq1/Lottery?color=orange)](https://github.com/wqhqq1/Lottery/releases/tag/2.6)
