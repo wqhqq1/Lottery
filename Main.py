@@ -1,6 +1,7 @@
 import xlrd as excel_reader
 import xlwt as excel_writer
 import platform
+from time import sleep
 from os import remove as delete
 from random import sample as rand
 from tkinter import *
@@ -444,14 +445,24 @@ def graphics_main():
             n += 1
         ShowprizeText = ScrolledText(font = ('', 15), width = 28, height = 13, state = 'disabled')
         ShowprizeText.grid(row = prizeNumber + 2, column = 1)
-        # BackButton = Button(text = '返回', font = ('', 15),command = back)
-        # BackButton.grid(row = prizeNumber + 3, column = 0, padx=5, pady=5)
+        BackButton = Button(text = '返回', font = ('', 15),command = back)
+        BackButton.grid(row = prizeNumber + 3, column = 0, padx=5, pady=5)
         StartButton = Button(text = '开始抽奖', font = ('', 15),command = start)
         StartButton.grid(row = prizeNumber + 3, column = 1, padx=5, pady=5)
     root.mainloop()
 
 def graphics_welcome():
     global english
+    def ch_set():
+        global english
+        root.destroy()
+        english = False
+        graphics_welcome()
+    def set_english():
+        global english
+        root.destroy()
+        english = True
+        graphics_welcome()
     if english:
         def NextStep():
             global prizeNumber
@@ -474,6 +485,15 @@ def graphics_welcome():
         AboutMenu = Menu(MenuBar, tearoff=0)
         MenuBar.add_cascade(label='Settings', menu=AboutMenu)
         AboutMenu.add_command(label='About', command=AboutWindow)
+        AboutMenu.add_separator()
+        LanguageChoose = Menu(AboutMenu, tearoff = 0)
+        AboutMenu.add_cascade(label = 'Language', menu = LanguageChoose)
+        # global ch_var, en_var
+        ch_var = IntVar()
+        en_var = IntVar()
+        en_var.set(1)
+        LanguageChoose.add_checkbutton(label = '简体中文', variable = ch_var, command = ch_set)
+        LanguageChoose.add_checkbutton(label = 'English', variable = en_var)
         AboutMenu.add_command(label='Exit', command=exit)
         root.config(menu=MenuBar)
         prizeNumberLabel = Label(font=('', 15), text='Number of prizes:')
@@ -483,8 +503,8 @@ def graphics_welcome():
         prizeNumberEntry.insert(0, '4')
         BeginButton = Button(text='Next', font=('', 15), command=NextStep)
         BeginButton.grid(row=2, column=0, sticky=E)
-        BackButton = Button(text='Back', font=('', 15), command=back)
-        BackButton.grid(row=2, column=0, sticky=W)
+        # BackButton = Button(text='Back', font=('', 15), command=back)
+        # BackButton.grid(row=2, column=0, sticky=W)
         root.mainloop()
     else:
         def NextStep():
@@ -506,7 +526,16 @@ def graphics_welcome():
         AboutMenu = Menu(MenuBar, tearoff=0)
         MenuBar.add_cascade(label='设置', menu=AboutMenu)
         AboutMenu.add_command(label='关于', command=AboutWindow)
-        AboutMenu.add_command(label='退出/Exit', command=exit)
+        AboutMenu.add_separator()
+        LanguageChoose = Menu(AboutMenu, tearoff = 0)
+        AboutMenu.add_cascade(label = '语言', menu = LanguageChoose)
+        # global ch_var, en_var
+        ch_var = IntVar()
+        en_var = IntVar()
+        ch_var.set(1)
+        LanguageChoose.add_checkbutton(label = '简体中文', variable = ch_var)
+        LanguageChoose.add_checkbutton(label = 'English', variable = en_var, command = set_english)
+        AboutMenu.add_command(label='退出', command=exit)
         root.config(menu=MenuBar)
         prizeNumberLabel = Label(font = ('', 15), text = '奖项数量:')
         prizeNumberLabel.grid(row = 0, column = 0)
@@ -515,8 +544,8 @@ def graphics_welcome():
         prizeNumberEntry.insert(0, '4')
         BeginButton = Button(text = '下一步', font = ('', 15), command = NextStep)
         BeginButton.grid(row = 2, column = 0, sticky = E)
-        BackButton = Button(text = '返回', font = ('', 15), command = back)
-        BackButton.grid(row = 2, column = 0, sticky = W)
+        # BackButton = Button(text = '返回', font = ('', 15), command = back)
+        # BackButton.grid(row = 2, column = 0, sticky = W)
         root.mainloop()
 
 def language_chooser():
