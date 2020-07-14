@@ -9,7 +9,7 @@ Discription
 New version is coming
 ------------------------
 #### 3.0 version is almost done now! It has more universal than before
-#### You downlodad beta version here:[![](https://img.shields.io/github/v/release/wqhqq1/Lottery?color=green)](https://github.com/wqhqq1/Lottery/releases/tag/3.0-beta4)  
+#### You downlodad beta version here:[![](https://img.shields.io/github/v/release/wqhqq1/Lottery?color=green&include_prereleases)](https://github.com/wqhqq1/Lottery/releases/tag/3.0-beta4)  
 Download
 -------------  
 #### For windows, you can download binary file here:[![](https://img.shields.io/github/v/release/wqhqq1/Lottery?color=green)](https://github.com/wqhqq1/Lottery/releases/tag/2.6)
