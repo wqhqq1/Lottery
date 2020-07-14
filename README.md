@@ -5,12 +5,12 @@ Description
 #### This program can auto get name excel table file and do lottery  
 #### You can customise the name of the prizes and the number of each prizes  
 #### This program can not run well in Linux now, so don't try that without any changes  
-#### The platform now supported is Windows and macOS, you should download binary file on Windows or run the code below on macOS  
+#### The platform now supported is Windows and macOS, you should download binary file on Windows or run [the code below](#1) on macOS  
 New version is coming
 --------------------------
 #### 3.0 version is almost done now! It has more universal than before
 #### You download beta version here:[![](https://img.shields.io/github/v/release/wqhqq1/Lottery?color=green&include_prereleases)](https://github.com/wqhqq1/Lottery/releases/tag/3.0-beta4)  
-Download
+<h2 id="1">Download</h2>
 -------------  
 #### For windows, you can download binary file here:[![](https://img.shields.io/github/v/release/wqhqq1/Lottery?color=green)](https://github.com/wqhqq1/Lottery/releases/tag/2.6)
 #### For macOS, you can run the code below:  
