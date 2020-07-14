@@ -7,7 +7,7 @@ Discription
 #### This program can not run well in Linux now, so don't try that without any changes  
 #### The platform now supported is Windows and macOS, you should download binary file on Windows or run the code below on macOS  
 New version is coming
----------------------
+--------------------------
 #### 3.0 version is almost done now! It has more universal than before
 #### You downlodad beta version here:[![](https://img.shields.io/github/v/release/wqhqq1/Lottery?color=green&include_prereleases)](https://github.com/wqhqq1/Lottery/releases/tag/3.0-beta4)  
 Download
