@@ -19,7 +19,7 @@ def AboutWindow():
     About = Tk()
     About.title('关于/About')
     About.geometry('480x100')
-    TitleLabel = Label(About, text = '设置/Settings', font = ('', 20))
+    TitleLabel = Label(About, text = '关于/About', font = ('', 20))
     TitleLabel.grid(row = 0, column = 0)
     AuthorLabel = Label(About, text = '作者/Author: wqhqq1', font = ('', 20))
     AuthorLabel.grid(row = 1, column = 0)
@@ -220,6 +220,31 @@ def getallnumber(Excel_Path):
 
 def graphics_main():
     global english
+    def ch_set():
+        global english, showchooser
+        if showchooser:
+            if messagebox.askokcancel('Warning', 'You have already do lottery before,'
+                                                 ' the result will clear after you set language, are you sure about that?'):
+                showchooser = False
+                ch_set()
+            else:
+                ch_var.set(0)
+        else:
+            root.destroy()
+            english = False
+            graphics_main()
+    def set_english():
+        global english, showchooser
+        if showchooser:
+            if messagebox.askokcancel('警告', '你已经抽过一次奖，设置语言抽奖会清除上抽奖的结果，你确定要继续吗？'):
+                showchooser = False
+                set_english()
+            else:
+                en_var.set(0)
+        else:
+            root.destroy()
+            english = True
+            graphics_main()
     if english:
         # global MenuBar
         def back():
@@ -299,6 +324,15 @@ def graphics_main():
         AboutMenu = Menu(MenuBar, tearoff=0)
         MenuBar.add_cascade(label='Settings', menu=AboutMenu)
         AboutMenu.add_command(label='About', command=AboutWindow)
+        AboutMenu.add_separator()
+        LanguageChoose = Menu(AboutMenu, tearoff = 0)
+        AboutMenu.add_cascade(label = 'Language', menu = LanguageChoose)
+        # global ch_var, en_var
+        ch_var = IntVar()
+        en_var = IntVar()
+        en_var.set(1)
+        LanguageChoose.add_checkbutton(label = '简体中文', variable = ch_var, command = ch_set)
+        LanguageChoose.add_checkbutton(label = 'English', variable = en_var, command = lambda: en_var.set(1))
         AboutMenu.add_command(label='Exit', command=root.destroy)
         root.config(menu=MenuBar)
         ExcelPathLabel = Label(text='Choose a Excel table file', font=('', 15))
@@ -411,6 +445,15 @@ def graphics_main():
         AboutMenu = Menu(MenuBar, tearoff=0)
         MenuBar.add_cascade(label='设置', menu=AboutMenu)
         AboutMenu.add_command(label='关于', command=AboutWindow)
+        AboutMenu.add_separator()
+        LanguageChoose = Menu(AboutMenu, tearoff = 0)
+        AboutMenu.add_cascade(label = '语言', menu = LanguageChoose)
+        # global ch_var, en_var
+        ch_var = IntVar()
+        en_var = IntVar()
+        ch_var.set(1)
+        LanguageChoose.add_checkbutton(label = '简体中文', variable = ch_var, command = lambda: ch_var.set(1))
+        LanguageChoose.add_checkbutton(label = 'English', variable = en_var, command = set_english)
         AboutMenu.add_command(label='退出', command=root.destroy)
         root.config(menu=MenuBar)
         ExcelPathLabel = Label(text = '选择Excel表格文件', font = ('', 15))
@@ -493,7 +536,7 @@ def graphics_welcome():
         en_var = IntVar()
         en_var.set(1)
         LanguageChoose.add_checkbutton(label = '简体中文', variable = ch_var, command = ch_set)
-        LanguageChoose.add_checkbutton(label = 'English', variable = en_var)
+        LanguageChoose.add_checkbutton(label = 'English', variable = en_var, command = lambda: en_var.set(1))
         AboutMenu.add_command(label='Exit', command=exit)
         root.config(menu=MenuBar)
         prizeNumberLabel = Label(font=('', 15), text='Number of prizes:')
@@ -533,7 +576,7 @@ def graphics_welcome():
         ch_var = IntVar()
         en_var = IntVar()
         ch_var.set(1)
-        LanguageChoose.add_checkbutton(label = '简体中文', variable = ch_var)
+        LanguageChoose.add_checkbutton(label = '简体中文', variable = ch_var, command = lambda: ch_var.set(1))
         LanguageChoose.add_checkbutton(label = 'English', variable = en_var, command = set_english)
         AboutMenu.add_command(label='退出', command=exit)
         root.config(menu=MenuBar)
