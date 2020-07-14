@@ -5,7 +5,7 @@ Description
 #### This program can auto get name excel table file and do lottery  
 #### You can customise the name of the prizes and the number of each prizes  
 #### This program can not run well in Linux now, so don't try that without any changes  
-#### The platform now supported is Windows and macOS, you should download binary file on Windows or run [the code below](#1) on macOS  
+#### The platform now supported is Windows and macOS, you should download binary file on Windows or run [the code below](#Download) on macOS  
 New version is coming
 --------------------------
 #### 3.0 version is almost done now! It has more universal than before
