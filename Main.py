@@ -14,7 +14,19 @@ out = ''
 showchooser = False
 english = False
 
-def textrander():
+def AboutWindow():
+    About = Tk()
+    About.title('关于/About')
+    About.geometry('480x100')
+    TitleLabel = Label(About, text = '设置/Settings', font = ('', 20))
+    TitleLabel.grid(row = 0, column = 0)
+    AuthorLabel = Label(About, text = '作者/Author: wqhqq1', font = ('', 20))
+    AuthorLabel.grid(row = 1, column = 0)
+    WebsiteLabel = Label(About, text = '项目地址/Website: https://github.com/wqhqq1/Lottery', font = ('', 20))
+    WebsiteLabel.grid(row = 2, column = 0)
+    About.mainloop()
+
+def textrenderer():
     global english
     if english:
         global rands, Excel_Path, prizeNumber
@@ -145,7 +157,7 @@ def rand_chooser():
     rands = rand(rands_temp, AllprizeNumber)
     # print(rands_temp)
     # print(rands)
-    textrander()
+    textrenderer()
 
 def inputer():
     global english
@@ -208,6 +220,7 @@ def getallnumber(Excel_Path):
 def graphics_main():
     global english
     if english:
+        # global MenuBar
         def back():
             global showchooser
             if showchooser:
@@ -280,6 +293,12 @@ def graphics_main():
             height = 350 + prizeNumber * 30
         root.geometry('700x%s' % height)
         root.title('Lottery')
+        # root.config(menu = MenuBar)
+        MenuBar = Menu(root)
+        AboutMenu = Menu(MenuBar, tearoff=0)
+        MenuBar.add_cascade(label='设置/Settings', menu=AboutMenu)
+        AboutMenu.add_command(label='关于/About', command=AboutWindow)
+        root.config(menu=MenuBar)
         ExcelPathLabel = Label(text='Choose a Excel table file', font=('', 15))
         ExcelPathLabel.grid(row=0, column=0)
         ExcelPathEntry = Entry(font=('', 20), state='disabled')
@@ -318,6 +337,7 @@ def graphics_main():
         StartButton.grid(row=prizeNumber + 3, column=1, padx=5, pady=5)
         root.mainloop()
     else:
+        # global MenuBar
         def back():
             global showchooser
             if showchooser:
@@ -384,6 +404,12 @@ def graphics_main():
             height = 350 + prizeNumber * 30
         root.geometry('600x%s' % height)
         root.title('抽奖器')
+        # root.config(menu = MenuBar)
+        MenuBar = Menu(root)
+        AboutMenu = Menu(MenuBar, tearoff=0)
+        MenuBar.add_cascade(label='设置/Settings', menu=AboutMenu)
+        AboutMenu.add_command(label='关于/About', command=AboutWindow)
+        root.config(menu=MenuBar)
         ExcelPathLabel = Label(text = '选择Excel表格文件', font = ('', 15))
         ExcelPathLabel.grid(row = 0, column = 0)
         ExcelPathEntry = Entry(font = ('', 20), state = 'disabled')
@@ -442,6 +468,11 @@ def graphics_welcome():
         root = Tk()
         root.geometry('200x100')
         root.title('Lottery')
+        MenuBar = Menu(root)
+        AboutMenu = Menu(MenuBar, tearoff=0)
+        MenuBar.add_cascade(label='设置/Settings', menu=AboutMenu)
+        AboutMenu.add_command(label='关于/About', command=AboutWindow)
+        root.config(menu=MenuBar)
         prizeNumberLabel = Label(font=('', 15), text='Number of prizes:')
         prizeNumberLabel.grid(row=0, column=0)
         prizeNumberEntry = Entry(font=('', 20), width=14)
@@ -468,6 +499,11 @@ def graphics_welcome():
         root = Tk()
         root.geometry('200x100')
         root.title('抽奖器')
+        MenuBar = Menu(root)
+        AboutMenu = Menu(MenuBar, tearoff=0)
+        MenuBar.add_cascade(label='设置/Settings', menu=AboutMenu)
+        AboutMenu.add_command(label='关于/About', command=AboutWindow)
+        root.config(menu=MenuBar)
         prizeNumberLabel = Label(font = ('', 15), text = '奖项数量:')
         prizeNumberLabel.grid(row = 0, column = 0)
         prizeNumberEntry = Entry(font = ('', 20), width = 14)
@@ -491,6 +527,12 @@ def language_chooser():
         english = True
         graphics_welcome()
     root = Tk()
+    # global MenuBar
+    MenuBar = Menu(root)
+    AboutMenu = Menu(MenuBar, tearoff = 0)
+    MenuBar.add_cascade(label = '设置/Settings', menu = AboutMenu)
+    AboutMenu.add_command(label = '关于/About', command = AboutWindow)
+    root.config(menu = MenuBar)
     root.geometry('500x100')
     root.title('')
     TitleLabel = Label(text = 'Choose language/选择语言', font = ('', 20))
