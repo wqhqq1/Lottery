@@ -612,12 +612,14 @@ def language_chooser():
     root.config(menu = MenuBar)
     root.geometry('500x100')
     root.title('')
+    WelcomeLabel = Label(text = '欢迎使用抽奖器/Welcome', font = ('', 25))
+    WelcomeLabel.grid(row = 0, column = 0)
     TitleLabel = Label(text = 'Choose language/选择语言', font = ('', 20))
-    TitleLabel.grid(row = 0, column = 0)
+    TitleLabel.grid(row = 1, column = 0)
     ChineseButton = Button(text = '简体中文', font = ('', 20), command = load_chinese)
-    ChineseButton.grid(row = 1, column = 0)
+    ChineseButton.grid(row = 2, column = 0)
     EnglishButton = Button(text = 'English', font = ('', 20), command = load_english)
-    EnglishButton.grid(row = 1, column = 1)
+    EnglishButton.grid(row = 2, column = 1)
     root.mainloop()
 
 if __name__ == '__main__':
