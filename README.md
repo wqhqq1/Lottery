@@ -10,7 +10,7 @@ New version is coming
 --------------------------
 #### 3.0 version is almost done now! It has more universal than before
 #### You download beta version here:[![](https://img.shields.io/github/v/release/wqhqq1/Lottery?color=green&include_prereleases)](https://github.com/wqhqq1/Lottery/releases/tag/3.0-beta4)  
-<h2 id="1"> Download </h2>
+Download
 ---------------------------------  
 #### For windows, you can download binary file here:[![](https://img.shields.io/github/v/release/wqhqq1/Lottery?color=green)](https://github.com/wqhqq1/Lottery/releases/tag/2.6)
 #### For macOS, you can run the code below:  
