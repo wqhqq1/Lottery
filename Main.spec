@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['Main.py'],
-             pathex=['E:\\抽奖器'],
+             pathex=['D:\\抽奖器'],
              binaries=[],
              datas=[],
              hiddenimports=[],
@@ -30,4 +30,4 @@ exe = EXE(pyz,
           upx=True,
           upx_exclude=[],
           runtime_tmpdir=None,
-          console=False , icon='E:\\ico.ico')
+          console=False , icon='ico.ico')

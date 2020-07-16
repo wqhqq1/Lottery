@@ -18,7 +18,7 @@ english = False
 def AboutWindow():
     About = Tk()
     About.title('关于/About')
-    About.geometry('480x100')
+    About.geometry('600x100')
     TitleLabel = Label(About, text = '关于/About', font = ('', 20))
     TitleLabel.grid(row = 0, column = 0)
     AuthorLabel = Label(About, text = '作者/Author: wqhqq1', font = ('', 20))
@@ -610,7 +610,7 @@ def language_chooser():
     AboutMenu.add_command(label = '关于/About', command = AboutWindow)
     AboutMenu.add_command(label = '退出/Exit', command = exit)
     root.config(menu = MenuBar)
-    root.geometry('500x100')
+    root.geometry('500x120')
     root.title('')
     WelcomeLabel = Label(text = '欢迎使用抽奖器/Welcome', font = ('', 25))
     WelcomeLabel.grid(row = 0, column = 0)
