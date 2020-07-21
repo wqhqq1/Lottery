@@ -18,12 +18,12 @@ struct page2: View {
         ScrollView{
         if i <= PrizeNumber {
             VStack{
-                Text("奖项\(i)")
+                Text("\(NSLocalizedString("PT", comment: ""))\(i)")
                     .padding()
-                TextField("奖项名称", text: $PrizeNames)
+                TextField(NSLocalizedString("PTF", comment: ""), text: $PrizeNames)
                     .padding()
                     .textFieldStyle(RoundedBorderTextFieldStyle())
-                TextField("获奖名额", text: $PrizeMembers)
+                TextField(NSLocalizedString("PNTTF", comment: ""), text: $PrizeMembers)
                     .keyboardType(.numberPad)
                     .padding()
                     .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -39,7 +39,7 @@ struct page2: View {
                             showalert = true
                         }
                     }, label: {
-                        Text("下一步")
+                        Text(NSLocalizedString("NXTB", comment: ""))
                     }).alert(isPresented: $showalert) {
                         Alert(title: Text("Fatal Error"), message: Text("Failed to read text fields"), dismissButton: .default(Text("OK")))
                     }

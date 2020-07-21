@@ -10,16 +10,16 @@ import SwiftUI
 struct page4_result: View {
     var body: some View {
         List(Prizes) { prize in
-            NavigationLink(destination: Text("恭喜：\(prize.Lottery_result)获得\(prize.PrizeName)").navigationBarTitle(prize.PrizeName).font(.title)) {
+            NavigationLink(destination: Text("\(NSLocalizedString("CT", comment: ""))\(prize.Lottery_result)\(NSLocalizedString("GT", comment: ""))\(prize.PrizeName)").navigationBarTitle(prize.PrizeName).font(.title)) {
                 Text(prize.PrizeName)
                     .font(.title)
             }
-        }.navigationBarTitle("抽奖结果")
+        }.navigationBarTitle(NSLocalizedString("NBLR", comment: ""))
         Button(action: {
             abort()
         },
                label: {
-                Text("再抽一次")
+                Text(NSLocalizedString("EXT", comment: ""))
                })
     }
 }

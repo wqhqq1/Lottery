@@ -21,17 +21,17 @@ struct ContentView: View {
             KeyboardHost {
             ScrollView {
         VStack {
-            Text("输入奖项数量").padding()
-            TextField("奖项数量", text: $PrizeNumberInput).padding()
+            Text(NSLocalizedString("PNL", comment: "")).padding()
+            TextField(NSLocalizedString("PNTF", comment: ""), text: $PrizeNumberInput).padding()
                 .keyboardType(.numberPad)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-            Text("输入参与抽奖的人数").padding()
-            TextField("抽奖人数", text: $MemberNumberInput)
+            Text(NSLocalizedString("MNL", comment: "")).padding()
+            TextField(NSLocalizedString("MNTF", comment: ""), text: $MemberNumberInput)
                 .keyboardType(.numberPad)
                 .padding()
                 .textFieldStyle(RoundedBorderTextFieldStyle())
             HStack {
-                TextField("抽奖人员名单", text: $MemberNamesInput)
+                TextField(NSLocalizedString("NMTF", comment: ""), text: $MemberNamesInput)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                 Button(action: {
                     let Pboard = UIPasteboard.general
@@ -62,7 +62,7 @@ struct ContentView: View {
                             MemberNames = MN_spliter(input: originalMN)
                         }
                         else {
-                            MemberNames = MN_spliter(input: MemberNamesInput)
+                            MemberNames = MN_spliter_space(input: MemberNamesInput)
                         }
                         self.selection = 1
                     }
@@ -73,13 +73,13 @@ struct ContentView: View {
 //                    self.selection = 1
 //                    self.selection = 1
                 }, label: {
-                    Text("下一步")
+                    Text(NSLocalizedString("NXTB", comment: ""))
                 }).alert(isPresented: $showalert) {
                     Alert(title: Text("Fatal Error"), message: Text("Failed to read text fields"), dismissButton: .default(Text("OK")))
                 }
             }.padding()
         }
-            }.navigationBarTitle("抽奖器")
+            }.navigationBarTitle(NSLocalizedString("NBT1", comment: ""))
         }
         }.navigationViewStyle(StackNavigationViewStyle())}
 }

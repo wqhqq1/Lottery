@@ -208,11 +208,10 @@ depends-member:
 - ["SM", ""]
 - ["SM", "init"]
 - ["10Foundation19MutableDataProtocolP", "init"]
-- ["So8NSCodingP", ""]
+- !private ["So8NSCodingP", ""]
 - ["So8NSObjectC", ""]
 - !private ["So8NSObjectC", "general"]
 - !private ["So8NSObjectC", "string"]
-- !private ["So8NSObjectP", ""]
 - !private ["So8NSObjectP", "general"]
 - !private ["So8NSObjectP", "string"]
 - !private ["7SwiftUI14NavigationLinkV", "init"]
@@ -248,8 +247,6 @@ depends-member:
 - !private ["s13SignedNumericP", "init"]
 - !private ["7SwiftUI24StackNavigationViewStyleV", "init"]
 - ["7SwiftUI5StateV", "init"]
-- ["7SwiftUI5StateV", "projectedValue"]
-- ["7SwiftUI5StateV", "subscript"]
 - ["7SwiftUI5StateV", "wrappedValue"]
 - !private ["Sx", ""]
 - !private ["Sx", "init"]
@@ -331,7 +328,7 @@ depends-member:
 - ["s14_ArrayProtocolP", "init"]
 - !private ["s30_CustomPlaygroundQuickLookableP", "init"]
 - ["s24_DestructorSafeContainerP", "init"]
-- ["s35_ExpressibleByBuiltinBooleanLiteralP", "init"]
+- !private ["s35_ExpressibleByBuiltinBooleanLiteralP", "init"]
 - ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", ""]
 - !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "init"]
 - ["s35_ExpressibleByBuiltinIntegerLiteralP", "init"]
@@ -401,7 +398,7 @@ depends-nominal:
 - !private "s10MirrorPathP"
 - "SM"
 - "10Foundation19MutableDataProtocolP"
-- "So8NSCodingP"
+- !private "So8NSCodingP"
 - "So8NSObjectC"
 - !private "So8NSObjectP"
 - !private "7SwiftUI14NavigationLinkV"
@@ -437,7 +434,7 @@ depends-nominal:
 - "s14_ArrayProtocolP"
 - !private "s30_CustomPlaygroundQuickLookableP"
 - "s24_DestructorSafeContainerP"
-- "s35_ExpressibleByBuiltinBooleanLiteralP"
+- !private "s35_ExpressibleByBuiltinBooleanLiteralP"
 - "s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP"
 - "s35_ExpressibleByBuiltinIntegerLiteralP"
 - "s34_ExpressibleByBuiltinStringLiteralP"

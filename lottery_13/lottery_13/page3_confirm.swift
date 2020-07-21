@@ -20,11 +20,11 @@ struct page3_confirm: View {
 //                    .padding()
                     .font(.title)
                     .multilineTextAlignment(.leading)
-                Text("名额：\(pri.PrizeMember)")
+                Text("\(NSLocalizedString("QTT", comment: ""))\(pri.PrizeMember)")
                     .multilineTextAlignment(.leading)
                 }
             }
-        }.navigationBarTitle("抽奖名额概览")
+        }.navigationBarTitle(NSLocalizedString("NBPV", comment: ""))
         NavigationLink(
             destination: page4_result(), tag: 1, selection: $selection)
         {
@@ -63,7 +63,7 @@ struct btnADD: View {
                     .shadow(radius: 10)
             }.frame(width: self.size, height: self.size)
             Group {
-                Text("抽")
+                Text(NSLocalizedString("GOB", comment: ""))
                     .font(.largeTitle)
                     .foregroundColor(.white)
             }

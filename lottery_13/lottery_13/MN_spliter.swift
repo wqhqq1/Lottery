@@ -12,6 +12,12 @@ func MN_spliter(input: String) -> [String]{
     return output
 }
 
+func MN_spliter_space(input: String) -> [String]{
+    let output: [String] = input.components(separatedBy: CharacterSet(charactersIn: " "))
+    return output
+}
+
+
 func MN_counter(input: String) -> Int{
     let output: [String] = input.components(separatedBy: CharacterSet(charactersIn: "\n"))
     let count = output.count - 1

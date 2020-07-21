@@ -134,7 +134,7 @@ depends-member:
 - ["SM", "init"]
 - !private ["10Foundation19MutableDataProtocolP", "append"]
 - ["10Foundation19MutableDataProtocolP", "init"]
-- ["So8NSCodingP", ""]
+- !private ["So8NSCodingP", ""]
 - ["So8NSObjectP", ""]
 - !private ["7SwiftUI14NavigationLinkV", "init"]
 - !private ["7SwiftUI14NavigationLinkV", "padding"]
@@ -351,7 +351,7 @@ depends-nominal:
 - !private "s10MirrorPathP"
 - "SM"
 - "10Foundation19MutableDataProtocolP"
-- "So8NSCodingP"
+- !private "So8NSCodingP"
 - "So8NSObjectP"
 - !private "7SwiftUI14NavigationLinkV"
 - !private "Sj"
