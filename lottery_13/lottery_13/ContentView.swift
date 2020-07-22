@@ -61,9 +61,6 @@ struct ContentView: View {
                         {
                             MemberNames = MN_spliter(input: originalMN)
                         }
-                        else {
-                            MemberNames = MN_spliter_space(input: MemberNamesInput)
-                        }
                         self.selection = 1
                     }
                     else {

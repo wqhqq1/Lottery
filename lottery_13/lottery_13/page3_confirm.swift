@@ -37,7 +37,7 @@ struct page3_confirm: View {
                     Prizes[i].PrizeM = Prizes[i].PrizeMember
                     }
                     while j < Prizes[i].PrizeM {
-                        Prizes[i].Lottery_result += "\n" + MemberNames[j] + " "
+                        Prizes[i].Lottery_result += "\n" + MemberNames[rands[j] - 1] + " "
                         j += 1
                         }
                     i += 1

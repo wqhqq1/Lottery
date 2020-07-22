@@ -10,7 +10,7 @@ import SwiftUI
 struct page4_result: View {
     var body: some View {
         List(Prizes) { prize in
-            NavigationLink(destination: Text("\(NSLocalizedString("CT", comment: ""))\(prize.Lottery_result)\(NSLocalizedString("GT", comment: ""))\(prize.PrizeName)").navigationBarTitle(prize.PrizeName).font(.title)) {
+            NavigationLink(destination: ScrollView {Text("\(NSLocalizedString("CT", comment: ""))\(prize.Lottery_result)\(NSLocalizedString("GT", comment: ""))\(prize.PrizeName)")}.navigationBarTitle(prize.PrizeName).font(.title)) {
                 Text(prize.PrizeName)
                     .font(.title)
             }
