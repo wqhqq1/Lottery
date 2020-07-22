@@ -12,8 +12,8 @@ func MN_spliter(input: String) -> [String]{
     return output
 }
 
-func MN_spliter_space(input: String) -> [String]{
-    let output: [String] = input.components(separatedBy: CharacterSet(charactersIn: " "))
+func MN_spliter_handinput(input: String) -> [String]{
+    let output: [String] = input.components(separatedBy: CharacterSet(charactersIn: NSLocalizedString("SYMB", comment: "")))
     return output
 }
 

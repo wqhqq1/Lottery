@@ -36,7 +36,7 @@ struct ContentView: View {
                 Button(action: {
                     let Pboard = UIPasteboard.general
                     if Pboard.string != nil {
-                        MemberNamesInput = "pasted from clipboard!"
+                        MemberNamesInput = NSLocalizedString("RFCB", comment: "")
                         originalMN = Pboard.string!
                         MemberNumberInput = String(MN_counter(input: originalMN))
                     }
@@ -48,7 +48,7 @@ struct ContentView: View {
                         Image(systemName: "doc.on.clipboard")
                        })
                 .alert(isPresented: $showalertCPB) {
-                    Alert(title: Text("Fatal Error"), message: Text("Clip board is empty yet"), dismissButton: .default(Text("OK")))
+                    Alert(title: Text("Fatal Error"), message: Text("Clip board is empty"), dismissButton: .default(Text("OK")))
                 }
             }.padding()
             NavigationLink(destination: page2(), tag: 1, selection: $selection) {
@@ -60,6 +60,9 @@ struct ContentView: View {
                         if originalMN != ""
                         {
                             MemberNames = MN_spliter(input: originalMN)
+                        }
+                        else {
+                            MemberNames = MN_spliter_handinput(input: MemberNamesInput)
                         }
                         self.selection = 1
                     }

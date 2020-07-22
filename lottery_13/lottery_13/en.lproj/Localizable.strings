@@ -11,7 +11,7 @@
 "MNL" = "Please enter the member of lottery.";
 "MNTF" = "Member number of lottery";
 
-"NMTF" = "Name of the members";
+"NMTF" = "Name of the members(split by ;) or copy from table app";
 
 "NBT1" = "Lottery";
 
@@ -32,3 +32,7 @@
 "NBLR" = "Lottery result";
 
 "EXT" = "Done";
+
+"RFCB" = "pasted from clipboard!";
+
+"SYMB" = ";";
