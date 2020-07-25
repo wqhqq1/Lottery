@@ -1,0 +1,555 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "AllPrizesMember"
+- "rands"
+- "page3_confirm"
+- "btnADD"
+- "page3_confirm_Previews"
+provides-nominal:
+- "10lottery_1313page3_confirmV"
+- "10lottery_136btnADDV"
+- "10lottery_1322page3_confirm_PreviewsV"
+provides-member:
+- ["10lottery_1313page3_confirmV", ""]
+- ["10lottery_136btnADDV", ""]
+- ["10lottery_1322page3_confirm_PreviewsV", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- "!="
+- !private "$selection"
+- "+"
+- "+="
+- "-"
+- "<"
+- "=="
+- "APM_ccltor"
+- "AllPrizesMember"
+- !private "AssignmentPrecedence"
+- "Button"
+- "CGFloat"
+- "Circle"
+- "Color"
+- "FloatLiteralType"
+- "ForEach"
+- "Group"
+- "Int"
+- "IntegerLiteralType"
+- !private "List"
+- "MemberNames"
+- "MemberNumber"
+- !private "NavigationLink"
+- "PreviewProvider"
+- "PrizeNumber"
+- "Prizes"
+- "Random"
+- "State"
+- !private "StringLiteralType"
+- "Text"
+- "UnicodeScalarType"
+- "VStack"
+- "View"
+- !private "ZStack"
+- "btnADD"
+- "page3_confirm"
+- "page3_confirm_Previews"
+- !private "page4_result"
+- "rands"
+- "selection"
+depends-member:
+- ["7SwiftUI10AnimatableP", ""]
+- !private ["7SwiftUI10AnimatableP", "fill"]
+- !private ["7SwiftUI10AnimatableP", "init"]
+- ["Sa", "init"]
+- !private ["Sa", "subscript"]
+- !private ["s10ArraySliceV", "Lottery_result"]
+- !private ["s10ArraySliceV", "PrizeM"]
+- !private ["s10ArraySliceV", "PrizeMember"]
+- !private ["SK", "Lottery_result"]
+- !private ["SK", "PrizeM"]
+- !private ["SK", "PrizeMember"]
+- ["SK", ""]
+- ["SK", "init"]
+- !private ["SK", "subscript"]
+- !private ["7SwiftUI6ButtonV", "init"]
+- ["8CloudKit21CKRecordValueProtocolP", "init"]
+- !private ["8CloudKit21CKRecordValueProtocolP", "subscript"]
+- ["s7CVarArgP", "init"]
+- !private ["s7CVarArgP", "subscript"]
+- !private ["s12CaseIterableP", "leading"]
+- !private ["7SwiftUI6CircleV", "fill"]
+- !private ["7SwiftUI6CircleV", "init"]
+- !private ["Sl", "Lottery_result"]
+- !private ["Sl", "PrizeM"]
+- !private ["Sl", "PrizeMember"]
+- ["Sl", ""]
+- ["Sl", "init"]
+- !private ["Sl", "subscript"]
+- !private ["7SwiftUI5ColorV", "red"]
+- !private ["7SwiftUI5ColorV", "white"]
+- !private ["7SwiftUI8CommandsP", "frame"]
+- !private ["7SwiftUI8CommandsP", "init"]
+- ["SL", ""]
+- !private ["10Foundation15ContiguousBytesP", "Lottery_result"]
+- !private ["10Foundation15ContiguousBytesP", "PrizeM"]
+- !private ["10Foundation15ContiguousBytesP", "PrizeMember"]
+- ["10Foundation15ContiguousBytesP", "init"]
+- !private ["10Foundation15ContiguousBytesP", "subscript"]
+- !private ["s28CustomDebugStringConvertibleP", "Lottery_result"]
+- !private ["s28CustomDebugStringConvertibleP", "PrizeM"]
+- !private ["s28CustomDebugStringConvertibleP", "PrizeMember"]
+- ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "largeTitle"]
+- !private ["s28CustomDebugStringConvertibleP", "subscript"]
+- !private ["s28CustomDebugStringConvertibleP", "title"]
+- !private ["s28CustomDebugStringConvertibleP", "white"]
+- !private ["s17CustomReflectableP", "Lottery_result"]
+- !private ["s17CustomReflectableP", "PrizeM"]
+- !private ["s17CustomReflectableP", "PrizeMember"]
+- ["s17CustomReflectableP", "init"]
+- !private ["s17CustomReflectableP", "largeTitle"]
+- !private ["s17CustomReflectableP", "subscript"]
+- !private ["s17CustomReflectableP", "title"]
+- !private ["s17CustomReflectableP", "white"]
+- !private ["s23CustomStringConvertibleP", "Lottery_result"]
+- !private ["s23CustomStringConvertibleP", "PrizeM"]
+- !private ["s23CustomStringConvertibleP", "PrizeMember"]
+- ["s23CustomStringConvertibleP", ""]
+- ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "red"]
+- !private ["s23CustomStringConvertibleP", "subscript"]
+- !private ["s23CustomStringConvertibleP", "white"]
+- !private ["10Foundation12DataProtocolP", "Lottery_result"]
+- !private ["10Foundation12DataProtocolP", "PrizeM"]
+- !private ["10Foundation12DataProtocolP", "PrizeMember"]
+- ["10Foundation12DataProtocolP", ""]
+- ["10Foundation12DataProtocolP", "init"]
+- !private ["10Foundation12DataProtocolP", "subscript"]
+- ["Se", "init"]
+- !private ["Se", "largeTitle"]
+- !private ["Se", "subscript"]
+- !private ["Se", "title"]
+- !private ["Se", "white"]
+- ["7SwiftUI15DynamicPropertyP", "init"]
+- ["7SwiftUI15DynamicPropertyP", "wrappedValue"]
+- !private ["7SwiftUI18DynamicViewContentP", "init"]
+- ["SE", "init"]
+- !private ["SE", "largeTitle"]
+- !private ["SE", "subscript"]
+- !private ["SE", "title"]
+- !private ["SE", "white"]
+- !private ["SQ", "Lottery_result"]
+- !private ["SQ", "PrizeM"]
+- !private ["SQ", "PrizeMember"]
+- ["SQ", ""]
+- !private ["SQ", "font"]
+- !private ["SQ", "foregroundColor"]
+- ["SQ", "init"]
+- !private ["SQ", "largeTitle"]
+- !private ["SQ", "leading"]
+- !private ["SQ", "multilineTextAlignment"]
+- !private ["SQ", "red"]
+- !private ["SQ", "subscript"]
+- !private ["SQ", "title"]
+- !private ["SQ", "white"]
+- !private ["s25ExpressibleByArrayLiteralP", "Lottery_result"]
+- !private ["s25ExpressibleByArrayLiteralP", "PrizeM"]
+- !private ["s25ExpressibleByArrayLiteralP", "PrizeMember"]
+- ["s25ExpressibleByArrayLiteralP", ""]
+- ["s25ExpressibleByArrayLiteralP", "init"]
+- !private ["s25ExpressibleByArrayLiteralP", "subscript"]
+- ["s43ExpressibleByExtendedGraphemeClusterLiteralP", ""]
+- ["s25ExpressibleByFloatLiteralP", "FloatLiteralType"]
+- ["s25ExpressibleByFloatLiteralP", "init"]
+- !private ["s27ExpressibleByIntegerLiteralP", "IntegerLiteralType"]
+- !private ["s27ExpressibleByIntegerLiteralP", "init"]
+- !private ["s23ExpressibleByNilLiteralP", "largeTitle"]
+- !private ["s23ExpressibleByNilLiteralP", "title"]
+- !private ["s23ExpressibleByNilLiteralP", "white"]
+- !private ["s32ExpressibleByStringInterpolationP", "StringInterpolation"]
+- ["s32ExpressibleByStringInterpolationP", ""]
+- !private ["s32ExpressibleByStringInterpolationP", "init"]
+- !private ["s26ExpressibleByStringLiteralP", "StringLiteralType"]
+- ["s26ExpressibleByStringLiteralP", ""]
+- !private ["s26ExpressibleByStringLiteralP", "init"]
+- ["s33ExpressibleByUnicodeScalarLiteralP", ""]
+- !private ["7SwiftUI4FontV", "largeTitle"]
+- !private ["7SwiftUI4FontV", "title"]
+- !private ["7SwiftUI7ForEachV", "init"]
+- !private ["7SwiftUI7GestureP", "largeTitle"]
+- !private ["7SwiftUI7GestureP", "title"]
+- !private ["7SwiftUI7GestureP", "white"]
+- !private ["7SwiftUI5GroupV", "frame"]
+- !private ["7SwiftUI5GroupV", "init"]
+- !private ["SH", "Lottery_result"]
+- !private ["SH", "PrizeM"]
+- !private ["SH", "PrizeMember"]
+- ["SH", ""]
+- ["SH", "init"]
+- !private ["SH", "largeTitle"]
+- !private ["SH", "leading"]
+- !private ["SH", "red"]
+- !private ["SH", "subscript"]
+- !private ["SH", "title"]
+- !private ["SH", "white"]
+- !private ["s12IdentifiableP", "Lottery_result"]
+- !private ["s12IdentifiableP", "PrizeM"]
+- !private ["s12IdentifiableP", "PrizeMember"]
+- !private ["s12IdentifiableP", "PrizeName"]
+- !private ["7SwiftUI15InsettableShapeP", "fill"]
+- !private ["7SwiftUI15InsettableShapeP", "init"]
+- !private ["s20LazySequenceProtocolP", "PrizeM"]
+- !private ["7SwiftUI4ListV", "init"]
+- !private ["7SwiftUI4ListV", "navigationBarTitle"]
+- ["s25LosslessStringConvertibleP", ""]
+- !private ["SM", "Lottery_result"]
+- !private ["SM", "PrizeM"]
+- !private ["SM", "PrizeMember"]
+- ["SM", ""]
+- ["SM", "init"]
+- !private ["SM", "subscript"]
+- ["10Foundation19MutableDataProtocolP", "init"]
+- !private ["10Foundation19MutableDataProtocolP", "subscript"]
+- ["So8NSCodingP", ""]
+- ["So8NSObjectP", ""]
+- !private ["7SwiftUI14NavigationLinkV", "init"]
+- !private ["Sj", ""]
+- !private ["Sq", "largeTitle"]
+- !private ["Sq", "title"]
+- !private ["Sq", "white"]
+- ["7SwiftUI15PreviewProviderP", "Default_Previews"]
+- ["7SwiftUI15PreviewProviderP", "Previews"]
+- ["7SwiftUI15PreviewProviderP", ""]
+- ["7SwiftUI15PreviewProviderP", "_Default_Previews"]
+- ["7SwiftUI15PreviewProviderP", "_platform"]
+- ["7SwiftUI15PreviewProviderP", "_previews"]
+- !private ["7SwiftUI15PreviewProviderP", "page3_confirm"]
+- ["7SwiftUI15PreviewProviderP", "platform"]
+- ["7SwiftUI15PreviewProviderP", "previews"]
+- !private ["Sk", "Lottery_result"]
+- !private ["Sk", "PrizeM"]
+- !private ["Sk", "PrizeMember"]
+- ["Sk", ""]
+- ["Sk", "init"]
+- !private ["Sk", "subscript"]
+- !private ["Sm", "Lottery_result"]
+- !private ["Sm", "PrizeM"]
+- !private ["Sm", "PrizeMember"]
+- ["Sm", ""]
+- ["Sm", "init"]
+- !private ["Sm", "subscript"]
+- !private ["7SwiftUI5SceneP", "frame"]
+- !private ["7SwiftUI5SceneP", "init"]
+- !private ["ST", "Lottery_result"]
+- !private ["ST", "PrizeM"]
+- !private ["ST", "PrizeMember"]
+- ["ST", ""]
+- ["ST", "init"]
+- !private ["ST", "subscript"]
+- !private ["7SwiftUI5ShapeP", ""]
+- !private ["7SwiftUI5ShapeP", "fill"]
+- !private ["7SwiftUI5ShapeP", "init"]
+- !private ["7SwiftUI10ShapeStyleP", "red"]
+- !private ["7SwiftUI10ShapeStyleP", "white"]
+- !private ["s5SliceV", "PrizeM"]
+- ["7SwiftUI5StateV", "init"]
+- ["7SwiftUI5StateV", "projectedValue"]
+- ["7SwiftUI5StateV", "subscript"]
+- ["7SwiftUI5StateV", "wrappedValue"]
+- !private ["Sx", ""]
+- !private ["7SwiftUI18LocalizedStringKeyV0D13InterpolationV", "appendInterpolation"]
+- !private ["7SwiftUI18LocalizedStringKeyV0D13InterpolationV", "appendLiteral"]
+- !private ["s27StringInterpolationProtocolP", "appendInterpolation"]
+- !private ["s27StringInterpolationProtocolP", "appendLiteral"]
+- !private ["s27StringInterpolationProtocolP", "init"]
+- !private ["7SwiftUI4TextV", "font"]
+- !private ["7SwiftUI4TextV", "foregroundColor"]
+- !private ["7SwiftUI4TextV", "init"]
+- !private ["7SwiftUI4TextV", "multilineTextAlignment"]
+- !private ["7SwiftUI13TextAlignmentO", "leading"]
+- ["s16TextOutputStreamP", ""]
+- ["s20TextOutputStreamableP", ""]
+- ["So18UIFocusEnvironmentP", ""]
+- !private ["7SwiftUI6VStackV", "init"]
+- !private ["7SwiftUI4ViewP", "$selection"]
+- !private ["7SwiftUI4ViewP", "APM_ccltor"]
+- !private ["7SwiftUI4ViewP", "AllPrizesMember"]
+- ["7SwiftUI4ViewP", "Body"]
+- !private ["7SwiftUI4ViewP", "Button"]
+- !private ["7SwiftUI4ViewP", "Circle"]
+- !private ["7SwiftUI4ViewP", "Color"]
+- ["7SwiftUI4ViewP", "Default_Body"]
+- !private ["7SwiftUI4ViewP", "ForEach"]
+- !private ["7SwiftUI4ViewP", "Group"]
+- !private ["7SwiftUI4ViewP", "List"]
+- !private ["7SwiftUI4ViewP", "MemberNames"]
+- !private ["7SwiftUI4ViewP", "MemberNumber"]
+- !private ["7SwiftUI4ViewP", "NavigationLink"]
+- !private ["7SwiftUI4ViewP", "PrizeNumber"]
+- !private ["7SwiftUI4ViewP", "Prizes"]
+- !private ["7SwiftUI4ViewP", "Random"]
+- ["7SwiftUI4ViewP", "State"]
+- !private ["7SwiftUI4ViewP", "Text"]
+- !private ["7SwiftUI4ViewP", "VStack"]
+- !private ["7SwiftUI4ViewP", "ZStack"]
+- ["7SwiftUI4ViewP", ""]
+- ["7SwiftUI4ViewP", "_Default_Body"]
+- ["7SwiftUI4ViewP", "_makeView"]
+- ["7SwiftUI4ViewP", "_makeViewList"]
+- ["7SwiftUI4ViewP", "_viewListCount"]
+- ["7SwiftUI4ViewP", "body"]
+- !private ["7SwiftUI4ViewP", "btnADD"]
+- !private ["7SwiftUI4ViewP", "fill"]
+- !private ["7SwiftUI4ViewP", "font"]
+- !private ["7SwiftUI4ViewP", "foregroundColor"]
+- !private ["7SwiftUI4ViewP", "frame"]
+- !private ["7SwiftUI4ViewP", "init"]
+- !private ["7SwiftUI4ViewP", "largeTitle"]
+- !private ["7SwiftUI4ViewP", "multilineTextAlignment"]
+- !private ["7SwiftUI4ViewP", "navigationBarTitle"]
+- !private ["7SwiftUI4ViewP", "page4_result"]
+- !private ["7SwiftUI4ViewP", "rands"]
+- !private ["7SwiftUI4ViewP", "red"]
+- !private ["7SwiftUI4ViewP", "selection"]
+- !private ["7SwiftUI4ViewP", "shadow"]
+- !private ["7SwiftUI4ViewP", "size"]
+- !private ["7SwiftUI4ViewP", "title"]
+- !private ["7SwiftUI4ViewP", "white"]
+- !private ["7SwiftUI11ViewBuilderV", "buildBlock"]
+- !private ["7SwiftUI11ViewBuilderV", "buildExpression"]
+- !private ["7SwiftUI11ViewBuilderV", "buildFinalResult"]
+- !private ["7SwiftUI11ViewBuilderV", "buildIf"]
+- !private ["7SwiftUI11ViewBuilderV", "buildOptional"]
+- !private ["7SwiftUI6ZStackV", "init"]
+- !private ["s14_ArrayProtocolP", "Lottery_result"]
+- !private ["s14_ArrayProtocolP", "PrizeM"]
+- !private ["s14_ArrayProtocolP", "PrizeMember"]
+- ["s14_ArrayProtocolP", "init"]
+- !private ["s14_ArrayProtocolP", "subscript"]
+- !private ["s24_DestructorSafeContainerP", "Lottery_result"]
+- !private ["s24_DestructorSafeContainerP", "PrizeM"]
+- !private ["s24_DestructorSafeContainerP", "PrizeMember"]
+- ["s24_DestructorSafeContainerP", "init"]
+- !private ["s24_DestructorSafeContainerP", "subscript"]
+- ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", ""]
+- ["s33_ExpressibleByBuiltinFloatLiteralP", "init"]
+- ["s35_ExpressibleByBuiltinIntegerLiteralP", "init"]
+- !private ["s34_ExpressibleByBuiltinStringLiteralP", "init"]
+- ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", ""]
+- ["s19_HasContiguousBytesP", "init"]
+- !private ["s19_HasContiguousBytesP", "subscript"]
+- ["s35_HasCustomAnyHashableRepresentationP", "init"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "subscript"]
+- ["s21_ObjectiveCBridgeableP", "init"]
+- !private ["s21_ObjectiveCBridgeableP", "largeTitle"]
+- !private ["s21_ObjectiveCBridgeableP", "subscript"]
+- !private ["s21_ObjectiveCBridgeableP", "title"]
+- !private ["s21_ObjectiveCBridgeableP", "white"]
+- ["7SwiftUI16_PreviewProviderP", "Default_Previews"]
+- ["7SwiftUI16_PreviewProviderP", "Previews"]
+- ["7SwiftUI16_PreviewProviderP", ""]
+- ["7SwiftUI16_PreviewProviderP", "_Default_Previews"]
+- ["7SwiftUI16_PreviewProviderP", "_platform"]
+- ["7SwiftUI16_PreviewProviderP", "_previews"]
+- !private ["7SwiftUI16_PreviewProviderP", "page3_confirm"]
+- ["7SwiftUI16_PreviewProviderP", "platform"]
+- ["7SwiftUI16_PreviewProviderP", "previews"]
+- !private ["7SwiftUI7_WidgetP", "frame"]
+- !private ["7SwiftUI7_WidgetP", "init"]
+- ["10lottery_136btnADDV", "Body"]
+- ["10lottery_136btnADDV", "CGFloat"]
+- !private ["10lottery_136btnADDV", "Circle"]
+- !private ["10lottery_136btnADDV", "Color"]
+- ["10lottery_136btnADDV", "Default_Body"]
+- !private ["10lottery_136btnADDV", "Group"]
+- !private ["10lottery_136btnADDV", "Text"]
+- ["10lottery_136btnADDV", "View"]
+- !private ["10lottery_136btnADDV", "ZStack"]
+- ["10lottery_136btnADDV", ""]
+- ["10lottery_136btnADDV", "_Default_Body"]
+- ["10lottery_136btnADDV", "_makeView"]
+- ["10lottery_136btnADDV", "_makeViewList"]
+- ["10lottery_136btnADDV", "_viewListCount"]
+- ["10lottery_136btnADDV", "body"]
+- ["10lottery_136btnADDV", "init"]
+- ["10lottery_136btnADDV", "size"]
+- ["10lottery_1313page3_confirmV", "$selection"]
+- !private ["10lottery_1313page3_confirmV", "APM_ccltor"]
+- !private ["10lottery_1313page3_confirmV", "AllPrizesMember"]
+- ["10lottery_1313page3_confirmV", "Body"]
+- !private ["10lottery_1313page3_confirmV", "Button"]
+- ["10lottery_1313page3_confirmV", "Default_Body"]
+- !private ["10lottery_1313page3_confirmV", "ForEach"]
+- ["10lottery_1313page3_confirmV", "Int"]
+- !private ["10lottery_1313page3_confirmV", "List"]
+- !private ["10lottery_1313page3_confirmV", "MemberNames"]
+- !private ["10lottery_1313page3_confirmV", "MemberNumber"]
+- !private ["10lottery_1313page3_confirmV", "NavigationLink"]
+- !private ["10lottery_1313page3_confirmV", "PrizeNumber"]
+- !private ["10lottery_1313page3_confirmV", "Prizes"]
+- !private ["10lottery_1313page3_confirmV", "Random"]
+- ["10lottery_1313page3_confirmV", "State"]
+- !private ["10lottery_1313page3_confirmV", "Text"]
+- !private ["10lottery_1313page3_confirmV", "VStack"]
+- ["10lottery_1313page3_confirmV", "View"]
+- ["10lottery_1313page3_confirmV", ""]
+- ["10lottery_1313page3_confirmV", "_Default_Body"]
+- ["10lottery_1313page3_confirmV", "_makeView"]
+- ["10lottery_1313page3_confirmV", "_makeViewList"]
+- !private ["10lottery_1313page3_confirmV", "_selection"]
+- ["10lottery_1313page3_confirmV", "_viewListCount"]
+- ["10lottery_1313page3_confirmV", "body"]
+- !private ["10lottery_1313page3_confirmV", "btnADD"]
+- ["10lottery_1313page3_confirmV", "init"]
+- !private ["10lottery_1313page3_confirmV", "page4_result"]
+- !private ["10lottery_1313page3_confirmV", "rands"]
+- ["10lottery_1313page3_confirmV", "selection"]
+- ["10lottery_1322page3_confirm_PreviewsV", "Default_Previews"]
+- ["10lottery_1322page3_confirm_PreviewsV", "Previews"]
+- ["10lottery_1322page3_confirm_PreviewsV", "View"]
+- ["10lottery_1322page3_confirm_PreviewsV", ""]
+- ["10lottery_1322page3_confirm_PreviewsV", "_Default_Previews"]
+- ["10lottery_1322page3_confirm_PreviewsV", "_platform"]
+- ["10lottery_1322page3_confirm_PreviewsV", "_previews"]
+- ["10lottery_1322page3_confirm_PreviewsV", "init"]
+- !private ["10lottery_1322page3_confirm_PreviewsV", "page3_confirm"]
+- ["10lottery_1322page3_confirm_PreviewsV", "platform"]
+- ["10lottery_1322page3_confirm_PreviewsV", "previews"]
+- !private ["10lottery_1312page4_resultV", ""]
+- !private ["10lottery_1312page4_resultV", "init"]
+- !private ["10lottery_136prizesV", "Lottery_result"]
+- !private ["10lottery_136prizesV", "PrizeM"]
+- !private ["10lottery_136prizesV", "PrizeMember"]
+- !private ["10lottery_136prizesV", "PrizeName"]
+- !private ["10lottery_136prizesV", ""]
+depends-nominal:
+- "7SwiftUI10AnimatableP"
+- "Sa"
+- !private "s10ArraySliceV"
+- "SK"
+- !private "7SwiftUI6ButtonV"
+- "8CloudKit21CKRecordValueProtocolP"
+- "s7CVarArgP"
+- !private "s12CaseIterableP"
+- !private "7SwiftUI6CircleV"
+- "Sl"
+- !private "7SwiftUI5ColorV"
+- !private "7SwiftUI8CommandsP"
+- "SL"
+- "10Foundation15ContiguousBytesP"
+- "s28CustomDebugStringConvertibleP"
+- "s17CustomReflectableP"
+- "s23CustomStringConvertibleP"
+- "10Foundation12DataProtocolP"
+- "Se"
+- "7SwiftUI15DynamicPropertyP"
+- !private "7SwiftUI18DynamicViewContentP"
+- "SE"
+- "SQ"
+- "s25ExpressibleByArrayLiteralP"
+- "s43ExpressibleByExtendedGraphemeClusterLiteralP"
+- "s25ExpressibleByFloatLiteralP"
+- !private "s27ExpressibleByIntegerLiteralP"
+- !private "s23ExpressibleByNilLiteralP"
+- "s32ExpressibleByStringInterpolationP"
+- "s26ExpressibleByStringLiteralP"
+- "s33ExpressibleByUnicodeScalarLiteralP"
+- !private "7SwiftUI4FontV"
+- !private "7SwiftUI7ForEachV"
+- !private "7SwiftUI7GestureP"
+- !private "7SwiftUI5GroupV"
+- "SH"
+- !private "s12IdentifiableP"
+- !private "7SwiftUI15InsettableShapeP"
+- !private "s20LazySequenceProtocolP"
+- !private "7SwiftUI4ListV"
+- "s25LosslessStringConvertibleP"
+- "SM"
+- "10Foundation19MutableDataProtocolP"
+- "So8NSCodingP"
+- "So8NSObjectP"
+- !private "7SwiftUI14NavigationLinkV"
+- !private "Sj"
+- !private "Sq"
+- "7SwiftUI15PreviewProviderP"
+- "Sk"
+- "Sm"
+- !private "7SwiftUI5SceneP"
+- "ST"
+- !private "7SwiftUI5ShapeP"
+- !private "7SwiftUI10ShapeStyleP"
+- !private "s5SliceV"
+- "7SwiftUI5StateV"
+- !private "Sx"
+- !private "7SwiftUI18LocalizedStringKeyV0D13InterpolationV"
+- !private "s27StringInterpolationProtocolP"
+- !private "7SwiftUI4TextV"
+- !private "7SwiftUI13TextAlignmentO"
+- "s16TextOutputStreamP"
+- "s20TextOutputStreamableP"
+- "So18UIFocusEnvironmentP"
+- !private "7SwiftUI6VStackV"
+- "7SwiftUI4ViewP"
+- !private "7SwiftUI11ViewBuilderV"
+- !private "7SwiftUI6ZStackV"
+- "s14_ArrayProtocolP"
+- "s24_DestructorSafeContainerP"
+- "s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP"
+- "s33_ExpressibleByBuiltinFloatLiteralP"
+- "s35_ExpressibleByBuiltinIntegerLiteralP"
+- !private "s34_ExpressibleByBuiltinStringLiteralP"
+- "s41_ExpressibleByBuiltinUnicodeScalarLiteralP"
+- "s19_HasContiguousBytesP"
+- "s35_HasCustomAnyHashableRepresentationP"
+- "s21_ObjectiveCBridgeableP"
+- "7SwiftUI16_PreviewProviderP"
+- !private "7SwiftUI7_WidgetP"
+- "10lottery_136btnADDV"
+- "10lottery_1313page3_confirmV"
+- "10lottery_1322page3_confirm_PreviewsV"
+- !private "10lottery_1312page4_resultV"
+- !private "10lottery_136prizesV"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/ObjectiveC.swiftmodule/arm64-apple-ios.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/SwiftUI.swiftmodule/arm64-apple-ios.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/CoreData.swiftmodule/arm64-apple-ios.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/CoreImage.swiftmodule/arm64-apple-ios.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/Combine.swiftmodule/arm64-apple-ios.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/QuartzCore.swiftmodule/arm64-apple-ios.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/Dispatch.swiftmodule/arm64-apple-ios.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/Metal.swiftmodule/arm64-apple-ios.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/Darwin.swiftmodule/arm64-apple-ios.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/CoreLocation.swiftmodule/arm64-apple-ios.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/Foundation.swiftmodule/arm64-apple-ios.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/CoreFoundation.swiftmodule/arm64-apple-ios.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/CoreGraphics.swiftmodule/arm64-apple-ios.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/os.swiftmodule/arm64-apple-ios.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/UniformTypeIdentifiers.swiftmodule/arm64-apple-ios.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/Swift.swiftmodule/arm64-apple-ios.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/UIKit.swiftmodule/arm64-apple-ios.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/CloudKit.swiftmodule/arm64-apple-ios.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/SwiftOnoneSupport.swiftmodule/arm64-apple-ios.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/DeveloperToolsSupport.swiftmodule/arm64-apple-ios.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/usr/include/mach-o/dyld.modulemap"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/usr/include/mach-o/compact_unwind_encoding.modulemap"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/OpenGLES.framework/Headers/OpenGLES.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/CoreData.framework/Headers/CoreData.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/CoreImage.framework/Headers/CoreImage.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/QuartzCore.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/apinotes/Dispatch.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Metal.framework/Headers/Metal.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/CoreLocation.framework/Headers/CoreLocation.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/AuthenticationServices.framework/Headers/AuthenticationServices.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/UserNotifications.framework/Headers/UserNotifications.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/apinotes/os.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/UniformTypeIdentifiers.framework/Headers/UniformTypeIdentifiers.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/CloudKit.framework/Headers/CloudKit.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/StoreKit.framework/Headers/StoreKit.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
+interface-hash: "9b3152f632ca4d6e6600dbc248a7aed0"

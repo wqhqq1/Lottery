@@ -10,19 +10,12 @@ Description
 Download
 ---------------------------------  
 #### For windows, you can download binary file here:[![](https://img.shields.io/github/v/release/wqhqq1/Lottery?color=green)](https://github.com/wqhqq1/Lottery/releases/tag/3.0)
+#### For iOS(iPadOS) you can download the iPA file here:[![](https://img.shields.io/badge/release-3.5-green)]()
 #### For macOS, you can run the code below:  
 #### make sure you have already installed python 3
 ```
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/wqhqq1/Lottery/master/load_macos)"
 ```  
-#### For iOS(iPadOS)
-### 1.build environment
-- install xcode on your mac(at least 11.0)
-- iOS 13 or heigher
-### 2.clone by git
-### 3.enter the folder called "lottery_13" and double click the .xcodeproj file
-### 4.connect you phone or pad to computer than trust
-### 5.command + r to build and install
 Build(computer vesion)
 ----------  
 #### If you want to build the code by yourself, you should do the three steps below:  

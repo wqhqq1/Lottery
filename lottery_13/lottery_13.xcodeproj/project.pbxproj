@@ -45,6 +45,7 @@
 
 /* Begin PBXFileReference section */
 		01123FBE24C6704B00884E6B /* keyboardfix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = keyboardfix.swift; sourceTree = "<group>"; };
+		01500CBC24C927AA0080F524 /* lottery_13.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = lottery_13.entitlements; sourceTree = "<group>"; };
 		0157E73824C681F800EC80A2 /* MN_spliter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MN_spliter.swift; sourceTree = "<group>"; };
 		0159833724C6C51200784E89 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0159833924C6C53500784E89 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -118,6 +119,7 @@
 		01D7E43F24C563D30063B39E /* lottery_13 */ = {
 			isa = PBXGroup;
 			children = (
+				01500CBC24C927AA0080F524 /* lottery_13.entitlements */,
 				01D7E44024C563D30063B39E /* AppDelegate.swift */,
 				01D7E44224C563D30063B39E /* SceneDelegate.swift */,
 				01D7E44424C563D30063B39E /* ContentView.swift */,
@@ -423,6 +425,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = lottery_13/lottery_13.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"lottery_13/Preview Content\"";
 				DEVELOPMENT_TEAM = 6T6JMWY77X;
@@ -435,6 +438,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "wqhqq1.lottery-13";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -605,6 +609,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = lottery_13/lottery_13.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"lottery_13/Preview Content\"";
 				DEVELOPMENT_TEAM = 6T6JMWY77X;
@@ -617,6 +622,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "wqhqq1.lottery-13";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -627,6 +633,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = lottery_13/lottery_13.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"lottery_13/Preview Content\"";
 				DEVELOPMENT_TEAM = 6T6JMWY77X;
@@ -639,6 +646,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "wqhqq1.lottery-13";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

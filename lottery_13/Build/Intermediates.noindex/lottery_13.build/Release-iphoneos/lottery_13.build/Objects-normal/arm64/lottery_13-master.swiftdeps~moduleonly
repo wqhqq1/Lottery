@@ -1,0 +1,15 @@
+version: "Apple Swift version 5.3 (swiftlang-1200.0.16.13 clang-1200.0.22.25)"
+options: "963b29d5783c7283509b4e37e61d696e"
+build_time: [1595642648, 294880000]
+inputs:
+  "/Users/wqhqq/Documents/\u62BD\u5956\u5668/lottery_13/lottery_13/AppDelegate.swift": [9223372036, 854775807]
+  "/Users/wqhqq/Documents/\u62BD\u5956\u5668/lottery_13/lottery_13/page2.swift": [9223372036, 854775807]
+  "/Users/wqhqq/Documents/\u62BD\u5956\u5668/lottery_13/lottery_13/page4_result.swift": [9223372036, 854775807]
+  "/Users/wqhqq/Documents/\u62BD\u5956\u5668/lottery_13/lottery_13/page3_confirm.swift": [9223372036, 854775807]
+  "/Users/wqhqq/Documents/\u62BD\u5956\u5668/lottery_13/lottery_13/keyboardfix.swift": [9223372036, 854775807]
+  "/Users/wqhqq/Documents/\u62BD\u5956\u5668/lottery_13/lottery_13/prizes.swift": [9223372036, 854775807]
+  "/Users/wqhqq/Documents/\u62BD\u5956\u5668/lottery_13/lottery_13/MN_spliter.swift": [9223372036, 854775807]
+  "/Users/wqhqq/Documents/\u62BD\u5956\u5668/lottery_13/lottery_13/SceneDelegate.swift": [9223372036, 854775807]
+  "/Users/wqhqq/Documents/\u62BD\u5956\u5668/lottery_13/lottery_13/ContentView.swift": [9223372036, 854775807]
+  "/Users/wqhqq/Documents/\u62BD\u5956\u5668/lottery_13/lottery_13/allprizemember_caculator.swift": [9223372036, 854775807]
+  "/Users/wqhqq/Documents/\u62BD\u5956\u5668/lottery_13/lottery_13/Random.swift": [9223372036, 854775807]

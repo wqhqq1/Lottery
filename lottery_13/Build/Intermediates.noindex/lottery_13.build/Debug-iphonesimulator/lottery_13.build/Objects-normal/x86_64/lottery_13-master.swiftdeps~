@@ -1,0 +1,13 @@
+version: "Apple Swift version 5.3 (swiftlang-1200.0.16.13 clang-1200.0.22.25)"
+options: "ec9d4b15fdaeaf43e3a3015cde10100b"
+build_time: [1595223537, 981252000]
+inputs:
+  "/Users/wqhqq/Desktop/lottery_13/lottery_13/AppDelegate.swift": [1595223123, 737662211]
+  "/Users/wqhqq/Desktop/lottery_13/lottery_13/page2.swift": [1595223310, 191062538]
+  "/Users/wqhqq/Desktop/lottery_13/lottery_13/page4_result.swift": [1595223471, 285184195]
+  "/Users/wqhqq/Desktop/lottery_13/lottery_13/page3_confirm.swift": !dirty [1595223391, 942160163]
+  "/Users/wqhqq/Desktop/lottery_13/lottery_13/prizes.swift": !dirty [1595223517, 726065852]
+  "/Users/wqhqq/Desktop/lottery_13/lottery_13/SceneDelegate.swift": [1595223123, 746880646]
+  "/Users/wqhqq/Desktop/lottery_13/lottery_13/ContentView.swift": [1595223238, 526009162]
+  "/Users/wqhqq/Desktop/lottery_13/lottery_13/allprizemember_caculator.swift": [1595223462, 974534752]
+  "/Users/wqhqq/Desktop/lottery_13/lottery_13/Random.swift": [9223372036, 854775807]
