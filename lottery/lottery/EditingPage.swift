@@ -28,7 +28,9 @@ struct EditingPage: View {
                         Button(action: {
                             if self.prizequota != "" {
                                 if index == nil {
-                                    PrizeData.add(data: SinglePrize(PrizeName: self.prizename, PrizeMember: Int(self.prizequota)!))
+                                    withAnimation {
+                                        PrizeData.add(data: SinglePrize(PrizeName: self.prizename, PrizeMember: Int(self.prizequota)!))
+                                    }
                                 }
                                 else {
                                     PrizeData.edit(index: self.index!, data: SinglePrize(PrizeName: self.prizename, PrizeMember: Int(self.prizequota)!))

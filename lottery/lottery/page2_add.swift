@@ -23,7 +23,9 @@ struct page2_add: View {
             Spacer()
             if showRemoveButton {
                 Button(action : {
-                    PrizeData.removeMore(index: selected)
+                    withAnimation {
+                        PrizeData.removeMore(index: selected)
+                    }
                     selected.removeAll()
                 }) {
                     Image(systemName: "trash.fill")
@@ -49,7 +51,10 @@ struct page2_add: View {
                         HStack {
                             if showRemoveButton {
                                 Button(action: {
-                                    PrizeData.remove(index: prize.id)
+                                    
+                                    withAnimation {
+                                        PrizeData.remove(index: prize.id)
+                                    }
                                 }){
                                     Image(systemName: "trash.fill")
                                         .resizable()
@@ -63,9 +68,11 @@ struct page2_add: View {
                                 .environmentObject(PrizeData)
                                 .animation(.spring())
                                 .transition(.slide)
-                        }
+                        }.animation(.spring())
+                        .transition(.slide)
                     }
-                }
+                }.animation(.spring())
+                .transition(.slide)
 //                    .transition(.slide)
             }.padding(.horizontal)
             VStack{

@@ -81,6 +81,7 @@ depends-top-level:
 - "selection"
 - "showRemoveButton"
 - "showeditingpage"
+- "withAnimation"
 depends-member:
 - !private ["s18AdditiveArithmeticP", ""]
 - !private ["s18AdditiveArithmeticP", "bottom"]
@@ -810,6 +811,7 @@ depends-member:
 - !private ["7SwiftUI4ViewP", "subheadline"]
 - !private ["7SwiftUI4ViewP", "transition"]
 - !private ["7SwiftUI4ViewP", "white"]
+- !private ["7SwiftUI4ViewP", "withAnimation"]
 - !private ["7SwiftUI11ViewBuilderV", "buildBlock"]
 - !private ["7SwiftUI11ViewBuilderV", "buildExpression"]
 - !private ["7SwiftUI11ViewBuilderV", "buildFinalResult"]
@@ -976,6 +978,7 @@ depends-member:
 - ["7lottery9page2_addV", "showRemoveButton"]
 - ["7lottery9page2_addV", "showeditingpage"]
 - ["7lottery9page2_addV", "size"]
+- !private ["7lottery9page2_addV", "withAnimation"]
 - !private ["7lottery12page3_resultV", ""]
 - !private ["7lottery12page3_resultV", "init"]
 depends-nominal:

@@ -1,6 +1,6 @@
 version: "Apple Swift version 5.3 (swiftlang-1200.0.16.13 clang-1200.0.22.25)"
 options: "64583078475816591d187ae6cefa1abf"
-build_time: [1595840659, 372725000]
+build_time: [1595851420, 739170000]
 inputs:
   "/Users/wqhqq/Documents/\u62BD\u5956\u5668/lottery/lottery/Random.swift": [1595751321, 240600309]
   "/Users/wqhqq/Documents/\u62BD\u5956\u5668/lottery/lottery/page3_result.swift": [1595816660, 627389311]
@@ -12,4 +12,4 @@ inputs:
   "/Users/wqhqq/Documents/\u62BD\u5956\u5668/lottery/lottery/AppDelegate.swift": [1595663615, 165990956]
   "/Users/wqhqq/Documents/\u62BD\u5956\u5668/lottery/lottery/MN_spliter.swift": [1595750498, 604203689]
   "/Users/wqhqq/Documents/\u62BD\u5956\u5668/lottery/lottery/SceneDelegate.swift": [1595663615, 214869633]
-  "/Users/wqhqq/Documents/\u62BD\u5956\u5668/lottery/lottery/page2_add.swift": [1595840659, 169070748]
+  "/Users/wqhqq/Documents/\u62BD\u5956\u5668/lottery/lottery/page2_add.swift": [1595851420, 203673470]
