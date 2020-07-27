@@ -14,21 +14,60 @@ struct page2_add: View {
     @ObservedObject var PrizeData = Prizes()
     @State var selection: Int? = nil
     @State var showeditingpage = false
+    @State var showRemoveButton = false
+    @State var selected: [Int] = []
     var size: CGFloat = 65.0
     
     var body: some View {
+        HStack {
+            Spacer()
+            if showRemoveButton {
+                Button(action : {
+                    PrizeData.removeMore(index: selected)
+                    selected.removeAll()
+                }) {
+                    Image(systemName: "trash.fill")
+                        .foregroundColor(.black)
+                        .imageScale(.large)
+                        .padding(.trailing)
+                }
+            }
+            Button(action: {
+                showRemoveButton.toggle()
+                selected.removeAll()
+            }){
+                Text(showRemoveButton ? NSLocalizedString("EXT", comment: "Done"):NSLocalizedString("EDIT", comment: ""))
+                    .font(.custom("", size: 20))
+                    .fontWeight(.heavy)
+                    .padding(.trailing)
+            }
+        }
         ZStack {
-            VStack {
-                ScrollView{
-                    ForEach(PrizeData.PrizeList) {prize in
-                        if !prize.isRemoved {
-                            SingleCard(index: prize.id)
+            ScrollView{
+                ForEach(PrizeData.PrizeList) {prize in
+                    if !prize.isRemoved {
+                        HStack {
+                            if showRemoveButton {
+                                Button(action: {
+                                    PrizeData.remove(index: prize.id)
+                                }){
+                                    Image(systemName: "trash.fill")
+                                        .resizable()
+                                        .frame(width: 25, height: 30)
+                                        .foregroundColor(.black)
+                                        .padding(.trailing)
+                                }
+                                .padding([.leading, .bottom])
+                            }
+                            SingleCard(showRemoveButton: $showRemoveButton, selected: $selected, index: prize.id)
                                 .environmentObject(PrizeData)
                                 .animation(.spring())
+                                .transition(.slide)
                         }
                     }
-                }.padding(.horizontal)
-            }
+                }
+//                    .transition(.slide)
+            }.padding(.horizontal)
             VStack{
                 Spacer()
                 HStack{
@@ -40,10 +79,10 @@ struct page2_add: View {
                                 rands = Random(start: 1, end: AllPrizesMember + 1, Members: MemberNumber)
                                 var i = 0, j = 0
                                 while i < PrizeData.PrizeList_cacu.count {
-                                        while j < PrizeData.PrizeList_cacu[i].PrizeM {
-                                            PrizeData.PrizeList_cacu[i].Lottery_result += "\n" + MemberNames[rands[j] - 1] + " "
-                                            j += 1
-                                        }
+                                    while j < PrizeData.PrizeList_cacu[i].PrizeM {
+                                        PrizeData.PrizeList_cacu[i].Lottery_result += "\n" + MemberNames[rands[j] - 1] + " "
+                                        j += 1
+                                    }
                                     i += 1
                                 }
                                 selection = 1
@@ -76,6 +115,9 @@ struct page2_add: View {
 struct SingleCard: View {
     @State var showeditingpage = false
     @EnvironmentObject var PrizeData: Prizes
+    @Binding var showRemoveButton: Bool
+    @Binding var selected: [Int]
+    @State var isSelected = false
     var index: Int?
     var body: some View {
         HStack {
@@ -86,30 +128,32 @@ struct SingleCard: View {
                 showeditingpage = true
             }){
                 Group {
-                    
-                    VStack(alignment: .leading, spacing: 6.0) {
-                        Text(PrizeData.PrizeList[index!].PrizeName)
-                            .font(.headline)
-                            .fontWeight(.heavy)
-                            .foregroundColor(.black)
-                        Text("\(NSLocalizedString("QTT", comment: ""))\(PrizeData.PrizeList[index!].PrizeMember)")
-                            .font(.subheadline)
-                            .foregroundColor(.black)
+                    HStack {
+                        VStack(alignment: .leading, spacing: 6.0) {
+                            Text(PrizeData.PrizeList[index!].PrizeName)
+                                .font(.headline)
+                                .fontWeight(.heavy)
+                                .foregroundColor(.black)
+                            Text("\(NSLocalizedString("QTT", comment: ""))\(PrizeData.PrizeList[index!].PrizeMember)")
+                                .font(.subheadline)
+                                .foregroundColor(.black)
+                        }
+                        Spacer()
+                        if showRemoveButton{
+                            Button(action: {
+                                selected.append(index!)
+                            }) {
+                                Image(systemName: self.selected.firstIndex(where: {$0 == self.index}) != nil ? "checkmark.circle.fill":"circle")
+                                    .imageScale(.large)
+                                    .foregroundColor(.black)
+                                    .padding(.trailing)
+                            }
+                        }
                     }
-                    Spacer()
                 }
             }.sheet(isPresented: $showeditingpage) {
                 EditingPage(prizename: PrizeData.PrizeList[index!].PrizeName, prizequota: String(PrizeData.PrizeList[index!].PrizeMember), index: self.index)
                     .environmentObject(PrizeData)
-            }
-            Button(action: {
-                PrizeData.remove(index: self.index!)
-            }){
-                Image(systemName: "trash.fill")
-                    .resizable()
-                    .frame(width: 25, height: 30)
-                    .foregroundColor(.black)
-                    .padding(.trailing)
             }
         }.frame(height: 80)
         .background(Color("CardBG"))

@@ -18,6 +18,7 @@ provides-dynamic-lookup:
 - "edit"
 - "reAppend"
 - "remove"
+- "removeMore"
 depends-top-level:
 - !private "+"
 - !private "+="
@@ -201,6 +202,7 @@ depends-member:
 - ["7Combine16ObservableObjectP", "objectWillChange"]
 - !private ["7Combine16ObservableObjectP", "reAppend"]
 - !private ["7Combine16ObservableObjectP", "remove"]
+- !private ["7Combine16ObservableObjectP", "removeMore"]
 - ["7lottery6PrizesC", "$PrizeList"]
 - ["7lottery6PrizesC", "Default_ObjectWillChangePublisher"]
 - ["7lottery6PrizesC", "Int"]
@@ -220,6 +222,7 @@ depends-member:
 - ["7lottery6PrizesC", "objectWillChange"]
 - ["7lottery6PrizesC", "reAppend"]
 - ["7lottery6PrizesC", "remove"]
+- ["7lottery6PrizesC", "removeMore"]
 - ["7Combine9PublishedV", "init"]
 - ["7Combine9PublishedV", "projectedValue"]
 - ["7Combine9PublishedV", "subscript"]
@@ -242,6 +245,8 @@ depends-member:
 - !private ["Sm", "id"]
 - !private ["Sm", "isRemoved"]
 - !private ["Sm", "subscript"]
+- !private ["ST", "Element"]
+- !private ["ST", "Iterator"]
 - !private ["ST", "PrizeM"]
 - !private ["ST", "PrizeMember"]
 - !private ["ST", "PrizeName"]
@@ -250,6 +255,7 @@ depends-member:
 - !private ["ST", "count"]
 - !private ["ST", "id"]
 - !private ["ST", "isRemoved"]
+- !private ["ST", "makeIterator"]
 - !private ["ST", "subscript"]
 - ["7lottery11SinglePrizeV", "Default_ID"]
 - ["7lottery11SinglePrizeV", "ID"]
@@ -383,4 +389,4 @@ depends-external:
 - "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/StoreKit.framework/Headers/StoreKit.apinotes"
 - "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
 - "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
-interface-hash: "4429d05a8eeaa8fca9ed5b7b345e7c8e"
+interface-hash: "a215fc0b76735b4e64d57ef210d1c037"

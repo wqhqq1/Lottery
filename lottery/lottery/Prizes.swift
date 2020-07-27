@@ -70,6 +70,13 @@ class Prizes: ObservableObject {
         PrizeList[index].isRemoved.toggle()
         reAppend()
     }
+    
+    func removeMore(index: [Int]) {
+        for i in index {
+            PrizeList[i].isRemoved.toggle()
+        }
+        reAppend()
+    }
 }
 
 

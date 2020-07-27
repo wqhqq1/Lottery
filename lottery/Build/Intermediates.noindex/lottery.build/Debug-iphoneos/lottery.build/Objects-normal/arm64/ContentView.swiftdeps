@@ -19,6 +19,7 @@ depends-top-level:
 - "$showalertCPB"
 - "&&"
 - "Alert"
+- !private "Array"
 - !private "AssignmentPrecedence"
 - "BooleanLiteralType"
 - "Button"
