@@ -16,6 +16,7 @@ provides-dynamic-lookup:
 - "add"
 - "count"
 - "edit"
+- "reAppend"
 - "remove"
 depends-top-level:
 - !private "+"
@@ -39,6 +40,7 @@ depends-top-level:
 - "String"
 - "StringLiteralType"
 - !private "count"
+- !private "reAppend"
 depends-member:
 - !private ["Sa", "append"]
 - !private ["Sa", "count"]
@@ -197,6 +199,7 @@ depends-member:
 - !private ["7Combine16ObservableObjectP", "count"]
 - !private ["7Combine16ObservableObjectP", "edit"]
 - ["7Combine16ObservableObjectP", "objectWillChange"]
+- !private ["7Combine16ObservableObjectP", "reAppend"]
 - !private ["7Combine16ObservableObjectP", "remove"]
 - ["7lottery6PrizesC", "$PrizeList"]
 - ["7lottery6PrizesC", "Default_ObjectWillChangePublisher"]
@@ -215,6 +218,7 @@ depends-member:
 - ["7lottery6PrizesC", "edit"]
 - ["7lottery6PrizesC", "init"]
 - ["7lottery6PrizesC", "objectWillChange"]
+- ["7lottery6PrizesC", "reAppend"]
 - ["7lottery6PrizesC", "remove"]
 - ["7Combine9PublishedV", "init"]
 - ["7Combine9PublishedV", "projectedValue"]
@@ -379,4 +383,4 @@ depends-external:
 - "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/StoreKit.framework/Headers/StoreKit.apinotes"
 - "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
 - "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
-interface-hash: "643b7aea7a565d519a234f63afbfcdbd"
+interface-hash: "4429d05a8eeaa8fca9ed5b7b345e7c8e"

@@ -17,37 +17,7 @@ class Prizes: ObservableObject {
         self.PrizeList = []
     }
     
-    func add(data: SinglePrize) {
-        if count == 0 {
-            PrizeList.append(SinglePrize(id: count, PrizeName: data.PrizeName, PrizeMember: data.PrizeMember, PrizeM: data.PrizeMember))
-            PrizeList_cacu.append(SinglePrize(id: count, PrizeName: data.PrizeName, PrizeMember: data.PrizeMember, PrizeM: data.PrizeMember))
-        }
-        else {
-            PrizeList.append(SinglePrize(id: count, PrizeName: data.PrizeName, PrizeMember: data.PrizeMember, PrizeM: PrizeList[count - 1].PrizeM + data.PrizeMember))
-            PrizeList_cacu.append(SinglePrize(id: count, PrizeName: data.PrizeName, PrizeMember: data.PrizeMember, PrizeM: PrizeList[count - 1].PrizeM + data.PrizeMember))
-        }
-        count += 1
-    }
-    
-    func edit(index: Int, data: SinglePrize) {
-        var i = PrizeList[index].id + 1
-        if index == 0 {
-            PrizeList[index] = SinglePrize(id: PrizeList[index].id, PrizeName: data.PrizeName, PrizeMember: data.PrizeMember, PrizeM: data.PrizeMember)
-            PrizeList_cacu[index] = SinglePrize(id: PrizeList_cacu[index].id, PrizeName: data.PrizeName, PrizeMember: data.PrizeMember, PrizeM: data.PrizeMember)
-        }
-        else {
-            PrizeList[index] = SinglePrize(id: PrizeList[index].id, PrizeName: data.PrizeName, PrizeMember: data.PrizeMember, PrizeM: PrizeList[index - 1].PrizeM + data.PrizeMember)
-            PrizeList_cacu[index] = SinglePrize(id: PrizeList_cacu[index].id, PrizeName: data.PrizeName, PrizeMember: data.PrizeMember, PrizeM: PrizeList[index - 1].PrizeM + data.PrizeMember)
-        }
-        while i < PrizeList.count {
-            PrizeList[i].PrizeM = PrizeList[i - 1].PrizeM + PrizeList[i].PrizeMember
-            PrizeList_cacu[i].PrizeM = PrizeList_cacu[i - 1].PrizeM + PrizeList_cacu[i].PrizeMember
-            i += 1
-        }
-    }
-    
-    func remove(index: Int) {
-        PrizeList[index].isRemoved.toggle()
+    func reAppend() {
         PrizeList_cacu = []
         var i = 0, count_1 = 0
         while i < PrizeList.count {
@@ -57,6 +27,7 @@ class Prizes: ObservableObject {
             }
             i += 1
         }
+        
         i = 0
         while i < PrizeList_cacu.count {
             if i == 0 {
@@ -67,6 +38,37 @@ class Prizes: ObservableObject {
             }
             i += 1
         }
+    }
+    
+    func add(data: SinglePrize) {
+        if count == 0 {
+            PrizeList.append(SinglePrize(id: count, PrizeName: data.PrizeName, PrizeMember: data.PrizeMember, PrizeM: data.PrizeMember))
+        }
+        else {
+            PrizeList.append(SinglePrize(id: count, PrizeName: data.PrizeName, PrizeMember: data.PrizeMember, PrizeM: PrizeList[count - 1].PrizeM + data.PrizeMember))
+        }
+        count += 1
+        reAppend()
+    }
+    
+    func edit(index: Int, data: SinglePrize) {
+        var i = PrizeList[index].id + 1
+        if index == 0 {
+            PrizeList[index] = SinglePrize(id: PrizeList[index].id, PrizeName: data.PrizeName, PrizeMember: data.PrizeMember, PrizeM: data.PrizeMember)
+        }
+        else {
+            PrizeList[index] = SinglePrize(id: PrizeList[index].id, PrizeName: data.PrizeName, PrizeMember: data.PrizeMember, PrizeM: PrizeList[index - 1].PrizeM + data.PrizeMember)
+        }
+        while i < PrizeList.count {
+            PrizeList[i].PrizeM = PrizeList[i - 1].PrizeM + PrizeList[i].PrizeMember
+            i += 1
+        }
+        reAppend()
+    }
+    
+    func remove(index: Int) {
+        PrizeList[index].isRemoved.toggle()
+        reAppend()
     }
 }
 

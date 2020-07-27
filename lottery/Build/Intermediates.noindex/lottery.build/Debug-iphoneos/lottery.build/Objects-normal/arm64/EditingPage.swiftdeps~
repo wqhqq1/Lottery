@@ -21,7 +21,7 @@ depends-top-level:
 - "EnvironmentObject"
 - "Form"
 - "Int"
-- !private "KeyboardHost"
+- !private "KeyboardHost_edit"
 - "NSLocalizedString"
 - "NavigationView"
 - "PrizeData"
@@ -76,7 +76,7 @@ depends-member:
 - ["7lottery11EditingPageV", "EnvironmentObject"]
 - !private ["7lottery11EditingPageV", "Form"]
 - ["7lottery11EditingPageV", "Int"]
-- !private ["7lottery11EditingPageV", "KeyboardHost"]
+- !private ["7lottery11EditingPageV", "KeyboardHost_edit"]
 - !private ["7lottery11EditingPageV", "NSLocalizedString"]
 - !private ["7lottery11EditingPageV", "NavigationView"]
 - ["7lottery11EditingPageV", "PrizeData"]
@@ -141,8 +141,8 @@ depends-member:
 - !private ["SH", "numberPad"]
 - !private ["s12IdentifiableP", "init"]
 - !private ["Si", "init"]
-- !private ["7lottery12KeyboardHostV", ""]
-- !private ["7lottery12KeyboardHostV", "init"]
+- !private ["7lottery17KeyboardHost_editV", ""]
+- !private ["7lottery17KeyboardHost_editV", "init"]
 - ["s25LosslessStringConvertibleP", ""]
 - !private ["s25LosslessStringConvertibleP", "init"]
 - !private ["s10MirrorPathP", "init"]
@@ -193,7 +193,7 @@ depends-member:
 - ["7SwiftUI4ViewP", "EnvironmentObject"]
 - !private ["7SwiftUI4ViewP", "Form"]
 - !private ["7SwiftUI4ViewP", "Int"]
-- !private ["7SwiftUI4ViewP", "KeyboardHost"]
+- !private ["7SwiftUI4ViewP", "KeyboardHost_edit"]
 - !private ["7SwiftUI4ViewP", "NSLocalizedString"]
 - !private ["7SwiftUI4ViewP", "NavigationView"]
 - !private ["7SwiftUI4ViewP", "PrizeData"]
@@ -272,7 +272,7 @@ depends-nominal:
 - "SH"
 - !private "s12IdentifiableP"
 - !private "Si"
-- !private "7lottery12KeyboardHostV"
+- !private "7lottery17KeyboardHost_editV"
 - "s25LosslessStringConvertibleP"
 - !private "s10MirrorPathP"
 - "So8NSCodingP"

@@ -24,6 +24,7 @@ struct page2_add: View {
                         if !prize.isRemoved {
                             SingleCard(index: prize.id)
                                 .environmentObject(PrizeData)
+                                .animation(.spring())
                         }
                     }
                 }.padding(.horizontal)
@@ -59,7 +60,7 @@ struct page2_add: View {
                                 .foregroundColor(.blue)
                                 .frame(width: self.size, height: self.size)
                                 .padding(.horizontal, 10)
-                                .shadow(radius: 10)
+                                .shadow(color: Color("Shadow"), radius: 10)
                         }
                         .sheet(isPresented: self.$showeditingpage) {
                             EditingPage()
@@ -91,7 +92,7 @@ struct SingleCard: View {
                             .font(.headline)
                             .fontWeight(.heavy)
                             .foregroundColor(.black)
-                        Text("名额：\(PrizeData.PrizeList[index!].PrizeMember)")
+                        Text("\(NSLocalizedString("QTT", comment: ""))\(PrizeData.PrizeList[index!].PrizeMember)")
                             .font(.subheadline)
                             .foregroundColor(.black)
                     }
@@ -125,7 +126,7 @@ struct btnAdd: View {
             Group {
                 Circle()
                     .fill(Color.red)
-                    .shadow(radius: 10)
+                    .shadow(color: Color("Shadow"), radius: 10)
             }.frame(width: self.size, height: self.size)
             Group {
                 Text(NSLocalizedString("GOB", comment: ""))

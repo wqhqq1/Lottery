@@ -1,10 +1,13 @@
 ### Swift dependencies file v0 ###
 provides-top-level:
-- "KeyboardHost"
+- "KeyboardHost_offset3"
+- "KeyboardHost_edit"
 provides-nominal:
-- "7lottery12KeyboardHostV"
+- "7lottery20KeyboardHost_offset3V"
+- "7lottery17KeyboardHost_editV"
 provides-member:
-- ["7lottery12KeyboardHostV", ""]
+- ["7lottery20KeyboardHost_offset3V", ""]
+- ["7lottery17KeyboardHost_editV", ""]
 provides-dynamic-lookup:
 depends-top-level:
 - "-"
@@ -15,7 +18,8 @@ depends-top-level:
 - "Content"
 - "FloatLiteralType"
 - "IntegerLiteralType"
-- "KeyboardHost"
+- "KeyboardHost_edit"
+- "KeyboardHost_offset3"
 - "NotificationCenter"
 - "Rectangle"
 - "State"
@@ -117,30 +121,54 @@ depends-member:
 - ["SH", "userInfo"]
 - !private ["7SwiftUI15InsettableShapeP", "frame"]
 - !private ["7SwiftUI15InsettableShapeP", "init"]
-- !private ["7lottery12KeyboardHostV", "$keyboardHeight"]
-- ["7lottery12KeyboardHostV", "Body"]
-- ["7lottery12KeyboardHostV", "CGFloat"]
-- ["7lottery12KeyboardHostV", "CGRect"]
-- ["7lottery12KeyboardHostV", "Default_Body"]
-- ["7lottery12KeyboardHostV", "NotificationCenter"]
-- !private ["7lottery12KeyboardHostV", "Rectangle"]
-- ["7lottery12KeyboardHostV", "State"]
-- ["7lottery12KeyboardHostV", "UIResponder"]
-- !private ["7lottery12KeyboardHostV", "VStack"]
-- ["7lottery12KeyboardHostV", "View"]
-- ["7lottery12KeyboardHostV", "ViewBuilder"]
-- ["7lottery12KeyboardHostV", ""]
-- ["7lottery12KeyboardHostV", "_Default_Body"]
-- !private ["7lottery12KeyboardHostV", "_keyboardHeight"]
-- ["7lottery12KeyboardHostV", "_makeView"]
-- ["7lottery12KeyboardHostV", "_makeViewList"]
-- ["7lottery12KeyboardHostV", "_viewListCount"]
-- ["7lottery12KeyboardHostV", "body"]
-- !private ["7lottery12KeyboardHostV", "hidePublisher"]
-- ["7lottery12KeyboardHostV", "init"]
-- !private ["7lottery12KeyboardHostV", "keyboardHeight"]
-- !private ["7lottery12KeyboardHostV", "showPublisher"]
-- ["7lottery12KeyboardHostV", "view"]
+- !private ["7lottery17KeyboardHost_editV", "$keyboardHeight"]
+- ["7lottery17KeyboardHost_editV", "Body"]
+- ["7lottery17KeyboardHost_editV", "CGFloat"]
+- ["7lottery17KeyboardHost_editV", "CGRect"]
+- ["7lottery17KeyboardHost_editV", "Default_Body"]
+- ["7lottery17KeyboardHost_editV", "NotificationCenter"]
+- !private ["7lottery17KeyboardHost_editV", "Rectangle"]
+- ["7lottery17KeyboardHost_editV", "State"]
+- ["7lottery17KeyboardHost_editV", "UIResponder"]
+- !private ["7lottery17KeyboardHost_editV", "VStack"]
+- ["7lottery17KeyboardHost_editV", "View"]
+- ["7lottery17KeyboardHost_editV", "ViewBuilder"]
+- ["7lottery17KeyboardHost_editV", ""]
+- ["7lottery17KeyboardHost_editV", "_Default_Body"]
+- !private ["7lottery17KeyboardHost_editV", "_keyboardHeight"]
+- ["7lottery17KeyboardHost_editV", "_makeView"]
+- ["7lottery17KeyboardHost_editV", "_makeViewList"]
+- ["7lottery17KeyboardHost_editV", "_viewListCount"]
+- ["7lottery17KeyboardHost_editV", "body"]
+- !private ["7lottery17KeyboardHost_editV", "hidePublisher"]
+- ["7lottery17KeyboardHost_editV", "init"]
+- !private ["7lottery17KeyboardHost_editV", "keyboardHeight"]
+- !private ["7lottery17KeyboardHost_editV", "showPublisher"]
+- ["7lottery17KeyboardHost_editV", "view"]
+- !private ["7lottery20KeyboardHost_offset3V", "$keyboardHeight"]
+- ["7lottery20KeyboardHost_offset3V", "Body"]
+- ["7lottery20KeyboardHost_offset3V", "CGFloat"]
+- ["7lottery20KeyboardHost_offset3V", "CGRect"]
+- ["7lottery20KeyboardHost_offset3V", "Default_Body"]
+- ["7lottery20KeyboardHost_offset3V", "NotificationCenter"]
+- !private ["7lottery20KeyboardHost_offset3V", "Rectangle"]
+- ["7lottery20KeyboardHost_offset3V", "State"]
+- ["7lottery20KeyboardHost_offset3V", "UIResponder"]
+- !private ["7lottery20KeyboardHost_offset3V", "VStack"]
+- ["7lottery20KeyboardHost_offset3V", "View"]
+- ["7lottery20KeyboardHost_offset3V", "ViewBuilder"]
+- ["7lottery20KeyboardHost_offset3V", ""]
+- ["7lottery20KeyboardHost_offset3V", "_Default_Body"]
+- !private ["7lottery20KeyboardHost_offset3V", "_keyboardHeight"]
+- ["7lottery20KeyboardHost_offset3V", "_makeView"]
+- ["7lottery20KeyboardHost_offset3V", "_makeViewList"]
+- ["7lottery20KeyboardHost_offset3V", "_viewListCount"]
+- ["7lottery20KeyboardHost_offset3V", "body"]
+- !private ["7lottery20KeyboardHost_offset3V", "hidePublisher"]
+- ["7lottery20KeyboardHost_offset3V", "init"]
+- !private ["7lottery20KeyboardHost_offset3V", "keyboardHeight"]
+- !private ["7lottery20KeyboardHost_offset3V", "showPublisher"]
+- ["7lottery20KeyboardHost_offset3V", "view"]
 - ["s25LosslessStringConvertibleP", ""]
 - !private ["7Combine10PublishersO3MapV", "merge"]
 - ["So8NSCodingP", ""]
@@ -270,7 +298,8 @@ depends-nominal:
 - !private "7SwiftUI7GestureP"
 - "SH"
 - !private "7SwiftUI15InsettableShapeP"
-- "7lottery12KeyboardHostV"
+- "7lottery17KeyboardHost_editV"
+- "7lottery20KeyboardHost_offset3V"
 - "s25LosslessStringConvertibleP"
 - !private "7Combine10PublishersO3MapV"
 - "So8NSCodingP"
@@ -352,4 +381,4 @@ depends-external:
 - "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/StoreKit.framework/Headers/StoreKit.apinotes"
 - "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
 - "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
-interface-hash: "f23d26ddc30e2d742a9cc103c0d3880a"
+interface-hash: "308cd26ecfe25a7ca1a20c06c0ad7070"

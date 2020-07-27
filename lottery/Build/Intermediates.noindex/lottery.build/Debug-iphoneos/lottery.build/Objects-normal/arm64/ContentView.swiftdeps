@@ -28,7 +28,7 @@ depends-top-level:
 - "Image"
 - "Int"
 - "IntegerLiteralType"
-- "KeyboardHost"
+- "KeyboardHost_offset3"
 - "MN_counter"
 - "MN_spliter"
 - "MN_spliter_handinput"
@@ -57,25 +57,38 @@ depends-top-level:
 - "showalertCPB"
 depends-member:
 - !private ["s18AdditiveArithmeticP", ""]
+- !private ["s18AdditiveArithmeticP", "horizontal"]
 - !private ["s18AdditiveArithmeticP", "init"]
+- !private ["s18AdditiveArithmeticP", "trailing"]
 - !private ["7SwiftUI5AlertV", "init"]
-- ["7SwiftUI10AnimatableP", ""]
+- !private ["7SwiftUI10AnimatableP", ""]
+- !private ["7SwiftUI10AnimatableP", "horizontal"]
+- !private ["7SwiftUI10AnimatableP", "trailing"]
 - ["Sa", "init"]
 - ["SK", ""]
 - ["SK", "init"]
+- !private ["SB", "horizontal"]
+- !private ["SB", "trailing"]
 - !private ["Sz", ""]
 - !private ["Sz", "init"]
 - !private ["7SwiftUI6ButtonV", "alert"]
 - !private ["7SwiftUI5AlertV6ButtonV", "default"]
 - !private ["7SwiftUI6ButtonV", "init"]
+- !private ["12CoreGraphics7CGFloatV", "horizontal"]
+- !private ["12CoreGraphics7CGFloatV", "trailing"]
 - ["8CloudKit21CKRecordValueProtocolP", "init"]
+- !private ["s7CVarArgP", ""]
 - !private ["s7CVarArgP", "general"]
+- !private ["s7CVarArgP", "horizontal"]
 - ["s7CVarArgP", "init"]
 - !private ["s7CVarArgP", "string"]
+- !private ["s7CVarArgP", "trailing"]
 - ["Sl", ""]
 - ["Sl", "init"]
-- ["SL", ""]
+- !private ["SL", ""]
+- !private ["SL", "horizontal"]
 - !private ["SL", "init"]
+- !private ["SL", "trailing"]
 - !private ["7lottery11ContentViewV", "$MemberNamesInput"]
 - !private ["7lottery11ContentViewV", "$MemberNumberInput"]
 - !private ["7lottery11ContentViewV", "$PrizeNumberInput"]
@@ -89,7 +102,7 @@ depends-member:
 - !private ["7lottery11ContentViewV", "HStack"]
 - !private ["7lottery11ContentViewV", "Image"]
 - ["7lottery11ContentViewV", "Int"]
-- !private ["7lottery11ContentViewV", "KeyboardHost"]
+- !private ["7lottery11ContentViewV", "KeyboardHost_offset3"]
 - !private ["7lottery11ContentViewV", "MN_counter"]
 - !private ["7lottery11ContentViewV", "MN_spliter"]
 - !private ["7lottery11ContentViewV", "MN_spliter_handinput"]
@@ -136,56 +149,79 @@ depends-member:
 - ["s28CustomDebugStringConvertibleP", "init"]
 - !private ["s28CustomDebugStringConvertibleP", "string"]
 - !private ["s17CustomReflectableP", "default"]
+- !private ["s17CustomReflectableP", "horizontal"]
 - ["s17CustomReflectableP", "init"]
-- ["s23CustomStringConvertibleP", ""]
+- !private ["s17CustomReflectableP", "trailing"]
+- !private ["s23CustomStringConvertibleP", ""]
 - !private ["s23CustomStringConvertibleP", "general"]
+- !private ["s23CustomStringConvertibleP", "horizontal"]
 - ["s23CustomStringConvertibleP", "init"]
 - !private ["s23CustomStringConvertibleP", "string"]
+- !private ["s23CustomStringConvertibleP", "trailing"]
 - ["10Foundation12DataProtocolP", ""]
 - ["10Foundation12DataProtocolP", "init"]
 - !private ["Se", "default"]
+- !private ["Se", "horizontal"]
 - ["Se", "init"]
+- !private ["Se", "trailing"]
 - ["7SwiftUI15DynamicPropertyP", "init"]
 - ["7SwiftUI15DynamicPropertyP", "wrappedValue"]
+- !private ["7SwiftUI10EdgeInsetsV", "horizontal"]
+- !private ["7SwiftUI10EdgeInsetsV", "trailing"]
 - !private ["SE", "default"]
+- !private ["SE", "horizontal"]
 - ["SE", "init"]
+- !private ["SE", "trailing"]
 - ["SQ", ""]
 - !private ["SQ", "default"]
 - !private ["SQ", "general"]
+- !private ["SQ", "horizontal"]
 - ["SQ", "init"]
 - !private ["SQ", "numberPad"]
 - !private ["SQ", "padding"]
 - !private ["SQ", "string"]
+- !private ["SQ", "trailing"]
 - ["s25ExpressibleByArrayLiteralP", ""]
+- !private ["s25ExpressibleByArrayLiteralP", "horizontal"]
 - ["s25ExpressibleByArrayLiteralP", "init"]
-- ["s43ExpressibleByExtendedGraphemeClusterLiteralP", ""]
+- !private ["s25ExpressibleByArrayLiteralP", "trailing"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", ""]
 - !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s25ExpressibleByFloatLiteralP", ""]
+- !private ["s25ExpressibleByFloatLiteralP", "horizontal"]
+- !private ["s25ExpressibleByFloatLiteralP", "trailing"]
 - !private ["s27ExpressibleByIntegerLiteralP", ""]
+- !private ["s27ExpressibleByIntegerLiteralP", "horizontal"]
 - !private ["s27ExpressibleByIntegerLiteralP", "init"]
+- !private ["s27ExpressibleByIntegerLiteralP", "trailing"]
 - !private ["s23ExpressibleByNilLiteralP", "default"]
 - !private ["s23ExpressibleByNilLiteralP", "init"]
-- ["s32ExpressibleByStringInterpolationP", ""]
+- !private ["s32ExpressibleByStringInterpolationP", ""]
 - !private ["s32ExpressibleByStringInterpolationP", "init"]
 - !private ["s26ExpressibleByStringLiteralP", "StringLiteralType"]
-- ["s26ExpressibleByStringLiteralP", ""]
+- !private ["s26ExpressibleByStringLiteralP", ""]
 - !private ["s26ExpressibleByStringLiteralP", "init"]
-- ["s33ExpressibleByUnicodeScalarLiteralP", ""]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", ""]
 - !private ["s33ExpressibleByUnicodeScalarLiteralP", "init"]
 - !private ["s17FixedWidthIntegerP", "init"]
+- !private ["SF", ""]
+- !private ["SF", "horizontal"]
+- !private ["SF", "trailing"]
 - !private ["7SwiftUI7GestureP", "default"]
 - !private ["7SwiftUI6HStackV", "init"]
-- !private ["7SwiftUI6HStackV", "padding"]
-- ["SH", ""]
+- !private ["SH", ""]
 - !private ["SH", "default"]
 - !private ["SH", "general"]
+- !private ["SH", "horizontal"]
 - ["SH", "init"]
 - !private ["SH", "numberPad"]
 - !private ["SH", "string"]
+- !private ["SH", "trailing"]
 - !private ["7SwiftUI5ImageV", "init"]
 - !private ["Si", "init"]
-- !private ["7lottery12KeyboardHostV", ""]
-- !private ["7lottery12KeyboardHostV", "init"]
-- ["s25LosslessStringConvertibleP", ""]
+- !private ["7lottery20KeyboardHost_offset3V", ""]
+- !private ["7lottery20KeyboardHost_offset3V", "init"]
+- !private ["s25LosslessStringConvertibleP", ""]
 - !private ["s25LosslessStringConvertibleP", "init"]
 - !private ["s10MirrorPathP", "init"]
 - ["SM", ""]
@@ -204,50 +240,68 @@ depends-member:
 - !private ["7SwiftUI14NavigationViewV", "navigationViewStyle"]
 - !private ["7SwiftUI19NavigationViewStyleP", "init"]
 - !private ["Sj", ""]
+- !private ["Sj", "horizontal"]
 - !private ["Sj", "init"]
+- !private ["Sj", "trailing"]
 - !private ["7SwiftUI14ObservedObjectV", "init"]
 - !private ["7SwiftUI14ObservedObjectV", "projectedValue"]
 - !private ["7SwiftUI14ObservedObjectV", "subscript"]
 - !private ["7SwiftUI14ObservedObjectV", "wrappedValue"]
+- !private ["s9OptionSetP", "horizontal"]
+- !private ["s9OptionSetP", "trailing"]
 - !private ["Sq", "default"]
 - !private ["7lottery6PrizesC", ""]
 - ["Sk", ""]
 - ["Sk", "init"]
 - ["Sm", ""]
 - ["Sm", "init"]
+- !private ["SY", ""]
+- !private ["SY", "horizontal"]
 - !private ["SY", "numberPad"]
+- !private ["SY", "trailing"]
 - !private ["7SwiftUI27RoundedBorderTextFieldStyleV", "init"]
 - !private ["s10SIMDScalarP", "init"]
 - !private ["7SwiftUI10ScrollViewV", "init"]
 - !private ["7SwiftUI10ScrollViewV", "navigationBarTitle"]
 - ["ST", ""]
 - ["ST", "init"]
+- !private ["7SwiftUI4EdgeO3SetV", "horizontal"]
+- !private ["7SwiftUI4EdgeO3SetV", "trailing"]
+- !private ["s10SetAlgebraP", ""]
+- !private ["s10SetAlgebraP", "horizontal"]
+- !private ["s10SetAlgebraP", "trailing"]
 - !private ["SZ", "init"]
 - !private ["s13SignedNumericP", ""]
+- !private ["s13SignedNumericP", "horizontal"]
 - !private ["s13SignedNumericP", "init"]
+- !private ["s13SignedNumericP", "trailing"]
 - !private ["7SwiftUI24StackNavigationViewStyleV", "init"]
 - ["7SwiftUI5StateV", "init"]
 - ["7SwiftUI5StateV", "projectedValue"]
 - ["7SwiftUI5StateV", "subscript"]
 - ["7SwiftUI5StateV", "wrappedValue"]
 - !private ["Sx", ""]
+- !private ["Sx", "horizontal"]
 - !private ["Sx", "init"]
+- !private ["Sx", "trailing"]
 - !private ["SS", "init"]
 - !private ["Sy", "init"]
 - !private ["7SwiftUI4TextV", "init"]
 - !private ["7SwiftUI4TextV", "padding"]
 - !private ["7SwiftUI9TextFieldV", "init"]
 - !private ["7SwiftUI9TextFieldV", "keyboardType"]
-- !private ["7SwiftUI9TextFieldV", "textFieldStyle"]
+- !private ["7SwiftUI9TextFieldV", "padding"]
 - !private ["7SwiftUI14TextFieldStyleP", "init"]
-- ["s16TextOutputStreamP", ""]
+- !private ["s16TextOutputStreamP", ""]
 - !private ["s16TextOutputStreamP", "init"]
-- ["s20TextOutputStreamableP", ""]
+- !private ["s20TextOutputStreamableP", ""]
 - !private ["s20TextOutputStreamableP", "init"]
 - !private ["So14UIKeyboardTypeV", "numberPad"]
 - !private ["So12UIPasteboardC", "general"]
 - !private ["So12UIPasteboardC", "string"]
 - !private ["7SwiftUI6VStackV", "init"]
+- !private ["7SwiftUI16VectorArithmeticP", "horizontal"]
+- !private ["7SwiftUI16VectorArithmeticP", "trailing"]
 - !private ["7SwiftUI4ViewP", "$MemberNamesInput"]
 - !private ["7SwiftUI4ViewP", "$MemberNumberInput"]
 - !private ["7SwiftUI4ViewP", "$selection"]
@@ -260,7 +314,7 @@ depends-member:
 - !private ["7SwiftUI4ViewP", "HStack"]
 - !private ["7SwiftUI4ViewP", "Image"]
 - !private ["7SwiftUI4ViewP", "Int"]
-- !private ["7SwiftUI4ViewP", "KeyboardHost"]
+- !private ["7SwiftUI4ViewP", "KeyboardHost_offset3"]
 - !private ["7SwiftUI4ViewP", "MN_counter"]
 - !private ["7SwiftUI4ViewP", "MN_spliter"]
 - !private ["7SwiftUI4ViewP", "MN_spliter_handinput"]
@@ -306,16 +360,22 @@ depends-member:
 - !private ["7SwiftUI11ViewBuilderV", "buildIf"]
 - !private ["7SwiftUI11ViewBuilderV", "buildOptional"]
 - ["s14_ArrayProtocolP", "init"]
+- !private ["s15_CVarArgAlignedP", "horizontal"]
+- !private ["s15_CVarArgAlignedP", "trailing"]
+- !private ["s22_CVarArgPassedAsDoubleP", "horizontal"]
+- !private ["s22_CVarArgPassedAsDoubleP", "trailing"]
 - !private ["s30_CustomPlaygroundQuickLookableP", "init"]
 - ["s24_DestructorSafeContainerP", "init"]
 - ["s35_ExpressibleByBuiltinBooleanLiteralP", "init"]
-- ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", ""]
+- !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", ""]
 - !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "init"]
 - ["s35_ExpressibleByBuiltinIntegerLiteralP", "init"]
 - ["s34_ExpressibleByBuiltinStringLiteralP", "init"]
-- ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", ""]
+- !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", ""]
 - !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "init"]
+- !private ["7SwiftUI18_FormatSpecifiableP", "horizontal"]
 - !private ["7SwiftUI18_FormatSpecifiableP", "init"]
+- !private ["7SwiftUI18_FormatSpecifiableP", "trailing"]
 - ["s19_HasContiguousBytesP", "init"]
 - ["s35_HasCustomAnyHashableRepresentationP", "init"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "general"]
@@ -323,23 +383,29 @@ depends-member:
 - !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "general"]
 - !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "string"]
 - !private ["s21_ObjectiveCBridgeableP", "default"]
+- !private ["s21_ObjectiveCBridgeableP", "horizontal"]
 - ["s21_ObjectiveCBridgeableP", "init"]
+- !private ["s21_ObjectiveCBridgeableP", "trailing"]
+- !private ["7SwiftUI11_VectorMathP", "horizontal"]
+- !private ["7SwiftUI11_VectorMathP", "trailing"]
 - !private ["7lottery9page2_addV", ""]
 - !private ["7lottery9page2_addV", "init"]
 depends-nominal:
 - !private "s18AdditiveArithmeticP"
 - !private "7SwiftUI5AlertV"
-- "7SwiftUI10AnimatableP"
+- !private "7SwiftUI10AnimatableP"
 - "Sa"
 - "SK"
+- !private "SB"
 - !private "Sz"
 - !private "7SwiftUI6ButtonV"
 - !private "7SwiftUI5AlertV6ButtonV"
 - !private "7SwiftUI6ButtonV"
+- !private "12CoreGraphics7CGFloatV"
 - "8CloudKit21CKRecordValueProtocolP"
 - "s7CVarArgP"
 - "Sl"
-- "SL"
+- !private "SL"
 - "7lottery11ContentViewV"
 - "10Foundation15ContiguousBytesP"
 - "s28CustomDebugStringConvertibleP"
@@ -348,23 +414,26 @@ depends-nominal:
 - "10Foundation12DataProtocolP"
 - "Se"
 - "7SwiftUI15DynamicPropertyP"
+- !private "7SwiftUI10EdgeInsetsV"
 - "SE"
 - "SQ"
 - "s25ExpressibleByArrayLiteralP"
-- "s43ExpressibleByExtendedGraphemeClusterLiteralP"
+- !private "s43ExpressibleByExtendedGraphemeClusterLiteralP"
+- !private "s25ExpressibleByFloatLiteralP"
 - !private "s27ExpressibleByIntegerLiteralP"
 - !private "s23ExpressibleByNilLiteralP"
-- "s32ExpressibleByStringInterpolationP"
-- "s26ExpressibleByStringLiteralP"
-- "s33ExpressibleByUnicodeScalarLiteralP"
+- !private "s32ExpressibleByStringInterpolationP"
+- !private "s26ExpressibleByStringLiteralP"
+- !private "s33ExpressibleByUnicodeScalarLiteralP"
 - !private "s17FixedWidthIntegerP"
+- !private "SF"
 - !private "7SwiftUI7GestureP"
 - !private "7SwiftUI6HStackV"
 - "SH"
 - !private "7SwiftUI5ImageV"
 - !private "Si"
-- !private "7lottery12KeyboardHostV"
-- "s25LosslessStringConvertibleP"
+- !private "7lottery20KeyboardHost_offset3V"
+- !private "s25LosslessStringConvertibleP"
 - !private "s10MirrorPathP"
 - "SM"
 - "10Foundation19MutableDataProtocolP"
@@ -376,6 +445,7 @@ depends-nominal:
 - !private "7SwiftUI19NavigationViewStyleP"
 - !private "Sj"
 - !private "7SwiftUI14ObservedObjectV"
+- !private "s9OptionSetP"
 - !private "Sq"
 - !private "7lottery6PrizesC"
 - "Sk"
@@ -385,6 +455,8 @@ depends-nominal:
 - !private "s10SIMDScalarP"
 - !private "7SwiftUI10ScrollViewV"
 - "ST"
+- !private "7SwiftUI4EdgeO3SetV"
+- !private "s10SetAlgebraP"
 - !private "SZ"
 - !private "s13SignedNumericP"
 - !private "7SwiftUI24StackNavigationViewStyleV"
@@ -395,27 +467,31 @@ depends-nominal:
 - !private "7SwiftUI4TextV"
 - !private "7SwiftUI9TextFieldV"
 - !private "7SwiftUI14TextFieldStyleP"
-- "s16TextOutputStreamP"
-- "s20TextOutputStreamableP"
+- !private "s16TextOutputStreamP"
+- !private "s20TextOutputStreamableP"
 - !private "So14UIKeyboardTypeV"
 - !private "So12UIPasteboardC"
 - !private "7SwiftUI6VStackV"
+- !private "7SwiftUI16VectorArithmeticP"
 - "7SwiftUI4ViewP"
 - !private "7SwiftUI11ViewBuilderV"
 - "s14_ArrayProtocolP"
+- !private "s15_CVarArgAlignedP"
+- !private "s22_CVarArgPassedAsDoubleP"
 - !private "s30_CustomPlaygroundQuickLookableP"
 - "s24_DestructorSafeContainerP"
 - "s35_ExpressibleByBuiltinBooleanLiteralP"
-- "s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP"
+- !private "s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP"
 - "s35_ExpressibleByBuiltinIntegerLiteralP"
 - "s34_ExpressibleByBuiltinStringLiteralP"
-- "s41_ExpressibleByBuiltinUnicodeScalarLiteralP"
+- !private "s41_ExpressibleByBuiltinUnicodeScalarLiteralP"
 - !private "7SwiftUI18_FormatSpecifiableP"
 - "s19_HasContiguousBytesP"
 - "s35_HasCustomAnyHashableRepresentationP"
 - !private "10Foundation27_KeyValueCodingAndObservingP"
 - !private "10Foundation37_KeyValueCodingAndObservingPublishingP"
 - "s21_ObjectiveCBridgeableP"
+- !private "7SwiftUI11_VectorMathP"
 - !private "7lottery9page2_addV"
 depends-dynamic-lookup:
 depends-external:

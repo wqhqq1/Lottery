@@ -18,16 +18,17 @@ struct ContentView: View {
     @State var showalertCPB = false
     var body: some View {
         NavigationView{
-            KeyboardHost {
+            KeyboardHost_offset3 {
             ScrollView {
         VStack {
             Text(NSLocalizedString("MNL", comment: "")).padding()
             TextField(NSLocalizedString("MNTF", comment: ""), text: $MemberNumberInput)
                 .keyboardType(.numberPad)
-                .padding()
+                .padding(.horizontal)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
             HStack {
                 TextField(NSLocalizedString("NMTF", comment: ""), text: $MemberNamesInput)
+                    .padding()
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                 Button(action: {
                     let Pboard = UIPasteboard.general
@@ -46,7 +47,8 @@ struct ContentView: View {
                 .alert(isPresented: $showalertCPB) {
                     Alert(title: Text("Fatal Error"), message: Text("Clip board is empty"), dismissButton: .default(Text("OK")))
                 }
-            }.padding()
+                .padding(.trailing)
+            }
             NavigationLink(destination: page2_add(), tag: 1, selection: $selection) {
                 Button(action: {
                     if MemberNamesInput != "" && MemberNumberInput != ""

@@ -15,7 +15,7 @@ struct EditingPage: View {
     @State var showalert = false
     var index: Int?
     var body: some View {
-        KeyboardHost {
+        KeyboardHost_edit {
             NavigationView {
                 Form {
                     Section(header: Text(NSLocalizedString("PT", comment: ""))) {
