@@ -15,38 +15,42 @@ struct EditingPage: View {
     @State var showalert = false
     var index: Int?
     var body: some View {
-        Form {
-            Section(header: Text(NSLocalizedString("PT", comment: ""))) {
-                TextField(NSLocalizedString("PTF", comment: ""), text: $prizename)
-                TextField(NSLocalizedString("PNTTF", comment: ""), text: $prizequota)
-                    .keyboardType(.numberPad)
-            }
-            
-            Section {
-                Button(action: {
-                    if self.prizequota != "" {
-                        if index == nil {
-                            PrizeData.add(data: SinglePrize(PrizeName: self.prizename, PrizeMember: Int(self.prizequota)!))
-                        }
-                        else {
-                            PrizeData.edit(index: self.index!, data: SinglePrize(PrizeName: self.prizename, PrizeMember: Int(self.prizequota)!))
-                        }
-                        self.presentation.wrappedValue.dismiss()
+        KeyboardHost {
+            NavigationView {
+                Form {
+                    Section(header: Text(NSLocalizedString("PT", comment: ""))) {
+                        TextField(NSLocalizedString("PTF", comment: ""), text: $prizename)
+                        TextField(NSLocalizedString("PNTTF", comment: ""), text: $prizequota)
+                            .keyboardType(.numberPad)
                     }
-                    else {
-                        showalert = true
+                    
+                    Section {
+                        Button(action: {
+                            if self.prizequota != "" {
+                                if index == nil {
+                                    PrizeData.add(data: SinglePrize(PrizeName: self.prizename, PrizeMember: Int(self.prizequota)!))
+                                }
+                                else {
+                                    PrizeData.edit(index: self.index!, data: SinglePrize(PrizeName: self.prizename, PrizeMember: Int(self.prizequota)!))
+                                }
+                                self.presentation.wrappedValue.dismiss()
+                            }
+                            else {
+                                showalert = true
+                            }
+                        }){
+                            Text(NSLocalizedString("EXT", comment: ""))
+                        }.alert(isPresented: $showalert) {
+                            Alert(title: Text("Fatal Error"), message: Text("Unable to read text fields!"), dismissButton: .default(Text("OK")))
+                        }
+                        Button(action: {
+                            self.presentation.wrappedValue.dismiss()
+                        }){
+                            Text(NSLocalizedString("CANL", comment: ""))
+                        }
                     }
-                }){
-                    Text(NSLocalizedString("EXT", comment: ""))
-                }.alert(isPresented: $showalert) {
-                    Alert(title: Text("Fatal Error"), message: Text("Unable to read text fields!"), dismissButton: .default(Text("OK")))
-                }
-                Button(action: {
-                    self.presentation.wrappedValue.dismiss()
-                }){
-                    Text(NSLocalizedString("CANL", comment: ""))
-                }
-            }
+                }.navigationBarTitle(index == nil ? NSLocalizedString("ADD", comment: ""):NSLocalizedString("EDIT", comment: ""))
+            }.navigationViewStyle(StackNavigationViewStyle())
         }
     }
 }

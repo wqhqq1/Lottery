@@ -29,7 +29,7 @@ depends-top-level:
 - !private "showPublisher"
 - "view"
 depends-member:
-- ["7SwiftUI10AnimatableP", ""]
+- !private ["7SwiftUI10AnimatableP", ""]
 - !private ["7SwiftUI10AnimatableP", "frame"]
 - ["7SwiftUI10AnimatableP", "height"]
 - !private ["7SwiftUI10AnimatableP", "init"]

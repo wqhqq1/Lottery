@@ -11,7 +11,7 @@ var AllPrizesMember: Int = 0, rands = [Int]()
 
 struct page2_add: View {
     
-    @ObservedObject var PrizeData = Prizes(data: [SinglePrize(PrizeName: "一等奖", PrizeMember: 1)])
+    @ObservedObject var PrizeData = Prizes()
     @State var selection: Int? = nil
     @State var showeditingpage = false
     var size: CGFloat = 65.0
@@ -20,9 +20,11 @@ struct page2_add: View {
         ZStack {
             VStack {
                 ScrollView{
-                ForEach(PrizeData.PrizeList) {prize in
-                    SingleCard(index: prize.id)
-                            .environmentObject(PrizeData)
+                    ForEach(PrizeData.PrizeList) {prize in
+                        if !prize.isRemoved {
+                            SingleCard(index: prize.id)
+                                .environmentObject(PrizeData)
+                        }
                     }
                 }.padding(.horizontal)
             }
@@ -31,14 +33,15 @@ struct page2_add: View {
                 HStack{
                     Spacer()
                     HStack {
-                        NavigationLink(destination: page3_result(PrizeData: PrizeData.PrizeList), tag: 1, selection: $selection) {
+                        NavigationLink(destination: page3_result(PrizeData: PrizeData.PrizeList_cacu), tag: 1, selection: $selection) {
                             Button(action: {
-                                AllPrizesMember = APM_ccltor(data: PrizeData.PrizeList)
+                                AllPrizesMember = APM_ccltor(data: PrizeData.PrizeList_cacu)
                                 rands = Random(start: 1, end: AllPrizesMember + 1, Members: MemberNumber)
                                 var i = 0, j = 0
-                                while i < PrizeData.PrizeList.count {                        while j < PrizeData.PrizeList[i].PrizeM {
-                                    PrizeData.PrizeList[i].Lottery_result += "\n" + MemberNames[rands[j] - 1] + " "
-                                        j += 1
+                                while i < PrizeData.PrizeList_cacu.count {
+                                        while j < PrizeData.PrizeList_cacu[i].PrizeM {
+                                            PrizeData.PrizeList_cacu[i].Lottery_result += "\n" + MemberNames[rands[j] - 1] + " "
+                                            j += 1
                                         }
                                     i += 1
                                 }
@@ -57,7 +60,7 @@ struct page2_add: View {
                                 .frame(width: self.size, height: self.size)
                                 .padding(.horizontal, 10)
                                 .shadow(radius: 10)
-                            }
+                        }
                         .sheet(isPresented: self.$showeditingpage) {
                             EditingPage()
                                 .environmentObject(PrizeData)
@@ -65,8 +68,8 @@ struct page2_add: View {
                     }
                 }
             }
-            }.navigationBarTitle(NSLocalizedString("ADDT", comment: ""))
-        }
+        }.navigationBarTitle(NSLocalizedString("ADDT", comment: ""))
+    }
 }
 
 struct SingleCard: View {
@@ -82,27 +85,36 @@ struct SingleCard: View {
                 showeditingpage = true
             }){
                 Group {
-            
-                VStack(alignment: .leading, spacing: 6.0) {
-                    Text(PrizeData.PrizeList[index!].PrizeName)
-                        .font(.headline)
-                        .fontWeight(.heavy)
-                        .foregroundColor(.black)
-                    Text("名额：\(PrizeData.PrizeList[index!].PrizeMember)")
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                }
-                Spacer()
+                    
+                    VStack(alignment: .leading, spacing: 6.0) {
+                        Text(PrizeData.PrizeList[index!].PrizeName)
+                            .font(.headline)
+                            .fontWeight(.heavy)
+                            .foregroundColor(.black)
+                        Text("名额：\(PrizeData.PrizeList[index!].PrizeMember)")
+                            .font(.subheadline)
+                            .foregroundColor(.black)
+                    }
+                    Spacer()
                 }
             }.sheet(isPresented: $showeditingpage) {
                 EditingPage(prizename: PrizeData.PrizeList[index!].PrizeName, prizequota: String(PrizeData.PrizeList[index!].PrizeMember), index: self.index)
                     .environmentObject(PrizeData)
             }
+            Button(action: {
+                PrizeData.remove(index: self.index!)
+            }){
+                Image(systemName: "trash.fill")
+                    .resizable()
+                    .frame(width: 25, height: 30)
+                    .foregroundColor(.black)
+                    .padding(.trailing)
+            }
         }.frame(height: 80)
-        .background(Color.white)
+        .background(Color("CardBG"))
         .cornerRadius(10)
         .padding(.bottom)
-        .shadow(radius: 10, x: 0, y: 10)
+        .shadow(color: Color("Shadow"), radius: 10, x: 0, y: 10)
     }
 }
 

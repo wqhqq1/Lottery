@@ -223,7 +223,6 @@ depends-member:
 - ["So21UIApplicationDelegateP", "deinit"]
 - ["So21UIApplicationDelegateP", "init"]
 - ["So21UIApplicationDelegateP", "window"]
-- ["So18UIFocusEnvironmentP", ""]
 - ["So30UIPasteConfigurationSupportingP", "Bool"]
 - ["So30UIPasteConfigurationSupportingP", "ConnectionOptions"]
 - ["So30UIPasteConfigurationSupportingP", "LaunchOptionsKey"]
@@ -390,7 +389,6 @@ depends-nominal:
 - "s20TextOutputStreamableP"
 - "So13UIApplicationC"
 - "So21UIApplicationDelegateP"
-- "So18UIFocusEnvironmentP"
 - "So30UIPasteConfigurationSupportingP"
 - "So11UIResponderC"
 - "So30UIResponderStandardEditActionsP"

@@ -18,6 +18,7 @@ provides-member:
 - ["7lottery20ContentView_PreviewsV", ""]
 provides-dynamic-lookup:
 depends-top-level:
+- "!"
 - "$selection"
 - "$showeditingpage"
 - "+"
@@ -26,7 +27,6 @@ depends-top-level:
 - "<"
 - "APM_ccltor"
 - "AllPrizesMember"
-- "Array"
 - !private "AssignmentPrecedence"
 - "BooleanLiteralType"
 - "Button"
@@ -55,11 +55,10 @@ depends-top-level:
 - "Rectangle"
 - "ScrollView"
 - "SingleCard"
-- "SinglePrize"
 - "Spacer"
 - "State"
 - "String"
-- "StringLiteralType"
+- !private "StringLiteralType"
 - "Text"
 - "UnicodeScalarType"
 - "VStack"
@@ -76,12 +75,14 @@ depends-member:
 - !private ["s18AdditiveArithmeticP", ""]
 - !private ["s18AdditiveArithmeticP", "bottom"]
 - !private ["s18AdditiveArithmeticP", "horizontal"]
+- !private ["s18AdditiveArithmeticP", "trailing"]
 - ["7SwiftUI10AnimatableP", ""]
 - !private ["7SwiftUI10AnimatableP", "bottom"]
 - !private ["7SwiftUI10AnimatableP", "fill"]
 - !private ["7SwiftUI10AnimatableP", "frame"]
 - !private ["7SwiftUI10AnimatableP", "horizontal"]
 - !private ["7SwiftUI10AnimatableP", "init"]
+- !private ["7SwiftUI10AnimatableP", "trailing"]
 - !private ["Sa", "count"]
 - ["Sa", "init"]
 - !private ["Sa", "subscript"]
@@ -99,10 +100,12 @@ depends-member:
 - !private ["SK", "subscript"]
 - !private ["SB", "bottom"]
 - !private ["SB", "horizontal"]
+- !private ["SB", "trailing"]
 - !private ["7SwiftUI6ButtonV", "init"]
 - !private ["7SwiftUI6ButtonV", "sheet"]
 - !private ["12CoreGraphics7CGFloatV", "bottom"]
 - !private ["12CoreGraphics7CGFloatV", "horizontal"]
+- !private ["12CoreGraphics7CGFloatV", "trailing"]
 - !private ["8CloudKit21CKRecordValueProtocolP", "count"]
 - ["8CloudKit21CKRecordValueProtocolP", "init"]
 - !private ["8CloudKit21CKRecordValueProtocolP", "subscript"]
@@ -112,6 +115,7 @@ depends-member:
 - !private ["s7CVarArgP", "horizontal"]
 - ["s7CVarArgP", "init"]
 - !private ["s7CVarArgP", "subscript"]
+- !private ["s7CVarArgP", "trailing"]
 - !private ["7SwiftUI6CircleV", "fill"]
 - !private ["7SwiftUI6CircleV", "init"]
 - !private ["Sl", "Lottery_result"]
@@ -124,8 +128,8 @@ depends-member:
 - !private ["Sl", "subscript"]
 - !private ["7SwiftUI5ColorV", "black"]
 - !private ["7SwiftUI5ColorV", "blue"]
+- !private ["7SwiftUI5ColorV", "init"]
 - !private ["7SwiftUI5ColorV", "red"]
-- !private ["7SwiftUI5ColorV", "secondary"]
 - !private ["7SwiftUI5ColorV", "white"]
 - !private ["7SwiftUI8CommandsP", "frame"]
 - !private ["7SwiftUI8CommandsP", "init"]
@@ -133,6 +137,7 @@ depends-member:
 - !private ["SL", "bottom"]
 - !private ["SL", "horizontal"]
 - !private ["SL", "init"]
+- !private ["SL", "trailing"]
 - ["7lottery20ContentView_PreviewsV", "Default_Previews"]
 - ["7lottery20ContentView_PreviewsV", "Previews"]
 - ["7lottery20ContentView_PreviewsV", "View"]
@@ -162,7 +167,8 @@ depends-member:
 - !private ["s28CustomDebugStringConvertibleP", "heavy"]
 - ["s28CustomDebugStringConvertibleP", "init"]
 - !private ["s28CustomDebugStringConvertibleP", "largeTitle"]
-- !private ["s28CustomDebugStringConvertibleP", "secondary"]
+- !private ["s28CustomDebugStringConvertibleP", "none"]
+- !private ["s28CustomDebugStringConvertibleP", "some"]
 - !private ["s28CustomDebugStringConvertibleP", "subheadline"]
 - !private ["s28CustomDebugStringConvertibleP", "subscript"]
 - !private ["s28CustomDebugStringConvertibleP", "white"]
@@ -179,9 +185,11 @@ depends-member:
 - !private ["s17CustomReflectableP", "horizontal"]
 - ["s17CustomReflectableP", "init"]
 - !private ["s17CustomReflectableP", "largeTitle"]
-- !private ["s17CustomReflectableP", "secondary"]
+- !private ["s17CustomReflectableP", "none"]
+- !private ["s17CustomReflectableP", "some"]
 - !private ["s17CustomReflectableP", "subheadline"]
 - !private ["s17CustomReflectableP", "subscript"]
+- !private ["s17CustomReflectableP", "trailing"]
 - !private ["s17CustomReflectableP", "white"]
 - !private ["s23CustomStringConvertibleP", "Lottery_result"]
 - !private ["s23CustomStringConvertibleP", "PrizeM"]
@@ -195,8 +203,8 @@ depends-member:
 - !private ["s23CustomStringConvertibleP", "horizontal"]
 - ["s23CustomStringConvertibleP", "init"]
 - !private ["s23CustomStringConvertibleP", "red"]
-- !private ["s23CustomStringConvertibleP", "secondary"]
 - !private ["s23CustomStringConvertibleP", "subscript"]
+- !private ["s23CustomStringConvertibleP", "trailing"]
 - !private ["s23CustomStringConvertibleP", "white"]
 - !private ["10Foundation12DataProtocolP", "Lottery_result"]
 - !private ["10Foundation12DataProtocolP", "PrizeM"]
@@ -215,15 +223,18 @@ depends-member:
 - !private ["Se", "horizontal"]
 - ["Se", "init"]
 - !private ["Se", "largeTitle"]
-- !private ["Se", "secondary"]
+- !private ["Se", "none"]
+- !private ["Se", "some"]
 - !private ["Se", "subheadline"]
 - !private ["Se", "subscript"]
+- !private ["Se", "trailing"]
 - !private ["Se", "white"]
 - ["7SwiftUI15DynamicPropertyP", "init"]
 - ["7SwiftUI15DynamicPropertyP", "wrappedValue"]
 - !private ["7SwiftUI18DynamicViewContentP", "init"]
 - !private ["7SwiftUI10EdgeInsetsV", "bottom"]
 - !private ["7SwiftUI10EdgeInsetsV", "horizontal"]
+- !private ["7SwiftUI10EdgeInsetsV", "trailing"]
 - !private ["7lottery11EditingPageV", ""]
 - !private ["7lottery11EditingPageV", "environmentObject"]
 - !private ["7lottery11EditingPageV", "init"]
@@ -236,9 +247,11 @@ depends-member:
 - !private ["SE", "horizontal"]
 - ["SE", "init"]
 - !private ["SE", "largeTitle"]
-- !private ["SE", "secondary"]
+- !private ["SE", "none"]
+- !private ["SE", "some"]
 - !private ["SE", "subheadline"]
 - !private ["SE", "subscript"]
+- !private ["SE", "trailing"]
 - !private ["SE", "white"]
 - !private ["7SwiftUI11EnvironmentV", "init"]
 - !private ["7SwiftUI11EnvironmentV", "projectedValue"]
@@ -261,17 +274,20 @@ depends-member:
 - !private ["SQ", "font"]
 - !private ["SQ", "fontWeight"]
 - !private ["SQ", "foregroundColor"]
+- !private ["SQ", "frame"]
 - !private ["SQ", "headline"]
 - !private ["SQ", "heavy"]
 - !private ["SQ", "horizontal"]
 - ["SQ", "init"]
 - !private ["SQ", "largeTitle"]
 - !private ["SQ", "leading"]
+- !private ["SQ", "none"]
 - !private ["SQ", "red"]
 - !private ["SQ", "resizable"]
-- !private ["SQ", "secondary"]
+- !private ["SQ", "some"]
 - !private ["SQ", "subheadline"]
 - !private ["SQ", "subscript"]
+- !private ["SQ", "trailing"]
 - !private ["SQ", "white"]
 - !private ["s25ExpressibleByArrayLiteralP", "Lottery_result"]
 - !private ["s25ExpressibleByArrayLiteralP", "PrizeM"]
@@ -283,6 +299,7 @@ depends-member:
 - !private ["s25ExpressibleByArrayLiteralP", "horizontal"]
 - ["s25ExpressibleByArrayLiteralP", "init"]
 - !private ["s25ExpressibleByArrayLiteralP", "subscript"]
+- !private ["s25ExpressibleByArrayLiteralP", "trailing"]
 - ["s43ExpressibleByExtendedGraphemeClusterLiteralP", ""]
 - !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "init"]
 - ["s25ExpressibleByFloatLiteralP", "FloatLiteralType"]
@@ -290,17 +307,20 @@ depends-member:
 - !private ["s25ExpressibleByFloatLiteralP", "bottom"]
 - !private ["s25ExpressibleByFloatLiteralP", "horizontal"]
 - ["s25ExpressibleByFloatLiteralP", "init"]
+- !private ["s25ExpressibleByFloatLiteralP", "trailing"]
 - !private ["s27ExpressibleByIntegerLiteralP", "IntegerLiteralType"]
 - !private ["s27ExpressibleByIntegerLiteralP", ""]
 - !private ["s27ExpressibleByIntegerLiteralP", "bottom"]
 - !private ["s27ExpressibleByIntegerLiteralP", "horizontal"]
 - !private ["s27ExpressibleByIntegerLiteralP", "init"]
+- !private ["s27ExpressibleByIntegerLiteralP", "trailing"]
 - !private ["s23ExpressibleByNilLiteralP", "black"]
 - !private ["s23ExpressibleByNilLiteralP", "blue"]
 - !private ["s23ExpressibleByNilLiteralP", "headline"]
 - !private ["s23ExpressibleByNilLiteralP", "heavy"]
 - !private ["s23ExpressibleByNilLiteralP", "largeTitle"]
-- !private ["s23ExpressibleByNilLiteralP", "secondary"]
+- !private ["s23ExpressibleByNilLiteralP", "none"]
+- !private ["s23ExpressibleByNilLiteralP", "some"]
 - !private ["s23ExpressibleByNilLiteralP", "subheadline"]
 - !private ["s23ExpressibleByNilLiteralP", "white"]
 - !private ["s32ExpressibleByStringInterpolationP", "StringInterpolation"]
@@ -313,6 +333,7 @@ depends-member:
 - !private ["SF", ""]
 - !private ["SF", "bottom"]
 - !private ["SF", "horizontal"]
+- !private ["SF", "trailing"]
 - !private ["7SwiftUI4FontV", "headline"]
 - !private ["7SwiftUI4FontV", "largeTitle"]
 - !private ["7SwiftUI4FontV", "subheadline"]
@@ -322,7 +343,8 @@ depends-member:
 - !private ["7SwiftUI7GestureP", "headline"]
 - !private ["7SwiftUI7GestureP", "heavy"]
 - !private ["7SwiftUI7GestureP", "largeTitle"]
-- !private ["7SwiftUI7GestureP", "secondary"]
+- !private ["7SwiftUI7GestureP", "none"]
+- !private ["7SwiftUI7GestureP", "some"]
 - !private ["7SwiftUI7GestureP", "subheadline"]
 - !private ["7SwiftUI7GestureP", "white"]
 - !private ["7SwiftUI5GroupV", "frame"]
@@ -343,10 +365,12 @@ depends-member:
 - !private ["SH", "horizontal"]
 - ["SH", "init"]
 - !private ["SH", "largeTitle"]
+- !private ["SH", "none"]
 - !private ["SH", "red"]
-- !private ["SH", "secondary"]
+- !private ["SH", "some"]
 - !private ["SH", "subheadline"]
 - !private ["SH", "subscript"]
+- !private ["SH", "trailing"]
 - !private ["SH", "white"]
 - !private ["7SwiftUI19HorizontalAlignmentV", "leading"]
 - !private ["s12IdentifiableP", "Lottery_result"]
@@ -354,8 +378,9 @@ depends-member:
 - !private ["s12IdentifiableP", "PrizeMember"]
 - !private ["s12IdentifiableP", "PrizeName"]
 - !private ["s12IdentifiableP", "id"]
-- ["s12IdentifiableP", "init"]
+- !private ["s12IdentifiableP", "isRemoved"]
 - !private ["7SwiftUI5ImageV", "foregroundColor"]
+- !private ["7SwiftUI5ImageV", "frame"]
 - !private ["7SwiftUI5ImageV", "init"]
 - !private ["7SwiftUI5ImageV", "resizable"]
 - !private ["7SwiftUI15InsettableShapeP", "fill"]
@@ -381,20 +406,25 @@ depends-member:
 - !private ["Sj", ""]
 - !private ["Sj", "bottom"]
 - !private ["Sj", "horizontal"]
+- !private ["Sj", "trailing"]
 - !private ["7Combine16ObservableObjectP", "PrizeList"]
+- !private ["7Combine16ObservableObjectP", "PrizeList_cacu"]
 - ["7Combine16ObservableObjectP", "init"]
+- !private ["7Combine16ObservableObjectP", "remove"]
 - ["7SwiftUI14ObservedObjectV", "init"]
 - ["7SwiftUI14ObservedObjectV", "projectedValue"]
 - ["7SwiftUI14ObservedObjectV", "subscript"]
 - ["7SwiftUI14ObservedObjectV", "wrappedValue"]
 - !private ["s9OptionSetP", "bottom"]
 - !private ["s9OptionSetP", "horizontal"]
+- !private ["s9OptionSetP", "trailing"]
 - !private ["Sq", "black"]
 - !private ["Sq", "blue"]
 - !private ["Sq", "headline"]
 - !private ["Sq", "heavy"]
 - !private ["Sq", "largeTitle"]
-- !private ["Sq", "secondary"]
+- !private ["Sq", "none"]
+- !private ["Sq", "some"]
 - !private ["Sq", "subheadline"]
 - !private ["Sq", "white"]
 - ["7SwiftUI15PreviewProviderP", "Default_Previews"]
@@ -407,8 +437,10 @@ depends-member:
 - ["7SwiftUI15PreviewProviderP", "platform"]
 - ["7SwiftUI15PreviewProviderP", "previews"]
 - !private ["7lottery6PrizesC", "PrizeList"]
+- !private ["7lottery6PrizesC", "PrizeList_cacu"]
 - ["7lottery6PrizesC", ""]
 - ["7lottery6PrizesC", "init"]
+- !private ["7lottery6PrizesC", "remove"]
 - !private ["7Combine9PublishedV", "init"]
 - !private ["7Combine9PublishedV", "projectedValue"]
 - !private ["7Combine9PublishedV", "subscript"]
@@ -432,6 +464,7 @@ depends-member:
 - !private ["SY", ""]
 - !private ["SY", "bottom"]
 - !private ["SY", "horizontal"]
+- !private ["SY", "trailing"]
 - !private ["7SwiftUI9RectangleV", "frame"]
 - !private ["7SwiftUI9RectangleV", "init"]
 - !private ["7SwiftUI5SceneP", "frame"]
@@ -448,21 +481,24 @@ depends-member:
 - !private ["ST", "subscript"]
 - !private ["7SwiftUI4EdgeO3SetV", "bottom"]
 - !private ["7SwiftUI4EdgeO3SetV", "horizontal"]
+- !private ["7SwiftUI4EdgeO3SetV", "trailing"]
 - !private ["s10SetAlgebraP", ""]
 - !private ["s10SetAlgebraP", "bottom"]
 - !private ["s10SetAlgebraP", "horizontal"]
+- !private ["s10SetAlgebraP", "trailing"]
 - !private ["7SwiftUI5ShapeP", ""]
 - !private ["7SwiftUI5ShapeP", "fill"]
 - !private ["7SwiftUI5ShapeP", "frame"]
 - !private ["7SwiftUI5ShapeP", "init"]
 - !private ["7SwiftUI10ShapeStyleP", "black"]
 - !private ["7SwiftUI10ShapeStyleP", "blue"]
+- !private ["7SwiftUI10ShapeStyleP", "init"]
 - !private ["7SwiftUI10ShapeStyleP", "red"]
-- !private ["7SwiftUI10ShapeStyleP", "secondary"]
 - !private ["7SwiftUI10ShapeStyleP", "white"]
 - !private ["s13SignedNumericP", ""]
 - !private ["s13SignedNumericP", "bottom"]
 - !private ["s13SignedNumericP", "horizontal"]
+- !private ["s13SignedNumericP", "trailing"]
 - ["7lottery10SingleCardV", "$PrizeData"]
 - ["7lottery10SingleCardV", "$showeditingpage"]
 - ["7lottery10SingleCardV", "Body"]
@@ -473,6 +509,7 @@ depends-member:
 - ["7lottery10SingleCardV", "EnvironmentObject"]
 - !private ["7lottery10SingleCardV", "Group"]
 - !private ["7lottery10SingleCardV", "HStack"]
+- !private ["7lottery10SingleCardV", "Image"]
 - ["7lottery10SingleCardV", "Int"]
 - ["7lottery10SingleCardV", "PrizeData"]
 - ["7lottery10SingleCardV", "Prizes"]
@@ -501,7 +538,7 @@ depends-member:
 - !private ["7lottery11SinglePrizeV", "PrizeName"]
 - !private ["7lottery11SinglePrizeV", ""]
 - !private ["7lottery11SinglePrizeV", "id"]
-- ["7lottery11SinglePrizeV", "init"]
+- !private ["7lottery11SinglePrizeV", "isRemoved"]
 - !private ["7SwiftUI6SpacerV", "init"]
 - ["7SwiftUI5StateV", "init"]
 - ["7SwiftUI5StateV", "projectedValue"]
@@ -510,6 +547,7 @@ depends-member:
 - !private ["Sx", ""]
 - !private ["Sx", "bottom"]
 - !private ["Sx", "horizontal"]
+- !private ["Sx", "trailing"]
 - !private ["SS", "init"]
 - !private ["7SwiftUI18LocalizedStringKeyV0D13InterpolationV", "appendInterpolation"]
 - !private ["7SwiftUI18LocalizedStringKeyV0D13InterpolationV", "appendLiteral"]
@@ -528,6 +566,7 @@ depends-member:
 - !private ["7SwiftUI6VStackV", "init"]
 - !private ["7SwiftUI16VectorArithmeticP", "bottom"]
 - !private ["7SwiftUI16VectorArithmeticP", "horizontal"]
+- !private ["7SwiftUI16VectorArithmeticP", "trailing"]
 - !private ["7SwiftUI4ViewP", "$selection"]
 - !private ["7SwiftUI4ViewP", "$showeditingpage"]
 - !private ["7SwiftUI4ViewP", "APM_ccltor"]
@@ -554,7 +593,6 @@ depends-member:
 - !private ["7SwiftUI4ViewP", "Rectangle"]
 - !private ["7SwiftUI4ViewP", "ScrollView"]
 - !private ["7SwiftUI4ViewP", "SingleCard"]
-- ["7SwiftUI4ViewP", "SinglePrize"]
 - !private ["7SwiftUI4ViewP", "Spacer"]
 - ["7SwiftUI4ViewP", "State"]
 - !private ["7SwiftUI4ViewP", "String"]
@@ -584,17 +622,18 @@ depends-member:
 - !private ["7SwiftUI4ViewP", "init"]
 - !private ["7SwiftUI4ViewP", "largeTitle"]
 - !private ["7SwiftUI4ViewP", "navigationBarTitle"]
+- !private ["7SwiftUI4ViewP", "none"]
 - !private ["7SwiftUI4ViewP", "padding"]
 - !private ["7SwiftUI4ViewP", "page3_result"]
 - !private ["7SwiftUI4ViewP", "rands"]
 - !private ["7SwiftUI4ViewP", "red"]
 - !private ["7SwiftUI4ViewP", "resizable"]
-- !private ["7SwiftUI4ViewP", "secondary"]
 - !private ["7SwiftUI4ViewP", "selection"]
 - !private ["7SwiftUI4ViewP", "shadow"]
 - !private ["7SwiftUI4ViewP", "sheet"]
 - !private ["7SwiftUI4ViewP", "showeditingpage"]
 - !private ["7SwiftUI4ViewP", "size"]
+- !private ["7SwiftUI4ViewP", "some"]
 - !private ["7SwiftUI4ViewP", "subheadline"]
 - !private ["7SwiftUI4ViewP", "white"]
 - !private ["7SwiftUI11ViewBuilderV", "buildBlock"]
@@ -614,8 +653,10 @@ depends-member:
 - !private ["s14_ArrayProtocolP", "subscript"]
 - !private ["s15_CVarArgAlignedP", "bottom"]
 - !private ["s15_CVarArgAlignedP", "horizontal"]
+- !private ["s15_CVarArgAlignedP", "trailing"]
 - !private ["s22_CVarArgPassedAsDoubleP", "bottom"]
 - !private ["s22_CVarArgPassedAsDoubleP", "horizontal"]
+- !private ["s22_CVarArgPassedAsDoubleP", "trailing"]
 - !private ["s30_CustomPlaygroundQuickLookableP", "init"]
 - !private ["s24_DestructorSafeContainerP", "Lottery_result"]
 - !private ["s24_DestructorSafeContainerP", "PrizeM"]
@@ -629,11 +670,12 @@ depends-member:
 - !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "init"]
 - ["s33_ExpressibleByBuiltinFloatLiteralP", "init"]
 - ["s35_ExpressibleByBuiltinIntegerLiteralP", "init"]
-- ["s34_ExpressibleByBuiltinStringLiteralP", "init"]
+- !private ["s34_ExpressibleByBuiltinStringLiteralP", "init"]
 - ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", ""]
 - !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "init"]
 - !private ["7SwiftUI18_FormatSpecifiableP", "bottom"]
 - !private ["7SwiftUI18_FormatSpecifiableP", "horizontal"]
+- !private ["7SwiftUI18_FormatSpecifiableP", "trailing"]
 - !private ["s19_HasContiguousBytesP", "count"]
 - ["s19_HasContiguousBytesP", "init"]
 - !private ["s19_HasContiguousBytesP", "subscript"]
@@ -649,9 +691,11 @@ depends-member:
 - !private ["s21_ObjectiveCBridgeableP", "horizontal"]
 - ["s21_ObjectiveCBridgeableP", "init"]
 - !private ["s21_ObjectiveCBridgeableP", "largeTitle"]
-- !private ["s21_ObjectiveCBridgeableP", "secondary"]
+- !private ["s21_ObjectiveCBridgeableP", "none"]
+- !private ["s21_ObjectiveCBridgeableP", "some"]
 - !private ["s21_ObjectiveCBridgeableP", "subheadline"]
 - !private ["s21_ObjectiveCBridgeableP", "subscript"]
+- !private ["s21_ObjectiveCBridgeableP", "trailing"]
 - !private ["s21_ObjectiveCBridgeableP", "white"]
 - ["7SwiftUI16_PreviewProviderP", "Default_Previews"]
 - ["7SwiftUI16_PreviewProviderP", "Previews"]
@@ -664,6 +708,7 @@ depends-member:
 - ["7SwiftUI16_PreviewProviderP", "previews"]
 - !private ["7SwiftUI11_VectorMathP", "bottom"]
 - !private ["7SwiftUI11_VectorMathP", "horizontal"]
+- !private ["7SwiftUI11_VectorMathP", "trailing"]
 - !private ["7SwiftUI7_WidgetP", "frame"]
 - !private ["7SwiftUI7_WidgetP", "init"]
 - ["7lottery6btnAddV", "Body"]
@@ -708,7 +753,6 @@ depends-member:
 - !private ["7lottery9page2_addV", "Random"]
 - !private ["7lottery9page2_addV", "ScrollView"]
 - !private ["7lottery9page2_addV", "SingleCard"]
-- ["7lottery9page2_addV", "SinglePrize"]
 - !private ["7lottery9page2_addV", "Spacer"]
 - ["7lottery9page2_addV", "State"]
 - !private ["7lottery9page2_addV", "VStack"]
@@ -779,7 +823,7 @@ depends-nominal:
 - !private "7SwiftUI6HStackV"
 - "SH"
 - !private "7SwiftUI19HorizontalAlignmentV"
-- "s12IdentifiableP"
+- !private "s12IdentifiableP"
 - !private "7SwiftUI5ImageV"
 - !private "7SwiftUI15InsettableShapeP"
 - "s25LosslessStringConvertibleP"
@@ -810,7 +854,7 @@ depends-nominal:
 - !private "7SwiftUI10ShapeStyleP"
 - !private "s13SignedNumericP"
 - "7lottery10SingleCardV"
-- "7lottery11SinglePrizeV"
+- !private "7lottery11SinglePrizeV"
 - !private "7SwiftUI6SpacerV"
 - "7SwiftUI5StateV"
 - !private "Sx"
@@ -836,7 +880,7 @@ depends-nominal:
 - "s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP"
 - "s33_ExpressibleByBuiltinFloatLiteralP"
 - "s35_ExpressibleByBuiltinIntegerLiteralP"
-- "s34_ExpressibleByBuiltinStringLiteralP"
+- !private "s34_ExpressibleByBuiltinStringLiteralP"
 - "s41_ExpressibleByBuiltinUnicodeScalarLiteralP"
 - !private "7SwiftUI18_FormatSpecifiableP"
 - "s19_HasContiguousBytesP"
@@ -892,4 +936,4 @@ depends-external:
 - "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/StoreKit.framework/Headers/StoreKit.apinotes"
 - "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
 - "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
-interface-hash: "cbed501b57b6887e4c902f2aeb5cbf48"
+interface-hash: "c56474810421f97e287fb692952f3b74"

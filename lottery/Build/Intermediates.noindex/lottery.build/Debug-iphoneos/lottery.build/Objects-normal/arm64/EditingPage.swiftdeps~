@@ -23,12 +23,15 @@ depends-top-level:
 - "Int"
 - !private "KeyboardHost"
 - "NSLocalizedString"
+- "NavigationView"
 - "PrizeData"
 - "Prizes"
 - "Section"
 - "SinglePrize"
+- "StackNavigationViewStyle"
 - "State"
 - "StringLiteralType"
+- !private "TernaryPrecedence"
 - "Text"
 - "TextField"
 - "View"
@@ -75,10 +78,12 @@ depends-member:
 - ["7lottery11EditingPageV", "Int"]
 - !private ["7lottery11EditingPageV", "KeyboardHost"]
 - !private ["7lottery11EditingPageV", "NSLocalizedString"]
+- !private ["7lottery11EditingPageV", "NavigationView"]
 - ["7lottery11EditingPageV", "PrizeData"]
 - ["7lottery11EditingPageV", "Prizes"]
 - !private ["7lottery11EditingPageV", "Section"]
 - !private ["7lottery11EditingPageV", "SinglePrize"]
+- !private ["7lottery11EditingPageV", "StackNavigationViewStyle"]
 - ["7lottery11EditingPageV", "State"]
 - !private ["7lottery11EditingPageV", "Text"]
 - !private ["7lottery11EditingPageV", "TextField"]
@@ -128,6 +133,7 @@ depends-member:
 - ["s33ExpressibleByUnicodeScalarLiteralP", ""]
 - !private ["s17FixedWidthIntegerP", "init"]
 - !private ["7SwiftUI4FormV", "init"]
+- !private ["7SwiftUI4FormV", "navigationBarTitle"]
 - !private ["7SwiftUI7GestureP", "default"]
 - ["SH", ""]
 - !private ["SH", "default"]
@@ -142,6 +148,9 @@ depends-member:
 - !private ["s10MirrorPathP", "init"]
 - ["So8NSCodingP", ""]
 - ["So8NSObjectP", ""]
+- !private ["7SwiftUI14NavigationViewV", "init"]
+- !private ["7SwiftUI14NavigationViewV", "navigationViewStyle"]
+- !private ["7SwiftUI19NavigationViewStyleP", "init"]
 - !private ["Sj", ""]
 - !private ["Sj", "init"]
 - !private ["7Combine16ObservableObjectP", "add"]
@@ -159,6 +168,7 @@ depends-member:
 - !private ["s13SignedNumericP", ""]
 - !private ["s13SignedNumericP", "init"]
 - !private ["7lottery11SinglePrizeV", "init"]
+- !private ["7SwiftUI24StackNavigationViewStyleV", "init"]
 - ["7SwiftUI5StateV", "init"]
 - ["7SwiftUI5StateV", "projectedValue"]
 - ["7SwiftUI5StateV", "subscript"]
@@ -185,9 +195,11 @@ depends-member:
 - !private ["7SwiftUI4ViewP", "Int"]
 - !private ["7SwiftUI4ViewP", "KeyboardHost"]
 - !private ["7SwiftUI4ViewP", "NSLocalizedString"]
+- !private ["7SwiftUI4ViewP", "NavigationView"]
 - !private ["7SwiftUI4ViewP", "PrizeData"]
 - !private ["7SwiftUI4ViewP", "Section"]
 - !private ["7SwiftUI4ViewP", "SinglePrize"]
+- !private ["7SwiftUI4ViewP", "StackNavigationViewStyle"]
 - ["7SwiftUI4ViewP", "State"]
 - !private ["7SwiftUI4ViewP", "Text"]
 - !private ["7SwiftUI4ViewP", "TextField"]
@@ -202,6 +214,8 @@ depends-member:
 - !private ["7SwiftUI4ViewP", "index"]
 - !private ["7SwiftUI4ViewP", "init"]
 - !private ["7SwiftUI4ViewP", "keyboardType"]
+- !private ["7SwiftUI4ViewP", "navigationBarTitle"]
+- !private ["7SwiftUI4ViewP", "navigationViewStyle"]
 - !private ["7SwiftUI4ViewP", "presentation"]
 - !private ["7SwiftUI4ViewP", "prizename"]
 - !private ["7SwiftUI4ViewP", "prizequota"]
@@ -263,6 +277,8 @@ depends-nominal:
 - !private "s10MirrorPathP"
 - "So8NSCodingP"
 - "So8NSObjectP"
+- !private "7SwiftUI14NavigationViewV"
+- !private "7SwiftUI19NavigationViewStyleP"
 - !private "Sj"
 - !private "7Combine16ObservableObjectP"
 - !private "Sq"
@@ -275,6 +291,7 @@ depends-nominal:
 - !private "SZ"
 - !private "s13SignedNumericP"
 - !private "7lottery11SinglePrizeV"
+- !private "7SwiftUI24StackNavigationViewStyleV"
 - "7SwiftUI5StateV"
 - !private "Sx"
 - !private "7SwiftUI4TextV"

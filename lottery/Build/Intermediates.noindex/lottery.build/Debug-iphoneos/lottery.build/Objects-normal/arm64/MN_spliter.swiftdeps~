@@ -17,6 +17,8 @@ depends-top-level:
 - "MN_spliter_handinput"
 - !private "NSLocalizedString"
 - "String"
+- !private "StringLiteralType"
+- !private "UnicodeScalarType"
 depends-member:
 - !private ["Sa", "count"]
 - !private ["SK", ""]
@@ -26,30 +28,38 @@ depends-member:
 - !private ["8CloudKit21CKRecordValueProtocolP", "count"]
 - !private ["s7CVarArgP", "components"]
 - !private ["s7CVarArgP", "count"]
+- !private ["10Foundation12CharacterSetV", "init"]
 - !private ["Sl", ""]
 - !private ["Sl", "components"]
 - !private ["Sl", "count"]
 - !private ["SL", ""]
 - !private ["SL", "components"]
 - !private ["10Foundation15ContiguousBytesP", "count"]
+- !private ["s28CustomDebugStringConvertibleP", ""]
 - !private ["s28CustomDebugStringConvertibleP", "components"]
 - !private ["s28CustomDebugStringConvertibleP", "count"]
+- !private ["s28CustomDebugStringConvertibleP", "init"]
 - !private ["s17CustomReflectableP", "components"]
 - !private ["s17CustomReflectableP", "count"]
 - !private ["s23CustomStringConvertibleP", ""]
 - !private ["s23CustomStringConvertibleP", "components"]
 - !private ["s23CustomStringConvertibleP", "count"]
+- !private ["s23CustomStringConvertibleP", "init"]
 - !private ["10Foundation12DataProtocolP", ""]
 - !private ["10Foundation12DataProtocolP", "count"]
 - !private ["Se", "components"]
 - !private ["Se", "count"]
+- !private ["Se", "init"]
 - !private ["SE", "components"]
 - !private ["SE", "count"]
+- !private ["SE", "init"]
 - !private ["SQ", ""]
 - !private ["SQ", "components"]
 - !private ["SQ", "count"]
+- !private ["SQ", "init"]
 - !private ["s25ExpressibleByArrayLiteralP", ""]
 - !private ["s25ExpressibleByArrayLiteralP", "count"]
+- !private ["s25ExpressibleByArrayLiteralP", "init"]
 - !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", ""]
 - !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "components"]
 - !private ["s32ExpressibleByStringInterpolationP", ""]
@@ -61,6 +71,7 @@ depends-member:
 - !private ["SH", ""]
 - !private ["SH", "components"]
 - !private ["SH", "count"]
+- !private ["SH", "init"]
 - !private ["s25LosslessStringConvertibleP", ""]
 - !private ["s25LosslessStringConvertibleP", "components"]
 - !private ["s10MirrorPathP", "components"]
@@ -87,9 +98,27 @@ depends-member:
 - !private ["Sm", ""]
 - !private ["Sm", "components"]
 - !private ["Sm", "count"]
+- !private ["10Foundation20ReferenceConvertibleP", "init"]
 - !private ["ST", ""]
 - !private ["ST", "components"]
 - !private ["ST", "count"]
+- !private ["s10SetAlgebraP", "contains"]
+- !private ["s10SetAlgebraP", "formIntersection"]
+- !private ["s10SetAlgebraP", "formSymmetricDifference"]
+- !private ["s10SetAlgebraP", "formUnion"]
+- !private ["s10SetAlgebraP", "init"]
+- !private ["s10SetAlgebraP", "insert"]
+- !private ["s10SetAlgebraP", "intersection"]
+- !private ["s10SetAlgebraP", "isDisjoint"]
+- !private ["s10SetAlgebraP", "isEmpty"]
+- !private ["s10SetAlgebraP", "isSubset"]
+- !private ["s10SetAlgebraP", "isSuperset"]
+- !private ["s10SetAlgebraP", "remove"]
+- !private ["s10SetAlgebraP", "subtract"]
+- !private ["s10SetAlgebraP", "subtracting"]
+- !private ["s10SetAlgebraP", "symmetricDifference"]
+- !private ["s10SetAlgebraP", "union"]
+- !private ["s10SetAlgebraP", "update"]
 - !private ["SS", "components"]
 - !private ["Sy", "components"]
 - !private ["s16TextOutputStreamP", ""]
@@ -103,6 +132,7 @@ depends-member:
 - !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "components"]
 - !private ["s35_ExpressibleByBuiltinIntegerLiteralP", "init"]
 - !private ["s34_ExpressibleByBuiltinStringLiteralP", "components"]
+- !private ["s34_ExpressibleByBuiltinStringLiteralP", "init"]
 - !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", ""]
 - !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "components"]
 - !private ["s19_HasContiguousBytesP", "components"]
@@ -111,6 +141,7 @@ depends-member:
 - !private ["s35_HasCustomAnyHashableRepresentationP", "count"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "components"]
 - !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "components"]
+- !private ["s21_ObjectiveCBridgeableP", ""]
 - !private ["s21_ObjectiveCBridgeableP", "_ObjectiveCType"]
 - !private ["s21_ObjectiveCBridgeableP", "_bridgeToObjectiveC"]
 - !private ["s21_ObjectiveCBridgeableP", "_conditionallyBridgeFromObjectiveC"]
@@ -118,12 +149,14 @@ depends-member:
 - !private ["s21_ObjectiveCBridgeableP", "_unconditionallyBridgeFromObjectiveC"]
 - !private ["s21_ObjectiveCBridgeableP", "components"]
 - !private ["s21_ObjectiveCBridgeableP", "count"]
+- !private ["s21_ObjectiveCBridgeableP", "init"]
 - !private ["So13CKRecordValueP", "components"]
 depends-nominal:
 - !private "Sa"
 - !private "SK"
 - !private "8CloudKit21CKRecordValueProtocolP"
 - !private "s7CVarArgP"
+- !private "10Foundation12CharacterSetV"
 - !private "Sl"
 - !private "SL"
 - !private "10Foundation15ContiguousBytesP"
@@ -155,7 +188,9 @@ depends-nominal:
 - !private "So8NSStringC"
 - !private "Sk"
 - !private "Sm"
+- !private "10Foundation20ReferenceConvertibleP"
 - !private "ST"
+- !private "s10SetAlgebraP"
 - !private "SS"
 - !private "Sy"
 - !private "s16TextOutputStreamP"
@@ -217,4 +252,4 @@ depends-external:
 - "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/StoreKit.framework/Headers/StoreKit.apinotes"
 - "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
 - "/Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
-interface-hash: "a0d8015b9655a2abf1f5339f9876ff25"
+interface-hash: "65686b870b5b4262f8eeb9a4a98944b7"
