@@ -1,0 +1,1 @@
+([('main', '/Users/wqhqq/Documents/抽奖器/dist/main', 'EXECUTABLE')],)
