@@ -16,6 +16,7 @@ struct page2_add: View {
     @State var showeditingpage = false
     @State var showRemoveButton = false
     @State var isEditingMode = false
+    @State var showAlert = false
     @State var selected: [Int] = []
     var size: CGFloat = 65.0
     
@@ -23,16 +24,21 @@ struct page2_add: View {
         VStack {
             HStack {
                 Spacer()
-                if showRemoveButton {
+                if isEditingMode {
                     Button(action : {
-                            self.PrizeData.removeMore(index: self.selected)
-                        
-                        self.selected.removeAll()
+                        self.showAlert = true
                     }) {
                         Image(systemName: "trash.fill")
                             .foregroundColor(.black)
                             .imageScale(.large)
                             .padding(.trailing)
+                    }
+                    .actionSheet(isPresented: self.$showAlert) {
+                        ActionSheet(title: Text(NSLocalizedString("RMT", comment: "")), message: Text(NSLocalizedString("CRMT", comment: "")),
+                                    buttons: [.default(Text(NSLocalizedString("RMT", comment: ""))) {
+                                        self.PrizeData.removeMore(index: self.selected)
+                                        self.selected.removeAll()
+                                        }])
                     }
                 }
                 Button(action: {
@@ -116,6 +122,7 @@ struct SingleCard: View {
     @Binding var selected: [Int]
     @State var isSelected = false
     @State var showConfirmButton = false
+//    @State var showAlert = false
     var index: Int?
     var body: some View {
         HStack {
