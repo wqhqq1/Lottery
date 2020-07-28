@@ -14,7 +14,7 @@ struct page2_add: View {
     @ObservedObject var PrizeData = Prizes()
     @State var selection: Int? = nil
     @State var showeditingpage = false
-    @State var showRemoveButton = false
+    @State var showRemoveButton = [Bool](repeating: false, count: 1000)
     @State var isEditingMode = false
     @State var showAlert = false
     @State var selected: [Int] = []
@@ -37,12 +37,16 @@ struct page2_add: View {
                         ActionSheet(title: Text(NSLocalizedString("RMT", comment: "")), message: Text(NSLocalizedString("CRMT", comment: "")),
                                     buttons: [.default(Text(NSLocalizedString("RMT", comment: ""))) {
                                         self.PrizeData.removeMore(index: self.selected)
-                                        self.selected.removeAll()
+                                        self.selected = []
                                         }])
                     }
                 }
                 Button(action: {
-                    self.showRemoveButton.toggle()
+                    var i = 0
+                    while i < self.showRemoveButton.count {
+                        self.showRemoveButton[i].toggle()
+                        i += 1
+                    }
                     self.isEditingMode.toggle()
                     self.selected.removeAll()
                 }){
@@ -118,7 +122,7 @@ struct page2_add: View {
 struct SingleCard: View {
     @State var showeditingpage = false
     @EnvironmentObject var PrizeData: Prizes
-    @Binding var showRemoveButton: Bool
+    @Binding var showRemoveButton: [Bool]
     @Binding var selected: [Int]
     @State var isSelected = false
     @State var showConfirmButton = false
@@ -126,10 +130,10 @@ struct SingleCard: View {
     var index: Int?
     var body: some View {
         HStack {
-            if self.showRemoveButton {
+            if self.showRemoveButton[index!] {
                 Button(action: {
                     self.showConfirmButton = true
-                    self.showRemoveButton = false
+                    self.showRemoveButton[self.index!] = false
                 }){
                     Image(systemName: "minus.circle.fill")
                         .imageScale(.large)
@@ -145,10 +149,7 @@ struct SingleCard: View {
                 Button(action: {
                     if self.showConfirmButton == true {
                         self.showConfirmButton = false
-                        self.showRemoveButton = true
-                    }
-                    else {
-                        self.showeditingpage = true
+                        self.showRemoveButton[self.index!] = true
                     }
                 }){
                     Group {
@@ -163,13 +164,13 @@ struct SingleCard: View {
                                     .foregroundColor(.black)
                             }
                             Spacer()
-                            if showRemoveButton{
+                            if showRemoveButton[index!]{
                                 Button(action: {
                                     if self.selected.firstIndex(where: {$0 == self.index}) == nil {
                                         self.selected.append(self.index!)
                                     }
                                     else {
-                                        self.selected.remove(at: self.index!)
+                                        self.selected.remove(at: self.selected.firstIndex(where: {$0 == self.index})!)
                                     }
                                 }) {
                                     Image(systemName: self.selected.firstIndex(where: {$0 == self.index}) != nil ? "checkmark.circle.fill":"circle")
@@ -184,7 +185,7 @@ struct SingleCard: View {
                                         withAnimation {
                                             self.PrizeData.remove(index: self.index!)
                                             self.showConfirmButton = false
-                                            self.showRemoveButton = true
+                                            self.showRemoveButton[self.index!] = true
                                         }
                                     }) {
                                         ZStack {
