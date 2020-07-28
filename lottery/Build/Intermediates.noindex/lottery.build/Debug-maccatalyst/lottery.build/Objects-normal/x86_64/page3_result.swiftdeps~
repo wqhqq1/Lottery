@@ -1,0 +1,218 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "page3_result"
+provides-nominal:
+- "7lottery12page3_resultV"
+provides-member:
+- ["7lottery12page3_resultV", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "Button"
+- "FloatLiteralType"
+- "IntegerLiteralType"
+- !private "List"
+- "NSLocalizedString"
+- "NavigationLink"
+- !private "PrizeData"
+- "ScrollView"
+- "SinglePrize"
+- !private "StringLiteralType"
+- "Text"
+- "View"
+- "abort"
+- "page3_result"
+depends-member:
+- ["7SwiftUI10AnimatableP", ""]
+- !private ["SK", "Element"]
+- ["SK", ""]
+- !private ["7SwiftUI6ButtonV", "init"]
+- !private ["Sl", "Element"]
+- ["Sl", ""]
+- ["SL", ""]
+- !private ["s28CustomDebugStringConvertibleP", "title"]
+- !private ["s17CustomReflectableP", "title"]
+- ["s23CustomStringConvertibleP", ""]
+- !private ["Se", "title"]
+- !private ["SE", "title"]
+- ["SQ", ""]
+- !private ["SQ", "font"]
+- !private ["SQ", "init"]
+- !private ["SQ", "title"]
+- ["s43ExpressibleByExtendedGraphemeClusterLiteralP", ""]
+- !private ["s23ExpressibleByNilLiteralP", "title"]
+- !private ["s32ExpressibleByStringInterpolationP", "StringInterpolation"]
+- ["s32ExpressibleByStringInterpolationP", ""]
+- !private ["s32ExpressibleByStringInterpolationP", "init"]
+- ["s26ExpressibleByStringLiteralP", ""]
+- ["s33ExpressibleByUnicodeScalarLiteralP", ""]
+- !private ["7SwiftUI4FontV", "title"]
+- !private ["7SwiftUI7GestureP", "title"]
+- ["SH", ""]
+- !private ["SH", "title"]
+- !private ["s12IdentifiableP", "ID"]
+- !private ["s12IdentifiableP", "Lottery_result"]
+- !private ["s12IdentifiableP", "PrizeName"]
+- !private ["7SwiftUI4ListV", "init"]
+- !private ["7SwiftUI4ListV", "navigationBarTitle"]
+- ["s25LosslessStringConvertibleP", ""]
+- ["So8NSCodingP", ""]
+- !private ["7SwiftUI14NavigationLinkV", "init"]
+- !private ["Sq", "title"]
+- !private ["Sk", "Element"]
+- !private ["7SwiftUI10ScrollViewV", "init"]
+- !private ["7SwiftUI10ScrollViewV", "navigationBarTitle"]
+- !private ["ST", "Element"]
+- ["ST", ""]
+- !private ["7lottery11SinglePrizeV", "Lottery_result"]
+- !private ["7lottery11SinglePrizeV", "PrizeName"]
+- !private ["7lottery11SinglePrizeV", ""]
+- !private ["7SwiftUI18LocalizedStringKeyV0D13InterpolationV", "appendInterpolation"]
+- !private ["7SwiftUI18LocalizedStringKeyV0D13InterpolationV", "appendLiteral"]
+- !private ["s27StringInterpolationProtocolP", "appendInterpolation"]
+- !private ["s27StringInterpolationProtocolP", "appendLiteral"]
+- !private ["s27StringInterpolationProtocolP", "init"]
+- !private ["7SwiftUI4TextV", "font"]
+- !private ["7SwiftUI4TextV", "init"]
+- ["s16TextOutputStreamP", ""]
+- ["s20TextOutputStreamableP", ""]
+- ["7SwiftUI4ViewP", "Body"]
+- !private ["7SwiftUI4ViewP", "Button"]
+- ["7SwiftUI4ViewP", "Default_Body"]
+- !private ["7SwiftUI4ViewP", "List"]
+- !private ["7SwiftUI4ViewP", "NSLocalizedString"]
+- !private ["7SwiftUI4ViewP", "NavigationLink"]
+- !private ["7SwiftUI4ViewP", "PrizeData"]
+- !private ["7SwiftUI4ViewP", "ScrollView"]
+- !private ["7SwiftUI4ViewP", "Text"]
+- ["7SwiftUI4ViewP", ""]
+- ["7SwiftUI4ViewP", "_Default_Body"]
+- ["7SwiftUI4ViewP", "_makeView"]
+- ["7SwiftUI4ViewP", "_makeViewList"]
+- ["7SwiftUI4ViewP", "_viewListCount"]
+- !private ["7SwiftUI4ViewP", "abort"]
+- ["7SwiftUI4ViewP", "body"]
+- !private ["7SwiftUI4ViewP", "font"]
+- !private ["7SwiftUI4ViewP", "init"]
+- !private ["7SwiftUI4ViewP", "navigationBarTitle"]
+- !private ["7SwiftUI4ViewP", "title"]
+- !private ["7SwiftUI11ViewBuilderV", "buildBlock"]
+- !private ["7SwiftUI11ViewBuilderV", "buildExpression"]
+- !private ["7SwiftUI11ViewBuilderV", "buildFinalResult"]
+- !private ["7SwiftUI11ViewBuilderV", "buildIf"]
+- !private ["7SwiftUI11ViewBuilderV", "buildOptional"]
+- ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", ""]
+- !private ["s35_ExpressibleByBuiltinIntegerLiteralP", "init"]
+- !private ["s34_ExpressibleByBuiltinStringLiteralP", "init"]
+- ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", ""]
+- !private ["s21_ObjectiveCBridgeableP", "title"]
+- ["7lottery12page3_resultV", "Body"]
+- !private ["7lottery12page3_resultV", "Button"]
+- ["7lottery12page3_resultV", "Default_Body"]
+- !private ["7lottery12page3_resultV", "List"]
+- !private ["7lottery12page3_resultV", "NSLocalizedString"]
+- !private ["7lottery12page3_resultV", "NavigationLink"]
+- ["7lottery12page3_resultV", "PrizeData"]
+- !private ["7lottery12page3_resultV", "ScrollView"]
+- ["7lottery12page3_resultV", "SinglePrize"]
+- !private ["7lottery12page3_resultV", "Text"]
+- ["7lottery12page3_resultV", "View"]
+- ["7lottery12page3_resultV", ""]
+- ["7lottery12page3_resultV", "_Default_Body"]
+- ["7lottery12page3_resultV", "_makeView"]
+- ["7lottery12page3_resultV", "_makeViewList"]
+- ["7lottery12page3_resultV", "_viewListCount"]
+- !private ["7lottery12page3_resultV", "abort"]
+- ["7lottery12page3_resultV", "body"]
+- ["7lottery12page3_resultV", "init"]
+depends-nominal:
+- "7SwiftUI10AnimatableP"
+- "SK"
+- !private "7SwiftUI6ButtonV"
+- "Sl"
+- "SL"
+- !private "s28CustomDebugStringConvertibleP"
+- !private "s17CustomReflectableP"
+- "s23CustomStringConvertibleP"
+- !private "Se"
+- !private "SE"
+- "SQ"
+- "s43ExpressibleByExtendedGraphemeClusterLiteralP"
+- !private "s23ExpressibleByNilLiteralP"
+- "s32ExpressibleByStringInterpolationP"
+- "s26ExpressibleByStringLiteralP"
+- "s33ExpressibleByUnicodeScalarLiteralP"
+- !private "7SwiftUI4FontV"
+- !private "7SwiftUI7GestureP"
+- "SH"
+- !private "s12IdentifiableP"
+- !private "7SwiftUI4ListV"
+- "s25LosslessStringConvertibleP"
+- "So8NSCodingP"
+- !private "7SwiftUI14NavigationLinkV"
+- !private "Sq"
+- !private "Sk"
+- !private "7SwiftUI10ScrollViewV"
+- "ST"
+- !private "7lottery11SinglePrizeV"
+- !private "7SwiftUI18LocalizedStringKeyV0D13InterpolationV"
+- !private "s27StringInterpolationProtocolP"
+- !private "7SwiftUI4TextV"
+- "s16TextOutputStreamP"
+- "s20TextOutputStreamableP"
+- "7SwiftUI4ViewP"
+- !private "7SwiftUI11ViewBuilderV"
+- "s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP"
+- !private "s35_ExpressibleByBuiltinIntegerLiteralP"
+- !private "s34_ExpressibleByBuiltinStringLiteralP"
+- "s41_ExpressibleByBuiltinUnicodeScalarLiteralP"
+- !private "s21_ObjectiveCBridgeableP"
+- "7lottery12page3_resultV"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/XPC.swiftmodule/x86_64-apple-ios-macabi.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/ObjectiveC.swiftmodule/x86_64-apple-ios-macabi.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/SwiftUI.swiftmodule/x86_64-apple-ios-macabi.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/CoreData.swiftmodule/x86_64-apple-ios-macabi.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/CoreImage.swiftmodule/x86_64-apple-ios-macabi.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/Combine.swiftmodule/x86_64-apple-ios-macabi.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/QuartzCore.swiftmodule/x86_64-apple-ios-macabi.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/Dispatch.swiftmodule/x86_64-apple-ios-macabi.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/Metal.swiftmodule/x86_64-apple-ios-macabi.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/Darwin.swiftmodule/x86_64-apple-ios-macabi.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/CoreLocation.swiftmodule/x86_64-apple-ios-macabi.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/Foundation.swiftmodule/x86_64-apple-ios-macabi.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/CoreFoundation.swiftmodule/x86_64-apple-ios-macabi.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/CoreGraphics.swiftmodule/x86_64-apple-ios-macabi.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/os.swiftmodule/x86_64-apple-ios-macabi.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/UniformTypeIdentifiers.swiftmodule/x86_64-apple-ios-macabi.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/Swift.swiftmodule/x86_64-apple-ios-macabi.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/UIKit.swiftmodule/x86_64-apple-ios-macabi.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/IOKit.swiftmodule/x86_64-apple-ios-macabi.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/CloudKit.swiftmodule/x86_64-apple-ios-macabi.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/AppKit.swiftmodule/x86_64-apple-ios-macabi.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/SwiftOnoneSupport.swiftmodule/x86_64-apple-ios-macabi.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/prebuilt-modules/DeveloperToolsSupport.swiftmodule/x86_64-apple-ios-macabi.swiftmodule"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.16.sdk/usr/include/mach-o/dyld.modulemap"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.16.sdk/usr/include/mach-o/compact_unwind_encoding.modulemap"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.16.sdk/usr/include/xpc/XPC.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.16.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.16.sdk/System/Library/Frameworks/CoreData.framework/Headers/CoreData.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.16.sdk/System/Library/Frameworks/CoreImage.framework/Headers/CoreImage.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.16.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/QuartzCore.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/apinotes/Dispatch.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.16.sdk/System/Library/Frameworks/Metal.framework/Headers/Metal.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.16.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.16.sdk/System/Library/Frameworks/CoreLocation.framework/Headers/CoreLocation.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.16.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.16.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.16.sdk/System/Library/Frameworks/ApplicationServices.framework/Headers/ApplicationServices.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.16.sdk/System/iOSSupport/System/Library/Frameworks/AuthenticationServices.framework/Headers/AuthenticationServices.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.16.sdk/System/Library/Frameworks/UserNotifications.framework/Headers/UserNotifications.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/apinotes/os.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.16.sdk/System/Library/Frameworks/UniformTypeIdentifiers.framework/Headers/UniformTypeIdentifiers.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.16.sdk/System/iOSSupport/System/Library/Frameworks/UIKit.framework/Headers/UIKit.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.16.sdk/System/Library/Frameworks/CloudKit.framework/Headers/CloudKit.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.16.sdk/System/Library/Frameworks/AppKit.framework/Headers/AppKit.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.16.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+- "/Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.16.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
+interface-hash: "71a190da60970d00e238030b2ba118a2"
