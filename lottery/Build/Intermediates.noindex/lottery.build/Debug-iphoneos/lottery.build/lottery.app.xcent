@@ -8,9 +8,5 @@
 	<string>6T6JMWY77X</string>
 	<key>get-task-allow</key>
 	<true/>
-	<key>keychain-access-groups</key>
-	<array>
-		<string>6T6JMWY77X.wqhqq1.lottery</string>
-	</array>
 </dict>
 </plist>

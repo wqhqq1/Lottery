@@ -37,6 +37,7 @@ depends-top-level:
 - "View"
 - "index"
 - "showalert"
+- "withAnimation"
 depends-member:
 - !private ["s18AdditiveArithmeticP", ""]
 - !private ["s18AdditiveArithmeticP", "init"]
@@ -105,6 +106,7 @@ depends-member:
 - ["7lottery11EditingPageV", "prizename"]
 - ["7lottery11EditingPageV", "prizequota"]
 - ["7lottery11EditingPageV", "showalert"]
+- !private ["7lottery11EditingPageV", "withAnimation"]
 - !private ["SE", "default"]
 - !private ["SE", "init"]
 - ["7SwiftUI11EnvironmentV", "init"]
@@ -220,6 +222,7 @@ depends-member:
 - !private ["7SwiftUI4ViewP", "prizename"]
 - !private ["7SwiftUI4ViewP", "prizequota"]
 - !private ["7SwiftUI4ViewP", "showalert"]
+- !private ["7SwiftUI4ViewP", "withAnimation"]
 - !private ["7SwiftUI11ViewBuilderV", "buildBlock"]
 - !private ["7SwiftUI11ViewBuilderV", "buildExpression"]
 - !private ["7SwiftUI11ViewBuilderV", "buildFinalResult"]

@@ -7,17 +7,18 @@ provides-member:
 - ["7lottery12page3_resultV", ""]
 provides-dynamic-lookup:
 depends-top-level:
-- !private "Button"
+- "Button"
 - "FloatLiteralType"
 - "IntegerLiteralType"
-- !private "List"
+- "List"
 - "NSLocalizedString"
 - "NavigationLink"
-- !private "PrizeData"
+- "PrizeData"
 - "ScrollView"
 - "SinglePrize"
 - !private "StringLiteralType"
 - "Text"
+- !private "VStack"
 - "View"
 - "abort"
 - "page3_result"
@@ -75,6 +76,7 @@ depends-member:
 - !private ["7SwiftUI4TextV", "init"]
 - ["s16TextOutputStreamP", ""]
 - ["s20TextOutputStreamableP", ""]
+- !private ["7SwiftUI6VStackV", "init"]
 - ["7SwiftUI4ViewP", "Body"]
 - !private ["7SwiftUI4ViewP", "Button"]
 - ["7SwiftUI4ViewP", "Default_Body"]
@@ -84,6 +86,7 @@ depends-member:
 - !private ["7SwiftUI4ViewP", "PrizeData"]
 - !private ["7SwiftUI4ViewP", "ScrollView"]
 - !private ["7SwiftUI4ViewP", "Text"]
+- !private ["7SwiftUI4ViewP", "VStack"]
 - ["7SwiftUI4ViewP", ""]
 - ["7SwiftUI4ViewP", "_Default_Body"]
 - ["7SwiftUI4ViewP", "_makeView"]
@@ -115,6 +118,7 @@ depends-member:
 - !private ["7lottery12page3_resultV", "ScrollView"]
 - ["7lottery12page3_resultV", "SinglePrize"]
 - !private ["7lottery12page3_resultV", "Text"]
+- !private ["7lottery12page3_resultV", "VStack"]
 - ["7lottery12page3_resultV", "View"]
 - ["7lottery12page3_resultV", ""]
 - ["7lottery12page3_resultV", "_Default_Body"]
@@ -159,6 +163,7 @@ depends-nominal:
 - !private "7SwiftUI4TextV"
 - "s16TextOutputStreamP"
 - "s20TextOutputStreamableP"
+- !private "7SwiftUI6VStackV"
 - "7SwiftUI4ViewP"
 - !private "7SwiftUI11ViewBuilderV"
 - "s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP"

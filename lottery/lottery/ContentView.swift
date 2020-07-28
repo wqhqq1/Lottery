@@ -33,12 +33,12 @@ struct ContentView: View {
                 Button(action: {
                     let Pboard = UIPasteboard.general
                     if Pboard.string != nil {
-                        MemberNamesInput = NSLocalizedString("RFCB", comment: "")
+                        self.MemberNamesInput = NSLocalizedString("RFCB", comment: "")
                         originalMN = Pboard.string!
-                        MemberNumberInput = String(MN_counter(input: originalMN))
+                        self.MemberNumberInput = String(MN_counter(input: originalMN))
                     }
                     else {
-                        showalertCPB = true
+                        self.showalertCPB = true
                     }
                 },
                        label: {
@@ -51,21 +51,21 @@ struct ContentView: View {
             }
             NavigationLink(destination: page2_add(), tag: 1, selection: $selection) {
                 Button(action: {
-                    if MemberNamesInput != "" && MemberNumberInput != ""
+                    if self.MemberNamesInput != "" && self.MemberNumberInput != ""
                     {
 //                        PrizeNumber = Int(PrizeNumberInput)!
-                        MemberNumber = Int(MemberNumberInput)!
+                        MemberNumber = Int(self.MemberNumberInput)!
                         if originalMN != ""
                         {
                             MemberNames = MN_spliter(input: originalMN)
                         }
                         else {
-                            MemberNames = MN_spliter_handinput(input: MemberNamesInput)
+                            MemberNames = MN_spliter_handinput(input: self.MemberNamesInput)
                         }
                         self.selection = 1
                     }
                     else {
-                        showalert = true
+                        self.showalert = true
                     }
                     i = 1
 //                    self.selection = 1

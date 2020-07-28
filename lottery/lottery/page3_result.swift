@@ -10,17 +10,19 @@ import SwiftUI
 struct page3_result: View {
     var PrizeData: [SinglePrize]
     var body: some View {
-        List(PrizeData) { prize in
-            NavigationLink(destination: ScrollView {Text("\(NSLocalizedString("CT", comment: ""))\(prize.Lottery_result)\(NSLocalizedString("GT", comment: ""))\(prize.PrizeName)")}.navigationBarTitle(prize.PrizeName).font(.title)) {
-                Text(prize.PrizeName)
-                    .font(.title)
-            }
-        }.navigationBarTitle(NSLocalizedString("NBLR", comment: ""))
-        Button(action: {
-            abort()
-        },
-               label: {
+        VStack {
+            List(PrizeData) { prize in
+                NavigationLink(destination: ScrollView {Text("\(NSLocalizedString("CT", comment: ""))\(prize.Lottery_result)\(NSLocalizedString("GT", comment: ""))\(prize.PrizeName)")}.navigationBarTitle(prize.PrizeName).font(.title)) {
+                    Text(prize.PrizeName)
+                        .font(.title)
+                }
+            }.navigationBarTitle(NSLocalizedString("NBLR", comment: ""))
+            Button(action: {
+                abort()
+            },
+            label: {
                 Text(NSLocalizedString("EXT", comment: ""))
-               })
+            })
+        }
     }
 }

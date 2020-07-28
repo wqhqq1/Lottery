@@ -27,18 +27,18 @@ struct EditingPage: View {
                     Section {
                         Button(action: {
                             if self.prizequota != "" {
-                                if index == nil {
-                                    withAnimation {
-                                        PrizeData.add(data: SinglePrize(PrizeName: self.prizename, PrizeMember: Int(self.prizequota)!))
-                                    }
+                                if self.index == nil {
+                                    
+                                        self.PrizeData.add(data: SinglePrize(PrizeName: self.prizename, PrizeMember: Int(self.prizequota)!))
+                                    
                                 }
                                 else {
-                                    PrizeData.edit(index: self.index!, data: SinglePrize(PrizeName: self.prizename, PrizeMember: Int(self.prizequota)!))
+                                    self.PrizeData.edit(index: self.index!, data: SinglePrize(PrizeName: self.prizename, PrizeMember: Int(self.prizequota)!))
                                 }
                                 self.presentation.wrappedValue.dismiss()
                             }
                             else {
-                                showalert = true
+                                self.showalert = true
                             }
                         }){
                             Text(NSLocalizedString("EXT", comment: ""))

@@ -81,6 +81,7 @@ depends-top-level:
 - "selection"
 - "showRemoveButton"
 - "showeditingpage"
+- "withAnimation"
 depends-member:
 - !private ["s18AdditiveArithmeticP", ""]
 - !private ["s18AdditiveArithmeticP", "bottom"]
@@ -294,6 +295,7 @@ depends-member:
 - !private ["Se", "white"]
 - ["7SwiftUI15DynamicPropertyP", "init"]
 - ["7SwiftUI15DynamicPropertyP", "wrappedValue"]
+- !private ["7SwiftUI18DynamicViewContentP", "animation"]
 - !private ["7SwiftUI18DynamicViewContentP", "init"]
 - !private ["7SwiftUI10EdgeInsetsV", "bottom"]
 - !private ["7SwiftUI10EdgeInsetsV", "horizontal"]
@@ -424,6 +426,7 @@ depends-member:
 - !private ["7SwiftUI4FontV", "headline"]
 - !private ["7SwiftUI4FontV", "largeTitle"]
 - !private ["7SwiftUI4FontV", "subheadline"]
+- !private ["7SwiftUI7ForEachV", "animation"]
 - !private ["7SwiftUI7ForEachV", "init"]
 - !private ["7SwiftUI7GestureP", "black"]
 - !private ["7SwiftUI7GestureP", "blue"]
@@ -438,6 +441,7 @@ depends-member:
 - !private ["7SwiftUI7GestureP", "white"]
 - !private ["7SwiftUI5GroupV", "frame"]
 - !private ["7SwiftUI5GroupV", "init"]
+- !private ["7SwiftUI6HStackV", "animation"]
 - !private ["7SwiftUI6HStackV", "frame"]
 - !private ["7SwiftUI6HStackV", "init"]
 - !private ["SH", "Lottery_result"]
@@ -810,6 +814,7 @@ depends-member:
 - !private ["7SwiftUI4ViewP", "subheadline"]
 - !private ["7SwiftUI4ViewP", "transition"]
 - !private ["7SwiftUI4ViewP", "white"]
+- !private ["7SwiftUI4ViewP", "withAnimation"]
 - !private ["7SwiftUI11ViewBuilderV", "buildBlock"]
 - !private ["7SwiftUI11ViewBuilderV", "buildExpression"]
 - !private ["7SwiftUI11ViewBuilderV", "buildFinalResult"]
@@ -976,6 +981,7 @@ depends-member:
 - ["7lottery9page2_addV", "showRemoveButton"]
 - ["7lottery9page2_addV", "showeditingpage"]
 - ["7lottery9page2_addV", "size"]
+- !private ["7lottery9page2_addV", "withAnimation"]
 - !private ["7lottery12page3_resultV", ""]
 - !private ["7lottery12page3_resultV", "init"]
 depends-nominal:

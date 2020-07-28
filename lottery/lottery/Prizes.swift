@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class Prizes: ObservableObject {
     @Published var PrizeList: [SinglePrize]
@@ -67,7 +68,9 @@ class Prizes: ObservableObject {
     }
     
     func remove(index: Int) {
-        PrizeList[index].isRemoved.toggle()
+        withAnimation{
+            PrizeList[index].isRemoved.toggle()
+        }
         reAppend()
     }
     
