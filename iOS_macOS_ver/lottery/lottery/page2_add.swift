@@ -18,6 +18,7 @@ struct page2_add: View {
     @State var isEditingMode = false
     @State var showAlert = false
     @State var selected: [Int] = []
+    @State var showButton = true
     var size: CGFloat = 65.0
     
     var body: some View {
@@ -29,7 +30,7 @@ struct page2_add: View {
                         self.showAlert = true
                     }) {
                         Image(systemName: "trash.fill")
-                            .foregroundColor(.black)
+                            .foregroundColor(Color("trash"))
                             .imageScale(.large)
                             .padding(.trailing)
                     }
@@ -42,6 +43,7 @@ struct page2_add: View {
                     }
                 }
                 Button(action: {
+                    self.showButton.toggle()
                     var i = 0
                     while i < self.showRemoveButton.count {
                         self.showRemoveButton[i].toggle()
@@ -78,39 +80,41 @@ struct page2_add: View {
                     Spacer()
                     HStack{
                         Spacer()
-                        HStack {
-                            NavigationLink(destination: page3_result(PrizeData: PrizeData.PrizeList_cacu), tag: 1, selection: $selection) {
-                                Button(action: {
-                                    AllPrizesMember = APM_ccltor(data: self.PrizeData.PrizeList_cacu)
-                                    rands = Random(start: 1, end: AllPrizesMember + 1, Members: MemberNumber)
-                                    var i = 0, j = 0
-                                    while i < self.PrizeData.PrizeList_cacu.count {
-                                        while j < self.PrizeData.PrizeList_cacu[i].PrizeM {
-                                            self.PrizeData.PrizeList_cacu[i].Lottery_result += "\n" + MemberNames[rands[j] - 1] + " "
-                                            j += 1
+                        if self.showButton {
+                            HStack {
+                                NavigationLink(destination: page3_result(PrizeData: PrizeData.PrizeList_cacu), tag: 1, selection: $selection) {
+                                    Button(action: {
+                                        AllPrizesMember = APM_ccltor(data: self.PrizeData.PrizeList_cacu)
+                                        rands = Random(start: 1, end: AllPrizesMember + 1, Members: MemberNumber)
+                                        var i = 0, j = 0
+                                        while i < self.PrizeData.PrizeList_cacu.count {
+                                            while j < self.PrizeData.PrizeList_cacu[i].PrizeM {
+                                                self.PrizeData.PrizeList_cacu[i].Lottery_result += "\n" + MemberNames[rands[j] - 1] + " "
+                                                j += 1
+                                            }
+                                            i += 1
                                         }
-                                        i += 1
+                                        self.selection = 1
+                                    })
+                                    {
+                                        btnAdd()
                                     }
-                                    self.selection = 1
-                                })
-                                {
-                                    btnAdd()
                                 }
-                            }
-                            Button(action: {
-                                self.showeditingpage = true
-                            }){
-                                Image(systemName: "plus.circle.fill")
-                                    .resizable()
-                                    .foregroundColor(.blue)
-                                    .frame(width: self.size, height: self.size)
-                                    .padding(.horizontal, 10)
-                                    .shadow(color: Color("Shadow"), radius: 10)
-                            }
-                            .sheet(isPresented: self.$showeditingpage) {
-                                EditingPage()
-                                    .environmentObject(self.PrizeData)
-                            }
+                                Button(action: {
+                                    self.showeditingpage = true
+                                }){
+                                    Image(systemName: "plus.circle.fill")
+                                        .resizable()
+                                        .foregroundColor(.blue)
+                                        .frame(width: self.size, height: self.size)
+                                        .padding(.horizontal, 10)
+                                        .shadow(color: Color("Shadow"), radius: 10)
+                                }
+                                .sheet(isPresented: self.$showeditingpage) {
+                                    EditingPage()
+                                        .environmentObject(self.PrizeData)
+                                }
+                            }.padding(.bottom)
                         }
                     }
                 }
@@ -150,6 +154,9 @@ struct SingleCard: View {
                     if self.showConfirmButton == true {
                         self.showConfirmButton = false
                         self.showRemoveButton[self.index!] = true
+                    }
+                    if self.showRemoveButton[self.index!] == false && self.showConfirmButton == false {
+                        self.showeditingpage = true
                     }
                 }){
                     Group {
