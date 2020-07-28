@@ -15,6 +15,7 @@ struct page2_add: View {
     @State var selection: Int? = nil
     @State var showeditingpage = false
     @State var showRemoveButton = false
+    @State var isEditingMode = false
     @State var selected: [Int] = []
     var size: CGFloat = 65.0
     
@@ -36,9 +37,10 @@ struct page2_add: View {
                 }
                 Button(action: {
                     self.showRemoveButton.toggle()
+                    self.isEditingMode.toggle()
                     self.selected.removeAll()
                 }){
-                    Text(showRemoveButton ? NSLocalizedString("EXT", comment: "Done"):NSLocalizedString("EDIT", comment: ""))
+                    Text(isEditingMode ? NSLocalizedString("EXT", comment: "Done"):NSLocalizedString("EDIT", comment: ""))
                         .font(.custom("", size: 20))
                         .fontWeight(.heavy)
                         .padding(.trailing)
@@ -50,18 +52,6 @@ struct page2_add: View {
                         ForEach(PrizeData.PrizeList) {prize in
                             if !prize.isRemoved {
                                 HStack {
-                                    if self.showRemoveButton {
-                                        Button(action: {
-                                                self.PrizeData.remove(index: prize.id)
-                                        }){
-                                            Image(systemName: "trash.fill")
-                                                .resizable()
-                                                .frame(width: 25, height: 30)
-                                                .foregroundColor(.black)
-                                                .padding(.trailing)
-                                        }
-                                        .padding([.leading, .bottom])
-                                    }
                                     SingleCard(showRemoveButton: self.$showRemoveButton, selected: self.$selected, index: prize.id)
                                         .environmentObject(self.PrizeData)
                                         .animation(.spring())
@@ -125,53 +115,93 @@ struct SingleCard: View {
     @Binding var showRemoveButton: Bool
     @Binding var selected: [Int]
     @State var isSelected = false
+    @State var showConfirmButton = false
     var index: Int?
     var body: some View {
         HStack {
-            Rectangle()
-                .frame(width: 6)
-                .foregroundColor(.blue)
-            Button(action: {
-                self.showeditingpage = true
-            }){
-                Group {
-                    HStack {
-                        VStack(alignment: .leading, spacing: 6.0) {
-                            Text(PrizeData.PrizeList[index!].PrizeName)
-                                .font(.headline)
-                                .fontWeight(.heavy)
-                                .foregroundColor(.black)
-                            Text("\(NSLocalizedString("QTT", comment: ""))\(PrizeData.PrizeList[index!].PrizeMember)")
-                                .font(.subheadline)
-                                .foregroundColor(.black)
-                        }
-                        Spacer()
-                        if showRemoveButton{
-                            Button(action: {
-                                if self.selected.firstIndex(where: {$0 == self.index}) == nil {
-                                    self.selected.append(self.index!)
-                                }
-                                else {
-                                    self.selected.remove(at: self.index!)
-                                }
-                            }) {
-                                Image(systemName: self.selected.firstIndex(where: {$0 == self.index}) != nil ? "checkmark.circle.fill":"circle")
-                                    .imageScale(.large)
+            if self.showRemoveButton {
+                Button(action: {
+                    self.showConfirmButton = true
+                    self.showRemoveButton = false
+                }){
+                    Image(systemName: "minus.circle.fill")
+                        .imageScale(.large)
+                        .foregroundColor(.red)
+                        .padding(.trailing)
+                }
+                .padding([.leading, .bottom])
+            }
+            HStack {
+                Rectangle()
+                    .frame(width: 6)
+                    .foregroundColor(.blue)
+                Button(action: {
+                    if self.showConfirmButton == true {
+                        self.showConfirmButton = false
+                        self.showRemoveButton = true
+                    }
+                    else {
+                        self.showeditingpage = true
+                    }
+                }){
+                    Group {
+                        HStack {
+                            VStack(alignment: .leading, spacing: 6.0) {
+                                Text(PrizeData.PrizeList[index!].PrizeName)
+                                    .font(.headline)
+                                    .fontWeight(.heavy)
                                     .foregroundColor(.black)
-                                    .padding(.trailing)
+                                Text("\(NSLocalizedString("QTT", comment: ""))\(PrizeData.PrizeList[index!].PrizeMember)")
+                                    .font(.subheadline)
+                                    .foregroundColor(.black)
+                            }
+                            Spacer()
+                            if showRemoveButton{
+                                Button(action: {
+                                    if self.selected.firstIndex(where: {$0 == self.index}) == nil {
+                                        self.selected.append(self.index!)
+                                    }
+                                    else {
+                                        self.selected.remove(at: self.index!)
+                                    }
+                                }) {
+                                    Image(systemName: self.selected.firstIndex(where: {$0 == self.index}) != nil ? "checkmark.circle.fill":"circle")
+                                        .imageScale(.large)
+                                        .foregroundColor(.black)
+                                        .padding(.trailing)
+                                }
+                            }
+                            else {
+                                if showConfirmButton == true {
+                                    Button(action: {
+                                        withAnimation {
+                                            self.PrizeData.remove(index: self.index!)
+                                            self.showConfirmButton = false
+                                            self.showRemoveButton = true
+                                        }
+                                    }) {
+                                        ZStack {
+                                            Rectangle()
+                                                .foregroundColor(.red)
+                                                .frame(width: 80)
+                                            Text(NSLocalizedString("RMT", comment: ""))
+                                                .foregroundColor(.black)
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
+                }.sheet(isPresented: $showeditingpage) {
+                    EditingPage(prizename: self.PrizeData.PrizeList[self.index!].PrizeName, prizequota: String(self.PrizeData.PrizeList[self.index!].PrizeMember), index: self.index)
+                        .environmentObject(self.PrizeData)
                 }
-            }.sheet(isPresented: $showeditingpage) {
-                EditingPage(prizename: self.PrizeData.PrizeList[self.index!].PrizeName, prizequota: String(self.PrizeData.PrizeList[self.index!].PrizeMember), index: self.index)
-                    .environmentObject(self.PrizeData)
-            }
-        }.frame(height: 80)
-        .background(Color("CardBG"))
-        .cornerRadius(10)
-        .padding(.bottom)
-        .shadow(color: Color("Shadow"), radius: 10, x: 0, y: 10)
+            }.frame(height: 80)
+            .background(Color("CardBG"))
+            .cornerRadius(10)
+            .padding(.bottom)
+                .shadow(color: Color("Shadow"), radius: 10, x: 0, y: 10)
+        }
     }
 }
 
