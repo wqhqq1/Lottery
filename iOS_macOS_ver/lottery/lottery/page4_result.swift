@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct page3_result: View {
+struct page4_result: View {
     var PrizeData: [SinglePrize]
     var body: some View {
         VStack {

@@ -19,6 +19,7 @@ struct page2_add: View {
     @State var showAlert = false
     @State var selected: [Int] = []
     @State var showButton = true
+//    var timer: Timer?
     var size: CGFloat = 65.0
     
     var body: some View {
@@ -52,7 +53,7 @@ struct page2_add: View {
                     self.isEditingMode.toggle()
                     self.selected.removeAll()
                 }){
-                    Text(isEditingMode ? NSLocalizedString("EXT", comment: "Done"):NSLocalizedString("EDIT", comment: ""))
+                    Text(isEditingMode ? NSLocalizedString("DONE", comment: ""):NSLocalizedString("EDIT", comment: ""))
                         .font(.custom("", size: 20))
                         .fontWeight(.heavy)
                         .padding(.trailing)
@@ -82,12 +83,13 @@ struct page2_add: View {
                         Spacer()
                         if self.showButton {
                             HStack {
-                                NavigationLink(destination: page3_result(PrizeData: PrizeData.PrizeList_cacu), tag: 1, selection: $selection) {
+                                NavigationLink(destination: page3_animationPlay(PrizeData: PrizeData.PrizeList_cacu), tag: 1, selection: $selection) {
                                     Button(action: {
                                         AllPrizesMember = APM_ccltor(data: self.PrizeData.PrizeList_cacu)
                                         rands = Random(start: 1, end: AllPrizesMember + 1, Members: MemberNumber)
                                         var i = 0, j = 0
                                         while i < self.PrizeData.PrizeList_cacu.count {
+                                            self.PrizeData.PrizeList_cacu[i].Lottery_result = ""
                                             while j < self.PrizeData.PrizeList_cacu[i].PrizeM {
                                                 self.PrizeData.PrizeList_cacu[i].Lottery_result += "\n" + MemberNames[rands[j] - 1] + " "
                                                 j += 1
