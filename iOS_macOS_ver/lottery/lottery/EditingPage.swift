@@ -29,7 +29,7 @@ struct EditingPage: View {
                             if self.prizequota != "" {
                                 if self.index == nil {
                                     
-                                        self.PrizeData.add(data: SinglePrize(PrizeName: self.prizename, PrizeMember: Int(self.prizequota)!))
+                                    self.PrizeData.add(data: SinglePrize(PrizeName: self.prizename, PrizeMember: Int(self.prizequota)!))
                                     
                                 }
                                 else {

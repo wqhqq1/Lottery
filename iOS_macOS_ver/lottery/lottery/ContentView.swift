@@ -19,65 +19,65 @@ struct ContentView: View {
     var body: some View {
         NavigationView{
             KeyboardHost_offset3 {
-            ScrollView {
-        VStack {
-            Text(NSLocalizedString("MNL", comment: "")).padding()
-            TextField(NSLocalizedString("MNTF", comment: ""), text: $MemberNumberInput)
-                .keyboardType(.numberPad)
-                .padding(.horizontal)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-            HStack {
-                TextField(NSLocalizedString("NMTF", comment: ""), text: $MemberNamesInput)
-                    .padding()
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                Button(action: {
-                    let Pboard = UIPasteboard.general
-                    if Pboard.string != nil {
-                        self.MemberNamesInput = NSLocalizedString("RFCB", comment: "")
-                        originalMN = Pboard.string!
-                        self.MemberNumberInput = String(MN_counter(input: originalMN))
+                ScrollView {
+                    VStack {
+                        Text(NSLocalizedString("MNL", comment: "")).padding()
+                        TextField(NSLocalizedString("MNTF", comment: ""), text: $MemberNumberInput)
+                            .keyboardType(.numberPad)
+                            .padding(.horizontal)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                        HStack {
+                            TextField(NSLocalizedString("NMTF", comment: ""), text: $MemberNamesInput)
+                                .padding()
+                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                            Button(action: {
+                                let Pboard = UIPasteboard.general
+                                if Pboard.string != nil {
+                                    self.MemberNamesInput = NSLocalizedString("RFCB", comment: "")
+                                    originalMN = Pboard.string!
+                                    self.MemberNumberInput = String(MN_counter(input: originalMN))
+                                }
+                                else {
+                                    self.showalertCPB = true
+                                }
+                            },
+                                   label: {
+                                    Image(systemName: "doc.on.clipboard")
+                            })
+                                .alert(isPresented: $showalertCPB) {
+                                    Alert(title: Text("Fatal Error"), message: Text("Clip board is empty"), dismissButton: .default(Text("OK")))
+                            }
+                            .padding(.trailing)
+                        }
+                        NavigationLink(destination: page2_add(), tag: 1, selection: $selection) {
+                            Button(action: {
+                                if self.MemberNamesInput != "" && self.MemberNumberInput != ""
+                                {
+                                    //                        PrizeNumber = Int(PrizeNumberInput)!
+                                    MemberNumber = Int(self.MemberNumberInput)!
+                                    if originalMN != ""
+                                    {
+                                        MemberNames = MN_spliter(input: originalMN)
+                                    }
+                                    else {
+                                        MemberNames = MN_spliter_handinput(input: self.MemberNamesInput)
+                                    }
+                                    self.selection = 1
+                                }
+                                else {
+                                    self.showalert = true
+                                }
+                                i = 1
+                                //                    self.selection = 1
+                                //                    self.selection = 1
+                            }, label: {
+                                Text(NSLocalizedString("NXTB", comment: ""))
+                            }).alert(isPresented: $showalert) {
+                                Alert(title: Text("Fatal Error"), message: Text("Failed to read text fields"), dismissButton: .default(Text("OK")))
+                            }
+                        }.padding()
                     }
-                    else {
-                        self.showalertCPB = true
-                    }
-                },
-                       label: {
-                        Image(systemName: "doc.on.clipboard")
-                       })
-                .alert(isPresented: $showalertCPB) {
-                    Alert(title: Text("Fatal Error"), message: Text("Clip board is empty"), dismissButton: .default(Text("OK")))
-                }
-                .padding(.trailing)
+                }.navigationBarTitle(NSLocalizedString("NBT1", comment: ""))
             }
-            NavigationLink(destination: page2_add(), tag: 1, selection: $selection) {
-                Button(action: {
-                    if self.MemberNamesInput != "" && self.MemberNumberInput != ""
-                    {
-//                        PrizeNumber = Int(PrizeNumberInput)!
-                        MemberNumber = Int(self.MemberNumberInput)!
-                        if originalMN != ""
-                        {
-                            MemberNames = MN_spliter(input: originalMN)
-                        }
-                        else {
-                            MemberNames = MN_spliter_handinput(input: self.MemberNamesInput)
-                        }
-                        self.selection = 1
-                    }
-                    else {
-                        self.showalert = true
-                    }
-                    i = 1
-//                    self.selection = 1
-//                    self.selection = 1
-                }, label: {
-                    Text(NSLocalizedString("NXTB", comment: ""))
-                }).alert(isPresented: $showalert) {
-                    Alert(title: Text("Fatal Error"), message: Text("Failed to read text fields"), dismissButton: .default(Text("OK")))
-                }
-            }.padding()
-        }
-            }.navigationBarTitle(NSLocalizedString("NBT1", comment: ""))
-        }
         }.navigationViewStyle(StackNavigationViewStyle())}
 }

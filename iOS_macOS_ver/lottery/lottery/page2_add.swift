@@ -15,11 +15,14 @@ struct page2_add: View {
     @State var selection: Int? = nil
     @State var showeditingpage = false
     @State var showRemoveButton = [Bool](repeating: false, count: 1000)
+    @State var isSelected = [Bool](repeating: false, count: 1000)
+    @State var showConfirmButton = [Bool](repeating: false, count: 1000)
     @State var isEditingMode = false
     @State var showAlert = false
     @State var selected: [Int] = []
     @State var showButton = true
-//    var timer: Timer?
+    @State var isDone = true
+    //    var timer: Timer?
     var size: CGFloat = 65.0
     
     var body: some View {
@@ -37,7 +40,7 @@ struct page2_add: View {
                     }
                     .actionSheet(isPresented: self.$showAlert) {
                         ActionSheet(title: Text(NSLocalizedString("RMT", comment: "")), message: Text(NSLocalizedString("CRMT", comment: "")),
-                                    buttons: [.default(Text(NSLocalizedString("RMT", comment: ""))) {
+                                    buttons: [.destructive(Text(NSLocalizedString("RMT", comment: ""))) {
                                         self.PrizeData.removeMore(index: self.selected)
                                         self.selected = []
                                         }])
@@ -47,11 +50,23 @@ struct page2_add: View {
                     self.showButton.toggle()
                     var i = 0
                     while i < self.showRemoveButton.count {
-                        self.showRemoveButton[i].toggle()
+                        if self.isEditingMode {
+                            self.showRemoveButton[i] = false
+                        }
+                        else {
+                            self.showRemoveButton[i] = true
+                        }
                         i += 1
                     }
                     self.isEditingMode.toggle()
                     self.selected.removeAll()
+                    self.isDone.toggle()
+                    i = 0
+                    while i < self.isSelected.count {
+                        self.isSelected[i] = false
+                        self.showConfirmButton[i] = false
+                        i += 1
+                    }
                 }){
                     Text(isEditingMode ? NSLocalizedString("DONE", comment: ""):NSLocalizedString("EDIT", comment: ""))
                         .font(.custom("", size: 20))
@@ -65,7 +80,7 @@ struct page2_add: View {
                         ForEach(PrizeData.PrizeList) {prize in
                             if !prize.isRemoved {
                                 HStack {
-                                    SingleCard(showRemoveButton: self.$showRemoveButton, selected: self.$selected, index: prize.id)
+                                    SingleCard(isDone: self.$isDone, showRemoveButton: self.$showRemoveButton, selected: self.$selected, isSelected: self.$isSelected, showConfirmButton: self.$showConfirmButton, index: prize.id)
                                         .environmentObject(self.PrizeData)
                                         .animation(.spring())
                                         .transition(.slide)
@@ -76,6 +91,7 @@ struct page2_add: View {
                             .transition(.slide)
                     }
                     //                    .transition(.slide)
+                    
                 }.padding(.horizontal)
                 VStack{
                     Spacer()
@@ -128,36 +144,42 @@ struct page2_add: View {
 struct SingleCard: View {
     @State var showeditingpage = false
     @EnvironmentObject var PrizeData: Prizes
+    @Binding var isDone: Bool
     @Binding var showRemoveButton: [Bool]
     @Binding var selected: [Int]
-    @State var isSelected = false
-    @State var showConfirmButton = false
-//    @State var showAlert = false
+    @Binding var isSelected: [Bool]
+    @Binding var showConfirmButton: [Bool]
+    //    @State var showAlert = false
     var index: Int?
     var body: some View {
         HStack {
-            if self.showRemoveButton[index!] {
-                Button(action: {
-                    self.showConfirmButton = true
-                    self.showRemoveButton[self.index!] = false
-                }){
-                    Image(systemName: "minus.circle.fill")
-                        .imageScale(.large)
-                        .foregroundColor(.red)
-                        .padding(.trailing)
+            if self.isDone == false {
+                if self.showRemoveButton[index!] {
+                    Button(action: {
+                        self.showConfirmButton[self.index!] = true
+                        self.showRemoveButton[self.index!] = false
+                        if self.selected.firstIndex(where: {$0 == self.index}) != nil {
+                            self.selected.remove(at: self.selected.firstIndex(where: {$0 == self.index})!)
+                        }
+                    }){
+                        Image(systemName: "minus.circle.fill")
+                            .imageScale(.large)
+                            .foregroundColor(.red)
+                            .padding(.trailing)
+                    }
+                    .padding([.leading, .bottom])
                 }
-                .padding([.leading, .bottom])
             }
             HStack {
                 Rectangle()
                     .frame(width: 6)
                     .foregroundColor(.blue)
                 Button(action: {
-                    if self.showConfirmButton == true {
-                        self.showConfirmButton = false
+                    if self.showConfirmButton[self.index!] == true {
+                        self.showConfirmButton[self.index!] = false
                         self.showRemoveButton[self.index!] = true
                     }
-                    if self.showRemoveButton[self.index!] == false && self.showConfirmButton == false {
+                    if self.isDone == true {
                         self.showeditingpage = true
                     }
                 }){
@@ -173,36 +195,38 @@ struct SingleCard: View {
                                     .foregroundColor(.black)
                             }
                             Spacer()
-                            if showRemoveButton[index!]{
-                                Button(action: {
-                                    if self.selected.firstIndex(where: {$0 == self.index}) == nil {
-                                        self.selected.append(self.index!)
-                                    }
-                                    else {
-                                        self.selected.remove(at: self.selected.firstIndex(where: {$0 == self.index})!)
-                                    }
-                                }) {
-                                    Image(systemName: self.selected.firstIndex(where: {$0 == self.index}) != nil ? "checkmark.circle.fill":"circle")
-                                        .imageScale(.large)
-                                        .foregroundColor(.black)
-                                        .padding(.trailing)
-                                }
-                            }
-                            else {
-                                if showConfirmButton == true {
+                            if self.isDone == false {
+                                if showRemoveButton[index!]{
                                     Button(action: {
-                                        withAnimation {
-                                            self.PrizeData.remove(index: self.index!)
-                                            self.showConfirmButton = false
-                                            self.showRemoveButton[self.index!] = true
+                                        if self.selected.firstIndex(where: {$0 == self.index}) == nil {
+                                            self.selected.append(self.index!)
+                                        }
+                                        else {
+                                            self.selected.remove(at: self.selected.firstIndex(where: {$0 == self.index})!)
                                         }
                                     }) {
-                                        ZStack {
-                                            Rectangle()
-                                                .foregroundColor(.red)
-                                                .frame(width: 80)
-                                            Text(NSLocalizedString("RMT", comment: ""))
-                                                .foregroundColor(.black)
+                                        Image(systemName: self.selected.firstIndex(where: {$0 == self.index}) != nil ? "checkmark.circle.fill":"circle")
+                                            .imageScale(.large)
+                                            .foregroundColor(.black)
+                                            .padding(.trailing)
+                                    }
+                                }
+                                else {
+                                    if showConfirmButton[self.index!] == true {
+                                        Button(action: {
+                                            withAnimation {
+                                                self.PrizeData.remove(index: self.index!)
+                                                self.showConfirmButton[self.index!] = false
+                                                self.showRemoveButton[self.index!] = true
+                                            }
+                                        }) {
+                                            ZStack {
+                                                Rectangle()
+                                                    .foregroundColor(.red)
+                                                    .frame(width: 80)
+                                                Text(NSLocalizedString("RMT", comment: ""))
+                                                    .foregroundColor(.white)
+                                            }
                                         }
                                     }
                                 }
@@ -214,9 +238,9 @@ struct SingleCard: View {
                         .environmentObject(self.PrizeData)
                 }
             }.frame(height: 80)
-            .background(Color("CardBG"))
-            .cornerRadius(10)
-            .padding(.bottom)
+                .background(Color("CardBG"))
+                .cornerRadius(10)
+                .padding(.bottom)
                 .shadow(color: Color("Shadow"), radius: 10, x: 0, y: 10)
         }
     }

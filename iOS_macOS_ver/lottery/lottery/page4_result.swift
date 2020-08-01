@@ -16,13 +16,7 @@ struct page4_result: View {
                     Text(prize.PrizeName)
                         .font(.title)
                 }
-            }.navigationBarTitle(NSLocalizedString("NBLR", comment: ""))
-            Button(action: {
-                abort()
-            },
-            label: {
-                Text(NSLocalizedString("EXT", comment: ""))
-            })
+            }
         }
     }
 }

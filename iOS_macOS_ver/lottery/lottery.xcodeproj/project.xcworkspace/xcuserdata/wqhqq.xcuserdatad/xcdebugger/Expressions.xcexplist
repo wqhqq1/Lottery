@@ -19,10 +19,13 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "closure #2 in closure #1 in closure #1 in page2_add.body.getter:page2_add.swift">
+         contextName = "closure #1 in SingleCard.body.getter:page2_add.swift">
          <PersistentStrings>
             <PersistentString
-               value = "MemberNames">
+               value = "self.isDone">
+            </PersistentString>
+            <PersistentString
+               value = "isDone">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -31,6 +34,14 @@
          <PersistentStrings>
             <PersistentString
                value = "PrizeData">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #2 in closure #1 in closure #1 in page2_add.body.getter:page2_add.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "MemberNames">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

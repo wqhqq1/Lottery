@@ -46,3 +46,5 @@
 "RMT" = "Remove";
 "CRMT" = "Are you sure to remove this item?";
 "DONE" = "Done";
+
+"ING" = "Doing lotery...";
