@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct KeyboardHost_offset3<Content: View>: View {
+struct KeyboardHost_offset20<Content: View>: View {
     let view: Content
     
     @State private var keyboardHeight: CGFloat = 0

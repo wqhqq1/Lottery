@@ -20,6 +20,6 @@ func MN_spliter_handinput(input: String) -> [String]{
 
 func MN_counter(input: String) -> Int{
     let output: [String] = input.components(separatedBy: CharacterSet(charactersIn: "\n"))
-    let count = output.count - 1
+    let count = output.count
     return count
 }

@@ -99,23 +99,31 @@ struct page2_add: View {
                         Spacer()
                         if self.showButton {
                             HStack {
-                                NavigationLink(destination: page3_animationPlay(PrizeData: PrizeData.PrizeList_cacu), tag: 1, selection: $selection) {
+                                NavigationLink(destination: page3_animationPlay().environmentObject(self.PrizeData), tag: 1, selection: $selection) {
                                     Button(action: {
                                         AllPrizesMember = APM_ccltor(data: self.PrizeData.PrizeList_cacu)
-                                        rands = Random(start: 1, end: AllPrizesMember + 1, Members: MemberNumber)
-                                        var i = 0, j = 0
-                                        while i < self.PrizeData.PrizeList_cacu.count {
-                                            self.PrizeData.PrizeList_cacu[i].Lottery_result = ""
-                                            while j < self.PrizeData.PrizeList_cacu[i].PrizeM {
-                                                self.PrizeData.PrizeList_cacu[i].Lottery_result += "\n" + MemberNames[rands[j] - 1] + " "
-                                                j += 1
+                                        if AllPrizesMember <= MemberNumber {
+                                            rands = Random(start: 1, end: AllPrizesMember + 1, Members: MemberNumber)
+                                            var i = 0, j = 0
+                                            while i < self.PrizeData.PrizeList_cacu.count {
+                                                self.PrizeData.PrizeList_cacu[i].Lottery_result = ""
+                                                while j < self.PrizeData.PrizeList_cacu[i].PrizeM {
+                                                    self.PrizeData.PrizeList_cacu[i].Lottery_result += "\n" + MemberNames[rands[j] - 1] + " "
+                                                    j += 1
+                                                }
+                                                i += 1
                                             }
-                                            i += 1
+                                            self.selection = 1
                                         }
-                                        self.selection = 1
+                                        else {
+                                            self.showAlert = true
+                                        }
                                     })
                                     {
                                         btnAdd()
+                                    }
+                                    .alert(isPresented: self.$showAlert) {
+                                        Alert(title: Text("Fatal Error"), message: Text("Too much winners"), dismissButton: .default(Text("OK")))
                                     }
                                 }
                                 Button(action: {
@@ -137,7 +145,8 @@ struct page2_add: View {
                     }
                 }
             }.navigationBarTitle(NSLocalizedString("ADDT", comment: ""))
-        }
+        }.navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: backButton_p2())
     }
 }
 
@@ -267,5 +276,23 @@ struct btnAdd: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         page2_add()
+    }
+}
+
+struct backButton_p2: View {
+    @State var back: Int? = nil
+    var body: some View {
+        NavigationLink(destination: ContentView_back(), tag: 1, selection: $back) {
+            HStack {
+                Button(action: {
+                    self.back = 1
+                }) {
+                    Image(systemName: "chevron.left")
+                        .imageScale(.large)
+                }
+                Text(NSLocalizedString("NBT1", comment: ""))
+                    .font(.headline)
+            }
+        }
     }
 }
