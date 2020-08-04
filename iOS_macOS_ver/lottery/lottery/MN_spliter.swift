@@ -23,3 +23,8 @@ func MN_counter(input: String) -> Int{
     let count = output.count
     return count
 }
+
+func MN_counter_handinput(input: String) -> Int{
+    let output: [String] = input.components(separatedBy: CharacterSet(charactersIn: NSLocalizedString("SYMB", comment: "")))
+    return output.count
+}

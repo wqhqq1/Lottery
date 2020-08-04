@@ -107,12 +107,16 @@ struct page2_add: View {
                                             var i = 0, j = 0
                                             while i < self.PrizeData.PrizeList_cacu.count {
                                                 self.PrizeData.PrizeList_cacu[i].Lottery_result = ""
+                                                readyToCopy += self.PrizeData.PrizeList_cacu[i].PrizeName + ","
                                                 while j < self.PrizeData.PrizeList_cacu[i].PrizeM {
                                                     self.PrizeData.PrizeList_cacu[i].Lottery_result += "\n" + MemberNames[rands[j] - 1] + " "
+                                                    readyToCopy += MemberNames[rands[j] - 1] + ","
                                                     j += 1
                                                 }
+                                                readyToCopy += "\n"
                                                 i += 1
                                             }
+                                            print(readyToCopy)
                                             self.selection = 1
                                         }
                                         else {
@@ -146,7 +150,7 @@ struct page2_add: View {
                 }
             }.navigationBarTitle(NSLocalizedString("ADDT", comment: ""))
         }.navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: backButton_p2())
+            .navigationBarItems(leading: backButton_p2())
     }
 }
 
@@ -192,56 +196,55 @@ struct SingleCard: View {
                         self.showeditingpage = true
                     }
                 }){
-                    Group {
-                        HStack {
-                            VStack(alignment: .leading, spacing: 6.0) {
-                                Text(PrizeData.PrizeList[index!].PrizeName)
-                                    .font(.headline)
-                                    .fontWeight(.heavy)
-                                    .foregroundColor(.black)
-                                Text("\(NSLocalizedString("QTT", comment: ""))\(PrizeData.PrizeList[index!].PrizeMember)")
-                                    .font(.subheadline)
-                                    .foregroundColor(.black)
+                    HStack {
+                        VStack(alignment: .leading, spacing: 6.0) {
+                            Text(PrizeData.PrizeList[index!].PrizeName)
+                                .font(.headline)
+                                .fontWeight(.heavy)
+                                .foregroundColor(.black)
+                            Text("\(NSLocalizedString("QTT", comment: ""))\(PrizeData.PrizeList[index!].PrizeMember)")
+                                .font(.subheadline)
+                                .foregroundColor(.black)
+                        }
+                        Spacer()
+                        if self.isDone == false {
+                            if showRemoveButton[index!]{
+                                Button(action: {
+                                    if self.selected.firstIndex(where: {$0 == self.index}) == nil {
+                                        self.selected.append(self.index!)
+                                    }
+                                    else {
+                                        self.selected.remove(at: self.selected.firstIndex(where: {$0 == self.index})!)
+                                    }
+                                }) {
+                                    Image(systemName: self.selected.firstIndex(where: {$0 == self.index}) != nil ? "checkmark.circle.fill":"circle")
+                                        .imageScale(.large)
+                                        .foregroundColor(.black)
+                                        .padding(.trailing)
+                                }
                             }
-                            Spacer()
-                            if self.isDone == false {
-                                if showRemoveButton[index!]{
+                            else {
+                                if showConfirmButton[self.index!] == true {
                                     Button(action: {
-                                        if self.selected.firstIndex(where: {$0 == self.index}) == nil {
-                                            self.selected.append(self.index!)
-                                        }
-                                        else {
-                                            self.selected.remove(at: self.selected.firstIndex(where: {$0 == self.index})!)
+                                        withAnimation {
+                                            self.PrizeData.remove(index: self.index!)
+                                            self.showConfirmButton[self.index!] = false
+                                            self.showRemoveButton[self.index!] = true
                                         }
                                     }) {
-                                        Image(systemName: self.selected.firstIndex(where: {$0 == self.index}) != nil ? "checkmark.circle.fill":"circle")
-                                            .imageScale(.large)
-                                            .foregroundColor(.black)
-                                            .padding(.trailing)
-                                    }
-                                }
-                                else {
-                                    if showConfirmButton[self.index!] == true {
-                                        Button(action: {
-                                            withAnimation {
-                                                self.PrizeData.remove(index: self.index!)
-                                                self.showConfirmButton[self.index!] = false
-                                                self.showRemoveButton[self.index!] = true
-                                            }
-                                        }) {
-                                            ZStack {
-                                                Rectangle()
-                                                    .foregroundColor(.red)
-                                                    .frame(width: 80)
-                                                Text(NSLocalizedString("RMT", comment: ""))
-                                                    .foregroundColor(.white)
-                                            }
+                                        ZStack {
+                                            Rectangle()
+                                                .foregroundColor(.red)
+                                                .frame(width: 80)
+                                            Text(NSLocalizedString("RMT", comment: ""))
+                                                .foregroundColor(.white)
                                         }
                                     }
                                 }
                             }
                         }
                     }
+                    
                 }.sheet(isPresented: $showeditingpage) {
                     EditingPage(prizename: self.PrizeData.PrizeList[self.index!].PrizeName, prizequota: String(self.PrizeData.PrizeList[self.index!].PrizeMember), index: self.index)
                         .environmentObject(self.PrizeData)
@@ -281,6 +284,7 @@ struct ContentView_Previews: PreviewProvider {
 
 struct backButton_p2: View {
     @State var back: Int? = nil
+    var origin_names: String = ""
     var body: some View {
         NavigationLink(destination: ContentView_back(), tag: 1, selection: $back) {
             HStack {
@@ -293,6 +297,6 @@ struct backButton_p2: View {
                 Text(NSLocalizedString("NBT1", comment: ""))
                     .font(.headline)
             }
-        }
+        }.transition(.slide)
     }
 }

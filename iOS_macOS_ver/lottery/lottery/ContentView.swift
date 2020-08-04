@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-var MemberNumber = 0, i: Int = 0, MemberNames = [String](), originalMN = ""
+var MemberNumber = 0, i: Int = 0, MemberNames = [String](), originalMN = "", readyToCopy = ""
 
 struct ContentView: View {
     @State private var PrizeNumberInput = ""
@@ -17,7 +17,18 @@ struct ContentView: View {
     @State var showalert = false
     @State var showalertCPB = false
     var body: some View {
-        NavigationView{
+        let membernames = Binding<String>(get: {
+            self.MemberNamesInput
+        }, set: {
+            self.MemberNamesInput = $0
+            if self.MemberNamesInput != "" {
+                self.MemberNumberInput = String(MN_counter_handinput(input: self.MemberNamesInput))
+            }
+            else {
+                self.MemberNumberInput = ""
+            }
+        })
+        return NavigationView{
             KeyboardHost_offset20 {
                 Form {
                     Section {
@@ -25,7 +36,7 @@ struct ContentView: View {
                             .keyboardType(.numberPad)
                             .padding(.horizontal)
                         HStack {
-                            TextField(NSLocalizedString("NMTF", comment: ""), text: $MemberNamesInput)
+                            TextField(NSLocalizedString("NMTF", comment: ""), text: membernames)
                                 .padding(.leading)
                             Button(action: {
                                 let Pboard = UIPasteboard.general
@@ -59,6 +70,7 @@ struct ContentView: View {
                                 MemberNames = MN_spliter(input: originalMN)
                             }
                             else {
+                                originalMN = self.MemberNamesInput
                                 MemberNames = MN_spliter_handinput(input: self.MemberNamesInput)
                             }
                             self.selection = 1
