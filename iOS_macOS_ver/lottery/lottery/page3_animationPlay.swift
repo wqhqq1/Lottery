@@ -97,8 +97,13 @@ struct TextFieldAlert<Presenting>: View where Presenting: View {
                     HStack {
                         Button(action: {
                             if self.text != "" {
-                                let path = NSHomeDirectory() + "/Documents/\(self.text).csv"
-                                print(path)
+                                var path = ""
+                                if #available(iOS 13.0, *) {
+                                    path = NSHomeDirectory() + "/Documents/\(self.text).csv"
+                                }
+                                if #available(OSX 10.15, *) {
+                                    path = "/Users/Shared/\(self.text).csv"
+                                }
                                 try! readyToCopy.write(toFile: path, atomically: true, encoding: .utf8)
                                 self.isShowing.toggle()
                             }
@@ -136,7 +141,7 @@ extension View {
     func textFieldAlert(isShowing: Binding<Bool>, title: String) -> some View {
         TextFieldAlert(isShowing: isShowing,
                        presenting: self,
-            title: title)
+                       title: title)
     }
     
 }

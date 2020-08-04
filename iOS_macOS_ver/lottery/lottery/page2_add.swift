@@ -110,7 +110,12 @@ struct page2_add: View {
                                                 readyToCopy += self.PrizeData.PrizeList_cacu[i].PrizeName + ","
                                                 while j < self.PrizeData.PrizeList_cacu[i].PrizeM {
                                                     self.PrizeData.PrizeList_cacu[i].Lottery_result += "\n" + MemberNames[rands[j] - 1] + " "
-                                                    readyToCopy += MemberNames[rands[j] - 1] + ","
+                                                    if j != self.PrizeData.PrizeList_cacu[i].PrizeM - 1 {
+                                                        readyToCopy += MemberNames[rands[j] - 1] + ","
+                                                    }
+                                                    else {
+                                                        readyToCopy += MemberNames[rands[j] - 1]
+                                                    }
                                                     j += 1
                                                 }
                                                 readyToCopy += "\n"

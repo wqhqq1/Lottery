@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-var MemberNumber = 0, i: Int = 0, MemberNames = [String](), originalMN = "", readyToCopy = ""
+var MemberNumber = 0, i: Int = 0, MemberNames = [String](), originalMN = "", readyToCopy = "", originalMemberNames = ""
 
 struct ContentView: View {
     @State private var PrizeNumberInput = ""
@@ -70,9 +70,9 @@ struct ContentView: View {
                                 MemberNames = MN_spliter(input: originalMN)
                             }
                             else {
-                                originalMN = self.MemberNamesInput
                                 MemberNames = MN_spliter_handinput(input: self.MemberNamesInput)
                             }
+                            originalMemberNames = self.MemberNamesInput
                             self.selection = 1
                         }
                         else {
@@ -98,8 +98,8 @@ struct ContentView: View {
 
 struct ContentView_back: View {
     @State private var PrizeNumberInput = ""
-    @State private var MemberNumberInput = ""
-    @State private var MemberNamesInput = ""
+    @State private var MemberNumberInput = String(MemberNumber)
+    @State private var MemberNamesInput = originalMN == "" ? originalMemberNames:NSLocalizedString("RFCB", comment: "")
     @State var selection: Int? = nil
     @State var showalert = false
     @State var showalertCPB = false
