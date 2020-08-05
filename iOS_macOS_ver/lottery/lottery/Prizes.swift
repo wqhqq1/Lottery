@@ -41,6 +41,50 @@ class Prizes: ObservableObject {
         }
     }
     
+    func head() -> Int {
+        var head = 0
+        while head < PrizeList.count {
+            if PrizeList[head].isRemoved == false {
+                return PrizeList[head].id
+            }
+            head += 1
+        }
+        return 0
+    }
+    
+    func upNearBy(index: Int) -> Int {
+        var nearBy = index - 1
+        while nearBy >= 0 {
+            if PrizeList[nearBy].isRemoved == false {
+                return nearBy
+            }
+            nearBy -= 1
+        }
+        return 0
+    }
+    
+    func end() -> Int {
+        var end = PrizeList.count - 1
+        while end >= 0 {
+            if PrizeList[end].isRemoved == false {
+                return PrizeList[end].id
+            }
+            end -= 1
+        }
+        return 0
+    }
+    
+    func downNearBy(index: Int) -> Int {
+        var nearBy = index + 1
+        while nearBy < PrizeList.count {
+            if PrizeList[nearBy].isRemoved == false {
+                return nearBy
+            }
+            nearBy += 1
+        }
+        return 0
+    }
+    
     func add(data: SinglePrize) {
         if count == 0 {
             PrizeList.append(SinglePrize(id: count, PrizeName: data.PrizeName, PrizeMember: data.PrizeMember, PrizeM: data.PrizeMember))
@@ -49,6 +93,15 @@ class Prizes: ObservableObject {
             PrizeList.append(SinglePrize(id: count, PrizeName: data.PrizeName, PrizeMember: data.PrizeMember, PrizeM: PrizeList[count - 1].PrizeM + data.PrizeMember))
         }
         count += 1
+        reAppend()
+    }
+    
+    func move(from: Int, to: Int) {
+        let tempPrize = PrizeList[from]
+        PrizeList[from].PrizeName = PrizeList[to].PrizeName
+        PrizeList[from].PrizeMember = PrizeList[to].PrizeMember
+        PrizeList[to].PrizeMember = tempPrize.PrizeMember
+        PrizeList[to].PrizeName = tempPrize.PrizeName
         reAppend()
     }
     

@@ -14,6 +14,8 @@ struct EditingPage: View {
     @State var prizequota = ""
     @State var showalert = false
     var index: Int?
+    @Binding var prizeHead: Int
+    @Binding var prizeEnd: Int
     var body: some View {
         KeyboardHost_edit {
             NavigationView {
@@ -28,9 +30,9 @@ struct EditingPage: View {
                         Button(action: {
                             if self.prizequota != "" {
                                 if self.index == nil {
-                                    
                                     self.PrizeData.add(data: SinglePrize(PrizeName: self.prizename, PrizeMember: Int(self.prizequota)!))
-                                    
+                                    self.prizeHead = self.PrizeData.head()
+                                    self.prizeEnd = self.PrizeData.end()
                                 }
                                 else {
                                     self.PrizeData.edit(index: self.index!, data: SinglePrize(PrizeName: self.prizename, PrizeMember: Int(self.prizequota)!))

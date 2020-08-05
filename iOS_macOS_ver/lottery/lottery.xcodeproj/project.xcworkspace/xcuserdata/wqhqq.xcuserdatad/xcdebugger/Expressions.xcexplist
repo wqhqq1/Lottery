@@ -3,7 +3,7 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "closure #4 in closure #1 in SingleCard.body.getter:page2_add.swift">
+         contextName = "page3_result.body.getter:page3_result.swift">
          <PersistentStrings>
             <PersistentString
                value = "PrizeData">
@@ -28,6 +28,9 @@
                value = "isDone">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in closure #2 in closure #1 in closure #1 in closure #1 in EditingPage.body.getter:EditingPage.swift">
       </ContextState>
       <ContextState
          contextName = "closure #1 in closure #1 in closure #1 in closure #1 in closure #2 in closure #1 in page2_add.body.getter:page2_add.swift">
@@ -65,7 +68,7 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "page3_result.body.getter:page3_result.swift">
+         contextName = "closure #4 in closure #1 in SingleCard.body.getter:page2_add.swift">
          <PersistentStrings>
             <PersistentString
                value = "PrizeData">

@@ -104,15 +104,25 @@ struct ContentView_back: View {
     @State var showalert = false
     @State var showalertCPB = false
     var body: some View {
-        
-        KeyboardHost_offset20 {
+        let membernames = Binding<String>(get: {
+            self.MemberNamesInput
+        }, set: {
+            self.MemberNamesInput = $0
+            if self.MemberNamesInput != "" {
+                self.MemberNumberInput = String(MN_counter_handinput(input: self.MemberNamesInput))
+            }
+            else {
+                self.MemberNumberInput = ""
+            }
+        })
+        return KeyboardHost_offset20 {
             Form {
                 Section {
                     TextField(NSLocalizedString("MNTF", comment: ""), text: $MemberNumberInput)
                         .keyboardType(.numberPad)
                         .padding(.horizontal)
                     HStack {
-                        TextField(NSLocalizedString("NMTF", comment: ""), text: $MemberNamesInput)
+                        TextField(NSLocalizedString("NMTF", comment: ""), text: membernames)
                             .padding(.leading)
                         Button(action: {
                             let Pboard = UIPasteboard.general

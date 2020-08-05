@@ -22,6 +22,8 @@ struct page2_add: View {
     @State var selected: [Int] = []
     @State var showButton = true
     @State var isDone = true
+    @State var prizeHead = 0
+    @State var prizeEnd = 0
     //    var timer: Timer?
     var size: CGFloat = 65.0
     
@@ -42,6 +44,8 @@ struct page2_add: View {
                         ActionSheet(title: Text(NSLocalizedString("RMT", comment: "")), message: Text(NSLocalizedString("CRMT", comment: "")),
                                     buttons: [.destructive(Text(NSLocalizedString("RMT", comment: ""))) {
                                         self.PrizeData.removeMore(index: self.selected)
+                                        self.prizeHead = self.PrizeData.head()
+                                        self.prizeEnd = self.PrizeData.end()
                                         self.selected = []
                                         }])
                     }
@@ -80,7 +84,7 @@ struct page2_add: View {
                         ForEach(PrizeData.PrizeList) {prize in
                             if !prize.isRemoved {
                                 HStack {
-                                    SingleCard(isDone: self.$isDone, showRemoveButton: self.$showRemoveButton, selected: self.$selected, isSelected: self.$isSelected, showConfirmButton: self.$showConfirmButton, index: prize.id)
+                                    SingleCard(isDone: self.$isDone, showRemoveButton: self.$showRemoveButton, selected: self.$selected, isSelected: self.$isSelected, showConfirmButton: self.$showConfirmButton, index: prize.id, prizeHead: self.$prizeHead, prizeEnd: self.$prizeEnd)
                                         .environmentObject(self.PrizeData)
                                         .animation(.spring())
                                         .transition(.slide)
@@ -146,7 +150,7 @@ struct page2_add: View {
                                         .shadow(color: Color("Shadow"), radius: 10)
                                 }
                                 .sheet(isPresented: self.$showeditingpage) {
-                                    EditingPage()
+                                    EditingPage(prizeHead: self.$prizeHead, prizeEnd: self.$prizeEnd)
                                         .environmentObject(self.PrizeData)
                                 }
                             }.padding(.bottom)
@@ -167,8 +171,10 @@ struct SingleCard: View {
     @Binding var selected: [Int]
     @Binding var isSelected: [Bool]
     @Binding var showConfirmButton: [Bool]
-    //    @State var showAlert = false
     var index: Int?
+    @Binding var prizeHead: Int
+    @Binding var prizeEnd: Int
+    var timer = Timer.publish(every: 0.1, on: .main, in: .common)
     var body: some View {
         HStack {
             if self.isDone == false {
@@ -233,6 +239,8 @@ struct SingleCard: View {
                                     Button(action: {
                                         withAnimation {
                                             self.PrizeData.remove(index: self.index!)
+                                            self.prizeHead = self.PrizeData.head()
+                                            self.prizeEnd = self.PrizeData.end()
                                             self.showConfirmButton[self.index!] = false
                                             self.showRemoveButton[self.index!] = true
                                         }
@@ -248,10 +256,47 @@ struct SingleCard: View {
                                 }
                             }
                         }
+                        if isDone {
+                            VStack {
+                                if self.prizeHead != self.index {
+                                    Button(action: {
+                                        self.PrizeData.move(from: self.index!, to: self.PrizeData.upNearBy(index: self.index!))
+                                    }) {
+                                        Image(systemName: "chevron.up")
+                                            .foregroundColor(Color("trash"))
+                                            .padding([.top, .bottom, .trailing])
+                                            .imageScale(.large)
+                                    }
+                                }
+                                else {
+                                    Image(systemName: "chevron.up")
+                                        .foregroundColor(Color("arrow.grey"))
+                                        .padding([.top, .bottom, .trailing])
+                                        .imageScale(.large)
+                                }
+                                if self.prizeEnd != self.index {
+                                    Button(action: {
+                                        self.PrizeData.move(from: self.index!, to: self.PrizeData.downNearBy(index: self.index!))
+                                    }) {
+                                        Image(systemName: "chevron.down")
+                                            .foregroundColor(Color("trash"))
+                                            .padding([.bottom, .trailing])
+                                            .imageScale(.large)
+                                    }
+                                }
+                                else {
+                                    Image(systemName: "chevron.down")
+                                        .foregroundColor(Color("arrow.grey"))
+                                        .padding([.bottom, .trailing])
+                                        .imageScale(.large)
+                                }
+                            }
+                        }
+                        
                     }
                     
                 }.sheet(isPresented: $showeditingpage) {
-                    EditingPage(prizename: self.PrizeData.PrizeList[self.index!].PrizeName, prizequota: String(self.PrizeData.PrizeList[self.index!].PrizeMember), index: self.index)
+                    EditingPage(prizename: self.PrizeData.PrizeList[self.index!].PrizeName, prizequota: String(self.PrizeData.PrizeList[self.index!].PrizeMember), index: self.index, prizeHead: self.$prizeHead, prizeEnd: self.$prizeEnd)
                         .environmentObject(self.PrizeData)
                 }
             }.frame(height: 80)
