@@ -46,10 +46,9 @@ struct result: View {
                 }) {
                     HStack {
                         Text(NSLocalizedString("CPR", comment: ""))
-                        Image(systemName: "doc.on.clipboard")
+                        Image(systemName: "square.and.arrow.down.fill")
                     }
-                }
-                .textFieldAlert(isShowing: self.$showAlert, title: "Input file path")
+                }.background(AlertControl(show: self.$showAlert, title: "Save", message: "Input file name."))
             }.padding(.horizontal)
                 .animation(.spring())
         }.navigationBarTitle(NSLocalizedString("NBLR", comment: ""))
@@ -77,71 +76,74 @@ struct backButton_p3: View {
     }
 }
 
-struct TextFieldAlert<Presenting>: View where Presenting: View {
-    
-    @Binding var isShowing: Bool
-    @State var text: String = ""
-    let presenting: Presenting
-    let title: String
-    
-    var body: some View {
-        GeometryReader { (deviceSize: GeometryProxy) in
-            ZStack {
-                self.presenting
-                    .disabled(self.isShowing)
-                VStack {
-                    Text(self.title)
-                    TextField("File name.", text: self.$text)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                    Divider()
-                    HStack {
-                        Button(action: {
-                            if self.text != "" {
-                                var path = ""
-                                if #available(iOS 13.0, *) {
-                                    path = NSHomeDirectory() + "/Documents/\(self.text).csv"
-                                }
-                                if #available(OSX 10.15, *) {
-                                    path = "/Users/Shared/\(self.text).csv"
-                                }
-                                try! readyToCopy.write(toFile: path, atomically: true, encoding: .utf8)
-                                self.isShowing.toggle()
-                            }
-                        }) {
-                            Text("OK")
-                                .foregroundColor(.black)
-                        }
-                        Divider()
-                        Button(action: {
-                            withAnimation {
-                                self.isShowing.toggle()
-                            }
-                        }) {
-                            Text("Cancel")
-                                .foregroundColor(.black)
-                        }
+struct AlertControl: UIViewControllerRepresentable {
+
+    @State var textString: String = ""
+    @Binding var show: Bool
+
+    var title: String
+    var message: String
+
+    func makeUIViewController(context: UIViewControllerRepresentableContext<AlertControl>) -> UIViewController {
+        return UIViewController() // holder controller - required to present alert
+    }
+
+    func updateUIViewController(_ viewController: UIViewController, context: UIViewControllerRepresentableContext<AlertControl>) {
+        guard context.coordinator.alert == nil else { return }
+        if self.show {
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            context.coordinator.alert = alert
+
+            alert.addTextField { textField in
+                textField.placeholder = "Enter some text"
+                textField.text = self.textString            // << initial value if any
+                textField.delegate = context.coordinator    // << use coordinator as delegate
+                textField.font = UIFont(name: "PingFangTC-Regular", size: 20)
+            }
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in
+                // your action here
+            })
+            alert.addAction(UIAlertAction(title: "Save", style: .destructive) { _ in
+                if self.textString != "" {
+                    var path = ""
+                    if #available(iOS 13.0, *) {
+                        path = NSHomeDirectory() + "/Documents/\(self.textString).csv"
                     }
+                    if #available(OSX 10.15, *)
+                    {
+                        path = "/Users/Shared/\(self.textString).csv"
+                    }
+                    try? readyToCopy.write(toFile: path, atomically: true, encoding: .utf8)
                 }
-                .padding()
-                .background(Color("CardBG"))
-                .frame(
-                    width: deviceSize.size.width*0.7,
-                    height: deviceSize.size.height*0.7
-                )
-                    .shadow(radius: 3)
-                    .opacity(self.isShowing ? 1 : 0)
+            })
+
+            DispatchQueue.main.async { // must be async !!
+                viewController.present(alert, animated: true, completion: {
+                    self.show = false  // hide holder after alert dismiss
+                    context.coordinator.alert = nil
+                })
             }
         }
     }
-    
-}
 
-extension View {
-    
-    func textFieldAlert(isShowing: Binding<Bool>, title: String) -> some View {
-        TextFieldAlert(isShowing: isShowing,
-                       presenting: self,
-                       title: title)
+    func makeCoordinator() -> AlertControl.Coordinator {
+        Coordinator(self)
     }
-    
+
+    class Coordinator: NSObject, UITextFieldDelegate {
+        var alert: UIAlertController?
+        var control: AlertControl
+        init(_ control: AlertControl) {
+            self.control = control
+        }
+
+        func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+            if let text = textField.text as NSString? {
+                self.control.textString = text.replacingCharacters(in: range, with: string)
+            } else {
+                self.control.textString = ""
+            }
+            return true
+        }
+    }
 }
