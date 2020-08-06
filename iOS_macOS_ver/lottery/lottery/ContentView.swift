@@ -65,7 +65,7 @@ struct ContentView: View {
                         {
                             //                        PrizeNumber = Int(PrizeNumberInput)!
                             MemberNumber = Int(self.MemberNumberInput)!
-                            if originalMN != ""
+                            if self.MemberNamesInput == NSLocalizedString("RFCB", comment: "")
                             {
                                 MemberNames = MN_spliter(input: originalMN)
                             }
@@ -99,7 +99,7 @@ struct ContentView: View {
 struct ContentView_back: View {
     @State private var PrizeNumberInput = ""
     @State private var MemberNumberInput = String(MemberNumber)
-    @State private var MemberNamesInput = originalMN == "" ? originalMemberNames:NSLocalizedString("RFCB", comment: "")
+    @State private var MemberNamesInput = originalMemberNames
     @State var selection: Int? = nil
     @State var showalert = false
     @State var showalertCPB = false
@@ -151,13 +151,14 @@ struct ContentView_back: View {
                     {
                         //                        PrizeNumber = Int(PrizeNumberInput)!
                         MemberNumber = Int(self.MemberNumberInput)!
-                        if originalMN != ""
+                        if self.MemberNamesInput == NSLocalizedString("RFCB", comment: "")
                         {
                             MemberNames = MN_spliter(input: originalMN)
                         }
                         else {
                             MemberNames = MN_spliter_handinput(input: self.MemberNamesInput)
                         }
+                        originalMemberNames = self.MemberNamesInput
                         self.selection = 1
                     }
                     else {
