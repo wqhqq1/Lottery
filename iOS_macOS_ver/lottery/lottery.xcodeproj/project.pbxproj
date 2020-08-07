@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0131957224DD143600139AC9 /* UIKitAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0131957124DD143600139AC9 /* UIKitAlertController.swift */; };
 		0139BB0624CD72FA00CAF722 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0139BB0524CD72FA00CAF722 /* Random.swift */; };
 		0139BB0824CD731800CAF722 /* APM_caculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0139BB0724CD731800CAF722 /* APM_caculator.swift */; };
 		0139BB0A24CD757100CAF722 /* SingleResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0139BB0924CD757100CAF722 /* SingleResult.swift */; };
@@ -48,6 +49,7 @@
 
 /* Begin PBXFileReference section */
 		0125319E24CF9E8000C5464A /* lottery.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = lottery.entitlements; sourceTree = "<group>"; };
+		0131957124DD143600139AC9 /* UIKitAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitAlertController.swift; sourceTree = "<group>"; };
 		0139BB0524CD72FA00CAF722 /* Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
 		0139BB0724CD731800CAF722 /* APM_caculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APM_caculator.swift; sourceTree = "<group>"; };
 		0139BB0924CD757100CAF722 /* SingleResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleResult.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				0152AAD324CD6EDE00AEFD53 /* ContentView.swift */,
 				0146C55C24CC1C7F00E4F790 /* page2_add.swift */,
 				013A2C7224D1364600144308 /* page3_animationPlay.swift */,
+				0131957124DD143600139AC9 /* UIKitAlertController.swift */,
 				0139BB0924CD757100CAF722 /* SingleResult.swift */,
 				0139BB0B24CD773C00CAF722 /* EditingPage.swift */,
 				0148149C24D5001800E8766C /* barTitle.swift */,
@@ -319,6 +322,7 @@
 				0139BB0C24CD773C00CAF722 /* EditingPage.swift in Sources */,
 				0146C55924CC1C7F00E4F790 /* AppDelegate.swift in Sources */,
 				0152AAD824CD6FD000AEFD53 /* MN_spliter.swift in Sources */,
+				0131957224DD143600139AC9 /* UIKitAlertController.swift in Sources */,
 				013A2C7124D1356500144308 /* gifPlayer.swift in Sources */,
 				0146C55B24CC1C7F00E4F790 /* SceneDelegate.swift in Sources */,
 				0146C55D24CC1C7F00E4F790 /* page2_add.swift in Sources */,

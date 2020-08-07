@@ -24,6 +24,8 @@ struct page2_add: View {
     @State var isDone = true
     @State var prizeHead = 0
     @State var prizeEnd = 0
+    @State var multiRemove = false
+    @State var showSheet = false
     //    var timer: Timer?
     var size: CGFloat = 65.0
     @State var selectedOne = -1
@@ -31,16 +33,16 @@ struct page2_add: View {
         VStack {
             HStack {
                 Spacer()
-                if isEditingMode {
+                if self.multiRemove == true {
                     Button(action : {
-                        self.showAlert = true
+                        self.showSheet = true
                     }) {
                         Image(systemName: "trash.fill")
                             .foregroundColor(Color("trash"))
                             .imageScale(.large)
                             .padding(.trailing)
                     }
-                    .actionSheet(isPresented: self.$showAlert) {
+                    .actionSheet(isPresented: self.$showSheet) {
                         ActionSheet(title: Text(NSLocalizedString("RMT", comment: "")), message: Text(NSLocalizedString("CRMT", comment: "")),
                                     buttons: [.destructive(Text(NSLocalizedString("RMT", comment: ""))) {
                                         self.PrizeData.removeMore(index: self.selected)
@@ -50,33 +52,42 @@ struct page2_add: View {
                                         }])
                     }
                 }
-                Button(action: {
-                    self.showButton.toggle()
-                    var i = 0
-                    while i < self.showRemoveButton.count {
-                        if self.isEditingMode {
-                            self.showRemoveButton[i] = false
-                        }
-                        else {
-                            self.showRemoveButton[i] = true
-                        }
-                        i += 1
+                if self.isDone == true {
+                    Button(action: {
+                        self.multiRemove.toggle()
+                        self.selected.removeAll()
+                        self.selectedOne = -1
+                    }) {
+                        Text(self.multiRemove ? NSLocalizedString("DONE", comment: ""):NSLocalizedString("MTRM", comment: ""))
+                            .font(.custom("", size: 20))
+                            .fontWeight(.heavy)
+                            .padding(.trailing)
                     }
-                    self.isEditingMode.toggle()
-                    self.selected.removeAll()
-                    self.isDone.toggle()
-                    i = 0
-                    while i < self.isSelected.count {
-                        self.isSelected[i] = false
-                        self.showConfirmButton[i] = false
-                        i += 1
+                }
+                if self.multiRemove == false {
+                    Button(action: {
+                        self.showButton.toggle()
+                        var i = 0
+                        while i < self.showRemoveButton.count {
+                            if self.isEditingMode {
+                                self.showRemoveButton[i] = false
+                            }
+                            else {
+                                self.showRemoveButton[i] = true
+                            }
+                            i += 1
+                        }
+                        self.isEditingMode.toggle()
+                        self.selected.removeAll()
+                        self.isDone.toggle()
+                        i = 0
+                        self.selectedOne = -1
+                    }){
+                        Text(isEditingMode ? NSLocalizedString("DONE", comment: ""):NSLocalizedString("EDIT", comment: ""))
+                            .font(.custom("", size: 20))
+                            .fontWeight(.heavy)
+                            .padding(.trailing)
                     }
-                    self.selectedOne = -1
-                }){
-                    Text(isEditingMode ? NSLocalizedString("DONE", comment: ""):NSLocalizedString("EDIT", comment: ""))
-                        .font(.custom("", size: 20))
-                        .fontWeight(.heavy)
-                        .padding(.trailing)
                 }
             }
             ZStack {
@@ -85,7 +96,7 @@ struct page2_add: View {
                         ForEach(PrizeData.PrizeList) {prize in
                             if !prize.isRemoved {
                                 HStack {
-                                    SingleCard(isDone: self.$isDone, showRemoveButton: self.$showRemoveButton, selected: self.$selected, isSelected: self.$isSelected, showConfirmButton: self.$showConfirmButton, index: prize.id, prizeHead: self.$prizeHead, prizeEnd: self.$prizeEnd, selectedOne: self.$selectedOne)
+                                    SingleCard(isDone: self.$isDone, showRemoveButton: self.$showRemoveButton, selected: self.$selected, isSelected: self.$isSelected, showConfirmButton: self.$showConfirmButton, index: prize.id, prizeHead: self.$prizeHead, prizeEnd: self.$prizeEnd, selectedOne: self.$selectedOne, multiRemove: self.$multiRemove)
                                         .environmentObject(self.PrizeData)
                                         .animation(.spring())
                                         .transition(.slide)
@@ -151,7 +162,7 @@ struct page2_add: View {
                         
                         HStack{
                             Spacer()
-                            if self.showButton {
+                            if self.showButton && !multiRemove {
                                 HStack {
                                     NavigationLink(destination: page3_animationPlay().environmentObject(self.PrizeData), tag: 1, selection: $selection) {
                                         Button(action: {
@@ -227,51 +238,110 @@ struct SingleCard: View {
     @Binding var prizeEnd: Int
     var timer = Timer.publish(every: 0.1, on: .main, in: .common)
     @Binding var selectedOne: Int
+    @Binding var multiRemove: Bool
+    let uiimage = UIImage(systemName: "pause")!
     var body: some View {
-        HStack {
-            if self.isDone == false {
-                if self.showRemoveButton[index!] {
+        let imageMoved = UIImage(cgImage: self.uiimage.cgImage!, scale: self.uiimage.scale, orientation: .right)
+        return HStack {
+            HStack {
+                if self.isDone == false {
+                    if self.showRemoveButton[index!] {
+                        Button(action: {
+                            self.showConfirmButton[self.index!] = true
+                            self.showRemoveButton[self.index!] = false
+                            if self.selected.firstIndex(where: {$0 == self.index}) != nil {
+                                self.selected.remove(at: self.selected.firstIndex(where: {$0 == self.index})!)
+                            }
+                        }){
+                            Image(systemName: "minus.circle.fill")
+                                .imageScale(.large)
+                                .foregroundColor(.red)
+                                .padding(.trailing)
+                        }
+                        .padding([.leading, .bottom])
+                    }
+                }
+                HStack {
+                    Rectangle()
+                        .frame(width: 6)
+                        .foregroundColor(.blue)
                     Button(action: {
-                        self.showConfirmButton[self.index!] = true
-                        self.showRemoveButton[self.index!] = false
-                        if self.selected.firstIndex(where: {$0 == self.index}) != nil {
-                            self.selected.remove(at: self.selected.firstIndex(where: {$0 == self.index})!)
+                        if self.showConfirmButton[self.index!] == true {
+                            self.showConfirmButton[self.index!] = false
+                            self.showRemoveButton[self.index!] = true
+                        }
+                        if self.isDone == true && !self.multiRemove {
+                            self.showeditingpage = true
                         }
                     }){
-                        Image(systemName: "minus.circle.fill")
-                            .imageScale(.large)
-                            .foregroundColor(.red)
-                            .padding(.trailing)
-                    }
-                    .padding([.leading, .bottom])
-                }
-            }
-            HStack {
-                Rectangle()
-                    .frame(width: 6)
-                    .foregroundColor(.blue)
-                Button(action: {
-                    if self.showConfirmButton[self.index!] == true {
-                        self.showConfirmButton[self.index!] = false
-                        self.showRemoveButton[self.index!] = true
-                    }
-                    if self.isDone == true {
-                        self.showeditingpage = true
-                    }
-                }){
-                    HStack {
-                        VStack(alignment: .leading, spacing: 6.0) {
-                            Text(PrizeData.PrizeList[index!].PrizeName)
-                                .font(.headline)
-                                .fontWeight(.heavy)
-                                .foregroundColor(.black)
-                            Text("\(NSLocalizedString("QTT", comment: ""))\(PrizeData.PrizeList[index!].PrizeMember)")
-                                .font(.subheadline)
-                                .foregroundColor(.black)
-                        }
-                        Spacer()
-                        if self.isDone == false {
-                            if showRemoveButton[index!]{
+                        HStack {
+                            VStack(alignment: .leading, spacing: 6.0) {
+                                Text(PrizeData.PrizeList[index!].PrizeName)
+                                    .font(.headline)
+                                    .fontWeight(.heavy)
+                                    .foregroundColor(.black)
+                                Text("\(NSLocalizedString("QTT", comment: ""))\(PrizeData.PrizeList[index!].PrizeMember)")
+                                    .font(.subheadline)
+                                    .foregroundColor(.black)
+                            }
+                            Spacer()
+                            if self.isDone == false {
+                                if showRemoveButton[index!]{
+                                    Image(uiImage: imageMoved)
+                                        .foregroundColor(.gray)
+                                        .imageScale(.large)
+                                        .padding(.trailing)
+                                }
+                                else {
+                                    if showConfirmButton[self.index!] == true {
+                                        Button(action: {
+                                            withAnimation {
+                                                self.PrizeData.remove(index: self.index!)
+                                                self.prizeHead = self.PrizeData.head()
+                                                self.prizeEnd = self.PrizeData.end()
+                                                self.showConfirmButton[self.index!] = false
+                                                self.showRemoveButton[self.index!] = true
+                                            }
+                                        }) {
+                                            ZStack {
+                                                Rectangle()
+                                                    .foregroundColor(.red)
+                                                    .frame(width: 80)
+                                                Text(NSLocalizedString("RMT", comment: ""))
+                                                    .foregroundColor(.white)
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            if isDone && !multiRemove {
+                                Button(action: {
+                                    if self.selectedOne == self.index! {
+                                        self.selectedOne = -1
+                                    }
+                                    else {
+                                        self.selectedOne = self.index!
+                                    }
+                                }) {
+                                    if self.selectedOne == self.index! {
+                                        ZStack {
+                                            Image(systemName: "circle")
+                                                .imageScale(.large)
+                                                .foregroundColor(Color("trash"))
+                                            Image(systemName: "circle.fill")
+                                                .imageScale(.small)
+                                                .foregroundColor(Color("trash"))
+                                        }
+                                    }
+                                    else {
+                                        Image(systemName: "circle")
+                                            .imageScale(.large)
+                                            .foregroundColor(Color("trash"))
+                                    }
+                                }.padding(.trailing)
+                            }
+                            
+                            if self.multiRemove {
                                 Button(action: {
                                     if self.selected.firstIndex(where: {$0 == self.index}) == nil {
                                         self.selected.append(self.index!)
@@ -286,66 +356,18 @@ struct SingleCard: View {
                                         .padding(.trailing)
                                 }
                             }
-                            else {
-                                if showConfirmButton[self.index!] == true {
-                                    Button(action: {
-                                        withAnimation {
-                                            self.PrizeData.remove(index: self.index!)
-                                            self.prizeHead = self.PrizeData.head()
-                                            self.prizeEnd = self.PrizeData.end()
-                                            self.showConfirmButton[self.index!] = false
-                                            self.showRemoveButton[self.index!] = true
-                                        }
-                                    }) {
-                                        ZStack {
-                                            Rectangle()
-                                                .foregroundColor(.red)
-                                                .frame(width: 80)
-                                            Text(NSLocalizedString("RMT", comment: ""))
-                                                .foregroundColor(.white)
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        if isDone {
-                            Button(action: {
-                                if self.selectedOne == self.index! {
-                                    self.selectedOne = -1
-                                }
-                                else {
-                                    self.selectedOne = self.index!
-                                }
-                            }) {
-                                if self.selectedOne == self.index! {
-                                    ZStack {
-                                        Image(systemName: "circle")
-                                            .imageScale(.large)
-                                            .foregroundColor(Color("trash"))
-                                        Image(systemName: "circle.fill")
-                                            .imageScale(.small)
-                                            .foregroundColor(Color("trash"))
-                                    }
-                                }
-                                else {
-                                    Image(systemName: "circle")
-                                        .imageScale(.large)
-                                        .foregroundColor(Color("trash"))
-                                }
-                            }.padding(.trailing)
                         }
                         
+                    }.sheet(isPresented: $showeditingpage) {
+                        EditingPage(prizename: self.PrizeData.PrizeList[self.index!].PrizeName, prizequota: String(self.PrizeData.PrizeList[self.index!].PrizeMember), index: self.index, prizeHead: self.$prizeHead, prizeEnd: self.$prizeEnd)
+                            .environmentObject(self.PrizeData)
                     }
-                    
-                }.sheet(isPresented: $showeditingpage) {
-                    EditingPage(prizename: self.PrizeData.PrizeList[self.index!].PrizeName, prizequota: String(self.PrizeData.PrizeList[self.index!].PrizeMember), index: self.index, prizeHead: self.$prizeHead, prizeEnd: self.$prizeEnd)
-                        .environmentObject(self.PrizeData)
-                }
-            }.frame(height: 80)
-                .background(Color("CardBG"))
-                .cornerRadius(10)
-                .padding(.bottom)
-                .shadow(color: Color("Shadow"), radius: 10, x: 0, y: 10)
+                }.frame(height: 80)
+                    .background(Color("CardBG"))
+                    .cornerRadius(10)
+                    .padding(.bottom)
+                    .shadow(color: Color("Shadow"), radius: 10, x: 0, y: 10)
+            }
         }
     }
 }
