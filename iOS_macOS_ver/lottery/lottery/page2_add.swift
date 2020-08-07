@@ -26,7 +26,7 @@ struct page2_add: View {
     @State var prizeEnd = 0
     //    var timer: Timer?
     var size: CGFloat = 65.0
-    
+    @State var selectedOne = -1
     var body: some View {
         VStack {
             HStack {
@@ -71,6 +71,7 @@ struct page2_add: View {
                         self.showConfirmButton[i] = false
                         i += 1
                     }
+                    self.selectedOne = -1
                 }){
                     Text(isEditingMode ? NSLocalizedString("DONE", comment: ""):NSLocalizedString("EDIT", comment: ""))
                         .font(.custom("", size: 20))
@@ -84,7 +85,7 @@ struct page2_add: View {
                         ForEach(PrizeData.PrizeList) {prize in
                             if !prize.isRemoved {
                                 HStack {
-                                    SingleCard(isDone: self.$isDone, showRemoveButton: self.$showRemoveButton, selected: self.$selected, isSelected: self.$isSelected, showConfirmButton: self.$showConfirmButton, index: prize.id, prizeHead: self.$prizeHead, prizeEnd: self.$prizeEnd)
+                                    SingleCard(isDone: self.$isDone, showRemoveButton: self.$showRemoveButton, selected: self.$selected, isSelected: self.$isSelected, showConfirmButton: self.$showConfirmButton, index: prize.id, prizeHead: self.$prizeHead, prizeEnd: self.$prizeEnd, selectedOne: self.$selectedOne)
                                         .environmentObject(self.PrizeData)
                                         .animation(.spring())
                                         .transition(.slide)
@@ -99,62 +100,112 @@ struct page2_add: View {
                 }.padding(.horizontal)
                 VStack{
                     Spacer()
-                    HStack{
+                    HStack {
                         Spacer()
-                        if self.showButton {
-                            HStack {
-                                NavigationLink(destination: page3_animationPlay().environmentObject(self.PrizeData), tag: 1, selection: $selection) {
-                                    Button(action: {
-                                        AllPrizesMember = APM_ccltor(data: self.PrizeData.PrizeList_cacu)
-                                        if AllPrizesMember <= MemberNumber {
-                                            rands = Random(start: 1, end: AllPrizesMember + 1, Members: MemberNumber)
-                                            var i = 0, j = 0
-                                            while i < self.PrizeData.PrizeList_cacu.count {
-                                                self.PrizeData.PrizeList_cacu[i].Lottery_result = ""
-                                                readyToCopy += self.PrizeData.PrizeList_cacu[i].PrizeName + ","
-                                                while j < self.PrizeData.PrizeList_cacu[i].PrizeM {
-                                                    self.PrizeData.PrizeList_cacu[i].Lottery_result += "\n" + MemberNames[rands[j] - 1] + " "
-                                                    if j != self.PrizeData.PrizeList_cacu[i].PrizeM - 1 {
-                                                        readyToCopy += MemberNames[rands[j] - 1] + ","
-                                                    }
-                                                    else {
-                                                        readyToCopy += MemberNames[rands[j] - 1]
-                                                    }
-                                                    j += 1
-                                                }
-                                                readyToCopy += "\n"
-                                                i += 1
-                                            }
-                                            print(readyToCopy)
-                                            self.selection = 1
+                        if self.selectedOne != -1 && self.isDone {
+                            ZStack {
+                                Rectangle()
+                                    .foregroundColor(Color("CardBG"))
+                                    .frame(width: 40, height: 80)
+                                    .cornerRadius(50)
+                                    .shadow(color: Color("Shadow"), radius: 10)
+                                VStack() {
+                                    if self.prizeHead != self.selectedOne {
+                                        Button(action: {
+                                            self.PrizeData.move(from: self.selectedOne, to: self.PrizeData.upNearBy(index: self.selectedOne))
+                                            self.selectedOne -= 1
+                                        }) {
+                                            Image(systemName: "chevron.up")
+                                                .foregroundColor(Color("trash"))
+                                                .padding([.top, .bottom])
+                                                .imageScale(.large)
                                         }
-                                        else {
-                                            self.showAlert = true
+                                    }
+                                    else {
+                                        Image(systemName: "chevron.up")
+                                            .foregroundColor(Color("arrow.grey"))
+                                            .padding([.top, .bottom])
+                                            .imageScale(.large)
+                                    }
+                                    if self.prizeEnd != self.selectedOne {
+                                        Button(action: {
+                                            self.PrizeData.move(from: self.selectedOne, to: self.PrizeData.downNearBy(index: self.selectedOne))
+                                            self.selectedOne += 1
+                                        }) {
+                                            Image(systemName: "chevron.down")
+                                                .foregroundColor(Color("trash"))
+                                                .padding([.bottom])
+                                                .imageScale(.large)
                                         }
-                                    })
-                                    {
-                                        btnAdd()
                                     }
-                                    .alert(isPresented: self.$showAlert) {
-                                        Alert(title: Text("Fatal Error"), message: Text("Too much winners"), dismissButton: .default(Text("OK")))
+                                    else {
+                                        Image(systemName: "chevron.down")
+                                            .foregroundColor(Color("arrow.grey"))
+                                            .padding([.bottom])
+                                            .imageScale(.large)
                                     }
                                 }
-                                Button(action: {
-                                    self.showeditingpage = true
-                                }){
-                                    Image(systemName: "plus.circle.fill")
-                                        .resizable()
-                                        .foregroundColor(.blue)
-                                        .frame(width: self.size, height: self.size)
-                                        .padding(.horizontal, 10)
-                                        .shadow(color: Color("Shadow"), radius: 10)
-                                }
-                                .sheet(isPresented: self.$showeditingpage) {
-                                    EditingPage(prizeHead: self.$prizeHead, prizeEnd: self.$prizeEnd)
-                                        .environmentObject(self.PrizeData)
-                                }
-                            }.padding(.bottom)
+                                
+                            }.padding([.bottom, .leading])
                         }
+                        
+                        HStack{
+                            Spacer()
+                            if self.showButton {
+                                HStack {
+                                    NavigationLink(destination: page3_animationPlay().environmentObject(self.PrizeData), tag: 1, selection: $selection) {
+                                        Button(action: {
+                                            AllPrizesMember = APM_ccltor(data: self.PrizeData.PrizeList_cacu)
+                                            if AllPrizesMember <= MemberNumber {
+                                                rands = Random(start: 1, end: AllPrizesMember + 1, Members: MemberNumber)
+                                                var i = 0, j = 0
+                                                while i < self.PrizeData.PrizeList_cacu.count {
+                                                    self.PrizeData.PrizeList_cacu[i].Lottery_result = ""
+                                                    readyToCopy += self.PrizeData.PrizeList_cacu[i].PrizeName + ","
+                                                    while j < self.PrizeData.PrizeList_cacu[i].PrizeM {
+                                                        self.PrizeData.PrizeList_cacu[i].Lottery_result += "\n" + MemberNames[rands[j] - 1] + " "
+                                                        if j != self.PrizeData.PrizeList_cacu[i].PrizeM - 1 {
+                                                            readyToCopy += MemberNames[rands[j] - 1] + ","
+                                                        }
+                                                        else {
+                                                            readyToCopy += MemberNames[rands[j] - 1]
+                                                        }
+                                                        j += 1
+                                                    }
+                                                    readyToCopy += "\n"
+                                                    i += 1
+                                                }
+                                                print(readyToCopy)
+                                                self.selection = 1
+                                            }
+                                            else {
+                                                self.showAlert = true
+                                            }
+                                        })
+                                        {
+                                            btnAdd()
+                                        }
+                                        .alert(isPresented: self.$showAlert) {
+                                            Alert(title: Text("Fatal Error"), message: Text("Too much winners"), dismissButton: .default(Text("OK")))
+                                        }
+                                    }
+                                    Button(action: {
+                                        self.showeditingpage = true
+                                    }){
+                                        Image(systemName: "plus.circle.fill")
+                                            .resizable()
+                                            .foregroundColor(.blue)
+                                            .frame(width: self.size, height: self.size)
+                                            .padding(.horizontal, 10)
+                                            .shadow(color: Color("Shadow"), radius: 10)
+                                    }
+                                    .sheet(isPresented: self.$showeditingpage) {
+                                        EditingPage(prizeHead: self.$prizeHead, prizeEnd: self.$prizeEnd)
+                                            .environmentObject(self.PrizeData)
+                                    }
+                                }
+                            }
+                        }.padding(.bottom)
                     }
                 }
             }.navigationBarTitle(NSLocalizedString("ADDT", comment: ""))
@@ -175,6 +226,7 @@ struct SingleCard: View {
     @Binding var prizeHead: Int
     @Binding var prizeEnd: Int
     var timer = Timer.publish(every: 0.1, on: .main, in: .common)
+    @Binding var selectedOne: Int
     var body: some View {
         HStack {
             if self.isDone == false {
@@ -257,40 +309,30 @@ struct SingleCard: View {
                             }
                         }
                         if isDone {
-                            VStack {
-                                if self.prizeHead != self.index {
-                                    Button(action: {
-                                        self.PrizeData.move(from: self.index!, to: self.PrizeData.upNearBy(index: self.index!))
-                                    }) {
-                                        Image(systemName: "chevron.up")
-                                            .foregroundColor(Color("trash"))
-                                            .padding([.top, .bottom, .trailing])
+                            Button(action: {
+                                if self.selectedOne == self.index! {
+                                    self.selectedOne = -1
+                                }
+                                else {
+                                    self.selectedOne = self.index!
+                                }
+                            }) {
+                                if self.selectedOne == self.index! {
+                                    ZStack {
+                                        Image(systemName: "circle")
                                             .imageScale(.large)
+                                            .foregroundColor(Color("trash"))
+                                        Image(systemName: "circle.fill")
+                                            .imageScale(.small)
+                                            .foregroundColor(Color("trash"))
                                     }
                                 }
                                 else {
-                                    Image(systemName: "chevron.up")
-                                        .foregroundColor(Color("arrow.grey"))
-                                        .padding([.top, .bottom, .trailing])
+                                    Image(systemName: "circle")
                                         .imageScale(.large)
+                                        .foregroundColor(Color("trash"))
                                 }
-                                if self.prizeEnd != self.index {
-                                    Button(action: {
-                                        self.PrizeData.move(from: self.index!, to: self.PrizeData.downNearBy(index: self.index!))
-                                    }) {
-                                        Image(systemName: "chevron.down")
-                                            .foregroundColor(Color("trash"))
-                                            .padding([.bottom, .trailing])
-                                            .imageScale(.large)
-                                    }
-                                }
-                                else {
-                                    Image(systemName: "chevron.down")
-                                        .foregroundColor(Color("arrow.grey"))
-                                        .padding([.bottom, .trailing])
-                                        .imageScale(.large)
-                                }
-                            }
+                            }.padding(.trailing)
                         }
                         
                     }
