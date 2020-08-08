@@ -113,7 +113,7 @@ struct page2_add: View {
                     Spacer()
                     HStack {
                         Spacer()
-                        if self.selectedOne != -1 && self.isDone {
+                        if self.selectedOne != -1 && !self.isDone {
                             ZStack {
                                 Rectangle()
                                     .foregroundColor(Color("CardBG"))
@@ -241,7 +241,7 @@ struct SingleCard: View {
     @Binding var multiRemove: Bool
     let uiimage = UIImage(systemName: "pause")!
     var body: some View {
-        let imageMoved = UIImage(cgImage: self.uiimage.cgImage!, scale: self.uiimage.scale, orientation: .right)
+        _ = UIImage(cgImage: self.uiimage.cgImage!, scale: self.uiimage.scale, orientation: .right)
         return HStack {
             HStack {
                 if self.isDone == false {
@@ -286,13 +286,6 @@ struct SingleCard: View {
                             }
                             Spacer()
                             if self.isDone == false {
-                                if showRemoveButton[index!]{
-                                    Image(uiImage: imageMoved)
-                                        .foregroundColor(.gray)
-                                        .imageScale(.large)
-                                        .padding(.trailing)
-                                }
-                                else {
                                     if showConfirmButton[self.index!] == true {
                                         Button(action: {
                                             withAnimation {
@@ -312,9 +305,9 @@ struct SingleCard: View {
                                             }
                                         }
                                     }
-                                }
+                                
                             }
-                            if isDone && !multiRemove {
+                            if isDone == false && !multiRemove && !showConfirmButton[self.index!] {
                                 Button(action: {
                                     if self.selectedOne == self.index! {
                                         self.selectedOne = -1
