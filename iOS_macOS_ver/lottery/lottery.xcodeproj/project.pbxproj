@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 53;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -58,7 +58,7 @@
 		013A2C7024D1356500144308 /* gifPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gifPlayer.swift; sourceTree = "<group>"; };
 		013A2C7224D1364600144308 /* page3_animationPlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = page3_animationPlay.swift; sourceTree = "<group>"; };
 		014645AB24DF67AF00CA5A5D /* AG_spliter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AG_spliter.swift; sourceTree = "<group>"; };
-		0146C55524CC1C7F00E4F790 /* lottery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lottery.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0146C55524CC1C7F00E4F790 /* lottery4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lottery4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0146C55824CC1C7F00E4F790 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0146C55A24CC1C7F00E4F790 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		0146C55C24CC1C7F00E4F790 /* page2_add.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = page2_add.swift; sourceTree = "<group>"; };
@@ -120,7 +120,7 @@
 		0146C55624CC1C7F00E4F790 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0146C55524CC1C7F00E4F790 /* lottery.app */,
+				0146C55524CC1C7F00E4F790 /* lottery4.app */,
 				0146C56B24CC1C8400E4F790 /* lotteryTests.xctest */,
 				0146C57624CC1C8400E4F790 /* lotteryUITests.xctest */,
 			);
@@ -199,7 +199,7 @@
 			);
 			name = lottery;
 			productName = lottery;
-			productReference = 0146C55524CC1C7F00E4F790 /* lottery.app */;
+			productReference = 0146C55524CC1C7F00E4F790 /* lottery4.app */;
 			productType = "com.apple.product-type.application";
 		};
 		0146C56A24CC1C8400E4F790 /* lotteryTests */ = {
@@ -261,7 +261,7 @@
 				};
 			};
 			buildConfigurationList = 0146C55024CC1C7E00E4F790 /* Build configuration list for PBXProject "lottery" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 11.4";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -510,10 +510,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = lottery/lottery.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Development: wqhqq1xcode@huweimail.cn (B288367K62)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development: wqhqq1xcode@huweimail.cn (B288367K62)";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_ASSET_PATHS = "\"lottery/Preview Content\"";
-				DEVELOPMENT_TEAM = 6T6JMWY77X;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = lottery/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -522,8 +524,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 4.3;
-				PRODUCT_BUNDLE_IDENTIFIER = wqhqq1.lottery;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = wqhqq1.lottery.lottery;
+				PRODUCT_NAME = lottery4;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -536,10 +540,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = lottery/lottery.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Development: wqhqq1xcode@huweimail.cn (B288367K62)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development: wqhqq1xcode@huweimail.cn (B288367K62)";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_ASSET_PATHS = "\"lottery/Preview Content\"";
-				DEVELOPMENT_TEAM = 6T6JMWY77X;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = lottery/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -548,8 +554,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 4.3;
-				PRODUCT_BUNDLE_IDENTIFIER = wqhqq1.lottery;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = wqhqq1.lottery.lottery;
+				PRODUCT_NAME = lottery4;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

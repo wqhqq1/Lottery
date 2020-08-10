@@ -20,34 +20,18 @@ struct SingleResult: View {
                     .frame(width: 6)
                     .foregroundColor(.blue)
                 VStack(alignment: .leading, spacing: 6.0) {
-                    if self.PrizeList.PrizeList_cacu[self.index].minCmd == nil || self.PrizeList.PrizeList_cacu[self.index].maxCmd == nil || !self.PrizeList.PrizeList_cacu[self.index].enabledCmds {
-                        Text(self.PrizeList.PrizeList_cacu[self.index].PrizeName)
-                            .font(.headline)
-                            .fontWeight(.heavy)
-                            .foregroundColor(.black)
-                    }
-                    else {
-                        if self.PrizeList.PrizeList_cacu[self.index].minCmd != self.PrizeList.PrizeList_cacu[self.index].maxCmd {
-                            Text("\(self.PrizeList.PrizeList_cacu[self.index].PrizeName)(\(self.PrizeList.PrizeList_cacu[self.index].minCmd!)≤,≤\(self.PrizeList.PrizeList_cacu[self.index].maxCmd!))")
-                                .font(.headline)
-                                .fontWeight(.heavy)
-                                .foregroundColor(.black)
-                        }
-                        else {
-                            Text("\(self.PrizeList.PrizeList_cacu[self.index].PrizeName)(=\(self.PrizeList.PrizeList_cacu[self.index].minCmd!))")
-                                .font(.headline)
-                                .fontWeight(.heavy)
-                                .foregroundColor(.black)
-                        }
-                    }
+                    Text(self.PrizeList.PrizeList_cacu[self.index].PrizeName)
+                        .font(.headline)
+                        .fontWeight(.heavy)
+                        .foregroundColor(.black)
                 }
                 Spacer()
                 Image(systemName: "chevron.right")
                     .foregroundColor(Color("arrow"))
                     .padding()
             }.background(Color("CardBG"))
-            .cornerRadius(10)
-            .padding(.bottom)
+                .cornerRadius(10)
+                .padding(.bottom)
                 .shadow(color: Color("Shadow"), radius: 10, x: 0, y: 10)
         }.sheet(isPresented: $showResultPage) {
             resultPage(prize: self.PrizeList.PrizeList_cacu[self.index].PrizeName, result: self.PrizeList.PrizeList_cacu[self.index].Lottery_result)
@@ -63,8 +47,8 @@ struct resultPage: View {
             VStack {
                 Form {
                     Section {
-                            Text("\(NSLocalizedString("CT", comment: ""))\(result)\(NSLocalizedString("GT", comment: ""))\(self.prize)")
-                                .font(.title)
+                        Text("\(NSLocalizedString("CT", comment: ""))\(result)\(NSLocalizedString("GT", comment: ""))\(self.prize)")
+                            .font(.title)
                     }
                     Section {
                         Button(action: {

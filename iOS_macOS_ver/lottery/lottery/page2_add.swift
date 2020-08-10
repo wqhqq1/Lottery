@@ -26,11 +26,12 @@ struct page2_add: View {
     @State var prizeEnd = 0
     @State var multiRemove = false
     @State var showSheet = false
+    @State var rangeText = ""
     //    var timer: Timer?
     var size: CGFloat = 65.0
     @State var selectedOne = -1
     var body: some View {
-        VStack {
+        return VStack {
             HStack {
                 Spacer()
                 if self.multiRemove == true {
@@ -276,8 +277,8 @@ struct SingleCard: View {
     @Binding var selectedOne: Int
     @Binding var multiRemove: Bool
     let uiimage = UIImage(systemName: "pause")!
+    @State var rangeText = ""
     var body: some View {
-        _ = UIImage(cgImage: self.uiimage.cgImage!, scale: self.uiimage.scale, orientation: .right)
         return HStack {
             HStack {
                 if self.isDone == false {
@@ -316,9 +317,11 @@ struct SingleCard: View {
                                     .font(.headline)
                                     .fontWeight(.heavy)
                                     .foregroundColor(.black)
-                                Text("\(NSLocalizedString("QTT", comment: ""))\(PrizeData.PrizeList[index!].PrizeMember)")
-                                    .font(.subheadline)
-                                    .foregroundColor(.black)
+                                HStack {
+                                    Text("\(NSLocalizedString("QTT", comment: ""))\(PrizeData.PrizeList[index!].PrizeMember)")
+                                        .font(.subheadline)
+                                        .foregroundColor(.black)
+                                }
                             }
                             Spacer()
                             if self.isDone == false {

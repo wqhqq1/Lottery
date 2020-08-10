@@ -40,8 +40,10 @@ struct EditingPage: View {
                             if self.showADDCTF {
                                 TextField("\(NSLocalizedString("ADDCTF", comment: ""))Max", text: self.$maxCmd)
                                     .padding(.horizontal)
+                                    .keyboardType(.numberPad)
                                 TextField("\(NSLocalizedString("ADDCTF", comment: ""))Min", text: self.$minCmd)
                                     .padding(.horizontal)
+                                    .keyboardType(.numberPad)
                             }
                         }
                     }

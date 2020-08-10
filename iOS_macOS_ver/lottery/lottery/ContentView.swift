@@ -24,7 +24,10 @@ struct ContentView: View {
         }, set: {
             self.MemberNamesInput = $0
             if self.MemberNamesInput != "" {
-                self.MemberNumberInput = String(MN_counter_handinput(input: self.MemberNamesInput))
+                if self.MemberNamesInput != NSLocalizedString("RFCB", comment: "") {
+                    self.MemberNumberInput = String(MN_counter_handinput(input: self.MemberNamesInput))
+                    print(originalMN)
+                }
             }
             else {
                 self.MemberNumberInput = ""
@@ -45,7 +48,7 @@ struct ContentView: View {
                                 if Pboard.string != nil {
                                     self.MemberNamesInput = NSLocalizedString("RFCB", comment: "")
                                     originalMN = Pboard.string!
-                                    self.MemberNumberInput = String(MN_counter(input: originalMN))
+                                    self.MemberNumberInput = String(MN_counter(input: Pboard.string!))
                                 }
                                 else {
                                     self.showalertCPB = true
