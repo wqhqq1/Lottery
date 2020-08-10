@@ -20,10 +20,16 @@ struct SingleResult: View {
                     .frame(width: 6)
                     .foregroundColor(.blue)
                 VStack(alignment: .leading, spacing: 6.0) {
-                    Text(self.PrizeList.PrizeList_cacu[self.index].PrizeName)
+                    HStack {
+                        Text(self.PrizeList.PrizeList_cacu[self.index].PrizeName)
+                            .font(.headline)
+                            .fontWeight(.heavy)
+                            .foregroundColor(.black)
+                        Text((self.PrizeList.PrizeList_cacu[index].enabledCmds && self.PrizeList.PrizeList_cacu[index].maxCmd != nil && self.PrizeList.PrizeList_cacu[index].minCmd != nil) ? "(\(String(self.PrizeList.PrizeList_cacu[index].minCmd!))≤,≤\(String(self.PrizeList.PrizeList_cacu[index].maxCmd!)))":"")
                         .font(.headline)
                         .fontWeight(.heavy)
                         .foregroundColor(.black)
+                    }
                 }
                 Spacer()
                 Image(systemName: "chevron.right")

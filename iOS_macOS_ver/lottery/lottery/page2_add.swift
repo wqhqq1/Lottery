@@ -277,8 +277,11 @@ struct SingleCard: View {
     @Binding var selectedOne: Int
     @Binding var multiRemove: Bool
     let uiimage = UIImage(systemName: "pause")!
-    @State var rangeText = ""
+    @State var range = ""
     var body: some View {
+        if self.PrizeData.PrizeList[index!].enabledCmds && self.PrizeData.PrizeList[index!].maxCmd != nil && self.PrizeData.PrizeList[index!].minCmd != nil {
+            range = "(" + String(self.PrizeData.PrizeList[index!].minCmd!) + "≤,≤" + String(self.PrizeData.PrizeList[index!].maxCmd!) + ")"
+        }
         return HStack {
             HStack {
                 if self.isDone == false {
@@ -313,15 +316,19 @@ struct SingleCard: View {
                     }){
                         HStack {
                             VStack(alignment: .leading, spacing: 6.0) {
-                                Text(PrizeData.PrizeList[index!].PrizeName)
-                                    .font(.headline)
-                                    .fontWeight(.heavy)
-                                    .foregroundColor(.black)
                                 HStack {
-                                    Text("\(NSLocalizedString("QTT", comment: ""))\(PrizeData.PrizeList[index!].PrizeMember)")
-                                        .font(.subheadline)
+                                    Text(PrizeData.PrizeList[index!].PrizeName)
+                                        .font(.headline)
+                                        .fontWeight(.heavy)
+                                        .foregroundColor(.black)
+                                    Text((self.PrizeData.PrizeList[index!].enabledCmds && self.PrizeData.PrizeList[index!].maxCmd != nil && self.PrizeData.PrizeList[index!].minCmd != nil) ? "(\(String(self.PrizeData.PrizeList[index!].minCmd!))≤,≤\(String(self.PrizeData.PrizeList[index!].maxCmd!)))":"")
+                                        .font(.headline)
+                                        .fontWeight(.heavy)
                                         .foregroundColor(.black)
                                 }
+                                Text("\(NSLocalizedString("QTT", comment: ""))\(PrizeData.PrizeList[index!].PrizeMember)")
+                                    .font(.subheadline)
+                                    .foregroundColor(.black)
                             }
                             Spacer()
                             if self.isDone == false {
