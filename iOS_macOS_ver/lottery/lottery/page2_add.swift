@@ -124,7 +124,7 @@ struct page2_add: View {
                                     if self.prizeHead != self.selectedOne {
                                         Button(action: {
                                             self.PrizeData.move(from: self.selectedOne, to: self.PrizeData.upNearBy(index: self.selectedOne))
-                                            self.selectedOne -= 1
+                                            self.selectedOne = self.PrizeData.upNearBy(index: self.selectedOne)
                                         }) {
                                             Image(systemName: "chevron.up")
                                                 .foregroundColor(Color("trash"))
@@ -141,7 +141,7 @@ struct page2_add: View {
                                     if self.prizeEnd != self.selectedOne {
                                         Button(action: {
                                             self.PrizeData.move(from: self.selectedOne, to: self.PrizeData.downNearBy(index: self.selectedOne))
-                                            self.selectedOne += 1
+                                            self.selectedOne = self.PrizeData.downNearBy(index: self.selectedOne)
                                         }) {
                                             Image(systemName: "chevron.down")
                                                 .foregroundColor(Color("trash"))
@@ -167,11 +167,13 @@ struct page2_add: View {
                                     NavigationLink(destination: page3_animationPlay().environmentObject(self.PrizeData), tag: 1, selection: $selection) {
                                         Button(action: {
                                             AllPrizesMember = APM_ccltor(data: self.PrizeData.PrizeList_cacu)
+                                            var isUsed = [Bool](repeating: false, count: 1000)
                                             if AllPrizesMember <= MemberNumber {
                                                 var i = 0, j = 0
                                                 while i < self.PrizeData.PrizeList_cacu.count {
                                                     j = 0
                                                     var names = [String](), numbers = [Int](), number = 0, rands = [Int]()
+                                                    self.PrizeData.PrizeList_cacu[i].Lottery_result = ""
                                                     if self.PrizeData.PrizeList_cacu[i].minCmd == nil &&
                                                         self.PrizeData.PrizeList_cacu[i].maxCmd == nil {
                                                         var k = 0
@@ -181,7 +183,7 @@ struct page2_add: View {
                                                             }
                                                             k += 1
                                                         }
-                                                        number = names.count
+                                                        number = self.PrizeData.PrizeList_cacu[i].PrizeMember
                                                         k = 0
                                                         while k < names.count {
                                                             numbers.append(k)
@@ -200,12 +202,12 @@ struct page2_add: View {
                                                             j += 1
                                                         }
                                                     }
-                                                    rands = Random(start: 1, end: number + 1, Members: names.count)
-                                                    j = 0
-                                                    readyToCopy += self.PrizeData.PrizeList_cacu[i].PrizeName + ","
                                                     print(numbers)
                                                     print(names)
                                                     print(addCmd)
+                                                    rands = Random(start: 1, end: number + 1, Members: names.count)
+                                                    j = 0
+                                                    readyToCopy += self.PrizeData.PrizeList_cacu[i].PrizeName + ","
                                                     while j < number {
                                                         if j == number - 1 {
                                                             self.PrizeData.PrizeList_cacu[i].Lottery_result += names[rands[j] - 1]

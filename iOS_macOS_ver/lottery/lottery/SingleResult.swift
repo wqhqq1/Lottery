@@ -20,10 +20,26 @@ struct SingleResult: View {
                     .frame(width: 6)
                     .foregroundColor(.blue)
                 VStack(alignment: .leading, spacing: 6.0) {
-                    Text(self.PrizeList.PrizeList_cacu[self.index].PrizeName)
-                        .font(.headline)
-                        .fontWeight(.heavy)
-                        .foregroundColor(.black)
+                    if self.PrizeList.PrizeList_cacu[self.index].minCmd == nil || self.PrizeList.PrizeList_cacu[self.index].maxCmd == nil || !self.PrizeList.PrizeList_cacu[self.index].enabledCmds {
+                        Text(self.PrizeList.PrizeList_cacu[self.index].PrizeName)
+                            .font(.headline)
+                            .fontWeight(.heavy)
+                            .foregroundColor(.black)
+                    }
+                    else {
+                        if self.PrizeList.PrizeList_cacu[self.index].minCmd != self.PrizeList.PrizeList_cacu[self.index].maxCmd {
+                            Text("\(self.PrizeList.PrizeList_cacu[self.index].PrizeName)(\(self.PrizeList.PrizeList_cacu[self.index].minCmd!)≤,≤\(self.PrizeList.PrizeList_cacu[self.index].maxCmd!))")
+                                .font(.headline)
+                                .fontWeight(.heavy)
+                                .foregroundColor(.black)
+                        }
+                        else {
+                            Text("\(self.PrizeList.PrizeList_cacu[self.index].PrizeName)(=\(self.PrizeList.PrizeList_cacu[self.index].minCmd!))")
+                                .font(.headline)
+                                .fontWeight(.heavy)
+                                .foregroundColor(.black)
+                        }
+                    }
                 }
                 Spacer()
                 Image(systemName: "chevron.right")

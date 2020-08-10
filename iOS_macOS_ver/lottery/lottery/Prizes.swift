@@ -45,7 +45,7 @@ class Prizes: ObservableObject {
         var head = 0
         while head < PrizeList.count {
             if PrizeList[head].isRemoved == false {
-                return PrizeList[head].id
+                return head
             }
             head += 1
         }
@@ -67,7 +67,7 @@ class Prizes: ObservableObject {
         var end = PrizeList.count - 1
         while end >= 0 {
             if PrizeList[end].isRemoved == false {
-                return PrizeList[end].id
+                return end
             }
             end -= 1
         }

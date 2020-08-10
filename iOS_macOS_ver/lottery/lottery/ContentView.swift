@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-var MemberNumber = 0, i: Int = 0, MemberNames = [String](), originalMN = "", readyToCopy = "", originalMemberNames = "", addCmd = [Int](), addedCmd = false, originCmd = "", isUsed = [Bool](repeating: false, count: 1000)
+var MemberNumber = 0, i: Int = 0, MemberNames = [String](), originalMN = "", readyToCopy = "", originalMemberNames = "", addCmd = [Int](), addedCmd = false, originCmd = ""
 
 struct ContentView: View {
     @State private var PrizeNumberInput = ""
