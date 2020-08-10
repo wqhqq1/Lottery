@@ -8,7 +8,7 @@
 import Foundation
 
 func MN_spliter(input: String) -> [String]{
-    var output: [String] = input.components(separatedBy: CharacterSet(charactersIn: "\n"))
+    var output: [String] = input.components(separatedBy: CharacterSet(charactersIn: "\r\n"))
     var i = 0
     while i < output.count {
         if output[i] == "" {
@@ -32,7 +32,7 @@ func MN_spliter_handinput(input: String) -> [String]{
 
 
 func MN_counter(input: String) -> Int{
-    var output: [String] = input.components(separatedBy: CharacterSet(charactersIn: "\n"))
+    var output: [String] = input.components(separatedBy: CharacterSet(charactersIn: "\r\n"))
     while i < output.count {
         if output[i] == "" {
             output.remove(at: i)

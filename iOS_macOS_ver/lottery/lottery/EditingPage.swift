@@ -16,6 +16,9 @@ struct EditingPage: View {
     var index: Int?
     @Binding var prizeHead: Int
     @Binding var prizeEnd: Int
+    @State var showADDCTF: Bool
+    @State var maxCmd: String = ""
+    @State var minCmd: String = ""
     var body: some View {
         KeyboardHost_edit {
             NavigationView {
@@ -26,16 +29,33 @@ struct EditingPage: View {
                             .keyboardType(.numberPad)
                     }
                     
+                    if addedCmd {
+                        Section {
+                            HStack {
+                                Text(NSLocalizedString("ADDCT", comment: ""))
+                                Toggle(isOn: self.$showADDCTF, label: {
+                                    Text("")
+                                })
+                            }.padding(.horizontal)
+                            if self.showADDCTF {
+                                TextField("\(NSLocalizedString("ADDCTF", comment: ""))Max", text: self.$maxCmd)
+                                    .padding(.horizontal)
+                                TextField("\(NSLocalizedString("ADDCTF", comment: ""))Min", text: self.$minCmd)
+                                    .padding(.horizontal)
+                            }
+                        }
+                    }
+                    
                     Section {
                         Button(action: {
                             if self.prizequota != "" {
                                 if self.index == nil {
-                                    self.PrizeData.add(data: SinglePrize(PrizeName: self.prizename, PrizeMember: Int(self.prizequota)!))
+                                    self.PrizeData.add(data: SinglePrize(PrizeName: self.prizename, PrizeMember: Int(self.prizequota)!, maxCmd: (self.showADDCTF && self.maxCmd != "") ? Int(self.maxCmd)!:nil, minCmd: (self.showADDCTF && self.minCmd != "") ? Int(self.minCmd)!:nil, enabledCmds: (self.showADDCTF && self.maxCmd != "" && self.minCmd != "") ? true:false))
                                     self.prizeHead = self.PrizeData.head()
                                     self.prizeEnd = self.PrizeData.end()
                                 }
                                 else {
-                                    self.PrizeData.edit(index: self.index!, data: SinglePrize(PrizeName: self.prizename, PrizeMember: Int(self.prizequota)!))
+                                    self.PrizeData.edit(index: self.index!, data: SinglePrize(PrizeName: self.prizename, PrizeMember: Int(self.prizequota)!, maxCmd: (self.showADDCTF && self.maxCmd != "") ? Int(self.maxCmd):nil, minCmd: (self.showADDCTF && self.minCmd != "") ? Int(self.minCmd):nil, enabledCmds: (self.showADDCTF && self.minCmd != "" && self.maxCmd != "") ? true:false))
                                 }
                                 self.presentation.wrappedValue.dismiss()
                             }

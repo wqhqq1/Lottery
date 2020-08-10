@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-var AllPrizesMember: Int = 0, rands = [Int]()
+var AllPrizesMember: Int = 0
 
 struct page2_add: View {
     
@@ -168,25 +168,59 @@ struct page2_add: View {
                                         Button(action: {
                                             AllPrizesMember = APM_ccltor(data: self.PrizeData.PrizeList_cacu)
                                             if AllPrizesMember <= MemberNumber {
-                                                rands = Random(start: 1, end: AllPrizesMember + 1, Members: MemberNumber)
                                                 var i = 0, j = 0
                                                 while i < self.PrizeData.PrizeList_cacu.count {
-                                                    self.PrizeData.PrizeList_cacu[i].Lottery_result = ""
+                                                    j = 0
+                                                    var names = [String](), numbers = [Int](), number = 0, rands = [Int]()
+                                                    if self.PrizeData.PrizeList_cacu[i].minCmd == nil &&
+                                                        self.PrizeData.PrizeList_cacu[i].maxCmd == nil {
+                                                        var k = 0
+                                                        while k < MemberNames.count {
+                                                            if !isUsed[k] {
+                                                                names.append(MemberNames[k])
+                                                            }
+                                                            k += 1
+                                                        }
+                                                        number = names.count
+                                                        k = 0
+                                                        while k < names.count {
+                                                            numbers.append(k)
+                                                            k += 1
+                                                        }
+                                                    }
+                                                    else {
+                                                        number = self.PrizeData.PrizeList_cacu[i].PrizeMember
+                                                        while j < MemberNumber {
+                                                            if addCmd[j] >= self.PrizeData.PrizeList_cacu[i].minCmd!
+                                                                && addCmd[j] <= self.PrizeData.PrizeList_cacu[i].maxCmd!
+                                                                && !isUsed[j] {
+                                                                names.append(MemberNames[j])
+                                                                numbers.append(j)
+                                                            }
+                                                            j += 1
+                                                        }
+                                                    }
+                                                    rands = Random(start: 1, end: number + 1, Members: names.count)
+                                                    j = 0
                                                     readyToCopy += self.PrizeData.PrizeList_cacu[i].PrizeName + ","
-                                                    while j < self.PrizeData.PrizeList_cacu[i].PrizeM {
-                                                        self.PrizeData.PrizeList_cacu[i].Lottery_result += "\n" + MemberNames[rands[j] - 1] + " "
-                                                        if j != self.PrizeData.PrizeList_cacu[i].PrizeM - 1 {
-                                                            readyToCopy += MemberNames[rands[j] - 1] + ","
+                                                    print(numbers)
+                                                    print(names)
+                                                    print(addCmd)
+                                                    while j < number {
+                                                        if j == number - 1 {
+                                                            self.PrizeData.PrizeList_cacu[i].Lottery_result += names[rands[j] - 1]
+                                                            readyToCopy += names[rands[j] - 1]
                                                         }
                                                         else {
-                                                            readyToCopy += MemberNames[rands[j] - 1]
+                                                            self.PrizeData.PrizeList_cacu[i].Lottery_result += names[rands[j] - 1] + "、"
+                                                            readyToCopy += names[rands[j] - 1] + ","
                                                         }
+                                                        isUsed[numbers[rands[j] - 1]] = true
                                                         j += 1
                                                     }
                                                     readyToCopy += "\n"
                                                     i += 1
                                                 }
-                                                print(readyToCopy)
                                                 self.selection = 1
                                             }
                                             else {
@@ -211,7 +245,7 @@ struct page2_add: View {
                                             .shadow(color: Color("Shadow"), radius: 10)
                                     }
                                     .sheet(isPresented: self.$showeditingpage) {
-                                        EditingPage(prizeHead: self.$prizeHead, prizeEnd: self.$prizeEnd)
+                                        EditingPage(prizeHead: self.$prizeHead, prizeEnd: self.$prizeEnd, showADDCTF: false)
                                             .environmentObject(self.PrizeData)
                                     }
                                 }
@@ -286,25 +320,25 @@ struct SingleCard: View {
                             }
                             Spacer()
                             if self.isDone == false {
-                                    if showConfirmButton[self.index!] == true {
-                                        Button(action: {
-                                            withAnimation {
-                                                self.PrizeData.remove(index: self.index!)
-                                                self.prizeHead = self.PrizeData.head()
-                                                self.prizeEnd = self.PrizeData.end()
-                                                self.showConfirmButton[self.index!] = false
-                                                self.showRemoveButton[self.index!] = true
-                                            }
-                                        }) {
-                                            ZStack {
-                                                Rectangle()
-                                                    .foregroundColor(.red)
-                                                    .frame(width: 80)
-                                                Text(NSLocalizedString("RMT", comment: ""))
-                                                    .foregroundColor(.white)
-                                            }
+                                if showConfirmButton[self.index!] == true {
+                                    Button(action: {
+                                        withAnimation {
+                                            self.PrizeData.remove(index: self.index!)
+                                            self.prizeHead = self.PrizeData.head()
+                                            self.prizeEnd = self.PrizeData.end()
+                                            self.showConfirmButton[self.index!] = false
+                                            self.showRemoveButton[self.index!] = true
+                                        }
+                                    }) {
+                                        ZStack {
+                                            Rectangle()
+                                                .foregroundColor(.red)
+                                                .frame(width: 80)
+                                            Text(NSLocalizedString("RMT", comment: ""))
+                                                .foregroundColor(.white)
                                         }
                                     }
+                                }
                                 
                             }
                             if isDone == false && !multiRemove && !showConfirmButton[self.index!] {
@@ -352,7 +386,7 @@ struct SingleCard: View {
                         }
                         
                     }.sheet(isPresented: $showeditingpage) {
-                        EditingPage(prizename: self.PrizeData.PrizeList[self.index!].PrizeName, prizequota: String(self.PrizeData.PrizeList[self.index!].PrizeMember), index: self.index, prizeHead: self.$prizeHead, prizeEnd: self.$prizeEnd)
+                        EditingPage(prizename: self.PrizeData.PrizeList[self.index!].PrizeName, prizequota: String(self.PrizeData.PrizeList[self.index!].PrizeMember), index: self.index, prizeHead: self.$prizeHead, prizeEnd: self.$prizeEnd, showADDCTF: self.PrizeData.PrizeList[self.index!].enabledCmds, maxCmd: self.PrizeData.PrizeList[self.index!].maxCmd == nil ? "": String(self.PrizeData.PrizeList[self.index!].maxCmd!), minCmd: self.PrizeData.PrizeList[self.index!].minCmd == nil ? "": String(self.PrizeData.PrizeList[self.index!].minCmd!))
                             .environmentObject(self.PrizeData)
                     }
                 }.frame(height: 80)

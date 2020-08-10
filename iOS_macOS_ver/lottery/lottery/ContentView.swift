@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-var MemberNumber = 0, i: Int = 0, MemberNames = [String](), originalMN = "", readyToCopy = "", originalMemberNames = ""
+var MemberNumber = 0, i: Int = 0, MemberNames = [String](), originalMN = "", readyToCopy = "", originalMemberNames = "", addCmd = [Int](), addedCmd = false, originCmd = "", isUsed = [Bool](repeating: false, count: 1000)
 
 struct ContentView: View {
     @State private var PrizeNumberInput = ""
@@ -16,6 +16,8 @@ struct ContentView: View {
     @State var selection: Int? = nil
     @State var showalert = false
     @State var showalertCPB = false
+    @State var showADDTF = false
+    @State var addCmdInput = ""
     var body: some View {
         let membernames = Binding<String>(get: {
             self.MemberNamesInput
@@ -57,6 +59,40 @@ struct ContentView: View {
                             }
                             .padding(.trailing)
                         }}
+                    Section {
+                        HStack {
+                            Text(NSLocalizedString("ADDCT", comment: ""))
+                                .font(.headline)
+                                .padding(.leading)
+                            Spacer()
+                            Toggle(isOn: self.$showADDTF) {
+                                Text("")
+                            }.padding(.trailing)
+                        }
+                        if self.showADDTF {
+                            HStack {
+                                TextField(NSLocalizedString("ADDCTF", comment: ""), text: self.$addCmdInput)
+                                Button(action: {
+                                    let Pboard = UIPasteboard.general
+                                    if Pboard.string != nil {
+                                        originCmd = Pboard.string!
+                                        self.addCmdInput = NSLocalizedString("RFCB", comment: "")
+                                        
+                                    }
+                                    else {
+                                        self.showalertCPB = true
+                                    }
+                                },
+                                       label: {
+                                        Image(systemName: "doc.on.clipboard")
+                                })
+                                    .padding(.horizontal)
+                                    .alert(isPresented: $showalertCPB) {
+                                        Alert(title: Text("Fatal Error"), message: Text("Clip board is empty"), dismissButton: .default(Text("OK")))
+                                }
+                            }.padding(.leading)
+                        }
+                    }
                     
                 }
                 NavigationLink(destination: page2_add(), tag: 1, selection: $selection) {
@@ -73,6 +109,10 @@ struct ContentView: View {
                                 MemberNames = MN_spliter_handinput(input: self.MemberNamesInput)
                             }
                             originalMemberNames = self.MemberNamesInput
+                            if self.showADDTF && AG_counter(addCmds: originCmd) == MemberNumber {
+                                addCmd = AG_spliter(addCmds: originCmd)
+                                addedCmd = self.showADDTF
+                            }
                             self.selection = 1
                         }
                         else {
@@ -103,6 +143,8 @@ struct ContentView_back: View {
     @State var selection: Int? = nil
     @State var showalert = false
     @State var showalertCPB = false
+    @State var showADDTF = addedCmd
+    @State var addCmdInput = addedCmd ? NSLocalizedString("RFCB", comment: ""):""
     var body: some View {
         let membernames = Binding<String>(get: {
             self.MemberNamesInput
@@ -143,6 +185,40 @@ struct ContentView_back: View {
                         }
                         .padding(.trailing)
                     }}
+                Section {
+                    HStack {
+                        Text(NSLocalizedString("ADDCT", comment: ""))
+                            .font(.headline)
+                            .padding(.leading)
+                        Spacer()
+                        Toggle(isOn: self.$showADDTF) {
+                            Text("")
+                        }.padding(.trailing)
+                    }
+                    if self.showADDTF {
+                        HStack {
+                            TextField(NSLocalizedString("ADDCTF", comment: ""), text: self.$addCmdInput)
+                            Button(action: {
+                                let Pboard = UIPasteboard.general
+                                if Pboard.string != nil {
+                                    originCmd = Pboard.string!
+                                    self.addCmdInput = NSLocalizedString("RFCB", comment: "")
+                                    
+                                }
+                                else {
+                                    self.showalertCPB = true
+                                }
+                            },
+                                   label: {
+                                    Image(systemName: "doc.on.clipboard")
+                            })
+                                .padding(.horizontal)
+                                .alert(isPresented: $showalertCPB) {
+                                    Alert(title: Text("Fatal Error"), message: Text("Clip board is empty"), dismissButton: .default(Text("OK")))
+                            }
+                        }.padding(.leading)
+                    }
+                }
                 
             }
             NavigationLink(destination: page2_add(), tag: 1, selection: $selection) {
@@ -159,6 +235,10 @@ struct ContentView_back: View {
                             MemberNames = MN_spliter_handinput(input: self.MemberNamesInput)
                         }
                         originalMemberNames = self.MemberNamesInput
+                        if self.showADDTF && AG_counter(addCmds: originCmd) == MemberNumber {
+                            addCmd = AG_spliter(addCmds: originCmd)
+                            addedCmd = self.showADDTF
+                        }
                         self.selection = 1
                     }
                     else {
