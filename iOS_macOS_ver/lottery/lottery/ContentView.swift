@@ -94,6 +94,7 @@ struct ContentView: View {
                                         Alert(title: Text("Fatal Error"), message: Text("Clip board is empty"), dismissButton: .default(Text("OK")))
                                 }
                             }.padding(.leading)
+                            .transition(.slide)
                         }
                     }
                     

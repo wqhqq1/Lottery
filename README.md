@@ -2,11 +2,11 @@ Lottery
 =============
 Description
 ----------------
-#### This program can auto get name excel table file and do lottery  
+#### This program can auto get name from excel table file and do lottery  
 #### You can customise the name of the prizes and the number of each prizes  
 #### This program can not run well in Linux now, so don't try that without any changes  
-#### The platform now supported is Windows, macOS and iOS(iPadOS), you should download binary file on Windows and macOS
-#### You also can install for iDevices by AltStore with the ipa file below
+#### The platform now supported is macOS and iOS(iPadOS), you should download binary file macOS or install for iDevices by AltStore with the ipad file.
+#### Update for Windows was stopped yet.
 Download
 ---------------------------------  
 #### For iOS(iPadOS) you can download the iPA file here:[![](https://img.shields.io/github/v/release/wqhqq1/Lottery?color=green)](https://github.com/wqhqq1/Lottery/releases/tag/4.0)
