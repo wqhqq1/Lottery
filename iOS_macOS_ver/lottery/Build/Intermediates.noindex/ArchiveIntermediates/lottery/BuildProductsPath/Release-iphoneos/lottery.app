@@ -1,1 +1,0 @@
-/Users/wqhqq/Documents/抽奖器/lottery/Build/Intermediates.noindex/ArchiveIntermediates/lottery/InstallationBuildProductsLocation/Applications/lottery.app
