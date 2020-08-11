@@ -12,7 +12,16 @@ struct SingleResult: View {
     @EnvironmentObject var PrizeList: Prizes
     var index: Int
     var body: some View {
-        Button(action: {
+        var range = ""
+        if self.PrizeList.PrizeList_cacu[index].enabledCmds && self.PrizeList.PrizeList_cacu[index].maxCmd != nil && self.PrizeList.PrizeList_cacu[index].minCmd != nil {
+            if self.PrizeList.PrizeList_cacu[index].minCmd == self.PrizeList.PrizeList_cacu[index].maxCmd {
+                range = "(=" + String(self.PrizeList.PrizeList_cacu[index].minCmd!) + ")"
+            }
+            else {
+                range = "(" + String(self.PrizeList.PrizeList_cacu[index].minCmd!) + "≤,≤" + String(self.PrizeList.PrizeList_cacu[index].maxCmd!) + ")"
+            }
+        }
+        return Button(action: {
             self.showResultPage = true
         }) {
             HStack {
@@ -25,7 +34,7 @@ struct SingleResult: View {
                             .font(.headline)
                             .fontWeight(.heavy)
                             .foregroundColor(.black)
-                        Text((self.PrizeList.PrizeList_cacu[index].enabledCmds && self.PrizeList.PrizeList_cacu[index].maxCmd != nil && self.PrizeList.PrizeList_cacu[index].minCmd != nil) ? "(\(String(self.PrizeList.PrizeList_cacu[index].minCmd!))≤,≤\(String(self.PrizeList.PrizeList_cacu[index].maxCmd!)))":"")
+                        Text(range)
                         .font(.headline)
                         .fontWeight(.heavy)
                         .foregroundColor(.black)

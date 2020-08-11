@@ -279,8 +279,15 @@ struct SingleCard: View {
     let uiimage = UIImage(systemName: "pause")!
     @State var range = ""
     var body: some View {
-        if self.PrizeData.PrizeList[index!].enabledCmds && self.PrizeData.PrizeList[index!].maxCmd != nil && self.PrizeData.PrizeList[index!].minCmd != nil {
-            range = "(" + String(self.PrizeData.PrizeList[index!].minCmd!) + "≤,≤" + String(self.PrizeData.PrizeList[index!].maxCmd!) + ")"
+        DispatchQueue.main.async {
+            if self.PrizeData.PrizeList[index!].enabledCmds && self.PrizeData.PrizeList[index!].maxCmd != nil && self.PrizeData.PrizeList[index!].minCmd != nil {
+                if self.PrizeData.PrizeList[index!].minCmd == self.PrizeData.PrizeList[index!].maxCmd {
+                    range = "(=" + String(self.PrizeData.PrizeList[index!].minCmd!) + ")"
+                }
+                else {
+                    range = "(" + String(self.PrizeData.PrizeList[index!].minCmd!) + "≤,≤" + String(self.PrizeData.PrizeList[index!].maxCmd!) + ")"
+                }
+            }
         }
         return HStack {
             HStack {
@@ -321,7 +328,7 @@ struct SingleCard: View {
                                         .font(.headline)
                                         .fontWeight(.heavy)
                                         .foregroundColor(.black)
-                                    Text((self.PrizeData.PrizeList[index!].enabledCmds && self.PrizeData.PrizeList[index!].maxCmd != nil && self.PrizeData.PrizeList[index!].minCmd != nil) ? "(\(String(self.PrizeData.PrizeList[index!].minCmd!))≤,≤\(String(self.PrizeData.PrizeList[index!].maxCmd!)))":"")
+                                    Text(range)
                                         .font(.headline)
                                         .fontWeight(.heavy)
                                         .foregroundColor(.black)
