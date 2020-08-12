@@ -41,11 +41,13 @@ struct AlertControl: UIViewControllerRepresentable {
                         path = NSHomeDirectory() + "/Documents/\(self.textString).csv"
                         print(path)
                     }
-                    if #available(OSX 10.15, *)
-                    {
-                        path = "/Users/Shared/\(self.textString).csv"
+                    else {
+                        if #available(OSX 10.15, *)
+                        {
+                            path = "/Users/Shared/\(self.textString).csv"
+                        }
                     }
-                    try? readyToCopy.write(toFile: path, atomically: true, encoding: .utf8)
+                    try! readyToCopy.write(toFile: path, atomically: true, encoding: .utf8)
                 }
             })
 

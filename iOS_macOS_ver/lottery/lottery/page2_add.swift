@@ -461,8 +461,10 @@ struct backButton_p2: View {
                     Image(systemName: "chevron.left")
                         .imageScale(.large)
                 }
+                Spacer()
                 Text(NSLocalizedString("NBT1", comment: ""))
-                    .font(.headline)
+                    .font(Font.system(size: 22))
+                Spacer()
             }
         }.transition(.slide)
     }
