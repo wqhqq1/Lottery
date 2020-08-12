@@ -82,7 +82,7 @@ struct KeyboardHost_edit<Content: View>: View {
                 .animation(.default)
                 .foregroundColor(.clear)
         }.onReceive(showPublisher.merge(with: hidePublisher)) { (height) in
-            self.keyboardHeight = height - 50
+            self.keyboardHeight = (height * 0.2) - 50
         }
     }
 }

@@ -206,7 +206,14 @@ struct page2_add: View {
                                                     print(numbers)
                                                     print(names)
                                                     print(addCmd)
-                                                    rands = Random(start: 1, end: number + 1, Members: names.count)
+                                                    print(number)
+                                                    if number <= names.count {
+                                                        rands = Random(start: 1, end: number + 1, Members: names.count)
+                                                    }
+                                                    else {
+                                                        self.showAlert = true
+                                                        break
+                                                    }
                                                     j = 0
                                                     readyToCopy += self.PrizeData.PrizeList_cacu[i].PrizeName + ","
                                                     while j < number {

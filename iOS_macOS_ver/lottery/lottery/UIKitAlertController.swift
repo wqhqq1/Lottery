@@ -39,6 +39,7 @@ struct AlertControl: UIViewControllerRepresentable {
                     var path = ""
                     if #available(iOS 13.0, *) {
                         path = NSHomeDirectory() + "/Documents/\(self.textString).csv"
+                        print(path)
                     }
                     if #available(OSX 10.15, *)
                     {
