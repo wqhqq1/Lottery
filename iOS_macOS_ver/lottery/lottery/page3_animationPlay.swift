@@ -32,14 +32,21 @@ struct result: View {
     @State var showAlert = false
     @State var filePathInput = ""
     var body: some View {
-        ScrollView(.vertical, showsIndicators: true) {
+        ZStack {
+            ScrollView(.vertical, showsIndicators: true) {
+                VStack {
+                    ForEach(self.PrizeData.PrizeList_cacu) { prize in
+                        SingleResult(index: prize.id)
+                            .environmentObject(self.PrizeData)
+                            .frame(height: 80)
+                            .animation(.spring())
+                    }.animation(.spring())
+                }.padding(.horizontal)
+                .animation(.spring())
+            }.navigationBarTitle(NSLocalizedString("NBLR", comment: ""))
+                .navigationBarBackButtonHidden(true)
+            .navigationBarItems(leading: backButton_p3().environmentObject(PrizeData))
             VStack {
-                ForEach(self.PrizeData.PrizeList_cacu) { prize in
-                    SingleResult(index: prize.id)
-                        .environmentObject(self.PrizeData)
-                        .frame(height: 80)
-                        .animation(.spring())
-                }.animation(.spring())
                 Spacer()
                 Button(action: {
                     self.showAlert = true
@@ -50,11 +57,10 @@ struct result: View {
                             .imageScale(.large)
                     }
                 }.background(AlertControl(show: self.$showAlert, title: "Save", message: "Input file name."))
-            }.padding(.horizontal)
-                .animation(.spring())
-        }.navigationBarTitle(NSLocalizedString("NBLR", comment: ""))
-            .navigationBarBackButtonHidden(true)
-            .navigationBarItems(leading: backButton_p3().environmentObject(PrizeData))
+                .padding(.bottom)
+                .shadow(color: Color("Shadow"), radius: 10)
+            }
+        }
     }
 }
 

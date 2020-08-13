@@ -357,8 +357,8 @@ struct SingleCard: View {
                                 }) {
                                     Image(systemName: self.selected.firstIndex(where: {$0 == self.index}) != nil ? "checkmark.circle.fill":"circle")
                                         .imageScale(.large)
-                                        .foregroundColor(.black)
                                         .padding(.trailing)
+                                        .foregroundColor(Color("trash"))
                                 }
                             }
                         }
