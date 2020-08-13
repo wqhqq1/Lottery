@@ -32,55 +32,6 @@ struct page2_add: View {
     @State var selectedOne = -1
     var body: some View {
         return VStack {
-            HStack {
-                Spacer()
-                if self.multiRemove == true {
-                    Button(action : {
-                        self.showSheet = true
-                    }) {
-                        Image(systemName: "trash.fill")
-                            .foregroundColor(Color("trash"))
-                            .imageScale(.large)
-                            .padding(.trailing)
-                    }
-                    .actionSheet(isPresented: self.$showSheet) {
-                        ActionSheet(title: Text(NSLocalizedString("RMT", comment: "")), message: Text(NSLocalizedString("CRMT", comment: "")),
-                                    buttons: [.destructive(Text(NSLocalizedString("RMT", comment: ""))) {
-                                        self.PrizeData.removeMore(index: self.selected)
-                                        self.prizeHead = self.PrizeData.head()
-                                        self.prizeEnd = self.PrizeData.end()
-                                        self.selected = []
-                                        self.multiRemove = false
-                                        }])
-                    }
-                }
-                if true {
-                    Button(action: {
-                        self.showButton.toggle()
-                        var i = 0
-                        while i < self.showRemoveButton.count {
-                            if self.isEditingMode {
-                                self.showRemoveButton[i] = false
-                            }
-                            else {
-                                self.showRemoveButton[i] = true
-                            }
-                            i += 1
-                        }
-                        self.isEditingMode.toggle()
-                        self.selected.removeAll()
-                        self.isDone.toggle()
-                        self.multiRemove = false
-                        i = 0
-                        self.selectedOne = -1
-                    }){
-                        Text(isEditingMode ? NSLocalizedString("DONE", comment: ""):NSLocalizedString("EDIT", comment: ""))
-                            .font(.custom("", size: 20))
-                            .fontWeight(.heavy)
-                            .padding(.trailing)
-                    }
-                }
-            }
             ZStack {
                 ScrollView(.vertical, showsIndicators: true){
                     VStack {
@@ -92,10 +43,10 @@ struct page2_add: View {
                                         .animation(.spring())
                                         .transition(.slide)
                                 }.animation(.spring())
-                                    .transition(.slide)
+                                .transition(.slide)
                             }
                         }.animation(.spring())
-                            .transition(.slide)
+                        .transition(.slide)
                     }
                     //                    .transition(.slide)
                     
@@ -255,7 +206,8 @@ struct page2_add: View {
                 }
             }.navigationBarTitle(NSLocalizedString("ADDT", comment: ""))
         }.navigationBarBackButtonHidden(true)
-            .navigationBarItems(leading: backButton_p2())
+        .navigationBarItems(leading: multi_Remove(multiRemove: self.$multiRemove, showSheet: self.$showSheet, prizeHead: self.$prizeHead, prizeEnd: self.$prizeEnd, selected: self.$selected).environmentObject(self.PrizeData),
+                            trailing: editingButton(isEditingMode: self.$isEditingMode, showButton: self.$showButton, showRemoveButton: self.$showRemoveButton, selected: self.$selected, isDone: self.$isDone, multiRemove: self.$multiRemove, selectedOne: self.$selectedOne, showConfirmButton: self.$showConfirmButton))
     }
 }
 
@@ -416,10 +368,10 @@ struct SingleCard: View {
                             .environmentObject(self.PrizeData)
                     }
                 }.frame(height: 80)
-                    .background(Color("CardBG"))
-                    .cornerRadius(10)
-                    .padding(.bottom)
-                    .shadow(color: Color("Shadow"), radius: 10, x: 0, y: 10)
+                .background(Color("CardBG"))
+                .cornerRadius(10)
+                .padding(.bottom)
+                .shadow(color: Color("Shadow"), radius: 10, x: 0, y: 10)
             }
         }
     }
@@ -467,5 +419,91 @@ struct backButton_p2: View {
                 Spacer()
             }
         }.transition(.slide)
+    }
+}
+
+struct multi_Remove: View {
+    @Binding var multiRemove: Bool
+    @Binding var showSheet: Bool
+    @Binding var prizeHead: Int
+    @Binding var prizeEnd: Int
+    @Binding var selected: [Int]
+    @EnvironmentObject var PrizeData: Prizes
+    var body: some View {
+        VStack(alignment: .leading) {
+            HStack {
+                backButton_p2()
+                if self.multiRemove == true {
+                    Button(action : {
+                        self.showSheet = true
+                    }) {
+                        Image(systemName: "trash.fill")
+                            .foregroundColor(Color("trash"))
+                            .imageScale(.large)
+                            .padding(.trailing)
+                    }
+                    .actionSheet(isPresented: self.$showSheet) {
+                        ActionSheet(title: Text(NSLocalizedString("RMT", comment: "")), message: Text(NSLocalizedString("CRMT", comment: "")),
+                                    buttons: [.destructive(Text(NSLocalizedString("RMT", comment: ""))) {
+                                        self.PrizeData.removeMore(index: self.selected)
+                                        self.prizeHead = self.PrizeData.head()
+                                        self.prizeEnd = self.PrizeData.end()
+                                        self.selected = []
+                                        self.multiRemove = false
+                                    }])
+                    }
+                }
+                else {
+                     Image(systemName: "rectangle")
+                        .foregroundColor(Color("nextButton"))
+                        .imageScale(.large)
+                        .padding(.trailing)
+                }
+            }
+        }
+    }
+}
+
+struct editingButton: View {
+    @Binding var isEditingMode: Bool
+    @Binding var showButton: Bool
+    @Binding var showRemoveButton: [Bool]
+    @Binding var selected: [Int]
+    @Binding var isDone: Bool
+    @Binding var multiRemove: Bool
+    @Binding var selectedOne: Int
+    @Binding var showConfirmButton: [Bool]
+    var body: some View {
+        Button(action: {
+            self.showButton.toggle()
+            var i = 0
+            while i < self.showRemoveButton.count {
+                if self.isEditingMode {
+                    self.showRemoveButton[i] = false
+                }
+                else {
+                    self.showRemoveButton[i] = true
+                }
+                i += 1
+            }
+            i = 0
+            self.isEditingMode.toggle()
+            self.selected.removeAll()
+            self.isDone.toggle()
+            if isDone {
+                while i < self.showConfirmButton.count {
+                    self.showConfirmButton[i] = false
+                    i += 1
+                }
+            }
+            self.multiRemove = false
+            i = 0
+            self.selectedOne = -1
+        }){
+            Text(isEditingMode ? NSLocalizedString("DONE", comment: ""):NSLocalizedString("EDIT", comment: ""))
+                .font(.custom("", size: 20))
+                .fontWeight(.heavy)
+                .padding(.trailing)
+        }
     }
 }
