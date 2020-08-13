@@ -50,22 +50,11 @@ struct page2_add: View {
                                         self.prizeHead = self.PrizeData.head()
                                         self.prizeEnd = self.PrizeData.end()
                                         self.selected = []
+                                        self.multiRemove = false
                                         }])
                     }
                 }
-                if self.isDone == true {
-                    Button(action: {
-                        self.multiRemove.toggle()
-                        self.selected.removeAll()
-                        self.selectedOne = -1
-                    }) {
-                        Text(self.multiRemove ? NSLocalizedString("DONE", comment: ""):NSLocalizedString("MTRM", comment: ""))
-                            .font(.custom("", size: 20))
-                            .fontWeight(.heavy)
-                            .padding(.trailing)
-                    }
-                }
-                if self.multiRemove == false {
+                if true {
                     Button(action: {
                         self.showButton.toggle()
                         var i = 0
@@ -81,6 +70,7 @@ struct page2_add: View {
                         self.isEditingMode.toggle()
                         self.selected.removeAll()
                         self.isDone.toggle()
+                        self.multiRemove = false
                         i = 0
                         self.selectedOne = -1
                     }){
@@ -303,9 +293,6 @@ struct SingleCard: View {
                         Button(action: {
                             self.showConfirmButton[self.index!] = true
                             self.showRemoveButton[self.index!] = false
-                            if self.selected.firstIndex(where: {$0 == self.index}) != nil {
-                                self.selected.remove(at: self.selected.firstIndex(where: {$0 == self.index})!)
-                            }
                         }){
                             Image(systemName: "minus.circle.fill")
                                 .imageScale(.large)
@@ -323,6 +310,7 @@ struct SingleCard: View {
                         if self.showConfirmButton[self.index!] == true {
                             self.showConfirmButton[self.index!] = false
                             self.showRemoveButton[self.index!] = true
+                            print(self.multiRemove)
                         }
                         if self.isDone == true && !self.multiRemove {
                             self.showeditingpage = true
@@ -354,6 +342,13 @@ struct SingleCard: View {
                                             self.prizeEnd = self.PrizeData.end()
                                             self.showConfirmButton[self.index!] = false
                                             self.showRemoveButton[self.index!] = true
+                                            self.selectedOne = -1
+                                            if self.selected.firstIndex(where: {$0 == self.index}) != nil {
+                                                self.selected.remove(at: self.selected.firstIndex(where: {$0 == self.index})!)
+                                            }
+                                            if self.selected.count == 0 {
+                                                self.multiRemove = false
+                                            }
                                         }
                                     }) {
                                         ZStack {
@@ -370,6 +365,8 @@ struct SingleCard: View {
                             if isDone == false && !multiRemove && !showConfirmButton[self.index!] {
                                 Button(action: {
                                     if self.selectedOne == self.index! {
+                                        self.multiRemove = true
+                                        self.selected.append(self.index!)
                                         self.selectedOne = -1
                                     }
                                     else {
@@ -394,13 +391,16 @@ struct SingleCard: View {
                                 }.padding(.trailing)
                             }
                             
-                            if self.multiRemove {
+                            if self.multiRemove && !self.showConfirmButton[self.index!] {
                                 Button(action: {
                                     if self.selected.firstIndex(where: {$0 == self.index}) == nil {
                                         self.selected.append(self.index!)
                                     }
                                     else {
                                         self.selected.remove(at: self.selected.firstIndex(where: {$0 == self.index})!)
+                                    }
+                                    if self.selected.count == 0 {
+                                        self.multiRemove = false
                                     }
                                 }) {
                                     Image(systemName: self.selected.firstIndex(where: {$0 == self.index}) != nil ? "checkmark.circle.fill":"circle")
