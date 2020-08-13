@@ -35,52 +35,28 @@ struct ContentView: View {
         })
         return NavigationView{
             KeyboardHost_offset20 {
-                Form {
-                    Section {
-                        TextField(NSLocalizedString("MNTF", comment: ""), text: $MemberNumberInput)
-                            .keyboardType(.numberPad)
-                            .padding(.horizontal)
-                        HStack {
-                            TextField(NSLocalizedString("NMTF", comment: ""), text: membernames)
-                                .padding(.leading)
-                            Button(action: {
-                                let Pboard = UIPasteboard.general
-                                if Pboard.string != nil {
-                                    self.MemberNamesInput = NSLocalizedString("RFCB", comment: "")
-                                    originalMN = Pboard.string!
-                                    self.MemberNumberInput = String(MN_counter(input: Pboard.string!))
-                                }
-                                else {
-                                    self.showalertCPB = true
-                                }
-                            },
-                                   label: {
-                                    Image(systemName: "doc.on.clipboard")
-                            })
-                                .alert(isPresented: $showalertCPB) {
-                                    Alert(title: Text("Fatal Error"), message: Text("Clip board is empty"), dismissButton: .default(Text("OK")))
-                            }
-                            .padding(.trailing)
-                        }}
-                    Section {
-                        HStack {
-                            Text(NSLocalizedString("ADDCT", comment: ""))
-                                .font(.headline)
-                                .padding(.leading)
-                            Spacer()
-                            Toggle(isOn: self.$showADDTF) {
-                                Text("")
-                            }.padding(.trailing)
-                        }
-                        if self.showADDTF {
+                VStack {
+                    Form {
+                        Section {
                             HStack {
-                                TextField(NSLocalizedString("ADDCTF", comment: ""), text: self.$addCmdInput)
+                                Spacer()
+                                Image("box")
+                                    .resizable()
+                                    .frame(width: 150, height: 150)
+                                Spacer()
+                            }
+                            TextField(NSLocalizedString("MNTF", comment: ""), text: $MemberNumberInput)
+                                .keyboardType(.numberPad)
+                                .padding(.horizontal)
+                            HStack {
+                                TextField(NSLocalizedString("NMTF", comment: ""), text: membernames)
+                                    .padding(.leading)
                                 Button(action: {
                                     let Pboard = UIPasteboard.general
                                     if Pboard.string != nil {
-                                        originCmd = Pboard.string!
-                                        self.addCmdInput = NSLocalizedString("RFCB", comment: "")
-                                        
+                                        self.MemberNamesInput = NSLocalizedString("RFCB", comment: "")
+                                        originalMN = Pboard.string!
+                                        self.MemberNumberInput = String(MN_counter(input: Pboard.string!))
                                     }
                                     else {
                                         self.showalertCPB = true
@@ -89,15 +65,48 @@ struct ContentView: View {
                                        label: {
                                         Image(systemName: "doc.on.clipboard")
                                 })
-                                    .padding(.horizontal)
                                     .alert(isPresented: $showalertCPB) {
                                         Alert(title: Text("Fatal Error"), message: Text("Clip board is empty"), dismissButton: .default(Text("OK")))
                                 }
-                            }.padding(.leading)
-                            .transition(.slide)
+                                .padding(.trailing)
+                            }}
+                        Section {
+                            HStack {
+                                Text(NSLocalizedString("ADDCT", comment: ""))
+                                    .font(.headline)
+                                    .padding(.leading)
+                                Spacer()
+                                Toggle(isOn: self.$showADDTF) {
+                                    Text("")
+                                }.padding(.trailing)
+                            }
+                            if self.showADDTF {
+                                HStack {
+                                    TextField(NSLocalizedString("ADDCTF", comment: ""), text: self.$addCmdInput)
+                                    Button(action: {
+                                        let Pboard = UIPasteboard.general
+                                        if Pboard.string != nil {
+                                            originCmd = Pboard.string!
+                                            self.addCmdInput = NSLocalizedString("RFCB", comment: "")
+                                            
+                                        }
+                                        else {
+                                            self.showalertCPB = true
+                                        }
+                                    },
+                                           label: {
+                                            Image(systemName: "doc.on.clipboard")
+                                    })
+                                        .padding(.horizontal)
+                                        .alert(isPresented: $showalertCPB) {
+                                            Alert(title: Text("Fatal Error"), message: Text("Clip board is empty"), dismissButton: .default(Text("OK")))
+                                    }
+                                }.padding(.leading)
+                                .transition(.slide)
+                            }
                         }
+                        
                     }
-                    
                 }
                 NavigationLink(destination: page2_add(), tag: 1, selection: $selection) {
                     Button(action: {
@@ -162,52 +171,28 @@ struct ContentView_back: View {
             }
         })
         return KeyboardHost_offset20 {
-            Form {
-                Section {
-                    TextField(NSLocalizedString("MNTF", comment: ""), text: $MemberNumberInput)
-                        .keyboardType(.numberPad)
-                        .padding(.horizontal)
-                    HStack {
-                        TextField(NSLocalizedString("NMTF", comment: ""), text: membernames)
-                            .padding(.leading)
-                        Button(action: {
-                            let Pboard = UIPasteboard.general
-                            if Pboard.string != nil {
-                                self.MemberNamesInput = NSLocalizedString("RFCB", comment: "")
-                                originalMN = Pboard.string!
-                                self.MemberNumberInput = String(MN_counter(input: originalMN))
-                            }
-                            else {
-                                self.showalertCPB = true
-                            }
-                        },
-                               label: {
-                                Image(systemName: "doc.on.clipboard")
-                        })
-                            .alert(isPresented: $showalertCPB) {
-                                Alert(title: Text("Fatal Error"), message: Text("Clip board is empty"), dismissButton: .default(Text("OK")))
-                        }
-                        .padding(.trailing)
-                    }}
-                Section {
-                    HStack {
-                        Text(NSLocalizedString("ADDCT", comment: ""))
-                            .font(.headline)
-                            .padding(.leading)
-                        Spacer()
-                        Toggle(isOn: self.$showADDTF) {
-                            Text("")
-                        }.padding(.trailing)
-                    }
-                    if self.showADDTF {
+            VStack {
+                Form {
+                    Section {
                         HStack {
-                            TextField(NSLocalizedString("ADDCTF", comment: ""), text: self.$addCmdInput)
+                            Spacer()
+                            Image("box")
+                                .resizable()
+                                .frame(width: 150, height: 150)
+                            Spacer()
+                        }
+                        TextField(NSLocalizedString("MNTF", comment: ""), text: $MemberNumberInput)
+                            .keyboardType(.numberPad)
+                            .padding(.horizontal)
+                        HStack {
+                            TextField(NSLocalizedString("NMTF", comment: ""), text: membernames)
+                                .padding(.leading)
                             Button(action: {
                                 let Pboard = UIPasteboard.general
                                 if Pboard.string != nil {
-                                    originCmd = Pboard.string!
-                                    self.addCmdInput = NSLocalizedString("RFCB", comment: "")
-                                    
+                                    self.MemberNamesInput = NSLocalizedString("RFCB", comment: "")
+                                    originalMN = Pboard.string!
+                                    self.MemberNumberInput = String(MN_counter(input: originalMN))
                                 }
                                 else {
                                     self.showalertCPB = true
@@ -216,14 +201,47 @@ struct ContentView_back: View {
                                    label: {
                                     Image(systemName: "doc.on.clipboard")
                             })
-                                .padding(.horizontal)
                                 .alert(isPresented: $showalertCPB) {
                                     Alert(title: Text("Fatal Error"), message: Text("Clip board is empty"), dismissButton: .default(Text("OK")))
                             }
-                        }.padding(.leading)
+                            .padding(.trailing)
+                        }}
+                    Section {
+                        HStack {
+                            Text(NSLocalizedString("ADDCT", comment: ""))
+                                .font(.headline)
+                                .padding(.leading)
+                            Spacer()
+                            Toggle(isOn: self.$showADDTF) {
+                                Text("")
+                            }.padding(.trailing)
+                        }
+                        if self.showADDTF {
+                            HStack {
+                                TextField(NSLocalizedString("ADDCTF", comment: ""), text: self.$addCmdInput)
+                                Button(action: {
+                                    let Pboard = UIPasteboard.general
+                                    if Pboard.string != nil {
+                                        originCmd = Pboard.string!
+                                        self.addCmdInput = NSLocalizedString("RFCB", comment: "")
+                                        
+                                    }
+                                    else {
+                                        self.showalertCPB = true
+                                    }
+                                },
+                                       label: {
+                                        Image(systemName: "doc.on.clipboard")
+                                })
+                                    .padding(.horizontal)
+                                    .alert(isPresented: $showalertCPB) {
+                                        Alert(title: Text("Fatal Error"), message: Text("Clip board is empty"), dismissButton: .default(Text("OK")))
+                                }
+                            }.padding(.leading)
+                        }
                     }
+                    
                 }
-                
             }
             NavigationLink(destination: page2_add(), tag: 1, selection: $selection) {
                 Button(action: {
