@@ -42,7 +42,7 @@ struct KeyboardHost_offset20<Content: View>: View {
                 .animation(.default)
                 .foregroundColor(.clear)
         }.onReceive(showPublisher.merge(with: hidePublisher)) { (height) in
-            self.keyboardHeight = height * 0.2
+            self.keyboardHeight = height * 0.05
         }
     }
 }

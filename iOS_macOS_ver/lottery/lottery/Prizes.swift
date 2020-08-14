@@ -8,14 +8,22 @@
 import Foundation
 import SwiftUI
 
+var encoder = JSONEncoder()
+var decoder = JSONDecoder()
+
 class Prizes: ObservableObject {
     @Published var PrizeList: [SinglePrize]
     var PrizeList_cacu: [SinglePrize] = []
     var count = 0
-    
+    var time: String? = nil
     init()
     {
         self.PrizeList = []
+    }
+    
+    init(data: [SinglePrize]) {
+        self.PrizeList = []
+        self.PrizeList_cacu = data
     }
     
     func reAppend() {
@@ -139,10 +147,19 @@ class Prizes: ObservableObject {
         }
         reAppend()
     }
+    
+    func save() {
+        let data = try! encoder.encode(self.PrizeList_cacu)
+        UserDefaults.standard.set(data, forKey: "PrizeList_cacu")
+        let date = Date(), dateFormat = DateFormatter()
+        dateFormat.dateFormat = "MM-dd"
+        let saveDate = dateFormat.string(from: date)
+        UserDefaults.standard.set(saveDate, forKey: "theDate")
+    }
 }
 
 
-struct SinglePrize: Identifiable {
+struct SinglePrize: Identifiable, Codable {
     var id = 0
     var isRemoved = false
     var PrizeName: String

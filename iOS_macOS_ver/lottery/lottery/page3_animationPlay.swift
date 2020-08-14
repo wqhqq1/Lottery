@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+var sheetModeResult = false
+
 struct page3_animationPlay: View {
     @EnvironmentObject var PrizeData: Prizes
     var timer = Timer.publish(every: 3, on: .current, in: .common).autoconnect()
@@ -31,6 +33,7 @@ struct result: View {
     @EnvironmentObject var PrizeData: Prizes
     @State var showAlert = false
     @State var filePathInput = ""
+    @Environment(\.presentationMode) var presentation
     var body: some View {
         ZStack {
             ScrollView(.vertical, showsIndicators: true) {
@@ -43,7 +46,7 @@ struct result: View {
                     }.animation(.spring())
                 }.padding(.horizontal)
                 .animation(.spring())
-            }.navigationBarTitle(NSLocalizedString("NBLR", comment: ""))
+            }.navigationBarTitle(sheetModeResult ? lastTime:NSLocalizedString("NBLR", comment: ""))
                 .navigationBarBackButtonHidden(true)
             .navigationBarItems(leading: backButton_p3().environmentObject(PrizeData))
             VStack {
@@ -59,8 +62,16 @@ struct result: View {
                 }.background(AlertControl(show: self.$showAlert, title: "Save", message: "Input file name."))
                 .padding(.bottom)
                 .shadow(color: Color("Shadow"), radius: 10)
+                if sheetModeResult {
+                    Button(action: {
+                        sheetModeResult = false
+                        self.presentation.wrappedValue.dismiss()
+                    }) {
+                        Text(NSLocalizedString("DONE", comment: ""))
+                    }.padding()
+                }
             }
-        }
+        }.padding()
     }
 }
 

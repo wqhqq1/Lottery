@@ -172,6 +172,7 @@ struct page2_add: View {
                                                     readyToCopy += "\n"
                                                     i += 1
                                                 }
+                                                PrizeData.save()
                                                 self.selection = 1
                                             }
                                             else {
