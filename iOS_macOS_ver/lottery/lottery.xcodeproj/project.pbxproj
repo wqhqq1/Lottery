@@ -14,6 +14,7 @@
 		0139BB0C24CD773C00CAF722 /* EditingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0139BB0B24CD773C00CAF722 /* EditingPage.swift */; };
 		013A2C7124D1356500144308 /* gifPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013A2C7024D1356500144308 /* gifPlayer.swift */; };
 		013A2C7324D1364600144308 /* page3_animationPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013A2C7224D1364600144308 /* page3_animationPlay.swift */; };
+		0142C9E624E650B300AF7EF6 /* endEditing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0142C9E524E650B300AF7EF6 /* endEditing.swift */; };
 		014645AC24DF67AF00CA5A5D /* AG_spliter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014645AB24DF67AF00CA5A5D /* AG_spliter.swift */; };
 		0146C55924CC1C7F00E4F790 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0146C55824CC1C7F00E4F790 /* AppDelegate.swift */; };
 		0146C55B24CC1C7F00E4F790 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0146C55A24CC1C7F00E4F790 /* SceneDelegate.swift */; };
@@ -56,6 +57,7 @@
 		0139BB0B24CD773C00CAF722 /* EditingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingPage.swift; sourceTree = "<group>"; };
 		013A2C7024D1356500144308 /* gifPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gifPlayer.swift; sourceTree = "<group>"; };
 		013A2C7224D1364600144308 /* page3_animationPlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = page3_animationPlay.swift; sourceTree = "<group>"; };
+		0142C9E524E650B300AF7EF6 /* endEditing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = endEditing.swift; sourceTree = "<group>"; };
 		014645AB24DF67AF00CA5A5D /* AG_spliter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AG_spliter.swift; sourceTree = "<group>"; };
 		0146C55524CC1C7F00E4F790 /* lottery4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lottery4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0146C55824CC1C7F00E4F790 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				0146C55C24CC1C7F00E4F790 /* page2_add.swift */,
 				013A2C7224D1364600144308 /* page3_animationPlay.swift */,
 				0131957124DD143600139AC9 /* UIKitAlertController.swift */,
+				0142C9E524E650B300AF7EF6 /* endEditing.swift */,
 				0139BB0924CD757100CAF722 /* SingleResult.swift */,
 				0139BB0B24CD773C00CAF722 /* EditingPage.swift */,
 				013A2C7024D1356500144308 /* gifPlayer.swift */,
@@ -317,6 +320,7 @@
 				0146C58B24CC287E00E4F790 /* Prizes.swift in Sources */,
 				014645AC24DF67AF00CA5A5D /* AG_spliter.swift in Sources */,
 				013A2C7324D1364600144308 /* page3_animationPlay.swift in Sources */,
+				0142C9E624E650B300AF7EF6 /* endEditing.swift in Sources */,
 				0152AAD424CD6EDE00AEFD53 /* ContentView.swift in Sources */,
 				0139BB0824CD731800CAF722 /* APM_caculator.swift in Sources */,
 				0139BB0C24CD773C00CAF722 /* EditingPage.swift in Sources */,

@@ -19,63 +19,77 @@ struct EditingPage: View {
     @State var showADDCTF: Bool
     @State var maxCmd: String = ""
     @State var minCmd: String = ""
+    @State var showDoneButton = false
     var body: some View {
-        KeyboardHost_edit {
-            NavigationView {
-                Form {
-                    Section(header: Text(NSLocalizedString("PT", comment: ""))) {
-                        TextField(NSLocalizedString("PTF", comment: ""), text: $prizename)
-                        TextField(NSLocalizedString("PNTTF", comment: ""), text: $prizequota)
-                            .keyboardType(.numberPad)
-                    }
-                    
-                    if addedCmd {
-                        Section {
-                            HStack {
-                                Text(NSLocalizedString("ADDCT", comment: ""))
-                                Toggle(isOn: self.$showADDCTF, label: {
-                                    Text("")
-                                })
-                            }.padding(.horizontal)
-                            if self.showADDCTF {
-                                TextField("\(NSLocalizedString("ADDCTF", comment: ""))Max", text: self.$maxCmd)
-                                    .padding(.horizontal)
-                                    .keyboardType(.numberPad)
-                                TextField("\(NSLocalizedString("ADDCTF", comment: ""))Min", text: self.$minCmd)
-                                    .padding(.horizontal)
-                                    .keyboardType(.numberPad)
+        NavigationView {
+            KeyboardHost_edit(showDoneButton: self.$showDoneButton){
+                VStack {
+                    Form {
+                        Section(header: Text(NSLocalizedString("PT", comment: ""))) {
+                            TextField(NSLocalizedString("PTF", comment: ""), text: $prizename)
+                            TextField(NSLocalizedString("PNTTF", comment: ""), text: $prizequota)
+                                .keyboardType(.numberPad)
+                        }
+                        
+                        if addedCmd {
+                            Section {
+                                HStack {
+                                    Text(NSLocalizedString("ADDCT", comment: ""))
+                                    Toggle(isOn: self.$showADDCTF, label: {
+                                        Text("")
+                                    })
+                                }.padding(.horizontal)
+                                if self.showADDCTF {
+                                    TextField("\(NSLocalizedString("ADDCTF", comment: ""))Max", text: self.$maxCmd)
+                                        .padding(.horizontal)
+                                        .keyboardType(.numberPad)
+                                    TextField("\(NSLocalizedString("ADDCTF", comment: ""))Min", text: self.$minCmd)
+                                        .padding(.horizontal)
+                                        .keyboardType(.numberPad)
+                                }
                             }
                         }
-                    }
-                    
-                    Section {
-                        Button(action: {
-                            if self.prizequota != "" {
-                                if self.index == nil {
-                                    self.PrizeData.add(data: SinglePrize(PrizeName: self.prizename, PrizeMember: Int(self.prizequota)!, maxCmd: (self.showADDCTF && self.maxCmd != "") ? Int(self.maxCmd)!:nil, minCmd: (self.showADDCTF && self.minCmd != "") ? Int(self.minCmd)!:nil, enabledCmds: (self.showADDCTF && self.maxCmd != "" && self.minCmd != "") ? true:false))
-                                    self.prizeHead = self.PrizeData.head()
-                                    self.prizeEnd = self.PrizeData.end()
+                        
+                        Section {
+                            Button(action: {
+                                if self.prizequota != "" {
+                                    if self.index == nil {
+                                        self.PrizeData.add(data: SinglePrize(PrizeName: self.prizename, PrizeMember: Int(self.prizequota)!, maxCmd: (self.showADDCTF && self.maxCmd != "") ? Int(self.maxCmd)!:nil, minCmd: (self.showADDCTF && self.minCmd != "") ? Int(self.minCmd)!:nil, enabledCmds: (self.showADDCTF && self.maxCmd != "" && self.minCmd != "") ? true:false))
+                                        self.prizeHead = self.PrizeData.head()
+                                        self.prizeEnd = self.PrizeData.end()
+                                    }
+                                    else {
+                                        self.PrizeData.edit(index: self.index!, data: SinglePrize(PrizeName: self.prizename, PrizeMember: Int(self.prizequota)!, maxCmd: (self.showADDCTF && self.maxCmd != "") ? Int(self.maxCmd):nil, minCmd: (self.showADDCTF && self.minCmd != "") ? Int(self.minCmd):nil, enabledCmds: (self.showADDCTF && self.minCmd != "" && self.maxCmd != "") ? true:false))
+                                    }
+                                    self.presentation.wrappedValue.dismiss()
                                 }
                                 else {
-                                    self.PrizeData.edit(index: self.index!, data: SinglePrize(PrizeName: self.prizename, PrizeMember: Int(self.prizequota)!, maxCmd: (self.showADDCTF && self.maxCmd != "") ? Int(self.maxCmd):nil, minCmd: (self.showADDCTF && self.minCmd != "") ? Int(self.minCmd):nil, enabledCmds: (self.showADDCTF && self.minCmd != "" && self.maxCmd != "") ? true:false))
+                                    self.showalert = true
                                 }
+                            }){
+                                Text(NSLocalizedString("EXT", comment: ""))
+                            }.alert(isPresented: $showalert) {
+                                Alert(title: Text("Fatal Error"), message: Text("Unable to read text fields!"), dismissButton: .default(Text("OK")))
+                            }
+                            Button(action: {
                                 self.presentation.wrappedValue.dismiss()
+                            }){
+                                Text(NSLocalizedString("CANL", comment: ""))
                             }
-                            else {
-                                self.showalert = true
-                            }
-                        }){
-                            Text(NSLocalizedString("EXT", comment: ""))
-                        }.alert(isPresented: $showalert) {
-                            Alert(title: Text("Fatal Error"), message: Text("Unable to read text fields!"), dismissButton: .default(Text("OK")))
                         }
+                    }.navigationBarTitle(index == nil ? NSLocalizedString("ADD", comment: ""):NSLocalizedString("EDIT", comment: ""))
+                }
+                if self.showDoneButton {
+                    HStack {
+                        Spacer()
                         Button(action: {
-                            self.presentation.wrappedValue.dismiss()
-                        }){
-                            Text(NSLocalizedString("CANL", comment: ""))
-                        }
+                            self.showDoneButton = false
+                            UIApplication.shared.endEditing()
+                        }) {
+                            Text(NSLocalizedString("DONE", comment: ""))
+                        }.padding()
                     }
-                }.navigationBarTitle(index == nil ? NSLocalizedString("ADD", comment: ""):NSLocalizedString("EDIT", comment: ""))
+                }
             }.navigationViewStyle(StackNavigationViewStyle())
         }
     }

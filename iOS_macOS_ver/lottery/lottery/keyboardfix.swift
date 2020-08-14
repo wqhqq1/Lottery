@@ -11,6 +11,8 @@ struct KeyboardHost_offset20<Content: View>: View {
     let view: Content
     
     @State private var keyboardHeight: CGFloat = 0
+    var showLastRButton: Binding<Bool>
+    var showDoneButton: Binding<Bool>
     
     private let showPublisher = NotificationCenter.Publisher.init(
         center: .default,
@@ -30,8 +32,10 @@ struct KeyboardHost_offset20<Content: View>: View {
     
     // Like HStack or VStack, the only parameter is the view that this view should layout.
     // (It takes one view rather than the multiple views that Stacks can take)
-    init(@ViewBuilder content: () -> Content) {
+    init(showDoneButton: Binding<Bool>, showButton: Binding<Bool>, @ViewBuilder content: () -> Content) {
         view = content()
+        self.showLastRButton = showButton
+        self.showDoneButton = showDoneButton
     }
     
     var body: some View {
@@ -42,7 +46,15 @@ struct KeyboardHost_offset20<Content: View>: View {
                 .animation(.default)
                 .foregroundColor(.clear)
         }.onReceive(showPublisher.merge(with: hidePublisher)) { (height) in
-            self.keyboardHeight = height * 0.05
+            self.keyboardHeight = height * 0.02
+            if self.keyboardHeight == 0.0 {
+                self.showLastRButton.wrappedValue = true
+                self.showDoneButton.wrappedValue = false
+            }
+            else {
+                self.showLastRButton.wrappedValue = false
+                self.showDoneButton.wrappedValue = true
+            }
         }
     }
 }
@@ -51,6 +63,7 @@ struct KeyboardHost_edit<Content: View>: View {
     let view: Content
     
     @State private var keyboardHeight: CGFloat = 0
+    var showDoneButton: Binding<Bool>
     
     private let showPublisher = NotificationCenter.Publisher.init(
         center: .default,
@@ -70,8 +83,9 @@ struct KeyboardHost_edit<Content: View>: View {
     
     // Like HStack or VStack, the only parameter is the view that this view should layout.
     // (It takes one view rather than the multiple views that Stacks can take)
-    init(@ViewBuilder content: () -> Content) {
+    init(showDoneButton: Binding<Bool>, @ViewBuilder content: () -> Content) {
         view = content()
+        self.showDoneButton = showDoneButton
     }
     
     var body: some View {
@@ -83,6 +97,12 @@ struct KeyboardHost_edit<Content: View>: View {
                 .foregroundColor(.clear)
         }.onReceive(showPublisher.merge(with: hidePublisher)) { (height) in
             self.keyboardHeight = (height * 0.2) - 50
+            if self.keyboardHeight + 50 == 0 {
+                self.showDoneButton.wrappedValue = false
+            }
+            else {
+                self.showDoneButton.wrappedValue = true
+            }
         }
     }
 }

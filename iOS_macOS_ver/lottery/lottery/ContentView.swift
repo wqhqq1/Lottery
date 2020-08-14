@@ -31,6 +31,9 @@ struct ContentView: View {
     @State var lastResult = Prizes(data: dataLoader())
     @State var showSheet = false
     @State var showWarning = false
+    @State var showLastRButton = true
+    @State var showDoneButton = false
+    @ObservedObject var PrizeData = Prizes.init()
     var body: some View {
         let membernames = Binding<String>(get: {
             self.MemberNamesInput
@@ -48,7 +51,7 @@ struct ContentView: View {
         })
         return NavigationView{
             VStack {
-                KeyboardHost_offset20  {
+                KeyboardHost_offset20(showDoneButton: self.$showDoneButton, showButton: self.$showLastRButton)  {
                     Form {
                         Section {
                             HStack {
@@ -96,6 +99,7 @@ struct ContentView: View {
                             if self.showADDTF {
                                 HStack {
                                     TextField(NSLocalizedString("ADDCTF", comment: ""), text: self.$addCmdInput)
+                                        
                                     Button(action: {
                                         let Pboard = UIPasteboard.general
                                         if Pboard.string != nil {
@@ -122,84 +126,101 @@ struct ContentView: View {
                         
                     }
                     
-                    NavigationLink(destination: page2_add(), tag: 1, selection: $selection) {
+                    ZStack {
+                        HStack {
+                            NavigationLink(destination: page2_add(PrizeData: PrizeData), tag: 1, selection: $selection) {
+                                Button(action: {
+                                    if self.MemberNamesInput != "" && self.MemberNumberInput != ""
+                                    {
+                                        //                        PrizeNumber = Int(PrizeNumberInput)!
+                                        MemberNumber = Int(self.MemberNumberInput)!
+                                        if self.MemberNamesInput == NSLocalizedString("RFCB", comment: "")
+                                        {
+                                            MemberNames = MN_spliter(input: originalMN)
+                                        }
+                                        else {
+                                            MemberNames = MN_spliter_handinput(input: self.MemberNamesInput)
+                                        }
+                                        originalMemberNames = self.MemberNamesInput
+                                        if self.showADDTF && AG_counter(addCmds: originCmd) == MemberNumber {
+                                            addCmd = AG_spliter(addCmds: originCmd)
+                                            addedCmd = self.showADDTF
+                                        }
+                                        self.selection = 1
+                                    }
+                                    else {
+                                        self.showalert = true
+                                    }
+                                    //                                i = 1
+                                    //                    self.selection = 1
+                                    //                    self.selection = 1
+                                }, label: {
+                                    Text(NSLocalizedString("NXTB", comment: ""))
+                                        .background(Color("nextButton"))
+                                }).alert(isPresented: $showalert) {
+                                    Alert(title: Text("Fatal Error"), message: Text("Failed to read text fields"), dismissButton: .default(Text("OK")))
+                                }
+                                .padding()
+                            }
+                        }
+                        HStack {
+                            Spacer()
+                            if self.showDoneButton {
+                                Button(action: {
+                                    self.showDoneButton = false
+                                    UIApplication.shared.endEditing()
+                                }) {
+                                    Text(NSLocalizedString("DONE", comment: ""))
+                                }.padding()
+                            }
+                        }
+                    }}
+                if showLastRButton {
+                    HStack {
+                        Spacer()
                         Button(action: {
-                            if self.MemberNamesInput != "" && self.MemberNumberInput != ""
-                            {
-                                //                        PrizeNumber = Int(PrizeNumberInput)!
-                                MemberNumber = Int(self.MemberNumberInput)!
-                                if self.MemberNamesInput == NSLocalizedString("RFCB", comment: "")
-                                {
-                                    MemberNames = MN_spliter(input: originalMN)
-                                }
-                                else {
-                                    MemberNames = MN_spliter_handinput(input: self.MemberNamesInput)
-                                }
-                                originalMemberNames = self.MemberNamesInput
-                                if self.showADDTF && AG_counter(addCmds: originCmd) == MemberNumber {
-                                    addCmd = AG_spliter(addCmds: originCmd)
-                                    addedCmd = self.showADDTF
-                                }
-                                self.selection = 1
+                            if self.lastResult.PrizeList_cacu.count != 0 {
+                                sheetModeResult = true
+                                self.showSheet = true
                             }
                             else {
-                                self.showalert = true
+                                self.showWarning = true
                             }
-                            //                                i = 1
-                            //                    self.selection = 1
-                            //                    self.selection = 1
-                        }, label: {
-                            Text(NSLocalizedString("NXTB", comment: ""))
-                                .background(Color("nextButton"))
-                        }).alert(isPresented: $showalert) {
-                            Alert(title: Text("Fatal Error"), message: Text("Failed to read text fields"), dismissButton: .default(Text("OK")))
-                        }
-                        .padding()
-                    }}
-                HStack {
-                    Spacer()
-                    Button(action: {
-                        if self.lastResult.PrizeList_cacu.count != 0 {
-                            sheetModeResult = true
-                            self.showSheet = true
-                        }
-                        else {
-                            self.showWarning = true
-                        }
-                    }) {
-                        ZStack {
-                            Rectangle()
-                                .cornerRadius(50)
-                                .foregroundColor(Color("CardBG"))
-                                .shadow(color: Color("Shadow"), radius: 10)
-                                .frame(width: 200, height: 80)
-                            HStack {
-                                VStack(alignment: .leading) {
-                                    Text(NSLocalizedString("LastR", comment: ""))
-                                        .font(.headline)
-                                        .foregroundColor(Color("trash"))
-                                        .padding(.bottom, 5)
-                                    Text(lastTime)
-                                        .foregroundColor(Color("trash"))
+                        }) {
+                            ZStack {
+                                Rectangle()
+                                    .cornerRadius(50)
+                                    .foregroundColor(Color("CardBG"))
+                                    .shadow(color: Color("Shadow"), radius: 10)
+                                    .frame(width: 200, height: 80)
+                                HStack {
+                                    VStack(alignment: .leading) {
+                                        Text(NSLocalizedString("LastR", comment: ""))
+                                            .font(.headline)
+                                            .foregroundColor(Color("trash"))
+                                            .padding(.bottom, 5)
+                                        Text(lastTime)
+                                            .foregroundColor(Color("trash"))
+                                    }
+                                    .padding(.leading, 33)
+                                    Spacer()
+                                    Image(systemName: "chevron.right.circle.fill")
+                                        .resizable()
+                                        .frame(width: 60, height: 60)
+                                        .padding(7)
                                 }
-                                .padding(.leading, 33)
-                                Spacer()
-                                Image(systemName: "chevron.right.circle.fill")
-                                    .resizable()
-                                    .frame(width: 60, height: 60)
-                                    .padding(7)
                             }
                         }
-                    }
-                    .sheet(isPresented: self.$showSheet) {
-                        resultReplay().environmentObject(self.lastResult)
-                    }
-                    .alert(isPresented: self.$showWarning, content: {
-                        Alert(title: Text("Failed"), message: Text("No result"), dismissButton: .default(Text("OK")))
-                    })
-                    Spacer()
-                }.frame(width: 200, height: 80)
-                .padding(.bottom)
+                        .sheet(isPresented: self.$showSheet) {
+                            resultReplay().environmentObject(self.lastResult)
+                        }
+                        .alert(isPresented: self.$showWarning, content: {
+                            Alert(title: Text("Failed"), message: Text("No result"), dismissButton: .default(Text("OK")))
+                        })
+                        Spacer()
+                    }.frame(width: 200, height: 80)
+                    .padding(.bottom)
+                }
                 
             }
             .navigationBarTitle(NSLocalizedString("NBT1", comment: ""))
@@ -219,6 +240,9 @@ struct ContentView_back: View {
     @State var addCmdInput = addedCmd ? NSLocalizedString("RFCB", comment: ""):""
     @State var showSheet = false
     @State var showWarning = false
+    @State var showLastRButton = true
+    @State var showDoneButton = false
+    @ObservedObject var PrizeData = Prizes.init()
     var lastResult = Prizes(data: dataLoader())
     var body: some View {
         let membernames = Binding<String>(get: {
@@ -233,7 +257,7 @@ struct ContentView_back: View {
             }
         })
         return VStack {
-            KeyboardHost_offset20  {
+            KeyboardHost_offset20(showDoneButton: self.$showDoneButton, showButton: self.$showLastRButton)  {
                 Form {
                     Section {
                         HStack {
@@ -281,6 +305,7 @@ struct ContentView_back: View {
                         if self.showADDTF {
                             HStack {
                                 TextField(NSLocalizedString("ADDCTF", comment: ""), text: self.$addCmdInput)
+                                    
                                 Button(action: {
                                     let Pboard = UIPasteboard.general
                                     if Pboard.string != nil {
@@ -307,85 +332,101 @@ struct ContentView_back: View {
                     
                 }
                 
-                NavigationLink(destination: page2_add(), tag: 1, selection: $selection) {
+                ZStack {
+                    HStack {
+                        NavigationLink(destination: page2_add(PrizeData: PrizeData), tag: 1, selection: $selection) {
+                            Button(action: {
+                                if self.MemberNamesInput != "" && self.MemberNumberInput != ""
+                                {
+                                    //                        PrizeNumber = Int(PrizeNumberInput)!
+                                    MemberNumber = Int(self.MemberNumberInput)!
+                                    if self.MemberNamesInput == NSLocalizedString("RFCB", comment: "")
+                                    {
+                                        MemberNames = MN_spliter(input: originalMN)
+                                    }
+                                    else {
+                                        MemberNames = MN_spliter_handinput(input: self.MemberNamesInput)
+                                    }
+                                    originalMemberNames = self.MemberNamesInput
+                                    if self.showADDTF && AG_counter(addCmds: originCmd) == MemberNumber {
+                                        addCmd = AG_spliter(addCmds: originCmd)
+                                        addedCmd = self.showADDTF
+                                    }
+                                    self.selection = 1
+                                }
+                                else {
+                                    self.showalert = true
+                                }
+                                //                                i = 1
+                                //                    self.selection = 1
+                                //                    self.selection = 1
+                            }, label: {
+                                Text(NSLocalizedString("NXTB", comment: ""))
+                                    .background(Color("nextButton"))
+                            }).alert(isPresented: $showalert) {
+                                Alert(title: Text("Fatal Error"), message: Text("Failed to read text fields"), dismissButton: .default(Text("OK")))
+                            }
+                            .padding()
+                        }
+                    }
+                    HStack {
+                        Spacer()
+                        if self.showDoneButton {
+                            Button(action: {
+                                self.showDoneButton = false
+                                UIApplication.shared.endEditing()
+                            }) {
+                                Text(NSLocalizedString("DONE", comment: ""))
+                            }.padding()
+                        }
+                    }
+                }}
+            if showLastRButton {
+                HStack {
+                    Spacer()
                     Button(action: {
-                        if self.MemberNamesInput != "" && self.MemberNumberInput != ""
-                        {
-                            //                        PrizeNumber = Int(PrizeNumberInput)!
-                            MemberNumber = Int(self.MemberNumberInput)!
-                            if self.MemberNamesInput == NSLocalizedString("RFCB", comment: "")
-                            {
-                                MemberNames = MN_spliter(input: originalMN)
-                            }
-                            else {
-                                MemberNames = MN_spliter_handinput(input: self.MemberNamesInput)
-                            }
-                            originalMemberNames = self.MemberNamesInput
-                            if self.showADDTF && AG_counter(addCmds: originCmd) == MemberNumber {
-                                addCmd = AG_spliter(addCmds: originCmd)
-                                addedCmd = self.showADDTF
-                            }
-                            self.selection = 1
+                        if self.lastResult.PrizeList_cacu.count != 0 {
+                            sheetModeResult = true
+                            self.showSheet = true
                         }
                         else {
-                            self.showalert = true
+                            self.showWarning = true
                         }
-                        //                                i = 1
-                        //                    self.selection = 1
-                        //                    self.selection = 1
-                    }, label: {
-                        Text(NSLocalizedString("NXTB", comment: ""))
-                            .background(Color("nextButton"))
-                    }).alert(isPresented: $showalert) {
-                        Alert(title: Text("Fatal Error"), message: Text("Failed to read text fields"), dismissButton: .default(Text("OK")))
-                    }
-                    .padding()
-                }}
-            HStack {
-                Spacer()
-                Button(action: {
-                    if self.lastResult.PrizeList_cacu.count != 0 {
-                        sheetModeResult = true
-                        self.showSheet = true
-                    }
-                    else {
-                        self.showWarning = true
-                    }
-                }) {
-                    ZStack {
-                        Rectangle()
-                            .cornerRadius(50)
-                            .foregroundColor(Color("CardBG"))
-                            .shadow(color: Color("Shadow"), radius: 10)
-                            .frame(width: 200, height: 80)
-                        HStack {
-                            VStack(alignment: .leading) {
-                                Text(NSLocalizedString("LastR", comment: ""))
-                                    .font(.headline)
-                                    .foregroundColor(Color("trash"))
-                                    .padding(.bottom, 5)
-                                Text(lastTime)
-                                    .foregroundColor(Color("trash"))
+                    }) {
+                        ZStack {
+                            Rectangle()
+                                .cornerRadius(50)
+                                .foregroundColor(Color("CardBG"))
+                                .shadow(color: Color("Shadow"), radius: 10)
+                                .frame(width: 200, height: 80)
+                            HStack {
+                                VStack(alignment: .leading) {
+                                    Text(NSLocalizedString("LastR", comment: ""))
+                                        .font(.headline)
+                                        .foregroundColor(Color("trash"))
+                                        .padding(.bottom, 5)
+                                    Text(lastTime)
+                                        .foregroundColor(Color("trash"))
+                                }
+                                .padding(.leading, 33)
+                                Spacer()
+                                Image(systemName: "chevron.right.circle.fill")
+                                    .resizable()
+                                    .frame(width: 60, height: 60)
+                                    .padding(7)
                             }
-                            .padding(.leading, 33)
-                            Spacer()
-                            Image(systemName: "chevron.right.circle.fill")
-                                .resizable()
-                                .frame(width: 60, height: 60)
-                                .padding(7)
                         }
                     }
-                }
-                .sheet(isPresented: self.$showSheet) {
-                    resultReplay().environmentObject(self.lastResult)
-                }
-                .alert(isPresented: self.$showWarning, content: {
-                    Alert(title: Text("Failed"), message: Text("No result"), dismissButton: .default(Text("OK")))
-                })
-                Spacer()
-            }.frame(width: 200, height: 80)
-            .padding(.bottom)
-            
+                    .sheet(isPresented: self.$showSheet) {
+                        resultReplay().environmentObject(self.lastResult)
+                    }
+                    .alert(isPresented: self.$showWarning, content: {
+                        Alert(title: Text("Failed"), message: Text("No result"), dismissButton: .default(Text("OK")))
+                    })
+                    Spacer()
+                }.frame(width: 200, height: 80)
+                .padding(.bottom)
+            }
         }
         .navigationBarTitle(NSLocalizedString("NBT1", comment: ""))
         .navigationViewStyle(StackNavigationViewStyle())
@@ -494,9 +535,9 @@ struct SingleResultReplay: View {
                             .fontWeight(.heavy)
                             .foregroundColor(.black)
                         Text(range)
-                        .font(.headline)
-                        .fontWeight(.heavy)
-                        .foregroundColor(.black)
+                            .font(.headline)
+                            .fontWeight(.heavy)
+                            .foregroundColor(.black)
                     }
                 }
                 Spacer()
@@ -504,9 +545,9 @@ struct SingleResultReplay: View {
                     .foregroundColor(Color("arrow"))
                     .padding()
             }.background(Color("CardBG"))
-                .cornerRadius(10)
-                .padding(.bottom)
-                .shadow(color: Color("Shadow"), radius: 10, x: 0, y: 10)
+            .cornerRadius(10)
+            .padding(.bottom)
+            .shadow(color: Color("Shadow"), radius: 10, x: 0, y: 10)
         }.sheet(isPresented: $showResultPage) {
             resultPageRePlay(prize: self.PrizeList.PrizeList_cacu[self.index].PrizeName, result: self.PrizeList.PrizeList_cacu[self.index].Lottery_result)
         }}
