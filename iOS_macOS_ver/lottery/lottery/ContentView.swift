@@ -14,6 +14,8 @@ func dataLoader() -> [SinglePrize] {
         output = try! decoder.decode([SinglePrize].self, from: data)
         let time = UserDefaults.standard.string(forKey: "theDate")
         lastTime  = time!
+        let readyTC = UserDefaults.standard.object(forKey: "readyToCopy") as! Data
+        readyToCopy = try! decoder.decode(String.self, from: readyTC)
     }
     return output
 }
@@ -226,6 +228,7 @@ struct ContentView: View {
                 }
                 .navigationBarTitle(NSLocalizedString("NBT1", comment: ""))
             }.navigationViewStyle(StackNavigationViewStyle())
+            .padding(.bottom)
             .frame(maxHeight: 800)
             .navigationBarBackButtonHidden(true)
             .offset(x: 0, y: geo.size.height > 800 ? geo.size.height - 780:0)
@@ -433,6 +436,7 @@ struct ContentView_back: View {
                     .padding(.bottom)
                 }
             }
+            .padding(.bottom)
             .navigationBarTitle(NSLocalizedString("NBT1", comment: ""))
             .navigationViewStyle(StackNavigationViewStyle())
             .navigationBarBackButtonHidden(true)
@@ -479,8 +483,8 @@ struct resultReplay: View {
                         .shadow(color: Color("Shadow"), radius: 10)
                         if sheetModeResult {
                             Button(action: {
-                                sheetModeResult = false
                                 self.presentation.wrappedValue.dismiss()
+                                sheetModeResult = false
                             }) {
                                 Text(NSLocalizedString("DONE", comment: ""))
                             }.padding()

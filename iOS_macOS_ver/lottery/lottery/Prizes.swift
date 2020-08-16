@@ -155,6 +155,8 @@ class Prizes: ObservableObject {
         dateFormat.dateFormat = "MM-dd"
         let saveDate = dateFormat.string(from: date)
         UserDefaults.standard.set(saveDate, forKey: "theDate")
+        let readyTC = try! encoder.encode(readyToCopy)
+        UserDefaults.standard.set(readyTC, forKey: "readyToCopy")
     }
 }
 

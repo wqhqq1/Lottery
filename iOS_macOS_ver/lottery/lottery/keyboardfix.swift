@@ -46,6 +46,7 @@ struct KeyboardHost_offset20<Content: View>: View {
                 .animation(.default)
                 .foregroundColor(.clear)
         }.onReceive(showPublisher.merge(with: hidePublisher)) { (height) in
+            print(height)
             self.keyboardHeight = height * 0.02
             if self.keyboardHeight == 0.0 {
                 self.showLastRButton.wrappedValue = true
