@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 var AllPrizesMember: Int = 0
 
@@ -173,6 +174,7 @@ struct page2_add: View {
                                                     i += 1
                                                 }
                                                 PrizeData.save()
+                                                WidgetCenter.shared.reloadTimelines(ofKind: "com.kirin.lotteryW")
                                                 self.selection = 1
                                             }
                                             else {

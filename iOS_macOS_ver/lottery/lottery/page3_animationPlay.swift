@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-var sheetModeResult = false
+
 
 struct page3_animationPlay: View {
     @EnvironmentObject var PrizeData: Prizes

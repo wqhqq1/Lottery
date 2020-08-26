@@ -10,6 +10,7 @@ import SwiftUI
 
 var encoder = JSONEncoder()
 var decoder = JSONDecoder()
+var readyToCopy = ""
 
 class Prizes: ObservableObject {
     @Published var PrizeList: [SinglePrize]
@@ -157,6 +158,10 @@ class Prizes: ObservableObject {
         UserDefaults.standard.set(saveDate, forKey: "theDate")
         let readyTC = try! encoder.encode(readyToCopy)
         UserDefaults.standard.set(readyTC, forKey: "readyToCopy")
+        let sharedDir = FileManager().containerURL(forSecurityApplicationGroupIdentifier: "group.lotterywiget")!.path
+        try! saveDate.write(toFile: "\(sharedDir)/Date", atomically: true, encoding: .utf8)
+        let sharedURL = FileManager().containerURL(forSecurityApplicationGroupIdentifier: "group.lotterywiget")!
+        try! data.write(to: sharedURL.appendingPathComponent("Data"))
     }
 }
 
