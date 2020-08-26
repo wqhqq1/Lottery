@@ -45,7 +45,7 @@ struct resultReplay: View {
                     .padding(.bottom)
                     .shadow(color: Color("Shadow"), radius: 10)
                     if urlModeResult {
-                        NavigationLink(destination: ContentView(), tag: 1, selection: $selection) {
+                        NavigationLink(destination: ContentView(showSheet: false), tag: 1, selection: $selection) {
                             Button(action: {
                                 urlModeResult = false
                                 sheetModeResult = false

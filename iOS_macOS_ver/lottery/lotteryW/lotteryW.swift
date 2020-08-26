@@ -145,25 +145,32 @@ struct TimeViewMid: View {
                                     .frame(width: 40, height: 40)
                             }
                         }
+                        Spacer()
                     }
                     Divider()
                         .foregroundColor(.black)
                     VStack(alignment: .leading) {
                         
-                        Text("包含的奖项")
+                        Text("包含的奖项(\(entry.PrizeData.PrizeList_cacu.count > 4 ? 4:entry.PrizeData.PrizeList_cacu.count) of \(entry.PrizeData.PrizeList_cacu.count))")
                             .font(.title2)
-                            .padding(.bottom, 3)
+                            .padding(.bottom, 2)
                         HStack {
                             VStack(alignment: .leading) {
                                 ForEach(self.entry.PrizeData.PrizeList_cacu) { Prize in
-                                    Text("\(Prize.PrizeName): \(Prize.PrizeMember)人\(returnRange(Prize))")
-                                        .font(.subheadline)
-                                        .padding(.bottom, 2)
+                                    if Prize.id < 3 {
+                                        Text("\(Prize.PrizeName): \(Prize.PrizeMember)人\(returnRange(Prize))")
+                                            .font(.subheadline)
+                                            .padding(.bottom, 0.1)
+                                    }
+                                    if Prize.id == 3 {
+                                        Text("\(Prize.PrizeName): \(Prize.PrizeMember)人\(returnRange(Prize))...")
+                                            .font(.subheadline)
+                                    }
                                 }
                             }
                         }
                         Spacer()
-                    }.padding([.top])
+                    }.padding([.top], 3)
                 }
                 Spacer()
             }.padding()
@@ -203,7 +210,7 @@ struct TimeViewLarge: View {
                                 .cornerRadius(25)
                         }
                         HStack {
-                            Text("Open in App")
+                            Text("Show in App")
                                 .font(.subheadline)
                             Image(systemName: "chevron.right.circle.fill")
                                 .resizable()
@@ -215,20 +222,32 @@ struct TimeViewLarge: View {
                 Divider()
                 HStack {
                     VStack(alignment: .leading) {
-                        Text("Result:")
+                        Text("Result(\(entry.PrizeData.PrizeList_cacu.count > 3 ? 3:entry.PrizeData.PrizeList_cacu.count) of \(entry.PrizeData.PrizeList_cacu.count))")
                             .font(.title3)
                             .fontWeight(.heavy)
                             .padding(.bottom, 3)
                         ForEach(entry.PrizeData.PrizeList_cacu) { Prize in
-                            VStack(alignment: .leading) {
-                                Text("\(Prize.PrizeName): \(Prize.PrizeMember)人\(returnRange(Prize))")
-                                    .font(.headline)
-                                    .padding(.bottom, 1)
-                                Text("Winners: \(Prize.Lottery_result)")
-                                    .font(.subheadline)
-                                    .padding(.bottom, 2)
+                            if Prize.id < 2 {
+                                VStack(alignment: .leading) {
+                                    Text("\(Prize.PrizeName): \(Prize.PrizeMember)人\(returnRange(Prize))")
+                                        .font(.headline)
+                                        .padding(.bottom, 1)
+                                    Text("Winners: \(Prize.Lottery_result)")
+                                        .font(.subheadline)
+                                        .padding(.bottom, 2)
+                                }
                             }
-                        }
+                            if Prize.id == 3 {
+                                VStack(alignment: .leading) {
+                                    Text("\(Prize.PrizeName): \(Prize.PrizeMember)人\(returnRange(Prize))")
+                                        .font(.headline)
+                                        .padding(.bottom, 1)
+                                    Text("Winners: \(Prize.Lottery_result)...")
+                                        .font(.subheadline)
+                                        .padding(.bottom, 2)
+                                }
+                            }
+                        }.padding(.bottom, 2)
                     }
                     Spacer()
                 }.padding([.leading, .trailing])
@@ -241,7 +260,7 @@ struct TimeViewLarge: View {
 struct lotteryWEntryView : View {
     var entry: Provider.Entry
     @Environment(\.widgetFamily) var family
-    var url: URL = URL(string: "lottery://")!
+    var url: URL = URL(string: "lottery://result")!
     var body: some View {
         switch family {
         case .systemLarge: TimeViewLarge(entry: self.entry).widgetURL(self.url)
@@ -267,7 +286,7 @@ struct lotteryW: Widget {
 
 struct lotteryW_Previews: PreviewProvider {
     static var previews: some View {
-        lotteryWEntryView(entry: SimpleEntry(date: Date(), lastDate: "8-8", PrizeData: Prizes(data: [SinglePrize(id: 0, PrizeName: "一等奖", PrizeMember: 1, maxCmd: 10, minCmd: 10, enabledCmds: true), SinglePrize(id: 1, PrizeName: "二等奖", PrizeMember: 2, maxCmd: 11, minCmd: 10, enabledCmds: true), SinglePrize(id: 2, PrizeName: "二等奖", PrizeMember: 2, maxCmd: 11, minCmd: 10, enabledCmds: true)])))
+        lotteryWEntryView(entry: SimpleEntry(date: Date(), lastDate: "8-8", PrizeData: Prizes(data: [SinglePrize(id: 0, PrizeName: "一等奖", PrizeMember: 1, maxCmd: 10, minCmd: 10, enabledCmds: true), SinglePrize(id: 1, PrizeName: "二等奖", PrizeMember: 2, maxCmd: 11, minCmd: 10, enabledCmds: true), SinglePrize(id: 2, PrizeName: "三等奖", PrizeMember: 2, maxCmd: 11, minCmd: 10, enabledCmds: true), SinglePrize(id: 3, PrizeName: "鼓励奖", PrizeMember: 2, maxCmd: 11, minCmd: 10, enabledCmds: true)])))
             .previewContext(WidgetPreviewContext(family: .systemMedium))
     }
 }

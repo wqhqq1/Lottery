@@ -22,8 +22,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 
         // Create the SwiftUI view that provides the window contents.
-        if connectionOptions.urlContexts.first?.url != nil {
-            let urlcontentView = ResultOnlyView()
+        if connectionOptions.urlContexts.first?.url == URL(string: "lottery://result") {
+            let urlcontentView = ContentView(showSheet: true)
+            sheetModeResult = true
             if let windowScene = scene as? UIWindowScene {
                 let window = UIWindow(windowScene: windowScene)
                 window.rootViewController = UIHostingController(rootView: urlcontentView)
@@ -32,7 +33,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             }
         }
         else {
-            let contentView = ContentView()
+            let contentView = ContentView(showSheet: false)
+            sheetModeResult = false
             if let windowScene = scene as? UIWindowScene {
                 let window = UIWindow(windowScene: windowScene)
                 window.rootViewController = UIHostingController(rootView: contentView)
@@ -44,9 +46,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     func scene(_ scene: UIScene,
                openURLContexts URLContexts: Set<UIOpenURLContext>) {
-        print(URLContexts.first?.url)
-        if URLContexts.first?.url != nil {
-            let urlcontentView = ResultOnlyView()
+        if URLContexts.first?.url == URL(string: "lottery://result") {
+            let urlcontentView = ContentView(showSheet: true)
+            sheetModeResult = true
             if let windowScene = scene as? UIWindowScene {
                 let window = UIWindow(windowScene: windowScene)
                 window.rootViewController = UIHostingController(rootView: urlcontentView)
@@ -55,7 +57,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             }
         }
         else {
-            let contentView = ContentView()
+            let contentView = ContentView(showSheet: false)
+            sheetModeResult = false
             if let windowScene = scene as? UIWindowScene {
                 let window = UIWindow(windowScene: windowScene)
                 window.rootViewController = UIHostingController(rootView: contentView)
@@ -91,13 +94,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
-        let contentView = ContentView()
-        if let windowScene = scene as? UIWindowScene {
-            let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: contentView)
-            self.window = window
-            window.makeKeyAndVisible()
-        }
     }
 
 

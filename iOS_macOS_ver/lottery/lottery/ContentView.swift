@@ -32,7 +32,7 @@ struct ContentView: View {
     @State var showADDTF = false
     @State var addCmdInput = ""
     @State var lastResult = Prizes(data: dataLoader())
-    @State var showSheet = false
+    @State var showSheet: Bool
     @State var showWarning = false
     @State var showLastRButton = true
     @State var showDoneButton = false

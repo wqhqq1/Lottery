@@ -29,7 +29,6 @@
 		0152AAD624CD6F7F00AEFD53 /* keyboardfix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0152AAD524CD6F7F00AEFD53 /* keyboardfix.swift */; };
 		0152AAD824CD6FD000AEFD53 /* MN_spliter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0152AAD724CD6FD000AEFD53 /* MN_spliter.swift */; };
 		0152AADC24CD708400AEFD53 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0152AADE24CD708400AEFD53 /* Localizable.strings */; };
-		0163EB2B24F61292009E3E56 /* ResultOnlyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0163EB2A24F61292009E3E56 /* ResultOnlyView.swift */; };
 		0196B50A24F4F146008E815A /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0196B50924F4F146008E815A /* WidgetKit.framework */; };
 		0196B50C24F4F146008E815A /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0196B50B24F4F146008E815A /* SwiftUI.framework */; };
 		0196B50F24F4F146008E815A /* lotteryW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0196B50E24F4F146008E815A /* lotteryW.swift */; };
@@ -112,7 +111,6 @@
 		0152AAD924CD701B00AEFD53 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		0152AADD24CD708400AEFD53 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0152AADF24CD708A00AEFD53 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		0163EB2A24F61292009E3E56 /* ResultOnlyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultOnlyView.swift; sourceTree = "<group>"; };
 		0196B50724F4F146008E815A /* lotteryWExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = lotteryWExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		0196B50924F4F146008E815A /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		0196B50B24F4F146008E815A /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -188,7 +186,6 @@
 				0125319E24CF9E8000C5464A /* lottery.entitlements */,
 				0146C55824CC1C7F00E4F790 /* AppDelegate.swift */,
 				0146C55A24CC1C7F00E4F790 /* SceneDelegate.swift */,
-				0163EB2A24F61292009E3E56 /* ResultOnlyView.swift */,
 				0152AAD324CD6EDE00AEFD53 /* ContentView.swift */,
 				01C3251724F50C7200A593B2 /* Replay.swift */,
 				0146C55C24CC1C7F00E4F790 /* page2_add.swift */,
@@ -434,7 +431,6 @@
 				0139BB0824CD731800CAF722 /* APM_caculator.swift in Sources */,
 				0139BB0C24CD773C00CAF722 /* EditingPage.swift in Sources */,
 				0146C55924CC1C7F00E4F790 /* AppDelegate.swift in Sources */,
-				0163EB2B24F61292009E3E56 /* ResultOnlyView.swift in Sources */,
 				0152AAD824CD6FD000AEFD53 /* MN_spliter.swift in Sources */,
 				0131957224DD143600139AC9 /* UIKitAlertController.swift in Sources */,
 				0196B51524F4F148008E815A /* lotteryW.intentdefinition in Sources */,
@@ -788,6 +784,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = 6T6JMWY77X;
 				INFOPLIST_FILE = lotteryW/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -796,6 +793,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 4.3;
 				PRODUCT_BUNDLE_IDENTIFIER = wqhqq1.lottery.lottery.lotteryW;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -814,6 +812,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = 6T6JMWY77X;
 				INFOPLIST_FILE = lotteryW/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -822,6 +821,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MARKETING_VERSION = 4.3;
 				PRODUCT_BUNDLE_IDENTIFIER = wqhqq1.lottery.lottery.lotteryW;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
