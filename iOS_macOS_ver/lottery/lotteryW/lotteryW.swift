@@ -231,7 +231,7 @@ struct TimeViewLarge: View {
                     }
                 }
                 Divider()
-                HStack {
+                HStack(alignment: .top) {
                     VStack(alignment: .leading) {
                         Text("Result(\(entry.PrizeData.PrizeList_cacu.count > 3 ? 3:entry.PrizeData.PrizeList_cacu.count) of \(entry.PrizeData.PrizeList_cacu.count))")
                             .font(.title3)

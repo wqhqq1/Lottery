@@ -28,7 +28,13 @@ struct EditingPage: View {
                         Form {
                             Section(header: Text(NSLocalizedString("PT", comment: ""))) {
                                 TextField(NSLocalizedString("PTF", comment: ""), text: $prizename)
+                                    .onTapGesture {
+                                        self.showDoneButton = true
+                                    }
                                 TextField(NSLocalizedString("PNTTF", comment: ""), text: $prizequota)
+                                    .onTapGesture {
+                                        self.showDoneButton = true
+                                    }
                                     .keyboardType(.numberPad)
                             }
                             
@@ -42,9 +48,15 @@ struct EditingPage: View {
                                     }.padding(.horizontal)
                                     if self.showADDCTF {
                                         TextField("\(NSLocalizedString("ADDCTF", comment: ""))Max", text: self.$maxCmd)
+                                            .onTapGesture {
+                                                self.showDoneButton = true
+                                            }
                                             .padding(.horizontal)
                                             .keyboardType(.numberPad)
                                         TextField("\(NSLocalizedString("ADDCTF", comment: ""))Min", text: self.$minCmd)
+                                            .onTapGesture {
+                                                self.showDoneButton = true
+                                            }
                                             .padding(.horizontal)
                                             .keyboardType(.numberPad)
                                     }

@@ -41,13 +41,73 @@ struct page2_add: View {
                                 HStack {
                                     SingleCard(isDone: self.$isDone, showRemoveButton: self.$showRemoveButton, selected: self.$selected, isSelected: self.$isSelected, showConfirmButton: self.$showConfirmButton, index: prize.id, prizeHead: self.$prizeHead, prizeEnd: self.$prizeEnd, selectedOne: self.$selectedOne, multiRemove: self.$multiRemove)
                                         .environmentObject(self.PrizeData)
+                                        .cornerRadius(10)
                                         .animation(.spring())
                                         .transition(.slide)
+                                        .contextMenu(menuItems: /*@START_MENU_TOKEN@*/{
+                                            Button(action: {
+                                                withAnimation {
+                                                    self.PrizeData.remove(index: prize.id)
+                                                    self.prizeHead = self.PrizeData.head()
+                                                    self.prizeEnd = self.PrizeData.end()
+                                                }
+                                            }) {
+                                                HStack {
+                                                    Image(systemName: "trash.fill")
+                                                        .foregroundColor(Color("trash"))
+                                                        .padding(.trailing)
+                                                    Text(NSLocalizedString("RMT", comment: ""))
+                                                        .foregroundColor(.red)
+                                                        .background(Color.red)
+                                                }
+                                            }
+                                            if self.prizeHead != prize.id {
+                                                Button(action: {
+                                                    self.PrizeData.move(from: prize.id, to: self.PrizeData.upNearBy(index: prize.id))
+                                                }) {
+                                                    Text("Move up")
+                                                    Image(systemName: "chevron.up")
+                                                        .foregroundColor(Color("trash"))
+                                                        .padding([.top, .bottom])
+                                                        .imageScale(.large)
+                                                }
+                                            }
+                                            else {
+                                                Button(action: {}) {
+                                                    Text("Move up")
+                                                    Image(systemName: "chevron.up")
+                                                        .foregroundColor(Color("arrow.grey"))
+                                                        .padding([.top, .bottom])
+                                                        .imageScale(.large)
+                                                }
+                                            }
+                                            if self.prizeEnd != prize.id {
+                                                Button(action: {
+                                                    self.PrizeData.move(from: prize.id, to: self.PrizeData.downNearBy(index: prize.id))
+                                                }) {
+                                                    Text("Move down")
+                                                    Image(systemName: "chevron.down")
+                                                        .foregroundColor(Color("trash"))
+                                                        .padding([.bottom])
+                                                        .imageScale(.large)
+                                                }
+                                            }
+                                            else {
+                                                Button(action: {}) {
+                                                    Text("Move down")
+                                                    Image(systemName: "chevron.down")
+                                                        .foregroundColor(Color("arrow.grey"))
+                                                        .padding([.bottom])
+                                                        .imageScale(.large)
+                                                }
+                                            }
+                                        }/*@END_MENU_TOKEN@*/)
                                 }
                                 .animation(.spring())
                                 .transition(.slide)
                             }
-                        }.animation(.spring())
+                        }
+                        .animation(.spring())
                         .transition(.slide)
                     }
                     //                    .transition(.slide)
@@ -376,7 +436,7 @@ struct SingleCard: View {
                 .background(Color("CardBG"))
                 .cornerRadius(10)
                 .padding(.bottom)
-                .shadow(color: Color("Shadow"), radius: 10, x: 0, y: 10)
+                .shadow(color: Color("Shadow"), radius: 10, x: 1, y: 3)
             }
         }
     }
@@ -455,7 +515,7 @@ struct multi_Remove: View {
                                         self.prizeEnd = self.PrizeData.end()
                                         self.selected = []
                                         self.multiRemove = false
-                                    }])
+                                    }, .default(Text(NSLocalizedString("CANL", comment: "")))])
                     }
                 }
                 else {

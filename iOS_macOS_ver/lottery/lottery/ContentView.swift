@@ -69,9 +69,17 @@ struct ContentView: View {
                                 TextField(NSLocalizedString("MNTF", comment: ""), text: $MemberNumberInput)
                                     .keyboardType(.numberPad)
                                     .padding(.horizontal)
+                                    .onTapGesture {
+                                        self.showLastRButton = false
+                                        self.showDoneButton = true
+                                    }
                                 HStack {
                                     TextField(NSLocalizedString("NMTF", comment: ""), text: membernames)
                                         .padding(.leading)
+                                        .onTapGesture {
+                                            self.showLastRButton = false
+                                            self.showDoneButton = true
+                                        }
                                     Button(action: {
                                         let Pboard = UIPasteboard.general
                                         if Pboard.string != nil {
@@ -104,6 +112,10 @@ struct ContentView: View {
                                 if self.showADDTF {
                                     HStack {
                                         TextField(NSLocalizedString("ADDCTF", comment: ""), text: self.$addCmdInput)
+                                            .onTapGesture {
+                                                self.showLastRButton = false
+                                                self.showDoneButton = true
+                                            }
                                             
                                         Button(action: {
                                             let Pboard = UIPasteboard.general
@@ -280,9 +292,17 @@ struct ContentView_back: View {
                             TextField(NSLocalizedString("MNTF", comment: ""), text: $MemberNumberInput)
                                 .keyboardType(.numberPad)
                                 .padding(.horizontal)
+                                .onTapGesture {
+                                    self.showLastRButton = false
+                                    self.showDoneButton = true
+                                }
                             HStack {
                                 TextField(NSLocalizedString("NMTF", comment: ""), text: membernames)
                                     .padding(.leading)
+                                    .onTapGesture {
+                                        self.showLastRButton = false
+                                        self.showDoneButton = true
+                                    }
                                 Button(action: {
                                     let Pboard = UIPasteboard.general
                                     if Pboard.string != nil {
@@ -315,7 +335,10 @@ struct ContentView_back: View {
                             if self.showADDTF {
                                 HStack {
                                     TextField(NSLocalizedString("ADDCTF", comment: ""), text: self.$addCmdInput)
-                                        
+                                        .onTapGesture {
+                                            self.showLastRButton = false
+                                            self.showDoneButton = true
+                                        }
                                     Button(action: {
                                         let Pboard = UIPasteboard.general
                                         if Pboard.string != nil {

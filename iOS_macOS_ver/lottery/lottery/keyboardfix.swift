@@ -19,10 +19,6 @@ struct KeyboardHost_offset20<Content: View>: View {
         name: UIResponder.keyboardDidChangeFrameNotification
     ).map { (notification) -> CGFloat in
         if let rect = notification.userInfo?["UIKeyboardFrameEndUserInfoKey"] as? CGRect {
-            print(rect.minX)
-            print(rect.minY)
-            print(rect.maxX)
-            print(rect.maxY)
             return rect.size.height
         } else {
             return 0
@@ -49,15 +45,10 @@ struct KeyboardHost_offset20<Content: View>: View {
                 .animation(.easeInOut)
                 .offset(x: 0, y: 0 - keyboardHeight)
         }.onReceive(showPublisher.merge(with: hidePublisher)) { (height) in
-            print(height)
             self.keyboardHeight = height * 0.02
             if self.keyboardHeight == 0.0 {
                 self.showLastRButton.wrappedValue = true
                 self.showDoneButton.wrappedValue = false
-            }
-            else {
-                self.showLastRButton.wrappedValue = false
-                self.showDoneButton.wrappedValue = true
             }
         }
     }
@@ -100,11 +91,10 @@ struct KeyboardHost_edit<Content: View>: View {
                 .offset(x: 0, y: 0 - keyboardHeight)
         }.onReceive(showPublisher.merge(with: hidePublisher)) { (height) in
             self.keyboardHeight = (height * 0.2) - 50
-            if self.keyboardHeight + 50 == 0 {
+            print(keyboardHeight)
+            
+            if self.keyboardHeight + 50 == 0 || self.keyboardHeight > 100 {
                 self.showDoneButton.wrappedValue = false
-            }
-            else {
-                self.showDoneButton.wrappedValue = true
             }
         }
     }
