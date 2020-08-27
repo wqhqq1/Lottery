@@ -67,6 +67,7 @@ struct resultReplay: View {
                     }
                 }
             }.padding()
+            .navigationViewStyle(StackNavigationViewStyle())
         }
 
     }

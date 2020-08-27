@@ -156,8 +156,7 @@ class Prizes: ObservableObject {
         dateFormat.dateFormat = "MM-dd"
         let saveDate = dateFormat.string(from: date)
         UserDefaults.standard.set(saveDate, forKey: "theDate")
-        let readyTC = try! encoder.encode(readyToCopy)
-        UserDefaults.standard.set(readyTC, forKey: "readyToCopy")
+        UserDefaults.standard.set(readyToCopy, forKey: "readyToCopy")
         let sharedDir = FileManager().containerURL(forSecurityApplicationGroupIdentifier: "group.lotterywiget")!.path
         try! saveDate.write(toFile: "\(sharedDir)/Date", atomically: true, encoding: .utf8)
         let sharedURL = FileManager().containerURL(forSecurityApplicationGroupIdentifier: "group.lotterywiget")!

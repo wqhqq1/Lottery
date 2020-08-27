@@ -111,6 +111,7 @@ struct page2_add: View {
                                         Button(action: {
                                             AllPrizesMember = APM_ccltor(data: self.PrizeData.PrizeList_cacu)
                                             var isUsed = [Bool](repeating: false, count: 1000)
+                                            readyToCopy = ""
                                             if AllPrizesMember <= MemberNumber {
                                                 var i = 0, j = 0
                                                 while i < self.PrizeData.PrizeList_cacu.count {

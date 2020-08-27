@@ -151,9 +151,13 @@ struct TimeViewMid: View {
                         .foregroundColor(.black)
                     VStack(alignment: .leading) {
                         
-                        Text("包含的奖项(\(entry.PrizeData.PrizeList_cacu.count > 4 ? 4:entry.PrizeData.PrizeList_cacu.count) of \(entry.PrizeData.PrizeList_cacu.count))")
-                            .font(.title2)
-                            .padding(.bottom, 2)
+                        HStack {
+                            Text("包含的奖项")
+                                .font(.headline)
+                            Text("(\(entry.PrizeData.PrizeList_cacu.count > 4 ? 4:entry.PrizeData.PrizeList_cacu.count) of \(entry.PrizeData.PrizeList_cacu.count))")
+                                .font(.subheadline)
+                        }
+                        .padding(.bottom, 2)
                         HStack {
                             VStack(alignment: .leading) {
                                 ForEach(self.entry.PrizeData.PrizeList_cacu) { Prize in
@@ -163,7 +167,7 @@ struct TimeViewMid: View {
                                             .padding(.bottom, 0.1)
                                     }
                                     if Prize.id == 3 {
-                                        Text("\(Prize.PrizeName): \(Prize.PrizeMember)人\(returnRange(Prize))...")
+                                        Text("\(Prize.PrizeName): \(Prize.PrizeMember)人\(returnRange(Prize))\(entry.PrizeData.PrizeList_cacu.count > 4 ? "...":"")")
                                             .font(.subheadline)
                                     }
                                 }
@@ -195,9 +199,10 @@ struct TimeViewLarge: View {
                         }
                         VStack(alignment: .leading) {
                             Text("Last Result")
-                                .font(.headline)
+                                .font(.subheadline)
+                                .fontWeight(.heavy)
                             Text("Date:\(entry.lastDate)")
-                                .font(.headline)
+                                .font(.subheadline)
                         }
                     }
                     Spacer()
@@ -237,12 +242,12 @@ struct TimeViewLarge: View {
                                         .padding(.bottom, 2)
                                 }
                             }
-                            if Prize.id == 3 {
+                            if Prize.id == 2 {
                                 VStack(alignment: .leading) {
                                     Text("\(Prize.PrizeName): \(Prize.PrizeMember)人\(returnRange(Prize))")
                                         .font(.headline)
                                         .padding(.bottom, 1)
-                                    Text("Winners: \(Prize.Lottery_result)...")
+                                    Text("Winners: \(Prize.Lottery_result)\(entry.PrizeData.PrizeList_cacu.count > 3 ? "\n...":"")")
                                         .font(.subheadline)
                                         .padding(.bottom, 2)
                                 }

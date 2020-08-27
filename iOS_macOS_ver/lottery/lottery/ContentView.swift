@@ -14,8 +14,9 @@ func dataLoader() -> [SinglePrize] {
         output = try! decoder.decode([SinglePrize].self, from: data)
         let time = UserDefaults.standard.string(forKey: "theDate")
         lastTime  = time!
-        let readyTC = UserDefaults.standard.object(forKey: "readyToCopy") as! Data
-        readyToCopy = try! decoder.decode(String.self, from: readyTC)
+        if let readyTC = UserDefaults.standard.string(forKey: "readyToCopy") {
+            readyToCopy = readyTC
+        }
         print(FileManager().containerURL(forSecurityApplicationGroupIdentifier: "group.lotterywiget")!)
     }
     return output
