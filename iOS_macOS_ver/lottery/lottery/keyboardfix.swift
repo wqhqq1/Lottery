@@ -16,9 +16,13 @@ struct KeyboardHost_offset20<Content: View>: View {
     
     private let showPublisher = NotificationCenter.Publisher.init(
         center: .default,
-        name: UIResponder.keyboardWillShowNotification
+        name: UIResponder.keyboardDidChangeFrameNotification
     ).map { (notification) -> CGFloat in
         if let rect = notification.userInfo?["UIKeyboardFrameEndUserInfoKey"] as? CGRect {
+            print(rect.minX)
+            print(rect.minY)
+            print(rect.maxX)
+            print(rect.maxY)
             return rect.size.height
         } else {
             return 0
@@ -41,10 +45,9 @@ struct KeyboardHost_offset20<Content: View>: View {
     var body: some View {
         VStack {
             view
-            Rectangle()
-                .frame(height: keyboardHeight)
-                .animation(.default)
-                .foregroundColor(.clear)
+                .transition(.slide)
+                .animation(.easeInOut)
+                .offset(x: 0, y: 0 - keyboardHeight)
         }.onReceive(showPublisher.merge(with: hidePublisher)) { (height) in
             print(height)
             self.keyboardHeight = height * 0.02
@@ -92,10 +95,9 @@ struct KeyboardHost_edit<Content: View>: View {
     var body: some View {
         VStack {
             view
-            Rectangle()
-                .frame(height: keyboardHeight)
-                .animation(.default)
-                .foregroundColor(.clear)
+                .transition(.slide)
+                .animation(.easeInOut)
+                .offset(x: 0, y: 0 - keyboardHeight)
         }.onReceive(showPublisher.merge(with: hidePublisher)) { (height) in
             self.keyboardHeight = (height * 0.2) - 50
             if self.keyboardHeight + 50 == 0 {
