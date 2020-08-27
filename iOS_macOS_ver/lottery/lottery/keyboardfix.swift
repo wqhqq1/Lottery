@@ -71,7 +71,7 @@ struct KeyboardHost_edit<Content: View>: View {
     
     private let showPublisher = NotificationCenter.Publisher.init(
         center: .default,
-        name: UIResponder.keyboardWillShowNotification
+        name: UIResponder.keyboardDidChangeFrameNotification
     ).map { (notification) -> CGFloat in
         if let rect = notification.userInfo?["UIKeyboardFrameEndUserInfoKey"] as? CGRect {
             return rect.size.height

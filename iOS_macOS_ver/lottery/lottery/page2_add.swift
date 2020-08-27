@@ -43,7 +43,8 @@ struct page2_add: View {
                                         .environmentObject(self.PrizeData)
                                         .animation(.spring())
                                         .transition(.slide)
-                                }.animation(.spring())
+                                }
+                                .animation(.spring())
                                 .transition(.slide)
                             }
                         }.animation(.spring())

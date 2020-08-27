@@ -72,15 +72,18 @@ struct TimeViewSmall: View {
             VStack(alignment: .leading, spacing: 10) {
                 HStack {
                     Image("Head")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 15, height: 15)
                     Text("LotteryAPP")
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                 }
                 VStack(alignment: .leading) {
                     Text("Last Result")
-                        .font(.custom("", size: 24))
-                    Text("Date:\(entry.lastDate)")
                         .font(.title2)
+                    Text("Date:\(entry.lastDate)")
+                        .font(.title3)
                 }
                 ZStack {
                     HStack {
@@ -118,7 +121,7 @@ struct TimeViewMid: View {
                             Image("Head")
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: 10, height: 10)
+                                .frame(width: 15, height: 15)
                             Text("Lottery")
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
@@ -193,6 +196,9 @@ struct TimeViewLarge: View {
                     VStack(alignment: .leading) {
                         HStack {
                             Image("Head")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 15, height: 15)
                             Text("LotteryAPP")
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
