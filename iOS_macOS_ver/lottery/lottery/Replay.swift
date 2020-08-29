@@ -12,9 +12,10 @@ var sheetModeResult = false
 
 struct resultReplay: View {
     @EnvironmentObject var PrizeData: Prizes
-    @State var showAlert = false
     @State var filePathInput = ""
     @State var selection: Int? = nil
+    @State var alertText = ""
+    @State var showSavedAlert = false
     @Environment(\.presentationMode) var presentation
     var body: some View {
         NavigationView {
@@ -33,17 +34,44 @@ struct resultReplay: View {
                 .navigationBarBackButtonHidden(true)
                 VStack {
                     Spacer()
+                    NewTextField("File name here", text: self.$filePathInput, textLimit: 26, style: .roundedRect, cleanField: true)
+                        .padding(.bottom)
+                        .frame(width: 100, height: 30)
                     Button(action: {
-                        self.showAlert = true
+                        print(self.filePathInput)
+                        if self.filePathInput != "" {
+                            var path = ""
+                            if #available(iOS 13.0, *) {
+                                path = NSHomeDirectory() + "/Documents/\(self.filePathInput).csv"
+                                print(path)
+                            }
+                            else {
+                                if #available(OSX 10.15, *)
+                                {
+                                    path = "/Users/Shared/\(self.filePathInput).csv"
+                                }
+                            }
+                            try! readyToCopy.write(toFile: path, atomically: true, encoding: .utf8)
+                            UIApplication.shared.endEditing()
+                            self.alertText = "Successfully Saved"
+                        }
+                        else {
+                            self.alertText = "Failed"
+                        }
+                        self.filePathInput = ""
+                        self.showSavedAlert = true
                     }) {
                         HStack {
                             Text(NSLocalizedString("CPR", comment: ""))
                             Image(systemName: "square.and.arrow.down.fill")
                                 .imageScale(.large)
                         }
-                    }.background(AlertControl(show: self.$showAlert, title: "Save", message: "Input file name."))
+                    }
                     .padding(.bottom)
                     .shadow(color: Color("Shadow"), radius: 10)
+                    .alert(isPresented: self.$showSavedAlert, content: {
+                        Alert(title: Text(self.alertText))
+                    })
                     if urlModeResult {
                         NavigationLink(destination: ContentView(showSheet: false), tag: 1, selection: $selection) {
                             Button(action: {
@@ -142,5 +170,12 @@ struct SingleResultReplay: View {
         }.sheet(isPresented: $showResultPage) {
             resultPageRePlay(prize: self.PrizeList.PrizeList_cacu[self.index].PrizeName, result: self.PrizeList.PrizeList_cacu[self.index].Lottery_result)
         }}
+}
+
+
+struct Replay_Previews: PreviewProvider {
+    static var previews: some View {
+        resultReplay().environmentObject(Prizes(data: [SinglePrize(PrizeName: "123", PrizeMember: 10)]))
+    }
 }
 

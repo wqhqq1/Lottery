@@ -37,6 +37,7 @@ struct ContentView: View {
     @State var showWarning = false
     @State var showLastRButton = true
     @State var showDoneButton = false
+    @State var updateNow = false
     @ObservedObject var PrizeData = Prizes.init()
     var body: some View {
         let membernames = Binding<String>(get: {
@@ -48,9 +49,6 @@ struct ContentView: View {
                     self.MemberNumberInput = String(MN_counter_handinput(input: self.MemberNamesInput))
                     print(originalMN)
                 }
-            }
-            else {
-                self.MemberNumberInput = ""
             }
         })
         return GeometryReader { geo in
@@ -74,18 +72,22 @@ struct ContentView: View {
                                         self.showDoneButton = true
                                     }
                                 HStack {
-                                    TextField(NSLocalizedString("NMTF", comment: ""), text: membernames)
-                                        .padding(.leading)
-                                        .onTapGesture {
-                                            self.showLastRButton = false
-                                            self.showDoneButton = true
-                                        }
+                                    ScrollView(.horizontal, showsIndicators: false) {
+                                        NewTextField(NSLocalizedString("NMTF", comment: ""), text: membernames, updateNow: self.$updateNow)
+                                            .padding(.leading)
+                                            .onTapGesture {
+                                                self.showLastRButton = false
+                                                self.showDoneButton = true
+                                            }
+                                    }
+                                    .frame(height: 30)
                                     Button(action: {
                                         let Pboard = UIPasteboard.general
                                         if Pboard.string != nil {
                                             self.MemberNamesInput = NSLocalizedString("RFCB", comment: "")
                                             originalMN = Pboard.string!
                                             self.MemberNumberInput = String(MN_counter(input: Pboard.string!))
+                                            self.updateNow = true
                                         }
                                         else {
                                             self.showalertCPB = true
@@ -122,6 +124,7 @@ struct ContentView: View {
                                             if Pboard.string != nil {
                                                 originCmd = Pboard.string!
                                                 self.addCmdInput = NSLocalizedString("RFCB", comment: "")
+                                                updateNow = true
                                                 
                                             }
                                             else {
@@ -139,8 +142,6 @@ struct ContentView: View {
                                     .transition(.slide)
                                 }
                             }
-                            
-                            
                         }
                         
                         ZStack {
@@ -263,6 +264,7 @@ struct ContentView_back: View {
     @State var showWarning = false
     @State var showLastRButton = true
     @State var showDoneButton = false
+    @State var updateNow = false
     @ObservedObject var PrizeData = Prizes.init()
     var lastResult = Prizes(data: dataLoader())
     var body: some View {
@@ -297,18 +299,22 @@ struct ContentView_back: View {
                                     self.showDoneButton = true
                                 }
                             HStack {
-                                TextField(NSLocalizedString("NMTF", comment: ""), text: membernames)
-                                    .padding(.leading)
-                                    .onTapGesture {
-                                        self.showLastRButton = false
-                                        self.showDoneButton = true
-                                    }
+                                ScrollView(.horizontal, showsIndicators: false) {
+                                    NewTextField(NSLocalizedString("NMTF", comment: ""), text: membernames, updateNow: self.$updateNow)
+                                        .padding(.leading)
+                                        .onTapGesture {
+                                            self.showLastRButton = false
+                                            self.showDoneButton = true
+                                        }
+                                }
+                                .frame(height: 30)
                                 Button(action: {
                                     let Pboard = UIPasteboard.general
                                     if Pboard.string != nil {
                                         self.MemberNamesInput = NSLocalizedString("RFCB", comment: "")
                                         originalMN = Pboard.string!
                                         self.MemberNumberInput = String(MN_counter(input: Pboard.string!))
+                                        self.updateNow = true
                                     }
                                     else {
                                         self.showalertCPB = true
@@ -468,5 +474,11 @@ struct ContentView_back: View {
             .frame(maxHeight: 800)
             .offset(x: 0, y: geo.size.height > 800 ? geo.size.height - 780:0)
         }
+    }
+}
+
+struct ContentView1_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView(showSheet: false)
     }
 }

@@ -11,7 +11,7 @@
 "MNL" = "Please enter the member of lottery.";
 "MNTF" = "Member number of lottery";
 
-"NMTF" = "Name of the members(split by ;) or copy from table app";
+"NMTF" = "Name of the members(split by ;)";
 
 "NBT1" = "Lottery";
 
@@ -58,3 +58,5 @@
 "ADDCTF" = "Additional gist";
 
 "LastR" = "Last result";
+
+"LANG" = "en_US";

@@ -21,21 +21,21 @@ struct EditingPage: View {
     @State var minCmd: String = ""
     @State var showDoneButton = false
     var body: some View {
-        GeometryReader { geo in
+        let isEnglish = NSLocalizedString("LANG", comment: "") == "en_US" ? true:false
+        return GeometryReader { geo in
             NavigationView {
                 KeyboardHost_edit(showDoneButton: self.$showDoneButton){
                     VStack {
                         Form {
-                            Section(header: Text(NSLocalizedString("PT", comment: ""))) {
-                                TextField(NSLocalizedString("PTF", comment: ""), text: $prizename)
+                            Section {
+                                NewTextField(NSLocalizedString("PTF", comment: ""), text: $prizename, textLimit: isEnglish ? 30:16)
                                     .onTapGesture {
                                         self.showDoneButton = true
                                     }
-                                TextField(NSLocalizedString("PNTTF", comment: ""), text: $prizequota)
+                                NewTextField(NSLocalizedString("PNTTF", comment: ""), text: $prizequota, textLimit: 10, keyboardType: .numberPad)
                                     .onTapGesture {
                                         self.showDoneButton = true
                                     }
-                                    .keyboardType(.numberPad)
                             }
                             
                             if addedCmd {
@@ -90,8 +90,8 @@ struct EditingPage: View {
                                     Text(NSLocalizedString("CANL", comment: ""))
                                 }
                             }
-                        }.navigationBarTitle(index == nil ? NSLocalizedString("ADD", comment: ""):NSLocalizedString("EDIT", comment: ""))
-                    }
+                        }
+                    }.navigationBarTitle(index == nil ? NSLocalizedString("ADD", comment: ""):NSLocalizedString("EDIT", comment: ""))
                     if self.showDoneButton {
                         HStack {
                             Spacer()
@@ -112,3 +112,9 @@ struct EditingPage: View {
 }
 
 
+
+struct EditingPage_Previews: PreviewProvider {
+    static var previews: some View {
+        EditingPage(prizeHead: .constant(1), prizeEnd: .constant(1), showADDCTF: true)
+    }
+}

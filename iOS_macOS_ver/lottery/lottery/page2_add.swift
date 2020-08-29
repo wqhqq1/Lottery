@@ -28,6 +28,7 @@ struct page2_add: View {
     @State var multiRemove = false
     @State var showSheet = false
     @State var rangeText = ""
+    @State var showAlertUp = false
     //    var timer: Timer?
     var size: CGFloat = 65.0
     @State var selectedOne = -1
@@ -73,7 +74,9 @@ struct page2_add: View {
                                                 }
                                             }
                                             else {
-                                                Button(action: {}) {
+                                                Button(action: {
+                                                    self.showAlertUp = true
+                                                }) {
                                                     Text("Move up")
                                                     Image(systemName: "chevron.up")
                                                         .foregroundColor(Color("arrow.grey"))

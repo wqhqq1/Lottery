@@ -9,8 +9,8 @@ Description
 #### Update for Windows was stopped yet but the binary file was broken(maybe fix later), too.
 Download
 ---------------------------------  
-#### For iOS(iPadOS) you can download the iPA file here:[![](https://img.shields.io/github/v/release/wqhqq1/Lottery?color=green)](https://github.com/wqhqq1/Lottery/releases/tag/4.3)
-#### For macOS, you can get the app file here:[![](https://img.shields.io/github/v/release/wqhqq1/Lottery?color=green)](https://github.com/wqhqq1/Lottery/releases/tag/4.3)
+#### For iOS(iPadOS) you can download the iPA file here:[![](https://img.shields.io/github/v/release/wqhqq1/Lottery?color=green)](https://github.com/wqhqq1/Lottery/releases/tag/5.0)
+#### For macOS, you can get the app file here:[![](https://img.shields.io/github/v/release/wqhqq1/Lottery?color=green)](https://github.com/wqhqq1/Lottery/releases/tag/5.0)
 #### For windows, you can download binary file here:[![](https://img.shields.io/github/v/release/wqhqq1/Lottery?color=green)](https://github.com/wqhqq1/Lottery/releases/tag/3.0)
 Build From Source Code
 ----------  
