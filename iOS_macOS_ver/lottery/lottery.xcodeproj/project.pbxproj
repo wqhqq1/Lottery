@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		011AC22824F88FF40067F4BD /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011AC22724F88FF40067F4BD /* UITextField.swift */; };
+		011C666F24FCEB6700B7D054 /* Custom Message Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011C666E24FCEB6700B7D054 /* Custom Message Box.swift */; };
 		0131957224DD143600139AC9 /* UIKitAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0131957124DD143600139AC9 /* UIKitAlertController.swift */; };
 		0139BB0624CD72FA00CAF722 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0139BB0524CD72FA00CAF722 /* Random.swift */; };
 		0139BB0824CD731800CAF722 /* APM_caculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0139BB0724CD731800CAF722 /* APM_caculator.swift */; };
@@ -82,6 +83,7 @@
 
 /* Begin PBXFileReference section */
 		011AC22724F88FF40067F4BD /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
+		011C666E24FCEB6700B7D054 /* Custom Message Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Custom Message Box.swift"; sourceTree = "<group>"; };
 		0125319E24CF9E8000C5464A /* lottery.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = lottery.entitlements; sourceTree = "<group>"; };
 		0131957124DD143600139AC9 /* UIKitAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitAlertController.swift; sourceTree = "<group>"; };
 		0139BB0524CD72FA00CAF722 /* Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				014645AB24DF67AF00CA5A5D /* AG_spliter.swift */,
 				0146C58A24CC287E00E4F790 /* Prizes.swift */,
 				011AC22724F88FF40067F4BD /* UITextField.swift */,
+				011C666E24FCEB6700B7D054 /* Custom Message Box.swift */,
 				0146C55E24CC1C8300E4F790 /* Assets.xcassets */,
 				0152AADE24CD708400AEFD53 /* Localizable.strings */,
 				0146C56324CC1C8300E4F790 /* LaunchScreen.storyboard */,
@@ -434,6 +437,7 @@
 				0139BB0824CD731800CAF722 /* APM_caculator.swift in Sources */,
 				011AC22824F88FF40067F4BD /* UITextField.swift in Sources */,
 				0139BB0C24CD773C00CAF722 /* EditingPage.swift in Sources */,
+				011C666F24FCEB6700B7D054 /* Custom Message Box.swift in Sources */,
 				0146C55924CC1C7F00E4F790 /* AppDelegate.swift in Sources */,
 				0152AAD824CD6FD000AEFD53 /* MN_spliter.swift in Sources */,
 				0131957224DD143600139AC9 /* UIKitAlertController.swift in Sources */,

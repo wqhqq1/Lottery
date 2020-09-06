@@ -25,14 +25,14 @@ struct EditingPage: View {
         return GeometryReader { geo in
             NavigationView {
                 KeyboardHost_edit(showDoneButton: self.$showDoneButton){
-                    VStack {
+                    ZStack {VStack {
                         Form {
                             Section {
-                                NewTextField(NSLocalizedString("PTF", comment: ""), text: $prizename, textLimit: isEnglish ? 30:16)
+                                NewTextField(NSLocalizedString("PTF", comment: ""), text: $prizename, textLimit: isEnglish ? 30:16, fontColor: UIColor(named: "trash"))
                                     .onTapGesture {
                                         self.showDoneButton = true
                                     }
-                                NewTextField(NSLocalizedString("PNTTF", comment: ""), text: $prizequota, textLimit: 10, keyboardType: .numberPad)
+                                NewTextField(NSLocalizedString("PNTTF", comment: ""), text: $prizequota, textLimit: 10, fontColor: UIColor(named: "trash"), keyboardType: .numberPad)
                                     .onTapGesture {
                                         self.showDoneButton = true
                                     }
@@ -81,8 +81,6 @@ struct EditingPage: View {
                                     }
                                 }){
                                     Text(NSLocalizedString("EXT", comment: ""))
-                                }.alert(isPresented: $showalert) {
-                                    Alert(title: Text("Fatal Error"), message: Text("Unable to read text fields!"), dismissButton: .default(Text("OK")))
                                 }
                                 Button(action: {
                                     self.presentation.wrappedValue.dismiss()
@@ -103,10 +101,11 @@ struct EditingPage: View {
                             }.padding()
                         }
                     }
-                }.navigationViewStyle(StackNavigationViewStyle())
+                    CustomMessageBox("Unable to read text fields!", show: self.$showalert)
+                    }.navigationViewStyle(StackNavigationViewStyle())}
             }
-                .frame(maxHeight: 700)
-                .offset(x: 0, y: geo.size.height > 700 ? geo.size.height - 680:0)
+            .frame(maxHeight: 700)
+            .offset(x: 0, y: geo.size.height > 700 ? geo.size.height - 680:0)
         }
     }
 }

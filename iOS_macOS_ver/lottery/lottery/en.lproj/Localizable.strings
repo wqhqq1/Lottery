@@ -11,7 +11,7 @@
 "MNL" = "Please enter the member of lottery.";
 "MNTF" = "Member number of lottery";
 
-"NMTF" = "Name of the members(split by ;)";
+"NMTF" = "Names (Paste from clipboard)";
 
 "NBT1" = "Lottery";
 

@@ -9,16 +9,18 @@ import SwiftUI
 
 struct NewTextField: UIViewRepresentable {
     
-    let placeholder: String?
+    let placeholder: String
     let fontSize: CGFloat
     let borderStyle: UITextField.BorderStyle
     let cleanField: Bool
     let keyBoardType: UIKeyboardType
     let textLimit: Int?
+    let fontColor: UIColor?
     @Binding var updateNow: Bool
+    @Binding var isDisabled: Bool?
     @Binding var text: String
     
-    init(_ placeholder: String? = nil, text: Binding<String>, updateNow: Binding<Bool> = .constant(false), textLimit:Int? = nil, fontSize: CGFloat = 17.5, style: UITextField.BorderStyle = .none, cleanField: Bool = false, keyboardType: UIKeyboardType = .default) {
+    init(_ placeholder: String, text: Binding<String>, updateNow: Binding<Bool> = .constant(false), isDisabled: Binding<Bool?> = .constant(nil), textLimit:Int? = nil, fontSize: CGFloat = 17.5, fontColor: UIColor? = nil, style: UITextField.BorderStyle = .none, cleanField: Bool = false, keyboardType: UIKeyboardType = .default) {
         self.placeholder = placeholder
         self._text = text
         self.fontSize = fontSize
@@ -27,12 +29,14 @@ struct NewTextField: UIViewRepresentable {
         self.keyBoardType = keyboardType
         self.textLimit = textLimit
         self._updateNow = updateNow
+        self.fontColor = fontColor
+        self._isDisabled = isDisabled
     }
     
     func makeUIView(context: Context) -> UITextField {
         let view = UITextField()
         view.font = .systemFont(ofSize: self.fontSize)
-        view.textColor = UIColor(named: "trash")
+        view.textColor = self.fontColor
         view.placeholder = self.placeholder
         view.text = self.text
         view.borderStyle = self.borderStyle
@@ -45,6 +49,9 @@ struct NewTextField: UIViewRepresentable {
         if self.updateNow {
             uiView.text = self.text
             self.updateNow = false
+        }
+        if let isDisabled = self.isDisabled {
+            uiView.isEnabled = !isDisabled
         }
         return
     }
@@ -87,13 +94,19 @@ struct NewTextField: UIViewRepresentable {
 
 struct test: View {
     @State var textInput = ""
+    @State var isDisabled: Bool? = false
     var body: some View {
-        VStack {
+        VStack() {
             ScrollView(.horizontal, showsIndicators: false) {
-                NewTextField("placeholder", text: self.$textInput)
-            }.frame(height: 30).padding()
-            Text(self.textInput)
-        }
+                NewTextField("placeholder", text: self.$textInput, isDisabled: self.$isDisabled, fontColor: .systemRed, style: .none)
+            }.frame(width: 100, height: 30)
+            Button(action: {
+                self.isDisabled?.toggle()
+            }) {
+                Text("toggle")
+            }
+        }.padding()
+        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
     }
 }
 

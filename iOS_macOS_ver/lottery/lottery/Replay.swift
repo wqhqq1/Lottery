@@ -34,7 +34,7 @@ struct resultReplay: View {
                 .navigationBarBackButtonHidden(true)
                 VStack {
                     Spacer()
-                    NewTextField("File name here", text: self.$filePathInput, textLimit: 26, style: .roundedRect, cleanField: true)
+                    NewTextField("File name here", text: self.$filePathInput, textLimit: 26, fontColor: UIColor(named: "trash"), style: .roundedRect, cleanField: true)
                         .padding(.bottom)
                         .frame(width: 100, height: 30)
                     Button(action: {
