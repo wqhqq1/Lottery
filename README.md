@@ -18,7 +18,7 @@ Build From Source Code
 ### macOS
 #### 1. build environment
    - Xcode 12.0 or higher for macOS(also can build for iOS)
-#### 2. Just click build in Xcode for iOS
+#### 2. Just click build in Xcode to build for binary file
 #
 ### Windows
 #### 1. build environment
