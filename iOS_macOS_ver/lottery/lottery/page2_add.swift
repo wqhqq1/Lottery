@@ -32,6 +32,7 @@ struct page2_add: View {
     //    var timer: Timer?
     var size: CGFloat = 65.0
     @State var selectedOne = -1
+    @State var path = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
     var body: some View {
         return VStack {
             ZStack {
@@ -171,7 +172,7 @@ struct page2_add: View {
                             Spacer()
                             if self.showButton && !multiRemove {
                                 HStack {
-                                    NavigationLink(destination: page3_animationPlay().environmentObject(self.PrizeData), tag: 1, selection: $selection) {
+                                    NavigationLink(destination: page3_animationPlay(filepath: self.$path).environmentObject(self.PrizeData), tag: 1, selection: $selection) {
                                         Button(action: {
                                             AllPrizesMember = APM_ccltor(data: self.PrizeData.PrizeList_cacu)
                                             var isUsed = [Bool](repeating: false, count: 1000)
@@ -239,7 +240,9 @@ struct page2_add: View {
                                                     i += 1
                                                 }
                                                 PrizeData.save()
+                                                path.appendPathComponent("Lottery Result - \(getDate()).csv")
                                                 WidgetCenter.shared.reloadTimelines(ofKind: "com.kirin.lotteryW")
+                                                try! readyToCopy.write(to: path, atomically: true, encoding: .utf8)
                                                 self.selection = 1
                                             }
                                             else {

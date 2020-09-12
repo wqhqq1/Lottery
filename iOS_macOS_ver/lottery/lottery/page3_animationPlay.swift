@@ -14,8 +14,9 @@ struct page3_animationPlay: View {
     var timer = Timer.publish(every: 3, on: .current, in: .common).autoconnect()
     @State var showResult: Int? = nil
     @State var size: CGFloat = 1000
+    @Binding var filepath: URL
     var body: some View {
-        NavigationLink(destination: result().environmentObject(PrizeData), tag: 1, selection: $showResult) {
+        NavigationLink(destination: result(filepath: self.$filepath).environmentObject(PrizeData), tag: 1, selection: $showResult) {
             GIFView(gifName: "video")
                 .onReceive(self.timer) {_ in
                     withAnimation {
@@ -33,6 +34,7 @@ struct result: View {
     @EnvironmentObject var PrizeData: Prizes
     @State var showAlert = false
     @State var filePathInput = ""
+    @Binding var filepath: URL
     @Environment(\.presentationMode) var presentation
     var body: some View {
         ZStack {
@@ -59,7 +61,9 @@ struct result: View {
                         Image(systemName: "square.and.arrow.down.fill")
                             .imageScale(.large)
                     }
-                }.background(AlertControl(show: self.$showAlert, title: "Save", message: "Input file name."))
+                }.sheet(isPresented: self.$showAlert) {
+                    ShareSheet([filepath])
+                }
                 .padding(.bottom)
                 .shadow(color: Color("Shadow"), radius: 10)
                 if sheetModeResult {

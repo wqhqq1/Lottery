@@ -39,6 +39,7 @@ struct ContentView: View {
     @State var showLastRButton = true
     @State var showDoneButton = false
     @State var updateNow = false
+    @State var filePath = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
     @ObservedObject var PrizeData = Prizes.init()
     var body: some View {
         let membernames = Binding<String>(get: {
@@ -75,7 +76,7 @@ struct ContentView: View {
                                         }
                                     HStack {
                                         ScrollView(.horizontal, showsIndicators: false) {
-                                            NewTextField(NSLocalizedString("NMTF", comment: ""), text: membernames, updateNow: self.$updateNow, isDisabled: .constant(true), fontColor: UIColor(named: "trash"))
+                                            NewTextField(NSLocalizedString("NMTF", comment: ""), text: membernames, updateNow: self.$updateNow, isDisabled: .constant(false), fontColor: UIColor(named: "trash"))
                                                 .padding(.leading)
                                         }
                                         .frame(height: 30)
@@ -188,6 +189,10 @@ struct ContentView: View {
                                 Button(action: {
                                     if self.lastResult.PrizeList_cacu.count != 0 {
                                         sheetModeResult = true
+                                        self.filePath = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
+                                        self.filePath.appendPathComponent("Lottery Result - \(lastTime).csv")
+                                        try! readyToCopy.write(to: filePath, atomically: true, encoding: .utf8)
+                                        print("1 \(filePath)")
                                         self.showSheet = true
                                     }
                                     else {
@@ -219,7 +224,7 @@ struct ContentView: View {
                                     }
                                 }
                                 .sheet(isPresented: self.$showSheet) {
-                                    resultReplay().environmentObject(self.lastResult)
+                                    resultReplay(filePath: self.$filePath).environmentObject(self.lastResult)
                                 }
                                 Spacer()
                             }.frame(width: 200, height: 80)
@@ -255,6 +260,7 @@ struct ContentView_back: View {
     @State var showLastRButton = true
     @State var showDoneButton = false
     @State var updateNow = false
+    @State var filePath = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
     @ObservedObject var PrizeData = Prizes.init()
     var lastResult = Prizes(data: dataLoader())
     var body: some View {
@@ -404,6 +410,10 @@ struct ContentView_back: View {
                         Button(action: {
                             if self.lastResult.PrizeList_cacu.count != 0 {
                                 sheetModeResult = true
+                                self.filePath = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
+                                self.filePath.appendPathComponent("Lottery Result - \(lastTime).csv")
+                                print(filePath)
+                                try! readyToCopy.write(to: filePath, atomically: true, encoding: .utf8)
                                 self.showSheet = true
                             }
                             else {
@@ -435,7 +445,7 @@ struct ContentView_back: View {
                             }
                         }
                         .sheet(isPresented: self.$showSheet) {
-                            resultReplay().environmentObject(self.lastResult)
+                            resultReplay(filePath: self.$filePath).environmentObject(self.lastResult)
                         }
                         Spacer()
                     }.frame(width: 200, height: 80)

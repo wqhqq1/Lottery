@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		011AC22824F88FF40067F4BD /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011AC22724F88FF40067F4BD /* UITextField.swift */; };
-		011C666F24FCEB6700B7D054 /* Custom Message Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011C666E24FCEB6700B7D054 /* Custom Message Box.swift */; };
+		011C666F24FCEB6700B7D054 /* CustomMessageBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011C666E24FCEB6700B7D054 /* CustomMessageBox.swift */; };
 		0131957224DD143600139AC9 /* UIKitAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0131957124DD143600139AC9 /* UIKitAlertController.swift */; };
 		0139BB0624CD72FA00CAF722 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0139BB0524CD72FA00CAF722 /* Random.swift */; };
 		0139BB0824CD731800CAF722 /* APM_caculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0139BB0724CD731800CAF722 /* APM_caculator.swift */; };
@@ -27,6 +27,7 @@
 		0146C57024CC1C8400E4F790 /* lotteryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0146C56F24CC1C8400E4F790 /* lotteryTests.swift */; };
 		0146C57B24CC1C8400E4F790 /* lotteryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0146C57A24CC1C8400E4F790 /* lotteryUITests.swift */; };
 		0146C58B24CC287E00E4F790 /* Prizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0146C58A24CC287E00E4F790 /* Prizes.swift */; };
+		014EADCB250B7F0800F5BD6E /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014EADCA250B7F0800F5BD6E /* ShareSheet.swift */; };
 		0152AAD424CD6EDE00AEFD53 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0152AAD324CD6EDE00AEFD53 /* ContentView.swift */; };
 		0152AAD624CD6F7F00AEFD53 /* keyboardfix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0152AAD524CD6F7F00AEFD53 /* keyboardfix.swift */; };
 		0152AAD824CD6FD000AEFD53 /* MN_spliter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0152AAD724CD6FD000AEFD53 /* MN_spliter.swift */; };
@@ -83,7 +84,7 @@
 
 /* Begin PBXFileReference section */
 		011AC22724F88FF40067F4BD /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
-		011C666E24FCEB6700B7D054 /* Custom Message Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Custom Message Box.swift"; sourceTree = "<group>"; };
+		011C666E24FCEB6700B7D054 /* CustomMessageBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMessageBox.swift; sourceTree = "<group>"; };
 		0125319E24CF9E8000C5464A /* lottery.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = lottery.entitlements; sourceTree = "<group>"; };
 		0131957124DD143600139AC9 /* UIKitAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitAlertController.swift; sourceTree = "<group>"; };
 		0139BB0524CD72FA00CAF722 /* Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
@@ -109,6 +110,7 @@
 		0146C57A24CC1C8400E4F790 /* lotteryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lotteryUITests.swift; sourceTree = "<group>"; };
 		0146C57C24CC1C8400E4F790 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0146C58A24CC287E00E4F790 /* Prizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prizes.swift; sourceTree = "<group>"; };
+		014EADCA250B7F0800F5BD6E /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
 		0152AAD324CD6EDE00AEFD53 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0152AAD524CD6F7F00AEFD53 /* keyboardfix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = keyboardfix.swift; sourceTree = "<group>"; };
 		0152AAD724CD6FD000AEFD53 /* MN_spliter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MN_spliter.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				01C3251724F50C7200A593B2 /* Replay.swift */,
 				0146C55C24CC1C7F00E4F790 /* page2_add.swift */,
 				013A2C7224D1364600144308 /* page3_animationPlay.swift */,
+				014EADCA250B7F0800F5BD6E /* ShareSheet.swift */,
 				0131957124DD143600139AC9 /* UIKitAlertController.swift */,
 				0142C9E524E650B300AF7EF6 /* endEditing.swift */,
 				0139BB0924CD757100CAF722 /* SingleResult.swift */,
@@ -206,7 +209,7 @@
 				014645AB24DF67AF00CA5A5D /* AG_spliter.swift */,
 				0146C58A24CC287E00E4F790 /* Prizes.swift */,
 				011AC22724F88FF40067F4BD /* UITextField.swift */,
-				011C666E24FCEB6700B7D054 /* Custom Message Box.swift */,
+				011C666E24FCEB6700B7D054 /* CustomMessageBox.swift */,
 				0146C55E24CC1C8300E4F790 /* Assets.xcassets */,
 				0152AADE24CD708400AEFD53 /* Localizable.strings */,
 				0146C56324CC1C8300E4F790 /* LaunchScreen.storyboard */,
@@ -437,7 +440,8 @@
 				0139BB0824CD731800CAF722 /* APM_caculator.swift in Sources */,
 				011AC22824F88FF40067F4BD /* UITextField.swift in Sources */,
 				0139BB0C24CD773C00CAF722 /* EditingPage.swift in Sources */,
-				011C666F24FCEB6700B7D054 /* Custom Message Box.swift in Sources */,
+				011C666F24FCEB6700B7D054 /* CustomMessageBox.swift in Sources */,
+				014EADCB250B7F0800F5BD6E /* ShareSheet.swift in Sources */,
 				0146C55924CC1C7F00E4F790 /* AppDelegate.swift in Sources */,
 				0152AAD824CD6FD000AEFD53 /* MN_spliter.swift in Sources */,
 				0131957224DD143600139AC9 /* UIKitAlertController.swift in Sources */,

@@ -164,6 +164,12 @@ class Prizes: ObservableObject {
     }
 }
 
+func getDate() -> String {
+    let date = Date(), dateFormat = DateFormatter()
+    dateFormat.dateFormat = "MM.dd"
+    let saveDate = dateFormat.string(from: date)
+    return saveDate
+}
 
 struct SinglePrize: Identifiable, Codable {
     var id = 0
