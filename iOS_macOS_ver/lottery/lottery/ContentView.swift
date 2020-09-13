@@ -75,10 +75,14 @@ struct ContentView: View {
                                             self.showDoneButton = true
                                         }
                                     HStack {
-                                        ScrollView(.horizontal, showsIndicators: false) {
+//                                        ScrollView(.horizontal, showsIndicators: false) {
                                             NewTextField(NSLocalizedString("NMTF", comment: ""), text: membernames, updateNow: self.$updateNow, isDisabled: .constant(false), fontColor: UIColor(named: "trash"))
                                                 .padding(.leading)
-                                        }
+                                                .onTapGesture {
+                                                    self.showLastRButton = false
+                                                    self.showDoneButton = true
+                                                }
+//                                        }
                                         .frame(height: 30)
                                         Button(action: {
                                             let Pboard = UIPasteboard.general
@@ -295,10 +299,14 @@ struct ContentView_back: View {
                                     self.showDoneButton = true
                                 }
                             HStack {
-                                ScrollView(.horizontal, showsIndicators: false) {
+//                                ScrollView(.horizontal, showsIndicators: false) {
                                     NewTextField(NSLocalizedString("NMTF", comment: ""), text: membernames, updateNow: self.$updateNow, isDisabled: .constant(true), fontColor: UIColor(named: "trash"))
                                         .padding(.leading)
-                                }
+                                        .onTapGesture {
+                                            self.showLastRButton = false
+                                            self.showDoneButton = true
+                                        }
+//                                }
                                 .frame(height: 30)
                                 Button(action: {
                                     let Pboard = UIPasteboard.general

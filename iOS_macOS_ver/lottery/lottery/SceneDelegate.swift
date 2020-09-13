@@ -37,7 +37,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             sheetModeResult = false
             if let windowScene = scene as? UIWindowScene {
                 let window = UIWindow(windowScene: windowScene)
-                window.rootViewController = UIHostingController(rootView: contentView)
+                window.rootViewController = UIHostingController(rootView: tabview())
                 self.window = window
                 window.makeKeyAndVisible()
             }
@@ -61,7 +61,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             sheetModeResult = false
             if let windowScene = scene as? UIWindowScene {
                 let window = UIWindow(windowScene: windowScene)
-                window.rootViewController = UIHostingController(rootView: contentView)
+                window.rootViewController = UIHostingController(rootView: tabview())
                 self.window = window
                 window.makeKeyAndVisible()
             }

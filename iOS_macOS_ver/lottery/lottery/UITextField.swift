@@ -35,6 +35,7 @@ struct NewTextField: UIViewRepresentable {
     
     func makeUIView(context: Context) -> UITextField {
         let view = UITextField()
+        view.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         view.font = .systemFont(ofSize: self.fontSize)
         view.textColor = self.fontColor
         view.placeholder = self.placeholder
@@ -92,14 +93,27 @@ struct NewTextField: UIViewRepresentable {
     
 }
 
+struct fullBG: UIViewRepresentable {
+    func makeUIView(context: Context) -> UIView {
+        let view = UIView()
+        view.backgroundColor = .systemRed
+        return view
+    }
+    
+    func updateUIView(_ uiView: UIView, context: Context) {
+        return
+    }
+}
+
 struct test: View {
     @State var textInput = ""
     @State var isDisabled: Bool? = false
     var body: some View {
         VStack() {
-            ScrollView(.horizontal, showsIndicators: false) {
+//            ScrollView(.horizontal, showsIndicators: false) {
                 NewTextField("placeholder", text: self.$textInput, isDisabled: self.$isDisabled, fontColor: .systemRed, style: .none)
-            }.frame(width: 100, height: 30)
+                    .frame(height: 30)
+//            }.frame(width: 100, height: 30)
             Button(action: {
                 self.isDisabled?.toggle()
             }) {

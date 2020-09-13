@@ -28,11 +28,11 @@ struct EditingPage: View {
                     ZStack {VStack {
                         Form {
                             Section {
-                                NewTextField(NSLocalizedString("PTF", comment: ""), text: $prizename, textLimit: isEnglish ? 30:16, fontColor: UIColor(named: "trash"))
+                                NewTextField(NSLocalizedString("PTF", comment: ""), text: $prizename, fontColor: UIColor(named: "trash"))
                                     .onTapGesture {
                                         self.showDoneButton = true
                                     }
-                                NewTextField(NSLocalizedString("PNTTF", comment: ""), text: $prizequota, textLimit: 10, fontColor: UIColor(named: "trash"), keyboardType: .numberPad)
+                                NewTextField(NSLocalizedString("PNTTF", comment: ""), text: $prizequota, fontColor: UIColor(named: "trash"), keyboardType: .numberPad)
                                     .onTapGesture {
                                         self.showDoneButton = true
                                     }
@@ -91,14 +91,18 @@ struct EditingPage: View {
                         }
                     }.navigationBarTitle(index == nil ? NSLocalizedString("ADD", comment: ""):NSLocalizedString("EDIT", comment: ""))
                     if self.showDoneButton {
-                        HStack {
+                        VStack {
                             Spacer()
-                            Button(action: {
-                                self.showDoneButton = false
-                                UIApplication.shared.endEditing()
-                            }) {
-                                Text(NSLocalizedString("DONE", comment: ""))
-                            }.padding()
+                            HStack {
+                                Spacer()
+                                Button(action: {
+                                    self.showDoneButton = false
+                                    UIApplication.shared.endEditing()
+                                }) {
+                                    Text(NSLocalizedString("DONE", comment: ""))
+                                }.padding()
+                                .offset(x: 0, y: 50)
+                            }
                         }
                     }
                     CustomMessageBox("Unable to read text fields!", show: self.$showalert)
