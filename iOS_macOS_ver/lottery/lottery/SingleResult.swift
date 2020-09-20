@@ -27,7 +27,7 @@ struct SingleResult: View {
             HStack {
                 Rectangle()
                     .frame(width: 6)
-                    .foregroundColor(.blue)
+                    .foregroundColor(.white)
                 VStack(alignment: .leading, spacing: 6.0) {
                     HStack {
                         Text(self.PrizeList.PrizeList_cacu[self.index].PrizeName)
@@ -44,7 +44,7 @@ struct SingleResult: View {
                 Image(systemName: "chevron.right")
                     .foregroundColor(Color("arrow"))
                     .padding()
-            }.background(Color("CardBG"))
+            }.background(Color(.sRGB, white: 1, opacity: 0.2))
                 .cornerRadius(10)
                 .padding(.bottom)
                 .shadow(color: Color("Shadow"), radius: 10, x: 0, y: 10)
@@ -58,22 +58,31 @@ struct resultPage: View {
     var result: String
     @Environment(\.presentationMode) var presentation
     var body: some View {
-        NavigationView {
-            VStack {
-                Form {
-                    Section {
-                        Text("\(NSLocalizedString("CT", comment: ""))\(result)\(NSLocalizedString("GT", comment: ""))\(self.prize)")
-                            .font(.title)
-                    }
-                    Section {
-                        Button(action: {
-                            self.presentation.wrappedValue.dismiss()
-                        }) {
-                            Text(NSLocalizedString("EXT", comment: "Done"))
+        GeometryReader { geo in
+            NavigationView {
+                ZStack {
+                    BlurView().frame(width: geo.size.width, height: geo.size.height)
+                    VStack(alignment: .leading) {
+                        Text(self.prize)
+                            .font(Font.custom("", size: 40)).foregroundColor(.init(white: 1, opacity: 0.8)).padding(.leading, 30)
+                        Form {
+                            Section {
+                                Text("\(NSLocalizedString("CT", comment: ""))\(result)\(NSLocalizedString("GT", comment: ""))\(self.prize)")
+                                    .font(.title)
+                                    .foregroundColor(.black)
+                            }
+                            Section {
+                                Button(action: {
+                                    self.presentation.wrappedValue.dismiss()
+                                }) {
+                                    Text(NSLocalizedString("EXT", comment: "Done"))
+                                        .foregroundColor(.blue)
+                                }
+                            }
                         }
                     }
                 }
-            }.navigationBarTitle(self.prize)
+            }
         }
     }
 }

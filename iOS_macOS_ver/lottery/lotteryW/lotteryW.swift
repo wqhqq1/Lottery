@@ -95,6 +95,7 @@ struct TimeViewSmall: View {
                     HStack {
                         Text("Open App")
                             .font(.subheadline)
+                            .foregroundColor(.black)
                         Image(systemName: "chevron.right.circle.fill")
                             .resizable()
                             .foregroundColor(.blue)
@@ -142,6 +143,7 @@ struct TimeViewMid: View {
                             HStack {
                                 Text("Open")
                                     .font(.subheadline)
+                                    .foregroundColor(.black)
                                 Image(systemName: "chevron.right.circle.fill")
                                     .resizable()
                                     .foregroundColor(.blue)
@@ -223,6 +225,7 @@ struct TimeViewLarge: View {
                         HStack {
                             Text("Show in App")
                                 .font(.subheadline)
+                                .foregroundColor(.black)
                             Image(systemName: "chevron.right.circle.fill")
                                 .resizable()
                                 .foregroundColor(.blue)
@@ -240,9 +243,14 @@ struct TimeViewLarge: View {
                         ForEach(entry.PrizeData.PrizeList_cacu) { Prize in
                             if Prize.id < 2 {
                                 VStack(alignment: .leading) {
-                                    Text("\(Prize.PrizeName): \(Prize.PrizeMember)人\(returnRange(Prize))")
-                                        .font(.headline)
-                                        .padding(.bottom, 1)
+                                    HStack {
+                                        Text("\(Prize.PrizeName):")
+                                            .font(.headline)
+                                            .padding(.bottom, 1)
+                                        Text("\(Prize.PrizeMember)人\(returnRange(Prize))")
+                                            .font(.headline)
+                                            .padding(.bottom, 1)
+                                    }
                                     Text("Winners: \(Prize.Lottery_result)")
                                         .font(.subheadline)
                                         .padding(.bottom, 2)

@@ -11,7 +11,7 @@ var MemberNumber = 0, i: Int = 0, MemberNames = [String](), originalMN = "", ori
 var sheetModeResult = false
 
 struct resultReplay: View {
-    @EnvironmentObject var PrizeData: Prizes
+    @ObservedObject var PrizeData = Prizes(data: dataLoader())
     @State var filePathInput = ""
     @State var selection: Int? = nil
     @State var alertText = ""
@@ -19,10 +19,13 @@ struct resultReplay: View {
     @Binding var filePath: URL
     @Environment(\.presentationMode) var presentation
     var body: some View {
-        NavigationView {
+        print("1 \(filePath)")
+        return GeometryReader{ geo in NavigationView {
             ZStack {
+                BlurView()
                 ScrollView(.vertical, showsIndicators: true) {
-                    VStack {
+                    VStack(alignment: .leading) {
+                        Text(sheetModeResult ? lastTime:NSLocalizedString("NBLR", comment: "")).font(Font.custom("", size: 40)).foregroundColor(.init(white: 1, opacity: 0.8))
                         ForEach(self.PrizeData.PrizeList_cacu) { prize in
                             SingleResultReplay(index: prize.id)
                                 .environmentObject(self.PrizeData)
@@ -31,8 +34,7 @@ struct resultReplay: View {
                         }.animation(.spring())
                     }.padding(.horizontal)
                     .animation(.spring())
-                }.navigationBarTitle(sheetModeResult ? lastTime:NSLocalizedString("NBLR", comment: ""))
-                .navigationBarBackButtonHidden(true)
+                }.padding()
                 VStack {
                     Spacer()
                     Button(action: {
@@ -43,7 +45,7 @@ struct resultReplay: View {
                             Text(NSLocalizedString("CPR", comment: ""))
                             Image(systemName: "square.and.arrow.down.fill")
                                 .imageScale(.large)
-                        }
+                        }.foregroundColor(.white)
                     }
                     .padding(.bottom)
                     .shadow(color: Color("Shadow"), radius: 10)
@@ -57,7 +59,7 @@ struct resultReplay: View {
                                 sheetModeResult = false
                                 self.selection = 1
                             }) {
-                                Text(NSLocalizedString("DONE", comment: ""))
+                                Text(NSLocalizedString("DONE", comment: "")).foregroundColor(.white)
                             }
                         }
                     }
@@ -67,15 +69,16 @@ struct resultReplay: View {
                                 self.presentation.wrappedValue.dismiss()
                                 sheetModeResult = false
                             }) {
-                                Text(NSLocalizedString("DONE", comment: ""))
+                                Text(NSLocalizedString("DONE", comment: "")).foregroundColor(.white)
                             }.padding()
                         }
                     }
-                }
-            }.padding()
+                }.padding(.all, 50)
+            }.padding().background(Color.clear)
             .navigationViewStyle(StackNavigationViewStyle())
-        }
-
+            .navigationBarHidden(true)
+        }.frame(width: geo.size.width + 50, height: geo.size.height + 80).offset(x: -20, y: -20)}
+        
     }
 }
 
@@ -84,22 +87,29 @@ struct resultPageRePlay: View {
     var result: String
     @Environment(\.presentationMode) var presentation
     var body: some View {
-        
-        VStack {
-            Form {
-                Section {
-                    Text("\(NSLocalizedString("CT", comment: ""))\(result)\(NSLocalizedString("GT", comment: ""))\(self.prize)")
-                        .font(.title)
-                }
-                Section {
-                    Button(action: {
-                        self.presentation.wrappedValue.dismiss()
-                    }) {
-                        Text(NSLocalizedString("EXT", comment: "Done"))
+        GeometryReader { geo in
+            ZStack{
+                BlurView()
+                VStack(alignment: .leading) {
+                    HStack {
+                        Spacer()
+                            .frame(width: 30, height: 0)
                     }
-                }
-            }
-        }.navigationBarTitle(self.prize)
+                    Form {
+                        Section {
+                            Text("\(NSLocalizedString("CT", comment: ""))\(result)\(NSLocalizedString("GT", comment: ""))\(self.prize)")
+                                .font(.title)
+                                .foregroundColor(.black)
+                        }
+                        Section {
+                            Button(action: {
+                                self.presentation.wrappedValue.dismiss()
+                            }) {
+                                Text(NSLocalizedString("EXT", comment: "Done"))
+                            }
+                        }
+                    }.navigationBarHidden(false).navigationBarTitle(self.prize)
+                }.padding(.all, 30)}.frame(width: geo.size.width + 50, height: geo.size.height + 80).offset(x: -20, y: -20)}
         
     }
 }
@@ -124,7 +134,7 @@ struct SingleResultReplay: View {
             HStack {
                 Rectangle()
                     .frame(width: 6)
-                    .foregroundColor(.blue)
+                    .foregroundColor(.white)
                 VStack(alignment: .leading, spacing: 6.0) {
                     HStack {
                         Text(self.PrizeList.PrizeList_cacu[self.index].PrizeName)
@@ -141,7 +151,8 @@ struct SingleResultReplay: View {
                 Image(systemName: "chevron.right")
                     .foregroundColor(Color("arrow"))
                     .padding()
-            }.background(Color("CardBG"))
+            }
+            .background(Color(white: 1, opacity: 0.2))
             .cornerRadius(10)
             .padding(.bottom)
             .shadow(color: Color("Shadow"), radius: 10, x: 0, y: 10)

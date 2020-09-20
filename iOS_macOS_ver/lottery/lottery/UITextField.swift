@@ -20,7 +20,7 @@ struct NewTextField: UIViewRepresentable {
     @Binding var isDisabled: Bool?
     @Binding var text: String
     
-    init(_ placeholder: String, text: Binding<String>, updateNow: Binding<Bool> = .constant(false), isDisabled: Binding<Bool?> = .constant(nil), textLimit:Int? = nil, fontSize: CGFloat = 17.5, fontColor: UIColor? = nil, style: UITextField.BorderStyle = .none, cleanField: Bool = false, keyboardType: UIKeyboardType = .default) {
+    init(_ placeholder: String, text: Binding<String>, updateNow: Binding<Bool> = .constant(false), isDisabled: Binding<Bool?> = .constant(nil), textLimit:Int? = nil, fontSize: CGFloat = 17.5, fontColor: UIColor? = .black, style: UITextField.BorderStyle = .none, cleanField: Bool = false, keyboardType: UIKeyboardType = .default) {
         self.placeholder = placeholder
         self._text = text
         self.fontSize = fontSize
@@ -37,12 +37,13 @@ struct NewTextField: UIViewRepresentable {
         let view = UITextField()
         view.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         view.font = .systemFont(ofSize: self.fontSize)
-        view.textColor = self.fontColor
+        view.textColor = .black
         view.placeholder = self.placeholder
         view.text = self.text
         view.borderStyle = self.borderStyle
         view.delegate = context.coordinator
         view.keyboardType = self.keyBoardType
+        view.tintColor = .black
         return view
     }
     

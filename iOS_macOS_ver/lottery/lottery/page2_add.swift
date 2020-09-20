@@ -12,7 +12,7 @@ var AllPrizesMember: Int = 0
 
 struct page2_add: View {
     
-    @ObservedObject var PrizeData = Prizes()
+    @ObservedObject var PrizeData: Prizes
     @State var selection: Int? = nil
     @State var showeditingpage = false
     @State var showRemoveButton = [Bool](repeating: false, count: 1000)
@@ -36,6 +36,7 @@ struct page2_add: View {
     var body: some View {
         return VStack {
             ZStack {
+                BlurView()
                 ScrollView(.vertical, showsIndicators: true){
                     VStack {
                         ForEach(PrizeData.PrizeList) {prize in
@@ -124,7 +125,8 @@ struct page2_add: View {
                         if self.selectedOne != -1 && !self.isDone {
                             ZStack {
                                 Rectangle()
-                                    .foregroundColor(Color("CardBG"))
+                                    .foregroundColor(.clear)
+                                    .background(Color(.sRGB, white: 1, opacity: 0.2))
                                     .frame(width: 40, height: 80)
                                     .cornerRadius(50)
                                     .shadow(color: Color("Shadow"), radius: 10)
@@ -319,7 +321,7 @@ struct SingleCard: View {
                         }){
                             Image(systemName: "minus.circle.fill")
                                 .imageScale(.large)
-                                .foregroundColor(.red)
+                                .foregroundColor(.white)
                                 .padding(.trailing)
                         }
                         .padding([.leading, .bottom])
@@ -328,7 +330,7 @@ struct SingleCard: View {
                 HStack {
                     Rectangle()
                         .frame(width: 6)
-                        .foregroundColor(.blue)
+                        .foregroundColor(.white)
                     Button(action: {
                         if self.showConfirmButton[self.index!] == true {
                             self.showConfirmButton[self.index!] = false
@@ -380,6 +382,7 @@ struct SingleCard: View {
                                                 .frame(width: 80)
                                             Text(NSLocalizedString("RMT", comment: ""))
                                                 .foregroundColor(.white)
+                                                .fontWeight(.heavy)
                                         }
                                     }
                                 }
@@ -429,7 +432,7 @@ struct SingleCard: View {
                                     Image(systemName: self.selected.firstIndex(where: {$0 == self.index}) != nil ? "checkmark.circle.fill":"circle")
                                         .imageScale(.large)
                                         .padding(.trailing)
-                                        .foregroundColor(Color("trash"))
+                                        .foregroundColor(.white)
                                 }
                             }
                         }
@@ -439,7 +442,7 @@ struct SingleCard: View {
                             .environmentObject(self.PrizeData)
                     }
                 }.frame(height: 80)
-                .background(Color("CardBG"))
+                .background(Color(.sRGB, white: 1, opacity: 0.2))
                 .cornerRadius(10)
                 .padding(.bottom)
                 .shadow(color: Color("Shadow"), radius: 10, x: 1, y: 3)
@@ -468,7 +471,7 @@ struct btnAdd: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        page2_add()
+        page2_add(PrizeData: Prizes())
     }
 }
 
@@ -483,10 +486,12 @@ struct backButton_p2: View {
                 }) {
                     Image(systemName: "chevron.left")
                         .imageScale(.large)
+                        .foregroundColor(.white)
                 }
                 Spacer()
                 Text(NSLocalizedString("NBT1", comment: ""))
                     .font(Font.system(size: 22))
+                    .foregroundColor(.white)
                 Spacer()
             }
         }.transition(.slide)
@@ -509,9 +514,9 @@ struct multi_Remove: View {
                         self.showSheet = true
                     }) {
                         Image(systemName: "trash.fill")
-                            .foregroundColor(Color("trash"))
                             .imageScale(.large)
                             .padding(.trailing)
+                            .foregroundColor(.white)
                     }
                     .actionSheet(isPresented: self.$showSheet) {
                         ActionSheet(title: Text(NSLocalizedString("RMT", comment: "")), message: Text(NSLocalizedString("CRMT", comment: "")),
@@ -523,12 +528,6 @@ struct multi_Remove: View {
                                         self.multiRemove = false
                                     }, .default(Text(NSLocalizedString("CANL", comment: "")))])
                     }
-                }
-                else {
-                     Image(systemName: "rectangle")
-                        .foregroundColor(Color("nextButton"))
-                        .imageScale(.large)
-                        .padding(.trailing)
                 }
             }
         }
@@ -574,6 +573,7 @@ struct editingButton: View {
             Text(isEditingMode ? NSLocalizedString("DONE", comment: ""):NSLocalizedString("EDIT", comment: ""))
                 .font(.custom("", size: 20))
                 .fontWeight(.heavy)
+                .foregroundColor(.white)
                 .padding(.trailing)
         }
     }

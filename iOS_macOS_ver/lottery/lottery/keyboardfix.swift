@@ -90,10 +90,10 @@ struct KeyboardHost_edit<Content: View>: View {
                 .animation(.easeInOut)
                 .offset(x: 0, y: 0 - keyboardHeight)
         }.onReceive(showPublisher.merge(with: hidePublisher)) { (height) in
-            self.keyboardHeight = (height * 0.2) - 50
+            self.keyboardHeight = (height * 0.2) - 20
             print(keyboardHeight)
             
-            if self.keyboardHeight + 50 == 0 || self.keyboardHeight > 100 {
+            if self.keyboardHeight + 20 == 0 || self.keyboardHeight > 100 {
                 self.showDoneButton.wrappedValue = false
             }
         }

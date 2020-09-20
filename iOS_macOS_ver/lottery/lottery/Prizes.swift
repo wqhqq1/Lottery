@@ -23,7 +23,7 @@ class Prizes: ObservableObject {
     }
     
     init(data: [SinglePrize]) {
-        self.PrizeList = []
+        self.PrizeList = data
         self.PrizeList_cacu = data
     }
     

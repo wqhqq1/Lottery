@@ -21,11 +21,12 @@ struct EditingPage: View {
     @State var minCmd: String = ""
     @State var showDoneButton = false
     var body: some View {
-        let isEnglish = NSLocalizedString("LANG", comment: "") == "en_US" ? true:false
         return GeometryReader { geo in
             NavigationView {
                 KeyboardHost_edit(showDoneButton: self.$showDoneButton){
-                    ZStack {VStack {
+                    ZStack {
+                        BlurView()
+                        VStack {
                         Form {
                             Section {
                                 NewTextField(NSLocalizedString("PTF", comment: ""), text: $prizename, fontColor: UIColor(named: "trash"))
@@ -41,7 +42,7 @@ struct EditingPage: View {
                             if addedCmd {
                                 Section {
                                     HStack {
-                                        Text(NSLocalizedString("ADDCT", comment: ""))
+                                        Text(NSLocalizedString("ADDCT", comment: "")).foregroundColor(.black)
                                         Toggle(isOn: self.$showADDCTF, label: {
                                             Text("")
                                         })
@@ -65,6 +66,7 @@ struct EditingPage: View {
                             
                             Section {
                                 Button(action: {
+                                    print(prizequota, prizename)
                                     if self.prizequota != "" {
                                         if self.index == nil {
                                             self.PrizeData.add(data: SinglePrize(PrizeName: self.prizename, PrizeMember: Int(self.prizequota)!, maxCmd: (self.showADDCTF && self.maxCmd != "") ? Int(self.maxCmd)!:nil, minCmd: (self.showADDCTF && self.minCmd != "") ? Int(self.minCmd)!:nil, enabledCmds: (self.showADDCTF && self.maxCmd != "" && self.minCmd != "") ? true:false))
@@ -74,18 +76,19 @@ struct EditingPage: View {
                                         else {
                                             self.PrizeData.edit(index: self.index!, data: SinglePrize(PrizeName: self.prizename, PrizeMember: Int(self.prizequota)!, maxCmd: (self.showADDCTF && self.maxCmd != "") ? Int(self.maxCmd):nil, minCmd: (self.showADDCTF && self.minCmd != "") ? Int(self.minCmd):nil, enabledCmds: (self.showADDCTF && self.minCmd != "" && self.maxCmd != "") ? true:false))
                                         }
+                                        print(PrizeData.PrizeList)
                                         self.presentation.wrappedValue.dismiss()
                                     }
                                     else {
                                         self.showalert = true
                                     }
                                 }){
-                                    Text(NSLocalizedString("EXT", comment: ""))
+                                    Text(NSLocalizedString("EXT", comment: "")).foregroundColor(.blue)
                                 }
                                 Button(action: {
                                     self.presentation.wrappedValue.dismiss()
                                 }){
-                                    Text(NSLocalizedString("CANL", comment: ""))
+                                    Text(NSLocalizedString("CANL", comment: "")).foregroundColor(.blue)
                                 }
                             }
                         }
@@ -100,16 +103,15 @@ struct EditingPage: View {
                                     UIApplication.shared.endEditing()
                                 }) {
                                     Text(NSLocalizedString("DONE", comment: ""))
+                                        .foregroundColor(.white)
                                 }.padding()
-                                .offset(x: 0, y: 50)
+                                .offset(x: 0, y: -170)
                             }
                         }
                     }
                     CustomMessageBox("Unable to read text fields!", show: self.$showalert)
-                    }.navigationViewStyle(StackNavigationViewStyle())}
+                    }.navigationViewStyle(StackNavigationViewStyle()).padding(.all, 20).frame(width: geo.size.width + 50, height: geo.size.height + 150).offset(x: 0, y: 100)}
             }
-            .frame(maxHeight: 700)
-            .offset(x: 0, y: geo.size.height > 700 ? geo.size.height - 680:0)
         }
     }
 }

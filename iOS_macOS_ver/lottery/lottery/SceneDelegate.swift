@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Create the SwiftUI view that provides the window contents.
         if connectionOptions.urlContexts.first?.url == URL(string: "lottery://result") {
-            let urlcontentView = ContentView(showSheet: true)
+            let urlcontentView = tabview(showSheet: true).environmentObject(Prizes())
             sheetModeResult = true
             if let windowScene = scene as? UIWindowScene {
                 let window = UIWindow(windowScene: windowScene)
@@ -33,11 +33,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             }
         }
         else {
-            let contentView = ContentView(showSheet: false)
             sheetModeResult = false
             if let windowScene = scene as? UIWindowScene {
                 let window = UIWindow(windowScene: windowScene)
-                window.rootViewController = UIHostingController(rootView: tabview())
+                window.rootViewController = UIHostingController(rootView: tabview(showSheet: false).environmentObject(Prizes()))
                 self.window = window
                 window.makeKeyAndVisible()
             }
@@ -47,7 +46,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene,
                openURLContexts URLContexts: Set<UIOpenURLContext>) {
         if URLContexts.first?.url == URL(string: "lottery://result") {
-            let urlcontentView = ContentView(showSheet: true)
+            let urlcontentView = tabview(showSheet: true).environmentObject(Prizes())
             sheetModeResult = true
             if let windowScene = scene as? UIWindowScene {
                 let window = UIWindow(windowScene: windowScene)
@@ -57,11 +56,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             }
         }
         else {
-            let contentView = ContentView(showSheet: false)
             sheetModeResult = false
             if let windowScene = scene as? UIWindowScene {
                 let window = UIWindow(windowScene: windowScene)
-                window.rootViewController = UIHostingController(rootView: tabview())
+                window.rootViewController = UIHostingController(rootView: tabview(showSheet: false).environmentObject(Prizes()))
                 self.window = window
                 window.makeKeyAndVisible()
             }
