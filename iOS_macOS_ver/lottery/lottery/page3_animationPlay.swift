@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import WidgetKit
 
 
 struct page3_animationPlay: View {
@@ -33,11 +33,13 @@ struct page3_animationPlay: View {
 struct result: View {
     @EnvironmentObject var PrizeData: Prizes
     @State var showAlert = false
+    @State var showSavedAlert = false
     @State var filePathInput = ""
     @Binding var filepath: URL
     @Environment(\.presentationMode) var presentation
     var body: some View {
-        GeometryReader { geo in
+        WidgetCenter.shared.reloadAllTimelines()
+        return GeometryReader { geo in
             ZStack {
                 BlurView().frame(width: geo.size.width, height: geo.size.height)
                 ScrollView(.vertical, showsIndicators: true) {
@@ -56,7 +58,15 @@ struct result: View {
                 VStack {
                     Spacer()
                     Button(action: {
-                        self.showAlert = true
+                        if isMac {
+                            var path = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask)[0]
+                            path.appendPathComponent("Lottery Result - \(lastTime) +\(arc4random()).csv")
+                            try? readyToCopy.write(to: path, atomically: true, encoding: .utf8)
+                            self.showSavedAlert = true
+                        }
+                        else {
+                            self.showAlert = true
+                        }
                     }) {
                         HStack {
                             Text(NSLocalizedString("CPR", comment: ""))
@@ -80,6 +90,7 @@ struct result: View {
                         }.padding()
                     }
                 }
+                CustomMessageBox("Successfully Saved!", show: self.$showSavedAlert)
             }.padding().frame(width: geo.size.width, height: geo.size.height)
         }
     }

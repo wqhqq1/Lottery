@@ -243,7 +243,7 @@ struct page2_add: View {
                                                 }
                                                 PrizeData.save()
                                                 path.appendPathComponent("Lottery Result - \(getDate()).csv")
-                                                WidgetCenter.shared.reloadTimelines(ofKind: "com.kirin.lotteryW")
+                                                WidgetCenter.shared.reloadAllTimelines()
                                                 try! readyToCopy.write(to: path, atomically: true, encoding: .utf8)
                                                 self.selection = 1
                                             }

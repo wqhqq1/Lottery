@@ -26,7 +26,7 @@
 
 "GOB" = "Go";
 
-"CT" = "Congratulations for ";
+"CT" = "Congratulations to ";
 "GT" = " who got the ";
 
 "NBLR" = "Lottery result";
@@ -60,3 +60,5 @@
 "LastR" = "Last result";
 
 "LANG" = "en_US";
+
+"SecNB" = "Security Setting";

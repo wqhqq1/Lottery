@@ -16,6 +16,7 @@ struct resultReplay: View {
     @State var selection: Int? = nil
     @State var alertText = ""
     @State var showSavedAlert = false
+    @State var showShareSheet = false
     @Binding var filePath: URL
     @Environment(\.presentationMode) var presentation
     var body: some View {
@@ -38,8 +39,15 @@ struct resultReplay: View {
                 VStack {
                     Spacer()
                     Button(action: {
-                        print("2 \(filePath)")
-                        self.showSavedAlert = true
+                        if isMac {
+                            var path = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask)[0]
+                            path.appendPathComponent("Lottery Result - \(lastTime) +\(arc4random()).csv")
+                            try? readyToCopy.write(to: path, atomically: true, encoding: .utf8)
+                            self.showSavedAlert = true
+                        }
+                        else {
+                            self.showShareSheet = true
+                        }
                     }) {
                         HStack {
                             Text(NSLocalizedString("CPR", comment: ""))
@@ -49,7 +57,7 @@ struct resultReplay: View {
                     }
                     .padding(.bottom)
                     .shadow(color: Color("Shadow"), radius: 10)
-                    .sheet(isPresented: self.$showSavedAlert, content: {
+                    .sheet(isPresented: self.$showShareSheet, content: {
                         ShareSheet([filePath])
                     })
                     if urlModeResult {
@@ -74,6 +82,7 @@ struct resultReplay: View {
                         }
                     }
                 }.padding(.all, 50)
+                CustomMessageBox("Successfully Saved", show: self.$showSavedAlert)
             }.padding().background(Color.clear)
             .navigationViewStyle(StackNavigationViewStyle())
             .navigationBarHidden(true)

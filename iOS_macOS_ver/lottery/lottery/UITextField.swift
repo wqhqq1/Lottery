@@ -9,7 +9,8 @@ import SwiftUI
 
 struct NewTextField: UIViewRepresentable {
     
-    let placeholder: String
+    @Binding var placeholder: String
+    @Binding var isSecure: Bool
     let fontSize: CGFloat
     let borderStyle: UITextField.BorderStyle
     let cleanField: Bool
@@ -20,8 +21,8 @@ struct NewTextField: UIViewRepresentable {
     @Binding var isDisabled: Bool?
     @Binding var text: String
     
-    init(_ placeholder: String, text: Binding<String>, updateNow: Binding<Bool> = .constant(false), isDisabled: Binding<Bool?> = .constant(nil), textLimit:Int? = nil, fontSize: CGFloat = 17.5, fontColor: UIColor? = .black, style: UITextField.BorderStyle = .none, cleanField: Bool = false, keyboardType: UIKeyboardType = .default) {
-        self.placeholder = placeholder
+    init(_ placeholder: Binding<String>, text: Binding<String>, updateNow: Binding<Bool> = .constant(false), isSecure: Binding<Bool> = .constant(false), isDisabled: Binding<Bool?> = .constant(nil), textLimit:Int? = nil, fontSize: CGFloat = 17.5, fontColor: UIColor? = .black, style: UITextField.BorderStyle = .none, cleanField: Bool = false, keyboardType: UIKeyboardType = .default) {
+        self._placeholder = placeholder
         self._text = text
         self.fontSize = fontSize
         self.borderStyle = style
@@ -31,6 +32,8 @@ struct NewTextField: UIViewRepresentable {
         self._updateNow = updateNow
         self.fontColor = fontColor
         self._isDisabled = isDisabled
+        self._isSecure = isSecure
+        
     }
     
     func makeUIView(context: Context) -> UITextField {
@@ -44,6 +47,7 @@ struct NewTextField: UIViewRepresentable {
         view.delegate = context.coordinator
         view.keyboardType = self.keyBoardType
         view.tintColor = .black
+        view.isSecureTextEntry = self.isSecure
         return view
     }
     
@@ -55,6 +59,8 @@ struct NewTextField: UIViewRepresentable {
         if let isDisabled = self.isDisabled {
             uiView.isEnabled = !isDisabled
         }
+        uiView.placeholder = self.placeholder
+        uiView.isSecureTextEntry = self.isSecure
         return
     }
     
@@ -112,7 +118,7 @@ struct test: View {
     var body: some View {
         VStack() {
 //            ScrollView(.horizontal, showsIndicators: false) {
-                NewTextField("placeholder", text: self.$textInput, isDisabled: self.$isDisabled, fontColor: .systemRed, style: .none)
+            NewTextField(.constant("placeholder"), text: self.$textInput, isDisabled: self.$isDisabled, fontColor: .systemRed, style: .none)
                     .frame(height: 30)
 //            }.frame(width: 100, height: 30)
             Button(action: {

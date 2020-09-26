@@ -29,11 +29,11 @@ struct EditingPage: View {
                         VStack {
                         Form {
                             Section {
-                                NewTextField(NSLocalizedString("PTF", comment: ""), text: $prizename, fontColor: UIColor(named: "trash"))
+                                NewTextField(.constant(NSLocalizedString("PTF", comment: "")), text: $prizename, fontColor: UIColor(named: "trash"))
                                     .onTapGesture {
                                         self.showDoneButton = true
                                     }
-                                NewTextField(NSLocalizedString("PNTTF", comment: ""), text: $prizequota, fontColor: UIColor(named: "trash"), keyboardType: .numberPad)
+                                NewTextField(.constant(NSLocalizedString("PNTTF", comment: "")), text: $prizequota, fontColor: UIColor(named: "trash"), keyboardType: .numberPad)
                                     .onTapGesture {
                                         self.showDoneButton = true
                                     }

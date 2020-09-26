@@ -9,6 +9,18 @@ import WidgetKit
 import SwiftUI
 import Intents
 
+func returnPwdState() -> Bool {
+    var sharedDir = FileManager().containerURL(forSecurityApplicationGroupIdentifier: "group.lotterywiget")!
+    sharedDir.appendPathComponent("pwdState")
+    let string = try? String(contentsOf: sharedDir)
+    if let str = string {
+        if str == "1" {
+            return true
+        }
+    }
+    return false
+}
+
 func returnRange(_ Data: SinglePrize) -> String {
     var range: String = ""
     if Data.enabledCmds && Data.maxCmd != nil && Data.minCmd != nil {
@@ -35,7 +47,10 @@ struct Provider: TimelineProvider {
         let dataPath = FileManager().containerURL(forSecurityApplicationGroupIdentifier: "group.lotterywiget")!.appendingPathComponent("Data")
         print(dataPath)
         let dataSaved = try? Data(contentsOf: dataPath)
-        let PrizeData = try? decoder.decode([SinglePrize].self, from: dataSaved!)
+        var PrizeData = try? decoder.decode([SinglePrize].self, from: dataSaved!)
+        if returnPwdState() {
+            PrizeData = [SinglePrize(PrizeName: "Data was encrypted", PrizeMember: 0)]
+        }
         return PrizeData != nil ? Prizes(data: PrizeData!):Prizes()
     }
     
