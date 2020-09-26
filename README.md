@@ -15,7 +15,7 @@ Download
 Build From Source Code
 ----------  
 #### If you want to build the code by yourself, you should do these steps below:  
-### macOS
+### macOS or iOS
 #### 1. build environment
    - Xcode 12.0 or higher for macOS(also can build for iOS)
 #### 2. Just click build in Xcode to build for binary file
