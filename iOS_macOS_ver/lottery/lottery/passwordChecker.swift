@@ -35,6 +35,15 @@ struct AlertControl: UIViewControllerRepresentable {
         guard context.coordinator.alert == nil else { return }
         if self.show {
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            let wrongAlert = UIAlertController(title: "Incorrect", message: "Password you input is incorrect, please try another one.", preferredStyle: .alert)
+            wrongAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {_ in
+                DispatchQueue.main.async {
+                    viewController.present(alert, animated: true, completion: {
+                        self.show = false
+                        context.coordinator.alert = nil
+                    })
+                }
+            }))
             context.coordinator.alert = alert
             
             alert.addTextField { textField in
@@ -54,6 +63,12 @@ struct AlertControl: UIViewControllerRepresentable {
                 }
                 else {
                     self.correct = false
+                    DispatchQueue.main.async {
+                        viewController.present(wrongAlert, animated: true, completion: {
+                            self.show = false
+                            context.coordinator.alert = nil
+                        })
+                    }
                 }
                 textString = ""
             })
@@ -84,6 +99,9 @@ struct AlertControl: UIViewControllerRepresentable {
         }
         
         func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+            if string == "\n" {
+                return false
+            }
             if let text = textField.text as NSString? {
                 self.control.textString = text.replacingCharacters(in: range, with: string)
             } else {

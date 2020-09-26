@@ -47,7 +47,9 @@ struct SecureView: View {
                 }.alert(isPresented: self.$showAlertShort, content: {
                     Alert(title: Text("Password too short"), message: Text("You can try another password."), dismissButton: .default(Text("OK")))
                 })
-                NewTextField(.constant(hash != nil ? "You're all set":"Password"), text: self.$passwd, updateNow: self.$updateNow, isSecure: .constant(true), isDisabled: .constant(hash != nil ? true:false))
+                if !verifying{
+                    NewTextField(.constant(hash != nil ? "You're all set":"Password"), text: self.$passwd, updateNow: self.$updateNow, isSecure: .constant(true), isDisabled: .constant(hash != nil ? true:false))
+                }
                 if verifying {
                     NewTextField(.constant("Password"), text: self.$passwdForVerify, updateNow: self.$updateNow2, isSecure: .constant(true))
                     Button(action:{
