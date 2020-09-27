@@ -43,7 +43,7 @@ struct SecureView: View {
                     }
                     WidgetCenter.shared.reloadAllTimelines()
                 }) {
-                    Text(hash != nil ? (verifying ? "Verifying...":"Close"):"Set")
+                    Text(hash != nil ? (verifying ? "Verifying...":"Close"):"Set").foregroundColor(verifying ? .black:.blue)
                 }.alert(isPresented: self.$showAlertShort, content: {
                     Alert(title: Text("Password too short"), message: Text("You can try another password."), dismissButton: .default(Text("OK")))
                 })

@@ -19,7 +19,6 @@
 		013C86B3250D910F00266F68 /* blurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013C86B2250D910F00266F68 /* blurView.swift */; };
 		013EEA6B251F0AF70006D732 /* SecureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013EEA6A251F0AF70006D732 /* SecureView.swift */; };
 		013EEA73251F11010006D732 /* bridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 013EEA72251F11010006D732 /* bridge.m */; };
-		013EEA81251F1E890006D732 /* bridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 013EEA72251F11010006D732 /* bridge.m */; };
 		013EEA87251F1EF80006D732 /* bridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 013EEA86251F1EF80006D732 /* bridge.m */; };
 		0142C9E624E650B300AF7EF6 /* endEditing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0142C9E524E650B300AF7EF6 /* endEditing.swift */; };
 		014645AC24DF67AF00CA5A5D /* AG_spliter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014645AB24DF67AF00CA5A5D /* AG_spliter.swift */; };
@@ -206,14 +205,13 @@
 				0146C55A24CC1C7F00E4F790 /* SceneDelegate.swift */,
 				0152AAD324CD6EDE00AEFD53 /* ContentView.swift */,
 				013EEA6A251F0AF70006D732 /* SecureView.swift */,
-				013EEA72251F11010006D732 /* bridge.m */,
+				0131957124DD143600139AC9 /* passwordChecker.swift */,
 				01ABDB2D250CAD090067A1DD /* tabview.swift */,
 				013C86B2250D910F00266F68 /* blurView.swift */,
 				01C3251724F50C7200A593B2 /* Replay.swift */,
 				0146C55C24CC1C7F00E4F790 /* page2_add.swift */,
 				013A2C7224D1364600144308 /* page3_animationPlay.swift */,
 				014EADCA250B7F0800F5BD6E /* ShareSheet.swift */,
-				0131957124DD143600139AC9 /* passwordChecker.swift */,
 				0142C9E524E650B300AF7EF6 /* endEditing.swift */,
 				0139BB0924CD757100CAF722 /* SingleResult.swift */,
 				0139BB0B24CD773C00CAF722 /* EditingPage.swift */,
@@ -232,6 +230,7 @@
 				0146C56624CC1C8300E4F790 /* Info.plist */,
 				0146C56024CC1C8300E4F790 /* Preview Content */,
 				013EEA71251F11010006D732 /* lottery-Bridging-Header.h */,
+				013EEA72251F11010006D732 /* bridge.m */,
 			);
 			path = lottery;
 			sourceTree = "<group>";
@@ -497,7 +496,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				01C3251A24F50D0100A593B2 /* passwordChecker.swift in Sources */,
-				013EEA81251F1E890006D732 /* bridge.m in Sources */,
 				0196B51E24F4F1B4008E815A /* Prizes.swift in Sources */,
 				0196B51424F4F148008E815A /* lotteryW.intentdefinition in Sources */,
 				0196B50F24F4F146008E815A /* lotteryW.swift in Sources */,

@@ -83,7 +83,7 @@ struct TimeViewSmall: View {
     var body: some View {
         ZStack {
             Rectangle()
-                .foregroundColor(.yellow)
+                .foregroundColor(Color("BG"))
             VStack(alignment: .leading, spacing: 10) {
                 HStack {
                     Image("Head")
@@ -128,7 +128,7 @@ struct TimeViewMid: View {
     var body: some View {
         ZStack {
             Rectangle()
-                .foregroundColor(.yellow)
+                .foregroundColor(Color("BG"))
             HStack {
                 HStack {
                     VStack(alignment: .leading) {
@@ -207,7 +207,7 @@ struct TimeViewLarge: View {
     var body: some View {
         ZStack {
             Rectangle()
-                .foregroundColor(.yellow)
+                .foregroundColor(Color("BG"))
             VStack {
                 HStack(spacing: 10) {
                     VStack(alignment: .leading) {
