@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import LocalAuthentication
 
 var pwdHash: String? = nil
 func sha256(_ string : String) -> String {
@@ -78,37 +79,55 @@ struct AlertControl: UIViewControllerRepresentable {
                     self.correct = true
                 }
                 else {
-                    viewController.present(alert, animated: true, completion: {
-                        self.show = false  // hide holder after alert dismiss
-                        context.coordinator.alert = nil
+                    let authenticationContext = LAContext()
+                    authenticationContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Data unlocker", reply:
+                    {(success, error) -> Void in
+                        if success
+                        {
+                            DispatchQueue.main.async {
+                                self.correct = true
+                                self.show = false
+                                context.coordinator.alert = nil
+                            }
+                            return
+                        }
+                        else {
+//                            print(error)
+                            DispatchQueue.main.async {
+                                viewController.present(alert, animated: true, completion: {
+                                    self.show = false  // hide holder after alert dismiss
+                                    context.coordinator.alert = nil
+                                })
+                            }
+                        }
                     })
-                }
             }
         }
+    }
+}
+
+func makeCoordinator() -> AlertControl.Coordinator {
+    Coordinator(self)
+}
+
+class Coordinator: NSObject, UITextFieldDelegate {
+    var alert: UIAlertController?
+    var control: AlertControl
+    init(_ control: AlertControl) {
+        self.control = control
     }
     
-    func makeCoordinator() -> AlertControl.Coordinator {
-        Coordinator(self)
-    }
-    
-    class Coordinator: NSObject, UITextFieldDelegate {
-        var alert: UIAlertController?
-        var control: AlertControl
-        init(_ control: AlertControl) {
-            self.control = control
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if string == "\n" {
+            return false
         }
-        
-        func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-            if string == "\n" {
-                return false
-            }
-            if let text = textField.text as NSString? {
-                self.control.textString = text.replacingCharacters(in: range, with: string)
-            } else {
-                self.control.textString = ""
-            }
-            return true
+        if let text = textField.text as NSString? {
+            self.control.textString = text.replacingCharacters(in: range, with: string)
+        } else {
+            self.control.textString = ""
         }
+        return true
     }
+}
 }
 

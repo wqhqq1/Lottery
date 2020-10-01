@@ -7,26 +7,6 @@
 
 import SwiftUI
 
-//struct uiBlur<Content: View>: UIViewControllerRepresentable {
-//    let content: Content
-//    init(_ content: () -> Content) {
-//        self.content = content()
-//    }
-//
-//    func makeUIViewController(context: Context) -> UIViewController {
-//        let blurEffect = UIBlurEffect(style: .systemChromeMaterialLight)
-//        let visualView = UIVisualEffectView(effect: blurEffect)
-//        let host = UIHostingController(rootView: self.content)
-//        visualView.frame.size = CGSize(width: host.view.frame.width, height: host.view.frame.height)
-//        host.view.addSubview(visualView)
-//        return host
-//
-//    }
-//    func updateUIViewController(_ uiView: UIViewController, context: Context) {
-//        return
-//    }
-//}
-
 struct BlurView: View {
     var colorList: [[Color]] = [[.orange, .purple],
                                 [.purple, .orange],
