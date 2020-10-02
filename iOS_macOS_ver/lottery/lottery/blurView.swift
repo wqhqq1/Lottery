@@ -12,7 +12,7 @@ struct BlurView: View {
                                 [.purple, .orange],
                                 [.purple, .orange, .purple]]
     @State var show = false
-    var timer = Timer.TimerPublisher(interval: 20.1, runLoop: .current, mode: .default).autoconnect()
+    var timer = Timer.TimerPublisher(interval: 20.1, runLoop: .current, mode: .default)
     @State var index = 0
     var body: some View {
         GeometryReader{ geo in
@@ -36,6 +36,25 @@ struct BlurView: View {
                             .ignoresSafeArea()
                             .frame(width: geo.size.width, height: geo.size.height))
         }
+    }
+}
+
+struct visualView: UIViewRepresentable {
+    
+    let style: UIBlurEffect.Style
+    
+    init(_ style: UIBlurEffect.Style) {
+        self.style = style
+    }
+    
+    func makeUIView(context: Context) -> UIView {
+        let effectView = UIBlurEffect(style: self.style)
+        let visualView = UIVisualEffectView(effect: effectView)
+        return visualView
+    }
+    
+    func updateUIView(_ uiView: UIView, context: Context) {
+        return
     }
 }
 

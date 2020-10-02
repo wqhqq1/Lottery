@@ -74,6 +74,26 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		0115FA8B252693F600AB3C6A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0115FA912526940000AB3C6A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0196B51A24F4F148008E815A /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -88,6 +108,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0115FA972526945F00AB3C6A /* CoreSwiftUITools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CoreSwiftUITools.framework; sourceTree = "<group>"; };
 		011AC22724F88FF40067F4BD /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		011C666E24FCEB6700B7D054 /* CustomMessageBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMessageBox.swift; sourceTree = "<group>"; };
 		0125319E24CF9E8000C5464A /* lottery.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = lottery.entitlements; sourceTree = "<group>"; };
@@ -177,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				0196B51924F4F148008E815A /* lotteryWExtension.entitlements */,
+				0115FA972526945F00AB3C6A /* CoreSwiftUITools.framework */,
 				0146C55724CC1C7F00E4F790 /* lottery */,
 				0146C56E24CC1C8400E4F790 /* lotteryTests */,
 				0146C57924CC1C8400E4F790 /* lotteryUITests */,
@@ -293,6 +315,7 @@
 				0146C55224CC1C7E00E4F790 /* Frameworks */,
 				0146C55324CC1C7E00E4F790 /* Resources */,
 				0196B51A24F4F148008E815A /* Embed App Extensions */,
+				0115FA912526940000AB3C6A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -347,6 +370,7 @@
 				0196B50324F4F146008E815A /* Sources */,
 				0196B50424F4F146008E815A /* Frameworks */,
 				0196B50524F4F146008E815A /* Resources */,
+				0115FA8B252693F600AB3C6A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -677,6 +701,10 @@
 				DEVELOPMENT_ASSET_PATHS = "\"lottery/Preview Content\"";
 				DEVELOPMENT_TEAM = 6T6JMWY77X;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = lottery/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -712,6 +740,10 @@
 				DEVELOPMENT_ASSET_PATHS = "\"lottery/Preview Content\"";
 				DEVELOPMENT_TEAM = 6T6JMWY77X;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = lottery/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -826,6 +858,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = 6T6JMWY77X;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = lotteryW/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -856,6 +892,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = 6T6JMWY77X;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = lotteryW/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (

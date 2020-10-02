@@ -207,12 +207,7 @@ struct ContentView: View {
                                         self.filePath.appendPathComponent("Lottery Result - \(lastTime).csv")
                                         try! readyToCopy.write(to: filePath, atomically: true, encoding: .utf8)
                                         print("1 \(filePath)")
-                                        if pwdHash == nil {
-                                            self.showSheet = true
-                                        }
-                                        else {
-                                            self.showField = true
-                                        }
+                                        self.showSheet = true
                                     }
                                     else {
                                         self.showWarning = true
@@ -246,7 +241,6 @@ struct ContentView: View {
                                     resultReplay(filePath: self.$filePath)
                                 }
                                 .foregroundColor(.blue)
-                                .background(AlertControl(show: self.$showField, correct: self.$showSheet, title: "Locked", message: "Content here was locked, input the password you set to unlock the contents."))
                                 Spacer()
                             }.frame(width: 200, height: 80)
                             .padding(.bottom)
@@ -441,12 +435,7 @@ struct ContentView_back: View {
                                     self.filePath.appendPathComponent("Lottery Result - \(lastTime).csv")
                                     try! readyToCopy.write(to: filePath, atomically: true, encoding: .utf8)
                                     print("1 \(filePath)")
-                                    if pwdHash == nil {
-                                        self.showSheet = true
-                                    }
-                                    else {
-                                        self.showField = true
-                                    }
+                                    self.showSheet = true
                                 }
                                 else {
                                     self.showWarning = true
@@ -480,7 +469,6 @@ struct ContentView_back: View {
                                 resultReplay(filePath: self.$filePath)
                             }
                             .foregroundColor(.blue)
-                            .background(AlertControl(show: self.$showField, correct: self.$showSheet, title: "Locked", message: "Content here was locked, input the password you set to unlock the contents."))
                             Spacer()
                         }.frame(width: 200, height: 80)
                         .padding(.bottom)

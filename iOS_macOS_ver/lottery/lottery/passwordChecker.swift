@@ -9,6 +9,7 @@ import SwiftUI
 import LocalAuthentication
 
 var pwdHash: String? = nil
+
 func sha256(_ string : String) -> String {
     var hash = [UInt8](repeating: 0,  count: Int(CC_SHA256_DIGEST_LENGTH))
     let data = string.data(using: .utf8)!
@@ -17,7 +18,6 @@ func sha256(_ string : String) -> String {
     }
     return Data(hash).base64EncodedString()
 }
-
 
 struct AlertControl: UIViewControllerRepresentable {
     
@@ -92,12 +92,17 @@ struct AlertControl: UIViewControllerRepresentable {
                             return
                         }
                         else {
-//                            print(error)
-                            DispatchQueue.main.async {
-                                viewController.present(alert, animated: true, completion: {
-                                    self.show = false  // hide holder after alert dismiss
-                                    context.coordinator.alert = nil
+                            if error?.localizedDescription == "Canceled by user." {
+                                self.show = false  // hide holder after alert dismiss
+                                context.coordinator.alert = nil
+                            }
+                            else {
+                                DispatchQueue.main.async {
+                                    viewController.present(alert, animated: true, completion: {
+                                        self.show = false  // hide holder after alert dismiss
+                                        context.coordinator.alert = nil
                                 })
+                            }
                             }
                         }
                     })
