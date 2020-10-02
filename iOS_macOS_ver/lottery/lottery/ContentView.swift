@@ -33,7 +33,7 @@ struct ContentView: View {
     @State var showalertCPB = false
     @State var showADDTF = false
     @State var addCmdInput = ""
-    @State var showSheet: Bool = false
+    @Binding var showSheet: Bool
     @State var showWarning = false
     @State var showLastRButton = true
     @State var showDoneButton = false
@@ -43,8 +43,8 @@ struct ContentView: View {
     @EnvironmentObject var PrizeData: Prizes
     @ObservedObject var lastResult = Prizes(data: dataLoader())
     @State var filePath = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
-    init(showSheet: Bool) {
-        self.showSheet = showSheet
+    init(showSheet: Binding<Bool>) {
+        self._showSheet = showSheet
         UITableViewCell.appearance().backgroundColor = .clear
         UITableViewCell.appearance().backgroundView = nil
         UITableView.appearance().backgroundView = nil
@@ -509,6 +509,6 @@ struct host<Content: View>: UIViewControllerRepresentable {
 
 struct ContentView1_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(showSheet: false)
+        ContentView(showSheet: .constant(false))
     }
 }

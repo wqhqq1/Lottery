@@ -61,7 +61,7 @@ struct resultReplay: View {
                         ShareSheet([filePath])
                     })
                     if urlModeResult {
-                        NavigationLink(destination: ContentView(showSheet: false), tag: 1, selection: $selection) {
+                        NavigationLink(destination: ContentView(showSheet: .constant(false)), tag: 1, selection: $selection) {
                             Button(action: {
                                 urlModeResult = false
                                 sheetModeResult = false

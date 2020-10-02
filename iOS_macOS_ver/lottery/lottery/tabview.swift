@@ -32,10 +32,7 @@ struct tabview: View {
         return GeometryReader { geo in
             ZStack {
                 TabView(){
-                    ContentView(showSheet: self.showSheet).frame(width: geo.size.width, height: geo.size.height)
-                        .sheet(isPresented: self.$showverdSheet) {
-                            resultReplay(filePath: .constant(filePath))
-                        }
+                    ContentView(showSheet: self.$showverdSheet).frame(width: geo.size.width, height: geo.size.height)
                         .tabItem {
                             Image(systemName:  "house.fill")
                             Text("Home")
@@ -50,28 +47,42 @@ struct tabview: View {
                 }
                 if !showHider {
                     ZStack {
-                        visualView(.dark)
-                        Text("The contents here was locked, please enter the correct password to unlock this app.")
-                            .foregroundColor(.white)
-                            .font(.title)
-                            .padding()
-                        VStack{
-                            Spacer()
+                        visualView(isMac ? .dark:.systemThickMaterialDark)
+                        VStack {
+                            if isMac {}
+                            else {
+                                if showUnlocker{
+                                    Spacer()
+                                }
+                            }
+                            Text("This app was locked")
+                                .fontWeight(.heavy)
+                                .foregroundColor(.init(.sRGB, white: 1, opacity: 0.5))
+                                .font(.title)
+                                .padding()
                             Button(action: {
                                 self.showUnlocker = true
                             }) {
                                 ZStack {
                                     visualView(.light)
-                                        .frame(width: 100, height: 50)
+                                        .frame(width: 150, height: 70)
                                         .cornerRadius(50)
-                                    Text("Unlock App")
-                                        .foregroundColor(.white)
+                                    Text("Unlock the App")
+                                        .fontWeight(.heavy)
+                                        .foregroundColor(.init(.sRGB, white: 1, opacity: 0.5))
                                 }
-                            }
-                        }.padding(.all, 20)
+                            }.padding(.top, 20)
+                        }.padding(.bottom, self.showUnlocker ? 50:0)
+                        VStack {
+                            Image(systemName: "lock.fill")
+                                .imageScale(.large)
+                                .foregroundColor(.white)
+                            Spacer()
+                        }.padding(.top, 50)
                     }
                     .ignoresSafeArea()
-                    .background(AlertControl(show: self.$showUnlocker, correct: self.$showHider, title: "Locked", message: "This app was locked, Please enter the correct password to unlock it."))
+                    .background(AlertControl(show: self.$showUnlocker, correct: self.$showHider, title: "Locked", message: "This app was locked, Please enter the correct password to unlock it.", loadSheet: self.$showSheet, showSheet: self.$showverdSheet))
+                    .transition(.offset(x: 0, y: 0 - geo.size.height))
                 }
             }.onReceive(self.hidePublisher) {
                 self.showHider = false

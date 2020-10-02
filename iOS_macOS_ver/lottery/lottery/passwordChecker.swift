@@ -24,10 +24,21 @@ struct AlertControl: UIViewControllerRepresentable {
     @State var textString: String = ""
     @Binding var show: Bool
     @Binding var correct: Bool
-    
+    @Binding var showSheet: Bool
+    @Binding var loadSheet: Bool
     var title: String
     var message: String
     @State var once = false
+    
+    init(show: Binding<Bool>, correct: Binding<Bool>, title: String, message: String, loadSheet: Binding<Bool>, showSheet: Binding<Bool> = .constant(false)) {
+        self._show = show
+        self._correct = correct
+        self.title = title
+        self.message = message
+        self._showSheet = showSheet
+        self._loadSheet = loadSheet
+    }
+    
     func makeUIViewController(context: UIViewControllerRepresentableContext<AlertControl>) -> UIViewController {
         return UIViewController() // holder controller - required to present alert
     }
@@ -60,7 +71,13 @@ struct AlertControl: UIViewControllerRepresentable {
             })
             alert.addAction(UIAlertAction(title: "Unlock", style: .destructive) { _ in
                 if sha256(textString) == pwdHash {
-                    self.correct = true
+                    withAnimation(.easeOut(duration: 1)) {
+                        self.correct = true
+                    }
+                    if loadSheet {
+                        self.showSheet = true
+                        self.loadSheet = false
+                    }
                 }
                 else {
                     self.correct = false
@@ -76,11 +93,13 @@ struct AlertControl: UIViewControllerRepresentable {
             
             DispatchQueue.main.async { // must be async !!
                 if pwdHash == nil && !once {
-                    self.correct = true
+                    withAnimation(.easeOut(duration: 1)) {
+                        self.correct = true
+                    }
                 }
                 else {
                     let authenticationContext = LAContext()
-                    authenticationContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Data unlocker", reply:
+                    authenticationContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: self.message, reply:
                     {(success, error) -> Void in
                         if success
                         {
@@ -88,6 +107,10 @@ struct AlertControl: UIViewControllerRepresentable {
                                 self.correct = true
                                 self.show = false
                                 context.coordinator.alert = nil
+                                if loadSheet {
+                                    self.showSheet = true
+                                    self.loadSheet = false
+                                }
                             }
                             return
                         }
