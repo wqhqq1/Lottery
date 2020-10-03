@@ -13,12 +13,17 @@ struct tabview: View {
     @State var showSheet: Bool
     @State var showverdSheet = false
     @State var showHider = false
+    @State var correct = false
     @State var showUnlocker = true
     @EnvironmentObject var PrizeData: Prizes
     @ObservedObject var lastResult = Prizes(data: dataLoader())
-    private let hidePublisher = NotificationCenter.Publisher.init(
+    private let foregroundPublisher = NotificationCenter.Publisher.init(
         center: .default,
         name: UIApplication.willEnterForegroundNotification
+    ).map {_ in}
+    private let backgroundPublisher = NotificationCenter.Publisher.init(
+        center: .default,
+        name: UIApplication.didEnterBackgroundNotification
     ).map {_ in}
     var body: some View {
         var filePath = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
@@ -73,19 +78,16 @@ struct tabview: View {
                                 }
                             }.padding(.top, 20)
                         }.padding(.bottom, self.showUnlocker ? 50:0)
-                        VStack {
-                            Image(systemName: "lock.fill")
-                                .imageScale(.large)
-                                .foregroundColor(.white)
-                            Spacer()
-                        }.padding(.top, 50)
+                        unlockAnimationsMainController(self.$correct, isComplete: self.$showHider, loadSheet: self.$showSheet, showSheet: self.$showverdSheet)
                     }
                     .ignoresSafeArea()
-                    .background(AlertControl(show: self.$showUnlocker, correct: self.$showHider, title: "Locked", message: "This app was locked, Please enter the correct password to unlock it.", loadSheet: self.$showSheet, showSheet: self.$showverdSheet))
+                    .background(AlertControl(show: self.$showUnlocker, correct: self.$correct, title: "Locked", message: "This app was locked, Please enter the correct password to unlock it."))
                     .transition(.offset(x: 0, y: 0 - geo.size.height))
                 }
-            }.onReceive(self.hidePublisher) {
+            }.onReceive(self.foregroundPublisher) {
                 self.showHider = false
+            }
+            .onReceive(self.backgroundPublisher) {
                 self.showUnlocker = true
             }
         }

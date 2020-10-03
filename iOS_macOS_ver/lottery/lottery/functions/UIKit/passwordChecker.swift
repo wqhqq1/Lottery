@@ -8,7 +8,7 @@
 import SwiftUI
 import LocalAuthentication
 
-var pwdHash: String? = nil
+var pwdHash: String? = nil, keyboardFixEnabled = true
 
 func sha256(_ string : String) -> String {
     var hash = [UInt8](repeating: 0,  count: Int(CC_SHA256_DIGEST_LENGTH))
@@ -24,19 +24,15 @@ struct AlertControl: UIViewControllerRepresentable {
     @State var textString: String = ""
     @Binding var show: Bool
     @Binding var correct: Bool
-    @Binding var showSheet: Bool
-    @Binding var loadSheet: Bool
     var title: String
     var message: String
     @State var once = false
     
-    init(show: Binding<Bool>, correct: Binding<Bool>, title: String, message: String, loadSheet: Binding<Bool>, showSheet: Binding<Bool> = .constant(false)) {
+    init(show: Binding<Bool>, correct: Binding<Bool>, title: String, message: String) {
         self._show = show
         self._correct = correct
         self.title = title
         self.message = message
-        self._showSheet = showSheet
-        self._loadSheet = loadSheet
     }
     
     func makeUIViewController(context: UIViewControllerRepresentableContext<AlertControl>) -> UIViewController {
@@ -46,6 +42,7 @@ struct AlertControl: UIViewControllerRepresentable {
     func updateUIViewController(_ viewController: UIViewController, context: UIViewControllerRepresentableContext<AlertControl>) {
         guard context.coordinator.alert == nil else { return }
         if self.show {
+            keyboardFixEnabled = false
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
             let wrongAlert = UIAlertController(title: "Incorrect", message: "Password you input is incorrect, please try another one.", preferredStyle: .alert)
             wrongAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {_ in
@@ -73,10 +70,6 @@ struct AlertControl: UIViewControllerRepresentable {
                 if sha256(textString) == pwdHash {
                     withAnimation(.easeOut(duration: 1)) {
                         self.correct = true
-                    }
-                    if loadSheet {
-                        self.showSheet = true
-                        self.loadSheet = false
                     }
                 }
                 else {
@@ -107,10 +100,6 @@ struct AlertControl: UIViewControllerRepresentable {
                                 self.correct = true
                                 self.show = false
                                 context.coordinator.alert = nil
-                                if loadSheet {
-                                    self.showSheet = true
-                                    self.loadSheet = false
-                                }
                             }
                             return
                         }
@@ -132,6 +121,9 @@ struct AlertControl: UIViewControllerRepresentable {
             }
         }
     }
+        else {
+            keyboardFixEnabled = true
+        }
 }
 
 func makeCoordinator() -> AlertControl.Coordinator {

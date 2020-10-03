@@ -13,6 +13,8 @@ struct KeyboardHost_offset20<Content: View>: View {
     @State private var keyboardHeight: CGFloat = 0
     var showLastRButton: Binding<Bool>
     var showDoneButton: Binding<Bool>
+    @State var enabled = true
+    var vGetter = Timer.TimerPublisher(interval: 0.1, runLoop: .current, mode: .default).autoconnect()
     
     private let showPublisher = NotificationCenter.Publisher.init(
         center: .default,
@@ -41,9 +43,13 @@ struct KeyboardHost_offset20<Content: View>: View {
     var body: some View {
         VStack {
             view
+                .onReceive(self.vGetter) { _ in
+                    self.enabled = keyboardFixEnabled
+                    print(enabled)
+                }
                 .transition(.slide)
                 .animation(.easeInOut)
-                .offset(x: 0, y: 0 - keyboardHeight)
+                .offset(x: 0, y: enabled ? 0 - keyboardHeight:0)
         }.onReceive(showPublisher.merge(with: hidePublisher)) { (height) in
             self.keyboardHeight = height * 0.02
             if self.keyboardHeight == 0.0 {
@@ -58,6 +64,8 @@ struct KeyboardHost_edit<Content: View>: View {
     let view: Content
     
     @State private var keyboardHeight: CGFloat = 0
+    @State var enabled = true
+    var vGetter = Timer.TimerPublisher(interval: 0.1, runLoop: .current, mode: .default).autoconnect()
     var showDoneButton: Binding<Bool>
     
     private let showPublisher = NotificationCenter.Publisher.init(
@@ -86,9 +94,13 @@ struct KeyboardHost_edit<Content: View>: View {
     var body: some View {
         VStack {
             view
+                .onReceive(self.vGetter) { _ in
+                    self.enabled = keyboardFixEnabled
+                    print(enabled)
+                }
                 .transition(.slide)
                 .animation(.easeInOut)
-                .offset(x: 0, y: 0 - keyboardHeight)
+                .offset(x: 0, y: enabled ? 0 - keyboardHeight:0)
         }.onReceive(showPublisher.merge(with: hidePublisher)) { (height) in
             self.keyboardHeight = (height * 0.2) - 20
             print(keyboardHeight)
