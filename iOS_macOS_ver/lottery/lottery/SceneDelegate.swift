@@ -13,10 +13,19 @@ var urlModeResult: Bool = false
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
     func scene(_ scene: UIScene,
                willConnectTo session: UISceneSession,
                options connectionOptions: UIScene.ConnectionOptions) {
+        
+        #if targetEnvironment(macCatalyst)
+        do {
+            UIApplication.shared.connectedScenes.compactMap{$0 as? UIWindowScene}.forEach { windowScene in
+                windowScene.sizeRestrictions?.minimumSize = CGSize(width: 1000, height: 800)
+                windowScene.sizeRestrictions?.maximumSize = CGSize(width: 1000, height: 800)
+            }
+        }
+        #endif
+        
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
@@ -59,6 +68,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             sheetModeResult = false
             if let windowScene = scene as? UIWindowScene {
                 let window = UIWindow(windowScene: windowScene)
+                window.canResizeToFitContent = false
                 window.rootViewController = UIHostingController(rootView: tabview(showSheet: false).environmentObject(Prizes()))
                 self.window = window
                 window.makeKeyAndVisible()

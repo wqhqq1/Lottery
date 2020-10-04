@@ -72,13 +72,13 @@ struct tabview: View {
                                     visualView(.light)
                                         .frame(width: 150, height: 70)
                                         .cornerRadius(50)
-                                    Text("Unlock the App")
+                                    Text(self.correct ? "Verifying...":"Unlock the App")
                                         .fontWeight(.heavy)
                                         .foregroundColor(.init(.sRGB, white: 1, opacity: 0.5))
                                 }
                             }.padding(.top, 20)
                         }.padding(.bottom, self.showUnlocker ? 50:0)
-                        unlockAnimationsMainController(self.$correct, isComplete: self.$showHider, loadSheet: self.$showSheet, showSheet: self.$showverdSheet)
+                        unlockAnimationsMainController(self.$correct, isComplete: self.$showHider, loadSheet: self.$showSheet, showSheet: self.$showverdSheet).frame(width: geo.size.width, height: 80).offset(x: isMac ? 0 - geo.size.width * 0.45:0, y: isMac ? 0 - geo.size.height - 30:0 - geo.size.height + 50)
                     }
                     .ignoresSafeArea()
                     .background(AlertControl(show: self.$showUnlocker, correct: self.$correct, title: "Locked", message: "This app was locked, Please enter the correct password to unlock it."))

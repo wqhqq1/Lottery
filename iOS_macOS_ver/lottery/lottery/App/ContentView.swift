@@ -509,6 +509,6 @@ struct host<Content: View>: UIViewControllerRepresentable {
 
 struct ContentView1_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(showSheet: .constant(false))
+        ContentView(showSheet: .constant(false)).environmentObject(Prizes())
     }
 }
