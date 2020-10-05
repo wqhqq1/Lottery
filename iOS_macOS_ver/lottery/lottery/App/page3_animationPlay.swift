@@ -100,7 +100,7 @@ struct backButton_p3: View {
     @State var back: Int? = nil
     @EnvironmentObject var PrizeData: Prizes
     var body: some View {
-        NavigationLink(destination: page2_add(PrizeData: self.PrizeData).transition(.move(edge: .trailing)), tag: 1, selection: $back) {
+        NavigationLink(destination: page2_add(PrizeData: Prizes(data: self.PrizeData.PrizeList_cacu)).transition(.move(edge: .trailing)), tag: 1, selection: $back) {
             HStack {
                 Button(action: {
                     self.back = 1

@@ -87,8 +87,10 @@ struct ContentView: View {
                                         NewTextField(.constant(NSLocalizedString("NMTF", comment: "")), text: membernames, updateNow: self.$updateNow, isDisabled: .constant(false), fontColor: UIColor(named: "trash"))
                                                 .padding(.leading)
                                                 .onTapGesture {
-                                                    self.showLastRButton = false
-                                                    self.showDoneButton = true
+                                                    if !isMac {
+                                                        self.showLastRButton = false
+                                                        self.showDoneButton = true
+                                                    }
                                                 }
 //                                        }
                                         .frame(height: 30)
@@ -125,8 +127,10 @@ struct ContentView: View {
                                         HStack {
                                             NewTextField(.constant(NSLocalizedString("ADDCTF", comment: "")), text: self.$addCmdInput, updateNow: self.$updateNow)
                                                 .onTapGesture {
-                                                    self.showLastRButton = false
-                                                    self.showDoneButton = true
+                                                    if !isMac {
+                                                        self.showLastRButton = false
+                                                        self.showDoneButton = true
+                                                    }
                                                 }
                                                 
                                             Button(action: {

@@ -90,6 +90,7 @@ struct tabview: View {
             }
             .onReceive(self.backgroundPublisher) {
                 self.showUnlocker = true
+                justUnlocked = false
             }
         }
     }

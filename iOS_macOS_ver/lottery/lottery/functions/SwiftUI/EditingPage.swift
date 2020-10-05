@@ -31,11 +31,15 @@ struct EditingPage: View {
                             Section {
                                 NewTextField(.constant(NSLocalizedString("PTF", comment: "")), text: $prizename, fontColor: UIColor(named: "trash"))
                                     .onTapGesture {
-                                        self.showDoneButton = true
+                                        if !isMac {
+                                            self.showDoneButton = true
+                                        }
                                     }
                                 NewTextField(.constant(NSLocalizedString("PNTTF", comment: "")), text: $prizequota, fontColor: UIColor(named: "trash"), keyboardType: .numberPad)
                                     .onTapGesture {
-                                        self.showDoneButton = true
+                                        if !isMac {
+                                            self.showDoneButton = true
+                                        }
                                     }
                             }
                             
@@ -50,13 +54,17 @@ struct EditingPage: View {
                                     if self.showADDCTF {
                                         TextField("\(NSLocalizedString("ADDCTF", comment: ""))Max", text: self.$maxCmd)
                                             .onTapGesture {
-                                                self.showDoneButton = true
+                                                if !isMac {
+                                                    self.showDoneButton = true
+                                                }
                                             }
                                             .padding(.horizontal)
                                             .keyboardType(.numberPad)
                                         TextField("\(NSLocalizedString("ADDCTF", comment: ""))Min", text: self.$minCmd)
                                             .onTapGesture {
-                                                self.showDoneButton = true
+                                                if !isMac {
+                                                    self.showDoneButton = true
+                                                }
                                             }
                                             .padding(.horizontal)
                                             .keyboardType(.numberPad)

@@ -8,7 +8,7 @@
 import SwiftUI
 import LocalAuthentication
 
-var pwdHash: String? = nil, keyboardFixEnabled = true
+var pwdHash: String? = nil, keyboardFixEnabled = true, justUnlocked = false
 
 func sha256(_ string : String) -> String {
     var hash = [UInt8](repeating: 0,  count: Int(CC_SHA256_DIGEST_LENGTH))
@@ -72,6 +72,7 @@ struct AlertControl: UIViewControllerRepresentable {
                 if sha256(textString) == pwdHash {
                     withAnimation(.easeOut(duration: 1)) {
                         self.correct = true
+                        justUnlocked = true
                     }
                 }
                 else {
@@ -87,9 +88,10 @@ struct AlertControl: UIViewControllerRepresentable {
             })
             
             DispatchQueue.main.async { // must be async !!
-                if pwdHash == nil && !once {
+                if (pwdHash == nil || justUnlocked) && !once {
                     withAnimation(.easeOut(duration: 1)) {
                         self.correct = true
+                        justUnlocked = true
                     }
                 }
                 else {
