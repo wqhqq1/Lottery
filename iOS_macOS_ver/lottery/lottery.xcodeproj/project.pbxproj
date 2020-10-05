@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		011AC22824F88FF40067F4BD /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011AC22724F88FF40067F4BD /* UITextField.swift */; };
 		011C666F24FCEB6700B7D054 /* CustomMessageBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011C666E24FCEB6700B7D054 /* CustomMessageBox.swift */; };
-		0127B0BC25280B6400A5EDF0 /* mainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0127B0BB25280B6400A5EDF0 /* mainController.swift */; };
 		0131957224DD143600139AC9 /* passwordChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0131957124DD143600139AC9 /* passwordChecker.swift */; };
 		0139BB0624CD72FA00CAF722 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0139BB0524CD72FA00CAF722 /* Random.swift */; };
 		0139BB0824CD731800CAF722 /* APM_caculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0139BB0724CD731800CAF722 /* APM_caculator.swift */; };
@@ -37,8 +36,6 @@
 		0152AAD624CD6F7F00AEFD53 /* keyboardfix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0152AAD524CD6F7F00AEFD53 /* keyboardfix.swift */; };
 		0152AAD824CD6FD000AEFD53 /* MN_spliter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0152AAD724CD6FD000AEFD53 /* MN_spliter.swift */; };
 		0152AADC24CD708400AEFD53 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0152AADE24CD708400AEFD53 /* Localizable.strings */; };
-		0170F0712529D76000F04FCD /* pop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0170F06F2529D74900F04FCD /* pop.framework */; platformFilter = ios; };
-		0170F0722529D76000F04FCD /* pop.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0170F06F2529D74900F04FCD /* pop.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0196B50A24F4F146008E815A /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0196B50924F4F146008E815A /* WidgetKit.framework */; };
 		0196B50C24F4F146008E815A /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0196B50B24F4F146008E815A /* SwiftUI.framework */; };
 		0196B50F24F4F146008E815A /* lotteryW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0196B50E24F4F146008E815A /* lotteryW.swift */; };
@@ -47,10 +44,13 @@
 		0196B51524F4F148008E815A /* lotteryW.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 0196B51024F4F146008E815A /* lotteryW.intentdefinition */; };
 		0196B51824F4F148008E815A /* lotteryWExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0196B50724F4F146008E815A /* lotteryWExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		0196B51E24F4F1B4008E815A /* Prizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0146C58A24CC287E00E4F790 /* Prizes.swift */; };
-		01A04F5B252870A700F3C993 /* lockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A04F5A252870A700F3C993 /* lockView.swift */; };
 		01ABDB2E250CAD090067A1DD /* tabview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01ABDB2D250CAD090067A1DD /* tabview.swift */; };
 		01C3251824F50C7200A593B2 /* Replay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C3251724F50C7200A593B2 /* Replay.swift */; };
 		01C3251A24F50D0100A593B2 /* passwordChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0131957124DD143600139AC9 /* passwordChecker.swift */; };
+		01F4EB49252ABE6600FB5EF4 /* lockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F4EB47252ABE6600FB5EF4 /* lockView.swift */; };
+		01F4EB4A252ABE6600FB5EF4 /* mainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F4EB48252ABE6600FB5EF4 /* mainController.swift */; };
+		01F4EB51252ABEBF00FB5EF4 /* pop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01F4EB4D252ABEB600FB5EF4 /* pop.framework */; platformFilter = maccatalyst; };
+		01F4EB52252ABEBF00FB5EF4 /* pop.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 01F4EB4D252ABEB600FB5EF4 /* pop.framework */; platformFilter = maccatalyst; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,7 +119,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				0170F0722529D76000F04FCD /* pop.framework in Embed Frameworks */,
+				01F4EB52252ABEBF00FB5EF4 /* pop.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -127,11 +127,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0115FA972526945F00AB3C6A /* CoreSwiftUITools.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CoreSwiftUITools.framework; sourceTree = "<group>"; };
 		011AC22724F88FF40067F4BD /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		011C666E24FCEB6700B7D054 /* CustomMessageBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMessageBox.swift; sourceTree = "<group>"; };
 		0125319E24CF9E8000C5464A /* lottery.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = lottery.entitlements; sourceTree = "<group>"; };
-		0127B0BB25280B6400A5EDF0 /* mainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainController.swift; sourceTree = "<group>"; };
 		0131957124DD143600139AC9 /* passwordChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = passwordChecker.swift; sourceTree = "<group>"; };
 		0139BB0524CD72FA00CAF722 /* Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
 		0139BB0724CD731800CAF722 /* APM_caculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APM_caculator.swift; sourceTree = "<group>"; };
@@ -168,7 +166,6 @@
 		0152AAD924CD701B00AEFD53 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		0152AADD24CD708400AEFD53 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0152AADF24CD708A00AEFD53 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		0170F06F2529D74900F04FCD /* pop.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = pop.framework; sourceTree = "<group>"; };
 		0196B50724F4F146008E815A /* lotteryWExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = lotteryWExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		0196B50924F4F146008E815A /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		0196B50B24F4F146008E815A /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -178,9 +175,11 @@
 		0196B51324F4F148008E815A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0196B51924F4F148008E815A /* lotteryWExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = lotteryWExtension.entitlements; sourceTree = "<group>"; };
 		01A04F2325286D4B00F3C993 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = "../../../Downloads/LockAnimationTest-master/Pods/Pods.xcodeproj"; sourceTree = "<group>"; };
-		01A04F5A252870A700F3C993 /* lockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lockView.swift; sourceTree = "<group>"; };
 		01ABDB2D250CAD090067A1DD /* tabview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tabview.swift; sourceTree = "<group>"; };
 		01C3251724F50C7200A593B2 /* Replay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Replay.swift; sourceTree = "<group>"; };
+		01F4EB47252ABE6600FB5EF4 /* lockView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = lockView.swift; path = lottery/unlockAnimations/lockView.swift; sourceTree = SOURCE_ROOT; };
+		01F4EB48252ABE6600FB5EF4 /* mainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = mainController.swift; path = lottery/unlockAnimations/mainController.swift; sourceTree = SOURCE_ROOT; };
+		01F4EB4D252ABEB600FB5EF4 /* pop.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = pop.framework; path = pop/macOS/pop.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,7 +187,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0170F0712529D76000F04FCD /* pop.framework in Frameworks */,
+				01F4EB51252ABEBF00FB5EF4 /* pop.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,6 +242,7 @@
 		0102EABB25289F2200421E1B /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				01F4EB46252ABAAE00FB5EF4 /* unlockAnimation */,
 				0152AAD524CD6F7F00AEFD53 /* keyboardfix.swift */,
 				0139BB0924CD757100CAF722 /* SingleResult.swift */,
 				0139BB0B24CD773C00CAF722 /* EditingPage.swift */,
@@ -277,22 +277,12 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		0127B0BA25280B2F00A5EDF0 /* unlockAnimations */ = {
-			isa = PBXGroup;
-			children = (
-				0127B0BB25280B6400A5EDF0 /* mainController.swift */,
-				01A04F5A252870A700F3C993 /* lockView.swift */,
-			);
-			path = unlockAnimations;
-			sourceTree = "<group>";
-		};
 		0146C54C24CC1C7E00E4F790 = {
 			isa = PBXGroup;
 			children = (
 				01A04F2325286D4B00F3C993 /* Pods.xcodeproj */,
 				0196B51924F4F148008E815A /* lotteryWExtension.entitlements */,
-				0115FA972526945F00AB3C6A /* CoreSwiftUITools.framework */,
-				0170F06F2529D74900F04FCD /* pop.framework */,
+				01F4EB4D252ABEB600FB5EF4 /* pop.framework */,
 				0146C55724CC1C7F00E4F790 /* lottery */,
 				0146C56E24CC1C8400E4F790 /* lotteryTests */,
 				0146C57924CC1C8400E4F790 /* lotteryUITests */,
@@ -320,7 +310,6 @@
 				0146C55A24CC1C7F00E4F790 /* SceneDelegate.swift */,
 				0127B0A9252805A200A5EDF0 /* App */,
 				0102EAB925289E6B00421E1B /* functions */,
-				0127B0BA25280B2F00A5EDF0 /* unlockAnimations */,
 				0125319E24CF9E8000C5464A /* lottery.entitlements */,
 				0146C55E24CC1C8300E4F790 /* Assets.xcassets */,
 				0152AADE24CD708400AEFD53 /* Localizable.strings */,
@@ -387,6 +376,15 @@
 				01A04F2B25286D4B00F3C993 /* pop.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		01F4EB46252ABAAE00FB5EF4 /* unlockAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				01F4EB47252ABE6600FB5EF4 /* lockView.swift */,
+				01F4EB48252ABE6600FB5EF4 /* mainController.swift */,
+			);
+			path = unlockAnimation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -582,9 +580,9 @@
 				01C3251824F50C7200A593B2 /* Replay.swift in Sources */,
 				0139BB0624CD72FA00CAF722 /* Random.swift in Sources */,
 				0139BB0A24CD757100CAF722 /* SingleResult.swift in Sources */,
+				01F4EB49252ABE6600FB5EF4 /* lockView.swift in Sources */,
 				0152AAD624CD6F7F00AEFD53 /* keyboardfix.swift in Sources */,
 				0146C58B24CC287E00E4F790 /* Prizes.swift in Sources */,
-				0127B0BC25280B6400A5EDF0 /* mainController.swift in Sources */,
 				014645AC24DF67AF00CA5A5D /* AG_spliter.swift in Sources */,
 				013EEA73251F11010006D732 /* bridge.m in Sources */,
 				013A2C7324D1364600144308 /* page3_animationPlay.swift in Sources */,
@@ -594,8 +592,8 @@
 				011AC22824F88FF40067F4BD /* UITextField.swift in Sources */,
 				0139BB0C24CD773C00CAF722 /* EditingPage.swift in Sources */,
 				013C86B3250D910F00266F68 /* blurView.swift in Sources */,
+				01F4EB4A252ABE6600FB5EF4 /* mainController.swift in Sources */,
 				013EEA6B251F0AF70006D732 /* SecureView.swift in Sources */,
-				01A04F5B252870A700F3C993 /* lockView.swift in Sources */,
 				011C666F24FCEB6700B7D054 /* CustomMessageBox.swift in Sources */,
 				014EADCB250B7F0800F5BD6E /* ShareSheet.swift in Sources */,
 				0146C55924CC1C7F00E4F790 /* AppDelegate.swift in Sources */,
@@ -814,6 +812,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/pop/macOS",
 				);
 				INFOPLIST_FILE = lottery/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -854,6 +853,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/pop/macOS",
 				);
 				INFOPLIST_FILE = lottery/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

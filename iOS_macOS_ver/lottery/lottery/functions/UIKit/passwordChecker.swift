@@ -65,6 +65,8 @@ struct AlertControl: UIViewControllerRepresentable {
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in
                 // your action here
                 textString = ""
+                self.show = false
+                context.coordinator.alert = nil
             })
             alert.addAction(UIAlertAction(title: "Unlock", style: .destructive) { _ in
                 if sha256(textString) == pwdHash {
